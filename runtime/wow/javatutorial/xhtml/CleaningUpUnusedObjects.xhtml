@@ -1,0 +1,50 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Cleaning Up Unused Objects</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>Cleaning Up Unused Objects</h2>
+<blockquote>
+Some object-oriented languages require that you keep track of all the objects you create, and that you explicitly destroy them when they are no longer needed. Managing memory explicitly is tedious and error-prone. The Java platform allows you to create as many objects as you want (limited, of course, by what your system can handle), and you don't have to worry about destroying them. The Java runtime environment deletes objects when it determines that they are no longer being used. This process is called <em>garbage collection</em>.
+
+<p>
+An object is eligible for garbage collection when there are no more references to that object. References that are held in a variable are usually dropped when the variable goes out of scope. Or, you can explicitly drop an object reference by setting the variable to the special value <tt>null</tt>. Remember that a program can have multiple references to the same object; all references to an object must be dropped before the object is eligible for garbage collection.
+</p>
+</blockquote>
+
+<h3>The Garbage Collector</h3>
+
+<blockquote>
+The Java runtime environment has a garbage collector that periodically frees the memory used by objects that are no longer referenced. The garbage collector does its job automatically, although in some situations, you may want to explicitly request garbage collection by invoking the <tt>gc</tt> method in the <tt>System</tt> class. For example, you might want to do this after a section of code that creates a large amount of garbage, or before a section of code that needs a lot of memory. In most situations, however, it is enough to simply let the runtime enviroment run the garbage collector on its own, when it determines that the time is right.
+</blockquote>
+
+<h3>Finalization</h3>
+<blockquote>
+
+Before an object gets garbage-collected, the garbage collector gives the object an opportunity to clean up after itself through a call to the object's <tt>finalize</tt> method. This process is known as <em>finalization</em>.
+
+<p>
+Most programmers don't have to worry about implementing the <tt>finalize</tt>
+method. In rare cases, however, a programmer might have to implement a
+<tt>finalize</tt> method to release resources, such as native peers, that aren't under the control of the garbage collector. 
+</p>
+
+<p>
+The <tt>finalize</tt> method is a member of the Object class, which is the top of the Java platform's class hierarchy. It is the superclass of all classes. A class can override the finalize method to perform any finalization necessary for objects of that type. If you override finalize, your implementation of the method should call super.finalize as the last thing that it does.
+<a href="OverridingHidingMethods" class="conditional">Overriding and Hiding Methods</a><a href="OverridingHidingMethods" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> talks more about how to override methods.
+</p>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

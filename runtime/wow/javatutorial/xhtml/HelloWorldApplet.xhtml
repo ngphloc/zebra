@@ -1,0 +1,59 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Hello World Applet</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Getting Started
+</font>
+
+<h2>Lesson: Hello World Applet</h2>
+
+<blockquote>
+Now that you've seen a Java applet, you're probably wondering how it works. Remember that a <em>Java applet</em> is a program that adheres to a set of conventions that allows it to run within a Java-compatible browser.
+
+<br/>
+
+Here again is the code for the "Hello World" applet.
+<blockquote><pre>
+import java.applet.Applet;
+import java.awt.Graphics;
+
+public class HelloWorld extends Applet {
+    public void paint(Graphics g) {
+        g.drawString(&quot;Hello world!&quot;, 50, 25);
+    }
+}
+</pre></blockquote>
+</blockquote>
+
+<h3><a href="ImportingClassesPackages" class="conditional">Importing Classes and Packages</a></h3>
+<blockquote>
+The code above starts off with two <code>import</code> statements. By importing classes or packages, a class can more easily refer to classes in other packages. In the Java language, <em>packages</em> are used to group classes, similar to the way libraries are used to group C functions.
+<a href="ImportingClassesPackages" class="conditional">Importing Classes and Packages</a> gives you more information about packages and the <code>import</code> statement.
+</blockquote>
+
+<h3><a href="DefiningAppletSubclass" class="conditional">Defining an Applet Subclass</a></h3>
+<blockquote>
+Every applet must define a subclass of the <code>Applet</code> class. In the "Hello World" applet, this subclass is called HelloWorld. Applets inherit a great deal of functionality from the <code>Applet</code> class, ranging from communication with the browser to the ability to present a graphical user interface (GUI).
+<a href="DefiningAppletSubclass" class="conditional">Defining an <code>Applet</code> Subclass</a> tells you how.
+</blockquote>
+
+<h3><a href="ImplementingAppletMethods" class="conditional">Implementing Applet Methods</a></h3>
+<blockquote>
+The HelloWorld applet implements just one method, the <code>paint</code> method. Every applet must implement at least one of the following methods: <code>init</code>, <code>start</code>, or <code>paint</code>. Unlike Java applications, applets do <em>not</em> need to implement a <code>main</code> method. 
+<a href="ImplementingAppletMethods" class="conditional">Implementing <code>Applet</code> Methods</a> talks about the <code>paint</code> method, how the "Hello World" applet implements it, and the other methods applets commonly implement.
+</blockquote>
+
+<h3><a href="RunningApplet" class="conditional">Running an Applet</a></h3>
+<blockquote>
+Applets are meant to be included in HTML pages. Using the <code>&lt;APPLET&gt;</code> tag, you specify (at a minimum) the location of the <code>Applet</code> subclass and the dimensions of the applet's onscreen display area. When a Java-capable browser encounters an <code>&lt;APPLET&gt;</code> tag, it reserves onscreen space for the applet, loads the <code>Applet</code> subclass onto the computer the browser is executing on, and creates an instance of the <code>Applet</code> subclass.
+<a href="RunningApplet" class="conditional">Running an Applet</a> gives more details.
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

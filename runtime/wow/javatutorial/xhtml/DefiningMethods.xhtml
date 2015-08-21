@@ -1,0 +1,298 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Defining Methods</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Classes and Inheritance
+</font>
+
+<h2>
+Defining Methods
+</h2>
+<blockquote>
+The next figure shows the code for <code>Stack</code>'s 
+<code>push</code> method. This method puts the object 
+argument onto the top of the stack and returns the object.
+
+<p><center><img src="images/classes-methods1.gif" width="340" height="133" align="bottom" alt="The push Method and the Structure of a Method Definition"/></center></p>
+Like a class, a method definition has two major parts: 
+the method declaration and the method body. The 
+<i>method declaration</i> defines all the method's 
+attributes, such as access level, return type, name, 
+and arguments, as shown in the following figure. The 
+<i>method body</i> is where all the action takes place. 
+It contains the instructions that implement the method.
+
+
+<p><center><img src="images/classes-methods2.gif" width="264" height="94" align="bottom" alt="Components of the Declaration of the push Method"/></center></p>
+The only required elements of a method declaration are the 
+method's name, return type, and a pair of parentheses: 
+<code>(</code> and <code>)</code>. A method declaration 
+can provide more information about the method, including 
+the return type of the method, the number and type of the 
+arguments required by the method, and which other classes 
+and objects can call the method. The next table shows all 
+possible elements of a method declaration.
+
+<blockquote>
+<table border="1">
+<caption>Method Declaration Elements</caption>
+<tr>
+ <th>Element
+ </th>
+ <th>Function
+ </th>
+</tr>
+<tr>
+ <td><code><i>accessLevel</i></code>
+ </td>
+ <td>(Optional) Access level for the method
+ </td>
+</tr>
+<tr>
+ <td><code>static</code>
+ </td>
+ <td>(Optional) Declares a class method
+ </td>
+</tr>
+<tr>
+ <td><code>abstract</code>
+ </td>
+ <td>(Optional) Indicates that the method is not implemented
+ </td>
+</tr>	
+<tr>
+ <td><code>final</code>
+ </td>
+ <td>(Optional) Indicates that the method cannot be overridden
+ </td>
+</tr>
+<tr>
+ <td><code>native</code>
+ </td>
+ <td>(Optional) Indicates that the method is implemented in another language
+ </td>
+</tr>
+<tr>
+ <td><code>synchronized</code>
+ </td>
+ <td>(Optional) The method requires a monitor to run
+ </td>
+</tr>	
+<tr>
+ <td><code><i>returnType methodName</i></code>
+ </td>
+ <td>The method's return type and name
+ </td>
+</tr>
+<tr>
+ <td><code>( <i>paramList</i> )</code>
+ </td>
+ <td>The list of arguments to the method
+ </td>
+</tr>
+<tr>
+ <td><code>throws exceptions</code>
+ </td>
+ <td>(Optional) The exceptions thrown by the method
+ </td>
+</tr>	
+</table>
+</blockquote>
+
+Each element of a method declaration can be further 
+defined and is discussed as indicated in the following list: 
+
+<dl>
+<dt>
+<em>accessLevel</em>
+<dd>
+As with member variables, you control which other classes have access
+to a method using one of four access levels: public, protected,
+package, and private. The section 
+<a href="ControllingAccessToClass" class="conditional">Controlling Access to Members of a Class</a><a href="ControllingAccessToClass" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> covers access levels in detail.
+</dd>
+</dt>
+<dt>
+<code>static</code>
+<dd>
+As with member variables, <code>static</code>
+declares this method as a class method
+rather than an instance method. The section 
+<a href="UnderstandingInstanceAndClassMembers" class="conditional">Understanding Instance and Class Members</a><a href="UnderstandingInstanceAndClassMembers" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> talks about declaring instance and class methods.
+</dd>
+</dt>
+<dt>
+<code>abstract</code>
+<dd>
+An abstract method has no implementation and must be a member of an
+abstract class. Refer to the section 
+<a href="WritingAbstractClassesMethods" class="conditional">Writing Abstract Classes and Methods</a><a href="WritingAbstractClassesMethods" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> for information about why you might want to write an abstract
+method and how such methods affect subclasses.
+</dd>
+</dt>
+<dt>
+<code>final</code>
+<dd>
+A final method cannot be overridden by subclasses. The section 
+<a href="WritingFinalClassesMethods" class="conditional">Writing Final Classes and Methods</a><a href="WritingFinalClassesMethods" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> discusses why you might want to write <code>final</code> methods,
+how they affect subclasses,
+and whether you might want to write a <code>final</code> class instead.
+</dd>
+</dt>
+<dt>
+<code>native</code>
+<dd>
+If you have a significant library of functions written in another
+language, such as C, you may wish to preserve that investment and to use
+those functions from a program written in the Java programming language. 
+Methods implemented in another language are called native methods and 
+are declared as such using the <code>native</code> keyword.
+Check out our 
+<a href="JavaNativeInterface" class="conditional">Java Native Interface</a><a href="JavaNativeInterface" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> trail for information about writing native methods.
+</dd>
+</dt>
+<dt>
+<code>synchronized</code>
+<dd>
+Concurrently running threads often invoke methods that operate on the
+same data. Mark these methods with the <code>synchronized</code> 
+keyword to ensure that the threads access information in a 
+thread-safe manner. Synchronizing method calls is covered in 
+
+<a href="Threads" class="conditional">Threads: Doing Two or More Tasks At Once</a><a href="Threads" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.
+
+ Take particular note of the section 
+<a href="SynchronizingThreads" class="conditional">Synchronizing Threads</a><a href="SynchronizingThreads" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.
+</dd>
+</dt>
+<dt>
+<em>returnType</em>
+<dd>
+A method must declare the data type of the value that 
+it returns. If your method does not return a value, 
+use the keyword <code>void</code> for the return type. The section 
+<a href="ReturningValueFromMethod" class="conditional">Returning a Value from a Method</a><a href="ReturningValueFromMethod" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> talks about the issues related to returning values from a method.
+</dd>
+</dt>
+<dt>
+<em>methodName</em>
+<dd>
+A method name can be any legal identifier. You need to 
+consider code conventions, name overloading, and method 
+overriding when naming a method. 
+These topics are covered in the next section 
+<a href="#methodname">Naming a Method</a>.
+</dd>
+</dt>
+<dt>
+<code>( <em>paramlist</em> )</code>
+<dd>
+You pass information into a method through its arguments. See the next
+section,
+<a href="PassingInformationIntoMethod" class="conditional">Passing Information into a Method or a Constructor</a><a href="PassingInformationIntoMethod" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.
+</dd>
+</dt>
+<dt>
+<code>throws <em>exceptionList</em></code>
+<dd>
+If your method throws any checked exceptions, your method declaration
+must indicate the type of those exceptions.
+See
+<a href="HandlingExceptions" class="conditional">Handling Errors with Exceptions</a><a href="HandlingExceptions" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> for information. In particular, refer to
+<a href="SpecifyingExceptionsThrownByMethod" class="conditional">Specifying the Exceptions Thrown by a Method</a><a href="SpecifyingExceptionsThrownByMethod" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.
+</dd>
+</dt>
+</dl>
+Two of these components comprise the 
+<i>method signature</i>: the method's name and the parameter list.
+
+<a name="methodname">
+<h3>Naming a Method</h3>
+</a>
+<blockquote>
+Although a method name can be any legal identifier, code 
+conventions restrict method names. In general, method names 
+should be verbs and should be in mixed case, with the first 
+letter in lowercase and the first letter of each internal word in 
+uppercase. Here are some examples:
+<blockquote><pre>
+toString
+compareTo
+isDefined
+setX
+getX
+</pre></blockquote>
+
+A method name should not be the same as the class name, 
+because constructors are named for the class. The JavaBeans 
+architecture naming conventions further describe how to name 
+methods for setting and getting properties. 
+
+<blockquote><hr/><strong>Note: </strong>You should refer to Sun Microsystems'
+<a target="_blank" href="http://java.sun.com/docs/codeconv/"><font color="#009bbb">code conventions for the Java programming language</font></a><a target="_blank" href="http://java.sun.com/docs/codeconv/"><img src="images/otherIcon.gif" width="11" height="11" border="0" align="middle" alt=" (outside of the tutorial)"/></a> and the JavaBeans architecture naming conventions outlined in the 
+<a target="_blank" href="http://java.sun.com/beans/spec.html"><font color="#009bbb">JavaBeans specification</font></a><a target="_blank" href="http://java.sun.com/beans/spec.html"><img src="images/otherIcon.gif" width="11" height="11" border="0" align="middle" alt=" (outside of the tutorial)"/></a>.
+<hr/></blockquote>
+
+Typically, a method has a unique name within its class. However, three 
+situations might cause a method to have the same name as other methods 
+in the class or in a superclass: overriding methods, hiding methods, 
+and name overloading.
+<p>
+A method with the same signature and return type as a method in a 
+superclass <i>overrides</i> or <i>hides</i> the superclass method. 
+The section 
+<a href="OverridingHidingMethods" class="conditional">Overriding and Hiding Methods</a><a href="OverridingHidingMethods" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> describes what each means, shows you how to override and to hide 
+methods, and discusses related issues.
+</p>
+The Java programming language supports <i>name overloading</i> 
+for methods, which means that multiple methods in the same class 
+can share the same name if they have different parameter lists. 
+Suppose that you have a class that can draw various types of data 
+(strings, integers, and so on) and that contains a method for drawing 
+each data type. In other languages, you have to think of a new name 
+for each method, for example, <code>drawString</code>, 
+<code>drawInteger</code>, <code>drawFloat</code>, and so on. 
+In the Java programming language, you can use the same name for 
+all the drawing methods but pass a different type of argument to 
+each method. Thus, the data drawing class might declare three 
+methods named <code>draw</code>, each of which takes a different 
+type of argument. 
+<blockquote><pre>
+public class DataArtist {
+    ...
+    public void draw(String s) {
+        ...
+    }
+    public void draw(int i) {
+        ...
+    }
+    public void draw(float f) {
+        ...
+    }
+}
+</pre></blockquote>
+
+Overloaded methods are differentiated by the number and 
+the type of the arguments passed into the method. In the 
+code sample, <code>draw(String s)</code> and <code>draw(int i)</code> 
+are distinct and unique methods because they require different 
+argument types. You cannot declare more than one method with 
+the same name and the same number and type of arguments, 
+because the compiler cannot tell them apart. The compiler 
+does not consider return type when differentiating methods, 
+so you cannot declare two methods with the same signature 
+even if they have a different return type.
+</blockquote>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

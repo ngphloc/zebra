@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>Convert from MOT database to WOW! course</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+<body>
+<h1>Convert from MOT database to WOW! course</h1>
+<p>
+<strong>CAUTION:</strong>
+This file is part of WOW! based on AHA! (Adaptive Hypermedia for All) which is free software (GNU General Public License) developed by Paul De Bra - Eindhoven University of Technology and University. 
+Copyright (c) 2006 by Eindhoven University of Technology.
+It may be used according to the GNU license of Eindhoven University of Technology
+</p>
+
+<p>
+Place your strategy with the extension '.lag' in the WOW! output
+course directory (you can use the <a href="AMt/AMt.html" target="new">Application Management Tool</a>).
+</p>
+<form method="post" action="../ConvertMOT2WOW">
+<table>
+<tr>
+<td>WOW! author name:</td>
+<td><input type="text" name="author" size="10" value=""></td>
+</tr>
+<tr>
+<td>WOW! author password:</td>
+<td><input type="password" name="password" size="10" value=""></td>
+</tr>
+<tr>
+<td>WOW! course name:</td>
+<td><input type="text" name="course" size="10" value=""></td>
+</tr>
+</table>
+<br />
+<table>
+<tr>
+<td>MOT host:</td>
+<td><input type="text" name="mothost" size="10" value=""></td>
+</tr>
+<tr>
+<td>MOT user:</td>
+<td><input type="text" name="motuser" size="10" value=""></td>
+</tr>
+<tr>
+<td>MOT password:</td>
+<td><input type="password" name="motpassword" size="10" value=""></td>
+</tr>
+<tr>
+<td>MOT database:</td>
+<td><input type="text" name="motdatabase" size="10" value=""></td>
+</tr>
+<tr>
+<td>MOT lesson:</td>
+<td><input type="text" name="motlesson" size="10" value=""></td>
+</tr>
+</table>
+<br />
+<p><input type="checkbox" name="makecaf"/>Write intermediate CAF file</p>
+<br />
+Select <input type="submit" name="enter_button" value="Convert" />
+to submit this form, or
+<input type="reset" value="Reset" /> to clear the form.
+</form>
+</body>
+</html>

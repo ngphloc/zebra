@@ -1,0 +1,49 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Defining an Applet Subclass</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Getting Started
+<br/>
+<b>Lesson</b>: Hello World Applet
+</font>
+
+
+<h2>Defining an Applet Subclass</h2>
+<blockquote>
+The first bold line of the following listing begins a block that defines the <code>HelloWorld</code> class.
+
+<blockquote><pre>
+import java.applet.Applet;
+import java.awt.Graphics;
+
+<b>public class HelloWorld extends Applet {</b>
+    public void paint(Graphics g) {
+        g.drawString("Hello world!", 50, 25);
+    }
+<b>}</b>
+</pre></blockquote>
+
+<p>
+The <code>extends</code> keyword indicates that HelloWorld is a subclass of the class whose name follows: <code>Applet</code>. If the term <em>subclass</em> means nothing to you, you'll learn about it soon in 
+<a href="ObjectOrientedProgrammingConcepts" class="conditional">Object-Oriented Programming Concepts</a>
+<a href="ObjectOrientedProgrammingConcepts" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Getting Started trail)"/></a>.
+</p>
+
+From the <code>Applet</code> class, applets inherit a great deal of functionality. Perhaps most important is the ability to respond to browser requests. For example, when a Java-capable browser loads a page containing an applet, the browser sends a request to the applet, telling the applet to initialize itself and start executing. You'll learn more about what the Applet class provides in the
+<a href="OverviewOfApplets" class="conditional">Overview of Applets</a>
+<a href="OverviewOfApplets" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Getting Started trail)"/></a> lesson.
+
+<p>
+An applet isn't restricted to defining just one class. Besides the necessary <code>Applet</code> subclass, an applet can define additional custom classes. When the applet attempts to use a class, the application that's executing the applet first looks on the local host for the class. If the class isn't available locally, it's loaded from the location that the <code>Applet</code> subclass originated from.
+</p>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

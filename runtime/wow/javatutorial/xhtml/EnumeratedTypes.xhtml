@@ -1,0 +1,158 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Enumerated Types</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Classes and Inheritance
+</font>
+
+<h2>
+Enumerated Types
+</h2>
+<blockquote>
+An <i>enumerated type</i> is a type whose legal values consist 
+of a fixed set of constants. Common examples include 
+compass directions, which take the values 
+North, South, East and West
+and days of the week, which 
+take the values Sunday, Monday, Tuesday, 
+Wednesday, Thursday, Friday, and Saturday. 
+<br/><br/>
+In the Java programming language, you define an enumerated 
+type by using the <code>enum</code> keyword. For example, 
+you would specify a days of the week enumerated type as:
+<blockquote><pre>
+enum Days { SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, 
+            FRIDAY, SATURDAY };
+</pre></blockquote>
+
+Notice that by convention the names of an enumerated type's 
+values are spelled in uppercase letters. 
+<p>
+You should use enumerated types any time you need to represent 
+a fixed set of constants. That includes natural enumerated 
+types such as the planets in our solar system, the days of 
+the week, and the suits in a deck of cards as well as sets 
+where you know all possible values at compile time, for 
+example the choices on a menu, rounding modes, command 
+line flags, and so on.
+</p>
+Java programming language enumerated types are much more 
+powerful than their counterparts in other languages, which 
+are just glorified integers. The <code>enum</code> declaration 
+defines a <i>class</i> (called an <i>enum type</i>). These 
+are the most important properties of enum types:
+<ul>
+<li>Printed values are informative.</li>
+<li>They are typesafe.</li>
+<li>They exist in their own namespace.</li>
+<li>The set of constants is not required to stay fixed for 
+all time.</li>
+<li>You can switch on an enumeration constant.</li>
+<li>They have a static <code>values</code> method that returns 
+an array containing all of the values of the enum type in the 
+order they are declared. This method is commonly used in 
+combination with the for-each construct 
+to iterate over the values of an enumerated type. (See 
+<a href="ForStatement" class="conditional">The for Statement</a><a href="ForStatement" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.) </li>
+
+<li>You can provide methods and fields, implement interfaces, and more. </li>
+<li>They provide implementations of all the <code>Object</code> methods.
+They are <code>Comparable</code> and <code>Serializable</code>, and the 
+serial form is designed to withstand changes in the enum type.</li>
+</ul>
+
+In the following example, <code>Planet</code> is an enumerated type 
+that represents the planets in the solar system. A <code>Planet</code> 
+has constant mass and radius properties. Each enum constant is 
+declared with values for the mass and radius parameters that are 
+passed to the constructor when it is created. Note that the 
+constructor for an enum type is implicitly <i>private</i>. If you 
+attempt to create a public constructor for an enum type, the 
+compiler displays an error message.
+
+<blockquote><pre>
+public enum Planet {
+    MERCURY (3.303e+23, 2.4397e6),
+    VENUS   (4.869e+24, 6.0518e6),
+    EARTH   (5.976e+24, 6.37814e6),
+    MARS    (6.421e+23, 3.3972e6),
+    JUPITER (1.9e+27,   7.1492e7),
+    SATURN  (5.688e+26, 6.0268e7),
+    URANUS  (8.686e+25, 2.5559e7),
+    NEPTUNE (1.024e+26, 2.4746e7),
+    PLUTO   (1.27e+22,  1.137e6);
+
+    private final double mass;   //in kilograms
+    private final double radius; //in meters
+    Planet(double mass, double radius) {
+        this.mass = mass;
+        this.radius = radius;
+    }
+    public double mass()   { return mass; }
+    public double radius() { return radius; }
+
+    //universal gravitational constant  (m3 kg-1 s-2)
+    public static final double G = 6.67300E-11;
+
+    public double surfaceGravity() {
+        return G * mass / (radius * radius);
+    }
+    public double surfaceWeight(double otherMass) {
+        return otherMass * surfaceGravity();
+    }
+}
+</pre></blockquote>
+In addition to its properties, <code>Planet</code> has methods 
+that allow you to retrieve the surface gravity and weight of 
+an object on each planet. Here is a sample program that takes 
+your weight on earth (in any unit) and calculates and prints 
+your weight on all of the planets (in the same unit):
+
+<blockquote><pre>
+public static void main(String[] args) {
+    double earthWeight = Double.parseDouble(args[0]);
+    double mass = earthWeight/EARTH.surfaceGravity();
+    for (Planet p : Planet.values()) {
+        System.out.printf("Your weight on %s is %f%n",
+                          p, p.surfaceWeight(mass));
+    }
+}
+</pre></blockquote>
+
+Here's the output:
+
+<blockquote><pre>
+$ java Planet 175
+Your weight on MERCURY is 66.107583
+Your weight on VENUS is 158.374842
+Your weight on EARTH is 175.000000
+Your weight on MARS is 66.279007
+Your weight on JUPITER is 442.847567
+Your weight on SATURN is 186.552719
+Your weight on URANUS is 158.397260
+Your weight on NEPTUNE is 199.207413
+Your weight on PLUTO is 11.703031
+</pre></blockquote>
+There's one limitation of enum types: although enum types are classes, 
+you cannot define a hierarchy of enums. In other words, it's not 
+possible for one enum type to extend another enum type. 
+<br/><br/>
+Finally, the <code>java.util</code> package contains two 
+special-purpose <code>Set</code> and <code>Map</code> 
+implementations that support enum types: <code>EnumSet</code> 
+(discussed in 
+<a href="SetImplementations" class="conditional">Set Implementations</a><a href="SetImplementations" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>) and <code>EnumMap</code> (discussed in 
+<a href="MapImplementations" class="conditional">Map Implementations</a><a href="MapImplementations" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>).
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

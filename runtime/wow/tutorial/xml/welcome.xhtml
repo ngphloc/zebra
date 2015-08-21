@@ -1,0 +1,80 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+<h1>WOW! Tutorial</h1>
+
+<p>
+<strong>CAUTION:</strong>
+This file is part of WOW! based on AHA! (Adaptive Hypermedia for All) which is free software (GNU General Public License) developed by Paul De Bra - Eindhoven University of Technology and University. 
+Copyright (c) 2006 by Eindhoven University of Technology.
+It may be used according to the GNU license of Eindhoven University of Technology
+</p>
+
+<p>
+Welcome
+<if expr="tutorial.installation.knowledge&gt;0"><block>back</block></if>
+to the WOW! Tutorial. This adaptive document describes how
+to use version 1.0 of WOW!, the Adaptive Hypermedia Education System.
+This tutorial consists of the following main parts:
+</p>
+<ul>
+<li>
+<a href="installation" class="conditional">Installation instructions</a>.
+This section describes how to install WOW! on a Windows or Linux
+system, and how to configure it for use with or without the
+mySQL database.
+<if expr="tutorial.installation.knowledge==0">
+<block>
+You are advised to study this part first in order to set up your
+own local server on which you can experiment with WOW!.
+After this step you can opt to either first study WOW! in detail,
+or to jump right into the <a href="example" class="conditional">example</a>
+that gives you hand-on experience with the creation of an WOW! application.
+</block>
+</if>
+</li>
+<li>
+Information for and about
+<a href="enduser" class="conditional">end-users</a>.
+This section describes how the WOW! system uses the user's
+browsing behavior to build and maintain a user model,
+and how it decides how to adapt the presentation to each
+individual user.
+</li>
+<li>
+Information <a href="authoring" class="conditional">for authors</a>,
+including how to create the conceptual structure of an adaptive
+application, and how to create
+<object name="tutorial.adaptationrule" type="text/wow"/> rules
+using the different
+authoring tools that come with WOW!.
+</li>
+<li>
+Information for
+<a href="advanced" class="conditional">system designers</a>
+who need to support authors of an WOW! installation and who may
+wish to extend WOW!'s built-in functionality.
+</li>
+<li>
+Information on how
+<a href="contribute" class="conditional">you can contribute</a>
+to the WOW! project by sending us your additions, fixes and suggestions.
+</li>
+<li>A hands-on <a href="example" class="conditional">example</a>
+to aid you in creation of your first WOW! application</li>
+</ul>
+
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

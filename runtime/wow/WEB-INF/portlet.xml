@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Loc Nguyen configed -->
+<portlet-app version="1.0" xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd"> 
+	<portlet>
+		<description>This portlet supports adaptive learning environment</description>
+		<portlet-name>WowPortlet</portlet-name>
+		<display-name>WOW! - Adaptive Learning Environment</display-name>
+		<portlet-class>vn.spring.zebra.portlet.WowPortlet</portlet-class>
+
+		<init-param>
+			<name>portlet-course</name>
+			<value>/portletcourse.jsp</value>
+		</init-param>
+		<!--<expiration-cache>0</expiration-cache>-->
+
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>VIEW</portlet-mode>
+			<portlet-mode>EDIT</portlet-mode>
+			<portlet-mode>HELP</portlet-mode>
+		</supports>
+
+		<supported-locale>en</supported-locale>
+		<supported-locale>vi</supported-locale>
+		<!--<resource-bundle>vn.spring.zebra.portlet.WowPortlet</resource-bundle>-->
+
+		<portlet-info>
+			<title>WOW! - Adaptive Learning Environment</title>
+			<short-title>WOW!</short-title>
+		</portlet-info>
+		
+		<portlet-preferences>
+			<preference>
+				<name>wow_userid</name>
+				<value>ng_phloc</value>
+			</preference>
+			<preference>
+				<name>wow_course</name>
+				<value>tutorial</value>
+			</preference>
+			<preference>
+				<name>wow_directory</name>
+				<value>tutorial</value>
+			</preference>
+			<preference>
+				<name>wow_concept</name>
+				<value>welcome</value>
+			</preference>
+			<!--<preferences-validator>vn.spring.zebra.portlet.WowPortletValidator</preferences-validator>-->
+		</portlet-preferences>		
+	</portlet>
+
+	<portlet>
+		<description>This portlet (advance) supports adaptive learning environment</description>
+		<portlet-name>WowPortletEx</portlet-name>
+		<display-name>WOW! - Adaptive Learning Environment (advance)</display-name>
+		<portlet-class>vn.spring.zebra.portlet.WowPortletEx</portlet-class>
+
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>VIEW</portlet-mode>
+			<portlet-mode>EDIT</portlet-mode>
+			<portlet-mode>HELP</portlet-mode>
+		</supports>
+
+		<supported-locale>en</supported-locale>
+		<supported-locale>vi</supported-locale>
+
+		<portlet-info>
+			<title>WOW! - Adaptive Learning Environment (advance)</title>
+			<short-title>WOW! (advance)</short-title>
+		</portlet-info>
+		
+		<portlet-preferences>
+			<preference>
+				<name>wow_userid</name>
+				<value>ng_phloc</value>
+			</preference>
+			<preference>
+				<name>wow_course</name>
+				<value>tutorial</value>
+			</preference>
+			<preference>
+				<name>wow_directory</name>
+				<value>tutorial</value>
+			</preference>
+			<preference>
+				<name>wow_concept</name>
+				<value>welcome</value>
+			</preference>
+		</portlet-preferences>		
+	</portlet>
+    
+	<portlet>
+		<description>This is Authoring Toolkit which supports both creating adaptive course and building adaptive strategies</description>
+		<portlet-name>WowAuthorPortlet</portlet-name>
+		<display-name>WOW! Authoring Toolkit</display-name>
+		<portlet-class>vn.spring.zebra.portlet.WowAuthorPortlet</portlet-class>
+
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>VIEW</portlet-mode>
+			<portlet-mode>HELP</portlet-mode>
+		</supports>
+
+		<supported-locale>en</supported-locale>
+		<supported-locale>vi</supported-locale>
+
+		<portlet-info>
+			<title>WOW! Authoring Toolkit</title>
+			<short-title>WOW! Author</short-title>
+		</portlet-info>
+	</portlet>
+	
+    <user-attribute>
+        <description>User Given Name</description>
+        <name>user.name.given</name>
+    </user-attribute>
+    <user-attribute>
+        <description>User Family Name</description>
+        <name>user.name.family</name>
+    </user-attribute>
+	
+</portlet-app>
+

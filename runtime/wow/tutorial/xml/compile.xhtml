@@ -1,0 +1,56 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>Building (Compiling) WOW!</h2>
+
+<p>
+The WOW! distribution contains the <i>source</i> of WOW!,
+not the <i>binaries</i>. Since the
+<a href="environment" class="conditional">software environment</a>
+that is needed to run WOW! includes the Java SDK it includes
+everything you need in order to build the WOW! binaries. Being able to
+run the build script is a good check that your Java environment
+is set up correctly.
+</p>
+<ul>
+<li>
+Windows users need to open a command window (also known as
+a "DOS box"). You change directory to the "build" directory
+(subdirectory of the directory you placed the WOW! distribution in).
+There is a batch command "bw" (file bw.bat) that compiles and
+installs everything. (It does not create any files outside the
+WOW! distribution directory.)
+</li>
+<li>
+Linux users need to open a shell window.
+You also change directory to the "build" directory
+(subdirectory of the directory you placed the WOW! distribution in).
+There is shell script "bl" that compiles and
+installs everything. (It does not create any files outside the
+WOW! distribution directory.)
+</li>
+</ul>
+<p>
+It is not possible for us to foresee all the possible problems
+you might have in compiling WOW!, but if your Java environment
+is installed properly there should not be any fatal compiler
+errors, and the build script should result in the creation of
+an wow.jar file that contains all the server-side code.
+Any errors or problems you might have are most likely a matter
+of finding the correct libraries in the correct place.
+</p>
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

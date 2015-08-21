@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE concept SYSTEM 'concept.dtd'>
+
+<concept>
+  <name>tutorial.concepteditor</name>
+  <description>The Concept and Rule Editor</description>
+  <attributes>
+    <attribute>
+      <name>access</name>
+      <description>triggered by page access</description>
+      <default>false</default>
+      <type>3</type>
+      <actions>
+	<action>
+	  <expr>! tutorial.concepteditor.suitability &amp;&amp; tutorial.concepteditor.knowledge &lt; 35</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.concepteditor.knowledge</variable>
+	      <expr>35</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+	<action>
+	  <expr>tutorial.concepteditor.suitability</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.concepteditor.knowledge</variable>
+	      <expr>100</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+	<action>
+	  <expr>tutorial.concepteditor.suitability</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.concepteditor.visited</variable>
+	      <expr>tutorial.concepteditor.visited + 1</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+      </actions>
+      <readonly>true</readonly>
+      <system>true</system>
+      <persistent>false</persistent>
+    </attribute>
+    <attribute>
+      <name>knowledge</name>
+      <description>knowledge about this concept</description>
+      <default>0</default>
+      <type>1</type>
+      <actions>
+	<action>
+	  <expr>_tutorial.concepteditor.knowledge &gt; 0</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.domainmodel.knowledge</variable>
+	      <expr>tutorial.domainmodel.knowledge + (0.25 * _tutorial.concepteditor.knowledge)</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+      </actions>
+      <readonly>false</readonly>
+      <system>false</system>
+      <persistent>true</persistent>
+    </attribute>
+    <attribute>
+      <name>visited</name>
+      <description>has this page been visited?</description>
+      <default>0</default>
+      <type>1</type>
+      <actions />
+      <readonly>true</readonly>
+      <system>true</system>
+      <persistent>true</persistent>
+    </attribute>
+    <attribute>
+      <name>suitability</name>
+      <description>the suitability of this page</description>
+      <default>true &amp;&amp; ((tutorial.graphauthor.knowledge &gt;= 50 )&amp;&amp; (tutorial.domainmodel.knowledge &gt;= 50 )&amp;&amp; (tutorial.concepts.knowledge &gt;= 50 ))</default>
+      <type>3</type>
+      <actions />
+      <readonly>true</readonly>
+      <system>false</system>
+      <persistent>false</persistent>
+    </attribute>
+    <attribute>
+      <name>interest</name>
+      <description>is the user interested in this concept</description>
+      <default>0</default>
+      <type>1</type>
+      <actions />
+      <readonly>false</readonly>
+      <system>false</system>
+      <persistent>true</persistent>
+    </attribute>
+  </attributes>
+  <resource>file:/tutorial/xml/concepteditor.xhtml</resource>
+  <concepttype>page</concepttype>
+  <title>concept editor</title>
+  <hierarchy>
+    <firstchild></firstchild>
+    <nextsib>tutorial.rules</nextsib>
+    <parent>tutorial.domainmodel</parent>
+  </hierarchy>
+</concept>
+

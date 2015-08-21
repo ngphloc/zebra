@@ -1,0 +1,76 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Relationships Among Generics</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Classes and Inheritance
+</font>
+
+<h2>
+Relationships Among Generics
+</h2>
+<blockquote>
+You might expect that a <code>Stack2&lt;Object&gt;</code> is a supertype of a 
+<code>Stack2&lt;String&gt;</code>, because <code>Object</code> is a supertype 
+of <code>String</code>. In fact, no such relationship exists for instantiations 
+of generic types. The lack of a super-subtype relationship among instantiations 
+of a generic type when the type arguments possess a super-subtype relationship 
+can make programming polymorphic methods challenging. 
+<br/><br/>
+Suppose you would like to write a method that prints out a collection 
+of objects, regardless of the type of objects contained in the collection:
+<blockquote><pre>
+public void printAll(Collection&lt;Object&gt; c) {
+    for (Object o : c) {
+        System.out.println(o);
+    }
+}
+</pre></blockquote>
+
+You might choose to create a list of strings and use 
+this method to print all the strings:
+
+<blockquote><pre>
+List&lt;String&gt; list = new ArrayList&lt;String&gt;();
+...
+printall(list);   //error 
+</pre></blockquote>
+
+If you try this you will notice that the last statement produces 
+a compilation error. Since <code>ArrayList&lt;String&gt;</code> is 
+not subtype of <code>Collection&lt;Object&gt;</code> it cannot be 
+passed as argument to the print method even though the two types 
+are instantiations of the same generic type with type arguments 
+related by inheritance. On the other hand, instantiations of 
+generic types related by inheritance for the same type argument 
+are compatible:
+
+<blockquote><pre>
+public void printAll(Collection&lt;Object&gt; c) {
+    for (Object o : c) {
+        System.out.println(o);
+    }
+}
+List&lt;Object&gt; list = new ArrayList&lt;Object&gt;();
+...
+printall(list);   //this works 
+</pre></blockquote>
+
+<code>List&lt;Object&gt;</code> is compatible with 
+<code>Collection&lt;Object&gt;</code> 
+because the two types are instantiations of a generic supertype 
+and its subtype and the instantiations are for the 
+same type argument, namely <code>Object</code>.
+
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

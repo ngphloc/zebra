@@ -1,0 +1,202 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Overriding and Hiding Methods</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Classes and Inheritance
+</font>
+
+<h2>
+Overriding and Hiding Methods
+</h2>
+<blockquote>
+An instance method in a subclass with the same signature and 
+return type as an instance method in the superclass 
+<i>overrides</i> the superclass's method. (Remember that a 
+method's signature is its name and the number and the type 
+of its arguments.) The ability of a subclass to override a 
+method allows a class to inherit from a superclass whose 
+behavior is "close enough" and then to modify behavior as 
+needed. For example, the <code>Object</code> class contains 
+an instance method called <code>toString</code> that returns 
+a string representation of an instance of that type. Every 
+class inherits this method. The implementation in <code>Object</code> 
+is not very useful for subclasses; thus, we recommend overriding 
+this method to provide better information for your classes. 
+It's particularly useful for debugging. Here's an example of 
+overriding <code>toString</code>:
+
+<blockquote><pre>
+public class MyClass {
+    private int anInt = 4;
+    //Overrides toString in Object class.
+    public String toString() {
+        return "Instance of MyClass. anInt = " + anInt;
+    }
+}
+</pre></blockquote>
+
+The overriding method has the same name, number and type 
+of arguments, and return value as the method it overrides. 
+(In fact the return type of a subclass can be a subclass 
+of the return type of its superclass. See the section 
+<a href="BeingDescendentOfObject" class="conditional">The clone Method</a><a href="BeingDescendentOfObject" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> for an example.) The overriding method can have a different 
+<code>throws</code> clause as long as it doesn't specify any 
+types not specified by the <code>throws</code> clause in the 
+overridden method. Also, the access specifier for the 
+overriding method can allow more but not less access than 
+the overridden method. For example, a protected method in 
+the superclass can be made public but not private.
+<p>
+A subclass cannot override methods that are declared 
+<code>final</code> in the superclass (by definition, final 
+methods cannot be overridden). If you attempt to override a 
+final method, the compiler displays an error message. The section 
+<a href="WritingFinalClassesMethods" class="conditional">Writing Final Classes and Methods</a><a href="WritingFinalClassesMethods" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> discusses final methods in detail.
+</p>
+A subclass must override methods that are declared 
+<code>abstract</code> in the superclass, or the subclass 
+itself must be abstract. The section 
+<a href="WritingAbstractClassesMethods" class="conditional">Writing Abstract Classes and Methods</a><a href="WritingAbstractClassesMethods" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> discusses abstract classes and methods in detail. 
+Recall from 
+<a href="DefiningMethods" class="conditional">Naming a Method</a><a href="DefiningMethods" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> that the Java programming language allows you to overload 
+methods by changing the number or the type of arguments to 
+the method. You can also overload methods in a superclass. 
+Here's an example of overloading the <code>toString</code> method:
+
+<blockquote><pre>
+public class MyClass {
+    private int anInt = 4;
+    //Overrides toString in Object class.
+    public String toString() {
+        return "Instance of MyClass. anInt = " + anInt;
+    }
+	//Overloads toString method name to provide 
+	//additional functionality.
+    public String toString(String prefix) {
+        return prefix + ": " + toString();
+    }
+}
+</pre></blockquote>
+
+As illustrated by the preceding example, you might overload a 
+superclass method to provide additional functionality. When 
+writing a method that has the same name as a method in a 
+superclass, double check the return values and the argument 
+lists to make sure that you are overloading or overriding as 
+you intended.
+<br/><br/>
+If a subclass defines a class method with the same signature 
+as a class method in the superclass, the method in the 
+subclass <i>hides</i> the one in the superclass. The 
+distinction between hiding and overriding has important 
+implications. Let's look at an example to see why. This 
+example contains two classes. The first is <code>Animal</code>, 
+which contains one instance method and one class method:
+
+<blockquote><pre>
+public class Animal {
+    public static void hide() {
+        System.out.println("The hide method in Animal.");
+    }
+    public void override() {
+        System.out.println("The override method in Animal.");
+    }
+}
+</pre></blockquote>
+
+The second class, a subclass of <code>Animal</code>,
+is called <code>Cat</code>:
+
+<blockquote><pre>
+public class Cat extends Animal {
+    public static void hide() {
+        System.out.println("The hide method in Cat.");
+    }
+    public void override() {
+        System.out.println("The override method in Cat.");
+    }
+
+    public static void main(String[] args) {
+        Cat myCat = new Cat();
+        Animal myAnimal = (Animal)myCat;
+        myAnimal.hide();
+        myAnimal.override();
+    }
+}
+</pre></blockquote>
+
+The <code>Cat</code> class overrides the instance method 
+in <code>Animal</code> called <code>override</code> and 
+hides the class method in <code>Animal</code> called 
+<code>hide</code>. The <code>main</code> method in this 
+class creates an instance of <code>Cat</code>, casts it 
+to a <code>Animal</code> reference, and then calls both 
+the <code>hide</code> and the <code>override</code> methods 
+on the instance. The output from this program is as follows:
+<blockquote><pre>
+The hide method in Animal.
+The override method in Cat.
+</pre></blockquote>
+
+The version of the hidden method that gets invoked is the 
+one in the superclass, and the version of the overridden 
+method that gets invoked is the one in the subclass. For 
+class methods, the runtime system invokes the method 
+defined in the <i>compile-time type</i> of the reference 
+on which the method is called. In the example, the 
+compile-time type of <code>myAnimal</code> is <code>Animal</code>. 
+Thus, the runtime system invokes the <code>hide</code> 
+method defined in <code>Animal</code>. For instance methods, 
+the runtime system invokes the method defined in the 
+<i>runtime type</i> of the reference on which the method 
+is called. In the example, the runtime type of 
+<code>myAnimal</code> is <code>Cat</code>. Thus, 
+the runtime system invokes the <code>override</code> 
+method defined in <code>Cat</code>. 
+<br/><br/>
+An instance method cannot override a static method, and a static
+method cannot hide an instance method. The following table summarizes
+what happens when you define a method with the same signature as a
+method in a superclass.
+
+<blockquote>
+<table border="1">
+<caption>Defining a Method with the Same Signature as a Superclass's Method</caption>
+<tr>
+ <th> </th>
+ <th>Superclass Instance Method
+ </th>
+ <th>Superclass Static Method
+ </th>
+</tr>
+<tr>
+ <th>Instance Method
+ </th>
+ <td>Overrides (must also have the same return type)
+ </td>
+ <td>Generates a compile-time error
+ </td>
+</tr>
+<tr>
+ <th>Static Method
+ </th>
+ <td>Generates a compile-time error
+ </td>
+ <td>Hides
+ </td>
+</tr>
+</table>
+</blockquote>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

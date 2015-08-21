@@ -1,0 +1,292 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Arithmetic Operators</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Language Basics
+</font>
+
+<h2>Arithmetic Operators</h2>
+<blockquote>
+The Java programming language supports various arithmetic operators for all floating-point and integer numbers. These operators are <code>+</code> (addition), <code>-</code> (subtraction), <code>*</code> (multiplication), <code>/</code> (division), and <code>%</code> (modulo). The following table summarizes the binary arithmetic operations in the Java programming language.
+
+<p>
+<table cellpadding="5">
+<caption><strong>Binary Arithmetic Operators</strong></caption>
+<tr>
+<th width="15%" align="left">Operator</th>
+<th width="30%" align="left">Use</th>
+<th width="55%" align="left">Description</th>
+</tr>
+<tr>
+    <td><code>+</code></td>
+    <td><code>op1 + op2</code> </td>
+    <td>Adds <code>op1</code> and <code>op2</code>; also used to concatenate strings</td>
+</tr>
+<tr>
+    <td><code>-</code></td>
+    <td><code>op1 - op2 </code> </td>
+    <td>Subtracts <code>op2</code> from <code>op1</code> </td>
+</tr>
+<tr>
+    <td><code>*</code></td>
+    <td><code>op1 * op2</code> </td>
+    <td>Multiplies <code>op1</code> by <code>op2</code> </td>
+</tr>
+<tr>
+    <td><code>/</code></td>
+    <td><code>op1 / op2</code> </td>
+    <td>Divides <code>op1</code> by <code>op2</code> </td>
+</tr>
+<tr>
+    <td><code>%</code></td>
+    <td><code>op1 % op2</code> </td>
+    <td>Computes the remainder of dividing <code>op1</code> by <code>op2</code> </td>
+</tr>
+</table>
+</p>
+
+Here's an example program,
+<a target="_blank" href="resources/ArithmeticDemo.java"><font color="#bb000f"><code>ArithmeticDemo</code></font></a>
+<a target="_blank" href="resources/ArithmeticDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>, that defines two integers and two double-precision floating-point numbers and uses the five arithmetic operators to perform different arithmetic operations. This program also uses <code>+</code> to concatenate strings. The arithmetic operations are shown in boldface:
+
+<blockquote><pre>
+public class ArithmeticDemo {
+    public static void main(String[] args) {
+
+        //a few numbers
+        int i = 37;
+        int j = 42;
+        double x = 27.475;
+        double y = 7.22;
+        System.out.println("Variable values...");
+        System.out.println("    i = " + i);
+        System.out.println("    j = " + j);
+        System.out.println("    x = " + x);
+        System.out.println("    y = " + y);
+
+        //adding numbers
+        System.out.println("Adding...");
+        System.out.println("    i + j = " + (<B>i + j</B>));
+        System.out.println("    x + y = " + (<B>x + y</B>));
+
+        //subtracting numbers
+        System.out.println("Subtracting...");
+        System.out.println("    i - j = " + (<B>i - j</B>));
+        System.out.println("    x - y = " + (<B>x - y</B>));
+
+        //multiplying numbers
+        System.out.println("Multiplying...");
+        System.out.println("    i * j = " + (<B>i * j</B>));
+        System.out.println("    x * y = " + (<B>x * y</B>));
+
+        //dividing numbers
+        System.out.println("Dividing...");
+        System.out.println("    i / j = " + (<B>i / j</B>));
+        System.out.println("    x / y = " + (<B>x / y</B>));
+
+        //computing the remainder resulting from dividing numbers
+        System.out.println("Computing the remainder...");
+        System.out.println("    i % j = " + (<B>i % j</B>));
+        System.out.println("    x % y = " + (<B>x % y</B>));
+
+        //mixing types
+        System.out.println("Mixing types...");
+        System.out.println("    j + y = " + (<B>j + y</B>));
+        System.out.println("    i * x = " + (<B>i * x</B>));
+    }
+}
+</pre></blockquote>
+
+The output from this program is:
+<blockquote><pre>
+Variable values...
+    i = 37
+    j = 42
+    x = 27.475
+    y = 7.22
+Adding...
+    i + j = 79
+    x + y = 34.695
+Subtracting...
+    i - j = -5
+    x - y = 20.255
+Multiplying...
+    i * j = 1554
+    x * y = 198.37
+Dividing...
+    i / j = 0
+    x / y = 3.8054
+Computing the remainder...
+    i % j = 37
+    x % y = 5.815
+Mixing types...
+    j + y = 49.22
+    i * x = 1016.58
+</pre></blockquote>
+
+Note that when an integer and a floating-point number are used as operands to a single arithmetic operation, the result is floating point. The integer is implicitly converted to a floating-point number before the operation takes place. The following table summarizes the data type returned by the arithmetic operators, based on the data type of the operands. The necessary conversions take place before the operation is performed.
+<p>
+<table cellpadding="5">
+<caption><strong>Result Types of Arithmetic Operations</strong></caption>
+<tr>
+<th align="left">Data Type of Result</th>
+<th align="left">Data Type of Operands</th>
+</tr>
+<tr>
+    <td><code>long</code></td>
+    <td>Neither operand is a <code>float</code> or a <code>double</code> (integer arithmetic); at least one operand is a <code>long</code>.</td>
+</tr>
+<tr>
+    <td><code>int</code></td>
+    <td>Neither operand is a <code>float</code> or a <code>double</code> (integer arithmetic); neither operand is a <code>long</code>.</td>
+</tr>
+<tr>
+    <td><code>double</code></td>
+    <td>At least one operand is a <code>double</code>.</td>
+</tr>
+<tr>
+    <td><code>float</code></td>
+    <td>At least one operand is a <code>float</code>; neither operand is a <code>double</code>.</td>
+</tr>
+</table>
+</p>
+
+In addition to the binary forms of <code>+</code> and <code>-</code>, each of these operators has unary versions that perform the following operations, as shown in the next table:
+<p>
+<table cellpadding="5">
+<caption><strong>
+Unary Arithmetic Operators
+</strong></caption>
+<tr>
+<th align="left">Operator</th>
+<th align="left">Use</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+    <td><code>+</code></td>
+    <td><code>+op</code></td>
+    <td>
+	Promotes <code>op</code> to <code>int</code>
+	if it's a <code>byte</code>, <code>short</code>, or <code>char</code>
+    </td>
+</tr>
+
+<tr>
+    <td><code>-</code></td>
+    <td><code>-op</code></td>
+    <td>Arithmetically negates <code>op</code></td>
+</tr>
+</table>
+</p>
+
+Two shortcut arithmetic operators are <code>++</code>, which increments its operand by 1, and <code>--</code>, which decrements its operand by 1. Either <code>++</code> or <code>--</code> can appear before (<em>prefix</em>) or after (<em>postfix</em>) its operand. The prefix version, <code>++op</code>/<code>--op</code>, evaluates to the value of the operand <em>after</em> the increment/decrement operation. The postfix version, <code>op++</code>/<code>op--</code>, evaluates to the value of the operand <em>before</em> the increment/decrement operation.
+
+<p>
+The following program, called 
+<a target="_blank" href="resources/SortDemo.java"><font color="#bb000f"><code>SortDemo</code></font></a><a target="_blank" href="resources/SortDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a> , uses <code>++</code> twice and <code>--</code> once.
+
+<blockquote><pre>
+public class SortDemo {
+    public static void main(String[] args) {
+        <b>int[] arrayOfInts = { 32, 87, 3, 589, 12, 1076,
+                              2000, 8, 622, 127 };</b>
+
+        for (int i = arrayOfInts.length; <b>--i &gt;= 0</b>; ) {
+            for (int j = 0; j &lt; i; j++) {
+                if (arrayOfInts[j] > arrayOfInts[j+1]) {
+                    int temp = arrayOfInts[j];
+                    arrayOfInts[j] = arrayOfInts[j+1];
+                    arrayOfInts[j+1] = temp;
+                 }
+             }
+         }
+
+         for (int i = 0; i &lt; arrayOfInts.length; <b>i++</b>) {
+             System.out.print(arrayOfInts[i] + " ");
+         }
+         System.out.println();
+    }
+}
+</pre></blockquote>
+</p>
+
+<p>
+This program puts ten integer values into an array &#151; a fixed-length structure that can hold multiple values of the same type &#151; then sorts them. The boldface line of code declares an array referred to by <code>arrayOfInts</code>, creates the array, and puts ten integer values into it. The program uses <code>arrayOfInts.length</code> to get the number of elements in the array. Individual elements are accessed with this notation: <code>arrayOfInts[index]</code>, where <code>index</code> is an integer indicating the position of the element within the array. Note that indices begin at 0. You’ll get more details and examples for arrays in the section 
+<a href="Arrays" class="conditional">Arrays</a><a href="Arrays" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.
+</p>
+
+The output from this program is a list of numbers sorted from lowest to highest:
+<blockquote><pre> 
+3 8 12 32 87 127 589 622 1076 2000
+</pre></blockquote>
+
+Let's look at how the <code>SortDemo</code> program uses <code>--</code> to help control the outer of its two nested sorting loops. Here's the statement that controls the outer loop:
+
+<blockquote><pre>
+for (int i = arrayOfInts.length; <B>--i >= 0</B>; ) {
+    ...
+}
+</pre></blockquote>
+
+The <code>for</code> statement is a looping construct, which you'll meet later in this chapter. What's important here is the code in boldface, which continues the <code>for</code> loop as long as the value returned by <code>--i</code> is greater than or equal to 0. Using the prefix version of <code>--</code> means that the last iteration of this loop occurs when <code>i</code> is equal to 0. If we change the code to use the postfix version of <code>--</code>, the last iteration of this loop occurs when <code>i</code> is equal to <code>-1</code>, which is incorrect for this program because <code>i</code> is used as an array index and <code>-1</code> is not a valid array index. 
+
+<p>
+The other two loops in the program use the postfix version of <code>++</code>. In both cases, the version used doesn't really matter, because the value returned by the operator isn't used for anything. When the return value of one of these shortcut operations isn't used for anything, convention prefers the postfix version. 
+</p>
+
+The shortcut increment/decrement operators are summarized in the following table.
+<p>
+<table cellpadding="5">
+<caption><strong>Shortcut Arithmetic Operators</strong></caption>
+<tr>
+<th align="left">Operator</th>
+<th align="left">Use</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+    <td><code>++</code></td>
+    <td><code>op++</code></td>
+    <td>
+	Increments <code>op</code> by 1;
+        evaluates to the value of <code>op</code> before it was incremented
+    </td>
+</tr>
+<tr>
+    <td><code>++</code></td>
+    <td><code>++op</code></td>
+    <td>
+	Increments <code>op</code> by 1;
+        evaluates to the value of <code>op</code> after it was incremented
+    </td>
+</tr>
+<tr>
+    <td><code>--</code></td>
+    <td><code>op--</code></td>
+    <td>
+	Decrements <code>op</code> by 1;
+        evaluates to the value of <code>op</code> before it was decremented
+    </td>
+</tr>
+<tr>
+    <td><code>--</code></td>
+    <td><code>--op</code></td>
+    <td>
+	Decrements <code>op</code> by 1;
+        evaluates to the value of <code>op</code> after it was decremented
+    </td>
+</tr>
+</table>
+</p>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

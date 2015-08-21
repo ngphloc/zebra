@@ -1,0 +1,179 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Characters</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>Characters</h2>
+<blockquote>
+An object of 
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Character.html"><font color="#8800bb"><tt>Character</tt></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Character.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>
+ type contains a single character value. You use a <code>Character</code> object instead of a primitive <code>char</code> variable when an object is required&#8212;for example, when passing a character value into a method that changes the value or when placing a character value into a data structure, such as an ArrayList, that requires objects.
+<p>
+<blockquote><hr/><strong>Note: </strong>As of JDK 5.0, it is possible to pass a primitive data types (such as char) directly into methods expecting a wrapper objects (such as Character). This conversion happens for you automatically, and is known as <i>autoboxing</i>. Conversely, it is also possible to extract a primitive data type directly from a method returning a wrapper object. This automatic conversion is known as <i>unboxing</i>. The manual conversion code shown in this section is valid for any JDK release, but is only required for versions prior to 5.0.
+<hr/></blockquote>
+</p>
+
+The following sample program, 
+<a target="_blank" href="resources/CharacterDemo.java"><font color="#bb000f"><code>CharacterDemo</code></font></a><a target="_blank" href="resources/CharacterDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>, creates a few character objects and displays some information about them. The code that is related to the <code>Character</code> class is shown in boldface:
+
+<blockquote><pre>
+public class CharacterDemo {
+    public static void main(String args[]) {
+        <b>Character a = new Character('a');
+        Character a2 = new Character('a');
+        Character b = new Character('b');</b>
+
+        int difference = <b>a.compareTo(b);</b>
+
+        if (difference == 0) {
+            System.out.println("a is equal to b.");
+        } else if (difference &lt; 0) {
+            System.out.println("a is less than b.");
+        } else if (difference &gt; 0) {
+            System.out.println("a is greater than b.");
+        }
+        System.out.println("a is "
+                           + ((<b>a.equals(a2)</b>) ? "equal" : "not equal")
+                           + " to a2.");
+        System.out.println("The character " + <b>a.toString()</b> + " is "
+            + (<b>Character.isUpperCase(a.charValue()</b>) ? "upper" : "lower")
+            + "case.");
+    }
+}
+</pre></blockquote>
+
+The following is the output from this program:
+
+<blockquote><pre>
+a is less than b.
+a is equal to a2.
+The character a is lowercase.
+</pre></blockquote>
+
+In the above example, the code <code>Character.isUpperCase(a.charValue())</code> extracts the <code>char</code> value from the <code>Character</code> object named <code>a</code>. This is because the <code>isUpperCase</code> method accepts a parameter of type <code>char</code>. If you are using JDK 5.0 or later, you can take advantage of unboxing by simply passing this method the <code>Character</code> object:
+<blockquote><pre>
+Character.isUpperCase(a)
+</pre></blockquote>
+
+The <code>CharacterDemo</code> program calls the following constructors and methods provided by the <code>Character</code> class:
+<dl>
+<dt><code>Character(char)</code></dt>
+
+<dd>The <code>Character</code> class's only constructor, which creates a <code>Character</code> object containing the value provided by the argument. Once a <code>Character</code> object has been created, the value it contains cannot be changed.</dd>
+
+<br/>
+
+<dt><code>compareTo(Character) </code></dt>
+<dd>An instance method that compares the values held by two character objects: the object on which the method is called (<code>a</code> in the example) and the argument to the method (b in the example). This method returns an integer indicating whether the value in the current object is greater than, equal to, or less than the value held by the argument. A letter is greater than another letter if its numeric value is greater.</dd> 
+
+<br/>
+
+<dt><code>equals(Object) </code></dt>
+<dd>An instance method that compares the value held by the current object with the value held by another. This method returns <code>true</code> if the values held by both objects are equal.</dd>
+
+<br/>
+
+<dt><code>toString()</code></dt>
+<dd>An instance method that converts the object to a string. The resulting string is one character in length and contains the value held by the character object.</dd>
+
+<br/>
+
+<dt><code>charValue()</code></dt>
+<dd>An instance method that returns the value held by the character object as a primitive <code>char</code> value.</dd>
+
+<br/>
+
+<dt><code>isUpperCase(char)</code></dt>
+<dd>A class method that determines whether a primitive char value is uppercase. This is one of many <code>Character</code> class methods that inspect or manipulate character data. </dd>
+</dl>
+
+
+<!--INSERT TABLE -->
+The following table lists several other useful class methods the Character class provides, but is not meant to be exhaustive. For a complete listing of all methods in this class, refer to the 
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Character.html"><font color="#8800bb">java.lang.Character</font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Character.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a> API specification.
+
+<p>
+<table border="1" cellpadding="4" cellspacing="3">
+<caption>Useful Class Methods in the <code>Character</code> Class</caption>
+<tr>
+<th width="30%">Method</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td>boolean isUpperCase(char) <br/>boolean isLowerCase(char)
+</td>
+<td>
+Determines whether the specified primitive char value is upper- or lowercase, respectively.
+</td>
+</tr>
+
+<tr>
+<td>char toUpperCase(char) <br/>char toLowerCase(char)
+</td>
+<td>
+Returns the upper- or lowercase form of the specified primitive char value.
+</td>
+</tr>
+
+<tr>
+<td>boolean isLetter(char) <br/>boolean isDigit(char) <br/>boolean isLetterOrDigit(char)
+</td>
+<td>
+Determines whether the specified primitive char value is a letter, a digit, or a letter or a digit, respectively.
+</td>
+</tr>
+
+<tr>
+<td>
+boolean isWhitespace(char)<sup>a</sup>
+</td>
+<td>
+Determines whether the specified primitive char value is white space according to the Java platform.
+</td>
+</tr>
+
+<tr>
+<td>
+boolean isSpaceChar(char)<sup>b</sup>
+</td>
+<td>
+Determines whether the specified primitive char value is a white-space character according to the Unicode specification.
+</td>
+</tr>
+
+<tr>
+<td>
+boolean isJavaIdentifierStart(char) <sup>c</sup><br/>boolean isJavaIdentifierPart(char)<sup>d</sup>
+</td>
+<td>
+Determines whether the specified primitive char value can be the first character in a legal identifier or be a part of a legal identifier, respectively.
+</td>
+</tr>
+</table>
+</p>
+
+<font size="-1">
+a. Added to the Java platform for the 1.1 release. Replaces isSpace(char), which is deprecated.
+<br/>
+b. Added to the Java platform for the 1.1 release.
+<br/>
+c. Added to the Java platform for the 1.1 release. Replaces isJavaLetter(char), which is deprecated.
+<br/>
+d. Added to the Java platform for the 1.1 release. Replaces isJavaLetterOrDigit(char), which is deprecated.
+</font>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

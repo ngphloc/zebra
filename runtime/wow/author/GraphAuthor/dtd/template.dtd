@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT template (name, attributes, hasresource, concepttype, conceptrelations)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT attributes (attribute*)>
+<!ELEMENT attribute (name, description, default, type, isPersistent, isSystem, isChangeable)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT default (#PCDATA)>
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT isPersistent (#PCDATA)>
+<!ELEMENT isSystem (#PCDATA)>
+<!ELEMENT isChangeable (#PCDATA)>
+<!ELEMENT hasresource (#PCDATA)>
+<!ELEMENT concepttype (#PCDATA)>
+<!ELEMENT conceptrelations (conceptrelation*)>
+<!ELEMENT conceptrelation (name, label)>
+<!ELEMENT label (#PCDATA)>

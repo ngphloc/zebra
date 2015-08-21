@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!DOCTYPE wow_relation_type SYSTEM 'wow_relation_type.dtd'>
+<wow_relation_type>
+	<name> partof </name>
+	<listitems>
+		<setdefault location ="___source.suitability" combination="AND">___destination.knowledge &gt;= var:0 </setdefault>
+	</listitems>
+</wow_relation_type>

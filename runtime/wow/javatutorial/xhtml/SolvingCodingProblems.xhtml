@@ -1,0 +1,152 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Solving Common Coding Problems</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+</font>
+
+<h2>
+Lesson: Solving Common Coding Problems
+</h2>
+<blockquote>
+This section covers some common problems that you might encounter when
+learning the Java language. After each problem is a list of possible
+solutions.
+
+<p>
+<strong>Problem</strong>: The compiler complains that it can't find a class.
+<ul>
+<li>
+Make sure you've imported the class or its package.
+</li>
+<li>
+Unset the <code>CLASSPATH</code> environment variable, if it's set.
+</li>
+<li>
+Make sure you're spelling the class name exactly the same way as it is
+declared. Case matters!
+</li>
+<li>
+If your classes are in packages, make sure that they appear in the
+correct subdirectory as outlined in
+<a href="ManagingSourceClassFiles" class="conditional">Managing Source and Class Files</a><a href="ManagingSourceClassFiles" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.
+</li>
+<li>
+Also, some programmers use different names for the class name from the
+<code>.java</code> filename. Make sure you're using the class name and not the
+filename. In fact, make the names the same and you won't run into this
+problem for this reason.
+</li>
+</ul>
+</p>
+
+<p>
+<strong>Problem</strong>: The interpreter says it can't find one of my classes.
+<ul>
+<li>
+Make sure you specified the class name--not the class file name--to the interpreter.
+</li>
+<li>
+Unset the <code>CLASSPATH</code> environment variable, if it's set.
+</li>
+<li>
+If your classes are in packages, make sure that they appear in the
+correct subdirectory as outlined in
+<a href="ManagingSourceClassFiles" class="conditional">Managing Source and Class Files</a><a href="ManagingSourceClassFiles" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.
+</li>
+<li>
+Make sure you're invoking the interpreter from the directory in which
+the <code>.class</code> file is located.
+</li>
+</ul>
+</p>
+
+<strong>Problem</strong>: My program doesn't work! What's wrong with it?
+<br/><br/>
+The following is a list of common programming mistakes by novice Java
+programmers. Make sure one of these isn't what's holding you back.
+<ul>
+<li>
+Did you forget to use <code>break</code> after each <code>case</code>
+statement in a <code>switch</code> statement?
+</li>
+<li>
+Did you use the assignment operator <code>=</code> when you really
+wanted to use the comparison operator <code>==</code>?
+</li>
+<li>
+Are the termination conditions on your loops correct? Make sure you're
+not terminating loops one iteration too early or too late. That is,
+make sure you are using <code>&lt;</code> or <code>&lt;=</code>
+and <code>&gt;</code> or <code>&gt;=</code> as appropriate for your
+situation.
+</li>
+<li>
+Remember that array indices begin at 0, so iterating over an array
+looks like this:
+<blockquote><pre>
+for (int i = 0; i &lt; array.length; i++)
+    . . .
+</pre></blockquote>
+</li>
+<li>
+Are you comparing floating-point numbers using <code>==</code>? Remember that floats
+are approximations of the real thing. The greater than and less than (<code>&gt;</code>
+and <code>&lt;</code>) operators are more appropriate when conditional logic is
+performed on floating-point numbers.
+</li>
+<li>
+Are you having trouble with encapsulation, inheritance, or other
+object-oriented programming and design concepts? Review the information
+in
+<a href="ObjectOrientedProgrammingConcepts" class="conditional">Object-Oriented Programming Concepts</a>.
+</li>
+<li>
+Make sure that blocks of statements are enclosed in curly brackets <code>{ }</code>.
+The following code looks right because of indentation, but it doesn't
+do what the indents imply because the brackets are missing:
+<blockquote><pre>
+for (int i = 0; i &lt; arrayOfInts.length; i++)
+    arrayOfInts[i] = i;
+    System.out.println("[i] = " + arrayOfInts[i]);
+</pre></blockquote>
+</li>
+<li>
+Are you using the correct conditional operator? Make sure you
+understand <code>&amp;&amp;</code> and <code>||</code> and are using them appropriately.
+</li>
+<li>
+Do you use the negation operator ! a lot? Try to express conditions
+without it. Doing so is less confusing and error-prone.
+</li>
+<li>
+Are you using a <code>do</code>-<code>while</code>? If so, do you know
+that a <code>do</code>-<code>while</code> executes at least once,
+but a similar <code>while</code> loop may not be executed at all?
+</li>
+<li>
+Are you trying to change the value of an argument from a method?
+Arguments in Java are passed by value and can't be changed in a
+method.
+</li>
+<li>
+Did you inadvertently add an extra semicolon (<code>;</code>), thereby
+terminating a statement prematurely? Notice the extra semicolon at the
+end of this for statement:
+<blockquote><pre>
+for (int i = 0; i &lt; arrayOfInts.length; i++) ;
+    arrayOfInts[i] = i;
+</pre></blockquote>
+</li>
+</ul>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

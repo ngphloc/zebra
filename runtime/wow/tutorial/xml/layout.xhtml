@@ -1,0 +1,114 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>The Layout of an WOW! Application</h2>
+
+<p>
+As of WOW! 1.0 the layout of an application is determined by two files:
+<tt>LayoutConfig.xml</tt> and <tt>ConceptTypeConfig.xml</tt>.
+</p>
+<ul>
+<li>
+The <tt>LayoutConfig.xml</tt> file defines <em>views</em>, <em>viewgroups</em>
+and <em>layouts</em>.
+<ul>
+<li>A <b>view</b> is an atomic presentation unit. A view can present
+an XHTML file from the application, or one of a number of automatically
+generated pieces of content or links to other (secondary) views.
+Which views can exist in an application is defined by WOW! itself.
+For each type of view a (Java) module is needed to generate views of that type.
+Some typical view types used in WOW! applications are:
+<ul>
+<li>
+<b>MainView</b> is the type used to present a page. In WOW! for every
+request for a <em>concept</em> an associated <em>resource</em> or <em>page</em>
+is determined and that page is presented in the MainView.
+</li>
+<li>
+<b>TOCView</b> generates a complete (concept) table of contents.
+(See the "Content" button at the bottom left in this tutorial.)
+</li>
+<li>
+<b>GlossaryView</b> generates a glossary interface. This view was created
+mainly to simulate the glossary presentation from InterBook.
+</li>
+<li>
+<b>ToolboxView</b> creates a list of buttons that lead to other views.
+frame on the lower left in the tutorial (with the "Content" button)
+is a ToolboxView.
+</li>
+<li>
+<b>StaticTreeView</b>, <b>TreeView</b>, <b>PathView</b> and <b>ChildrenView</b>
+are views that show part of the concept hierarchy, displaying and hiding links
+in different ways. This tutorial uses the StaticTreeView.
+</li>
+<li>
+<b>FileView</b> is used to present a file with a specific name.
+The file can be adapted (it may contain "variable" tags and
+conditional fragments). In this tutorial the page header and footer
+are part of the same frame as the page, but by using a FileView to
+include them they can be placed in a fixed position (most useful
+for the footer).
+</li>
+</ul>
+</li>
+<li>A <b>viewgroup</b> is a grouping of views to form what is presented
+in a single window. A viewgroup is translated to an HTML frameset in which
+every view is a frame. Compounds can be used to group some views together
+in a single frame.
+</li>
+<li>A <b>layout</b> is a set of viewgroups that together form the
+presentation of an WOW! application. A layout has a unique name.
+A single application may have
+different layouts for different types of concepts. The presentation
+for information pages (with additional information) can be different
+from the presentation of a glossary for instance.
+</li>
+</ul>
+</li>
+<li>
+The <tt>ConceptTypeConfig.xml</tt> is used to define how concepts
+of different types and links to concepts are presented.
+For each concept type there is
+a <b>representation</b> which is the layout to use for concepts
+of this type. The remainder of the definition relates to link
+annotations. Whenever there is a link anchor it can be presented in
+different colors and it can be preceded by an icon and/or followed by an icon.
+The <tt>&lt;linkanno&gt;</tt> tag is used to define conditions for
+using a (named) link color. Typically this defines the conditions for the
+link classes "Good", "Neutral" or "Bad", but one can define different
+and/or more classes, for which a style sheet has to define the presentation.
+The <tt>&lt;iconanno&gt;</tt> tag defines the conditions for using an
+icon (in front of or behind the anchor), and it defines the view in which
+the icon is used. Different view types may use different icons under
+different conditions.
+In this tutorial we use a font icon to indicate the status of the link
+(good, neutral, bad or unconditional). This annotation is used in the
+(Static)TreeView that shows the menu on the left, but not in the
+MainView that shows the page.
+In this tutorial the conditions for the icons in the menu have been
+chosen to be the same as for the prerequisite relationships,
+so that the icons and link colors match: a test for sufficient knowledge and
+a check whether the concept was already visited or not.
+A <b>pathicon</b> is sed to indicate the status of a link in a TOCView.
+The easiest way to figure out what the different options (and syntax
+elements) are is to have a look in the files that come with
+this tutorial.
+</li>
+</ul>
+
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

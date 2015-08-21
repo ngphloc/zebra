@@ -1,0 +1,127 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Using Objects</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>Using Objects</h2>
+<blockquote>
+Once you've created an object, you probably want to use it for something. You may need information from it, want to change its state, or have it perform some action. You can use an object in one of two ways:
+<ul>
+<li> Directly manipulate or inspect its variables</li>
+<li> Call its methods</li>
+</ul>
+</blockquote>
+
+<a name="variables"><h3>Referencing an Object's Variables</h3></a>
+<blockquote>
+
+The following is the general form of a <em>qualified name</em>, which is also known as a long name: 
+
+<blockquote><pre>
+objectReference.variableName
+</pre></blockquote>
+
+You may use a simple name for an instance variable when the instance variable is in scope - that is, within code for the object's class. Code that is outside the object's class must use a qualified name. For example, the code in the <tt>CreateObjectDemo</tt> class is outside the code for the <tt>Rectangle</tt> class. So to refer to the <tt>origin</tt>, <tt>width</tt>, and <tt>height</tt> variables within the <tt>Rectangle</tt> object named <tt>rectOne</tt>, the <tt>CreateObjectDemo</tt> class must use the names <tt>rectOne.origin</tt>, <tt>rectOne.width</tt>, and <tt>rectOne.height</tt>, respectively. The program uses two of these names to display the <tt>width</tt> and the <tt>height</tt> of <tt>rectOne</tt>:
+
+<blockquote><pre>
+System.out.println("Width of rectOne: " + rectOne.width);
+System.out.println("Height of rectOne: " + rectOne.height);
+</pre></blockquote>
+
+Attempting to use the simple names <tt>width</tt> and <tt>height</tt> from the code in the <tt>CreateObjectDemo</tt> class doesn't make sense&#8212;those variables exist only within an object&#8212;and results in a compiler error.
+
+<p>
+Later, the program uses similar code to display information about <tt>rectTwo</tt>. Objects of the same type have their own copy of the same instance variables. Thus, each <tt>Rectangle</tt> object has variables named <tt>origin</tt>, <tt>width</tt>, and <tt>height</tt>. When you access an instance variable through an object reference, you reference that particular object's variable. The two objects <tt>rectOne</tt> and <tt>rectTwo</tt> in the <tt>CreateObjectDemo</tt> program have different <tt>origin</tt>, <tt>width</tt>, and <tt>height</tt> variables.
+</p>
+
+<p>
+The first part of the variable's <em>qualified name</em>, <tt>objectReference</tt>, must be a reference to an object. You can use the name of a reference variable here, as in the previous examples, or you can use any expression that returns an object reference. Recall that the <tt>new</tt> operator returns a reference to an object. So you could use the value returned from new to access a new object's variables:
+<blockquote><pre>
+int height = new Rectangle().height;
+</pre></blockquote>
+This statement creates a new <tt>Rectangle</tt> object and immediately gets its height. In essence, the statement calculates the default height of a <tt>Rectangle</tt>. Note that after this statement has been executed, the program no longer has a reference to the created <tt>Rectangle</tt>, because the program never stored the reference in a variable. The object is unreferenced, and its resources are free to be recycled by the Java platform.
+</p>
+
+</blockquote>
+
+<h3>A Word About Variable Access</h3>
+<blockquote>
+
+The direct manipulation of an object's variables by other objects and classes is discouraged because it's possible to set the variables to values that don't make sense. For example, consider the <tt>Rectangle</tt> class from the previous section. Using that class, you can create a rectangle whose width and height are negative, which, for some applications, doesn't make sense.
+
+<p>
+Ideally, instead of allowing direct manipulation of variables, a class would provide methods through which other objects could inspect or change variables. These methods ensure that the values of the variables make sense for objects of that type. Thus, the <tt>Rectangle</tt> class would provide methods called <tt>setWidth</tt>, <tt>setHeight</tt>, <tt>getWidth</tt>, and <tt>getHeight</tt> for setting and getting the <tt>width</tt> and the <tt>height</tt>. The methods for setting the variables would report an error if the caller tried to set the <tt>width</tt> or the <tt>height</tt> to a negative number. The other advantage of using methods instead of direct variable access is that the class can change the type and the names of the variables it uses for storing the width and the height without affecting its clients.
+</p>
+
+<p>
+However, in practical situations, it sometimes makes sense to allow direct access to an object's variables. For example, both the <tt>Point</tt> class and the <tt>Rectangle</tt> class allow free access to their member variables by declaring them <tt>public</tt>. This keeps these classes small and simple. Also, it keeps them generally useful. Some applications might allow rectangles with negative widths and heights.
+</p>
+
+<p>
+The Java programming language provides an access control mechanism whereby classes can determine what other classes can have direct access to its variables. A class should protect variables against direct manipulation by other objects if those manipulations could result in values that don't make sense for objects of that type. Changes to these variables should be controlled by method invocations. If a class grants access to its variables, you can assume that you can inspect and change those variables without adverse effects. To learn more about the access control mechanism, refer to 
+<a href="ControllingAccessToClass" class="conditional">Controlling Access to Members of a Class</a><a href="ControllingAccessToClass" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>. Also, by making the variables accessible, they become part of the class's API, which means that the writer of the class should not change their names or their types.
+</p>
+
+</blockquote>
+
+
+<a name="methods"><h3>Calling an Object's Methods</h3></a>
+<blockquote>
+
+You also use qualified names to invoke an object's method. To form the qualified name of a method, you append the method name to an object reference, with an intervening period (.). Also, you provide, within enclosing parentheses, any arguments to the method. If the method does not require any arguments, use empty parentheses. 
+
+<blockquote><pre>
+objectReference.methodName(argumentList);
+   or
+objectReference.methodName();
+</pre></blockquote>
+
+The <tt>Rectangle</tt> class has two methods: <tt>area</tt> to compute the rectangle's area and <tt>move</tt> to change the rectangle's origin. Here's the <tt>CreateObjectDemo</tt> code that invokes these two methods: 
+
+<blockquote><pre>
+System.out.println("Area of rectOne: " + rectOne.area());
+...
+rectTwo.move(40, 72);
+</pre></blockquote>
+
+The first statement invokes <tt>rectOne</tt>'s area method and displays the results. The second line moves <tt>rectTwo</tt> because the <tt>move</tt> method assigns new values to the object's <tt>origin.x</tt> and <tt>origin.y</tt>.
+
+<br/><br/>
+As with instance variables, <em>objectReference</em> must be a reference to an object. You can use a variable name, but you also can use any expression that returns an object reference. The <tt>new</tt> operator returns an object reference, so you can use the value returned from new to invoke a new object's methods: 
+
+<blockquote><pre>
+new Rectangle(100, 50).area()
+</pre></blockquote>
+
+The expression <tt>new Rectangle(100, 50)</tt> returns an object reference that refers to a <tt>Rectangle</tt> object. As shown, you can use the dot notation to invoke the new <tt>Rectangle</tt> 's <tt>area</tt> method to compute the area of the new rectangle.
+
+<br/><br/>
+
+Some methods, such as <tt>area</tt>, return a value. For methods that return a value, you can use the method invocation in expressions. You can assign the return value to a variable, use it to make decisions, or control a loop. This code assigns the value returned by <tt>area</tt> to a variable: 
+
+<blockquote><pre>
+int areaOfRectangle = new Rectangle(100, 50).area();
+</pre></blockquote>
+
+Remember, invoking a method on a particular object is the same as sending a message to that object. In this case, the object that <tt>area</tt> is invoked on is the rectangle returned by the constructor.
+ 
+<h4>A Word about Method Access</h4>
+
+The methods in our Point and Rectangle classes are all declared public, so they are accessible to any other class. Sometimes, a class needs to restrict
+access to its methods. For example, a class might have a method that only subclasses are allowed to invoke. A class can use the same mechanism to control access to its methods as it uses to control access to its variables. To learn more about the access control mechanism, refer to
+<a href="ControllingAccessToClass" class="conditional">Controlling Access to Members of a Class</a><a thref="ControllingAccessToClass" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

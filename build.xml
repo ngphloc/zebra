@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+
+<!--
+  - Copyright (c) 2009, University of Science, HCMC, Vietnam
+  - Programmer: Loc Nguyen
+  -->
+
+<!--
+  - Zebra build file
+  -
+  - Version:  $Revision: 3.6 $
+  - Date:     $Date: 2010/01/25 10:33:49 $
+  -->
+
+<project name="Zebra" default="build_app">
+  <property name="source.home"      value="source"/>
+  <property name="build.home"      value="build"/>
+  <property name="runtime.home"    value="runtime"/>
+
+  <!-- ============================================================= -->
+  <!-- The Zebra class path for building                            -->
+  <!-- ============================================================= -->
+
+  <!-- We will include the environment CLASSPATH -->
+  <path id="build.class.path">
+    <pathelement path="${build.home}/classes"/>
+    <fileset dir="lib">
+      <include name="**/*.jar"/>
+    </fileset>
+  </path>
+
+
+  <!-- ============================================================= -->
+  <!-- Compile the source code                                       -->
+  <!-- ============================================================= -->
+
+  <target name="compile" description="Compile the source code">
+    <delete dir="${build.home}" quiet="true" includeEmptyDirs="true"/>
+    <mkdir dir="${build.home}/classes"/>
+    <javac srcdir="${source.home}" destdir="${build.home}/classes"  
+        debug="on" source="1.6" target="1.6" fork="true" memoryMaximumSize="512m">
+      <include name="**/*.java"/>
+      <classpath refid="build.class.path"/>
+    </javac>
+    
+    <copy  todir="${build.home}/classes">
+      <fileset dir="${source.home}" excludes="**/*.java"/>
+    </copy>
+  </target>
+
+
+  <!-- ============================================================= -->
+  <!-- Build the application                                         -->
+  <!-- ============================================================= -->
+
+  <target name="build_app" depends="compile" description="Build the application">
+    <jar jarfile="${runtime.home}/wow/lib/wow.jar" basedir="${build.home}/classes" update="true"/>
+    <jar jarfile="${runtime.home}/wow/lib/zebra-server.jar" basedir="${build.home}/classes" includes="vn/spring/zebra/**" update="true"/>
+    <jar jarfile="${runtime.home}/wow/lib/zebra-client.jar" basedir="${build.home}/classes" includes="vn/spring/zebra/client/**" update="true"/>
+    
+    <copy file="${runtime.home}/wow/lib/wow.jar" todir="${runtime.home}/wow/WEB-INF/lib" overwrite="true"/>
+
+    <delete dir="${build.home}" quiet="true" includeEmptyDirs="true"/>
+  </target>
+</project>

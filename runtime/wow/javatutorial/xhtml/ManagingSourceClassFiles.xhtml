@@ -1,0 +1,132 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Managing Source and Class Files</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Interfaces and Packages
+</font>
+
+<h2>
+Managing Source and Class Files
+</h2>
+<blockquote>
+Many implementations of the Java platform rely on hierarchical 
+    file systems to manage source and class files, although <i>The 
+    Java Language Specification</i> does not require this. The strategy 
+    is as follows. 
+<br/><br/>
+    You put the source code for a class, interface, enum or annotation
+    in a text 
+    file whose name is the simple name of the type
+    and whose extension is <code>.java</code>. Then you put the source 
+    file in a directory whose name reflects the name of the package 
+    to which the type belongs.  For example, the 
+    source code for the <code>Rectangle</code> class would be in 
+    a file named <code>Rectangle.java</code>,
+    and the file would be in a directory 
+    named <code>graphics</code>. The <code>graphics</code> directory 
+    might be anywhere on the file system. The figure below shows how 
+    this works. 
+
+
+<p><center><img src="images/ip-rectangleSource.gif" width="357" height="98" align="bottom" alt="The source code for the Rectangle class is in the file Rectangle.java which is located in a folder named graphics."/></center></p>
+    The qualified name of the package member and the path name to 
+    the file are parallel, assuming the Microsoft Windows file name separator 
+    backslash (\): <br/><br/>
+
+    <center>
+    <table rules="none" border="0" cellspacing="2" cellpadding="4">
+      <tr>
+        <td width="50%" valign="top"><b>class name</b></td>
+        <td width="50%" valign="top"><code>graphics.Rectangle</code></td>
+      </tr>
+      <tr>        
+        <td width="50%" valign="top">
+        <b>pathname to file</b></td>
+        <td width="50%" valign="top">  
+        <code>graphics\Rectangle.java</code></td>
+      </tr>
+    </table>
+  </center>
+
+<br/><br/>
+    As you may recall, by convention a company uses its reversed 
+    Internet domain name in its package names. The sample company  
+    whose Internet domain name is <code>hobnob.com</code> would  
+    precede all its package names with <code>com.hobnob</code>.  
+    Each component of the package name corresponds to a subdirectory.  
+    So if Hobnob had a <code>graphics</code> package that contained  
+    a <code>Rectangle.java</code> 
+    source file, it would be contained in a series of subdirectories, 
+    as shown below.<br/>
+
+<p><center><img src="images/ip-packageName.gif" width="392" height="171" align="bottom" alt="By convention, companies use their Internet domain names in reverse in their package names."/></center></p>
+
+    When you compile a source file, the compiler creates a different 
+    output file for each class and interface defined in it. The base 
+    name of the output file is the name of the class or the interface, 
+    and its extension is <code>.class</code>, as shown in the following figure. 
+
+<p><center><img src="images/ip-compiler.gif" width="463" height="201" align="bottom" alt="The compiler creates a separate .class file for every class."/></center></p>
+
+    Like a <code>.java</code> file, a <code>.class</code> file should 
+    also be in a series of directories that reflect the package name. 
+    However, it does not have to be in the same directory as its 
+    source. You could arrange your source and class directories separately, 
+    as shown below.
+
+<p><center><img src="images/ip-arrangeFilesSep.gif" width="286" height="190" align="bottom" alt="An example of how to arrange your source code and class files separately."/></center></p>
+    By doing this, you can give the classes directory to other programmers 
+    without revealing your sources.  You can then use the <code>-d</code>
+    option for the Java compiler to specify where the class files should
+    go, like this:
+<blockquote><pre>
+javac -d classes  sources\com\hobnob\graphics\Rectangle.java
+</pre></blockquote>
+<br/><br/>
+    Why all the bother about directories and file names? You need 
+    to manage your source and class files in this manner so that 
+    the compiler and the Java virtual machine (JVM) can find all
+    the types your program uses. When the compiler encounters a 
+    new class as it's compiling your program, it must be able to find 
+    the class so as to resolve names, do type checking, and so on. 
+    Similarly, when the JVM encounters a new class as it's 
+    running your program, it must be able to find the class to invoke 
+    its methods, and so on.  Both the compiler and the JVM
+    searches for classes in each directory or JAR file listed in your 
+    class path. 
+
+<blockquote><hr/><strong>Definition: </strong>A <i>class path</i> is an ordered list of directories or JAR
+files in which to search for class files. 
+<hr/></blockquote>
+
+Each directory listed in the class path is a top-level 
+    directory in which package directories appear. From the top-level 
+    directory, the compiler and the JVM can construct the 
+    rest of the path, based on the package and the class name for 
+    the class. For example, the class path entry for the directory 
+    structure shown in the previous diagram would include <code>classes</code> 
+    but not <code>com</code> or any of the directories below <code>com</code>. 
+    Both the compiler and the JVM construct the path name 
+    to a <code>.class</code> file with its full package name.  
+
+<br/><br/>
+    By default, the compiler and the JVM search the current 
+    directory and the JAR file containing the Java platform class 
+    files. In other words, the current directory and the Java platform 
+    class files are automatically in your class path. Most, if not 
+    all, classes can be found in these two locations. So its likely 
+    that you don't have to worry about your class path. In some cases, 
+    however, you might have to set your class path.
+    
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

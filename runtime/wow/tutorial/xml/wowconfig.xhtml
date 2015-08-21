@@ -1,0 +1,62 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>The WOW! Configuration File</h2>
+
+<p>
+Not everything that is configurable in WOW! can be controlled
+through the
+<a href="firstconfig" class="conditional">configuration menu</a>
+for the server manager.
+In the directory "WEB-INF" (a standard name for the Tomcat server)
+there are two configuration files: web.xml and wowconfig.xml.
+The web.xml file is created automatically through the initial
+configuration process and should never be changed.
+It contains a pointer to the wowconfig.xml file which has
+all WOW!-specific parameters. Although it is probably best to leave
+all parameters as they are, there may be reasons to change the following
+parameters:
+</p>
+<ul>
+<li>
+"db host": This is set to "localhost" by default. It can be changed
+to separate the machine running the mySQL database from the machine
+running Tomcat and the WOW! servlets. Spreading the load may improve
+performance. (We have not tried this, as our server (wow.hcmuns.edu.vn)
+with dual Athlon MP2000+ is still fast enough for our applications,
+including the on-line WOW! tutorial.)
+</li>
+<li>
+"dbname": This is the name of the mySQL database, optionally
+created during the initial WOW! configuration.
+</li>
+<li>
+"dbpassword": This is the password for the mySQL database, optionally
+created during the initial WOW! configuration.
+Please note that this password is stored as cleartext and therefore
+the WEB-INF directory or wowconfig.xml file should be kept secure!
+</li>
+<li>
+"XMLROOT": This is the directory used to store the XML files when
+no mySQL database is used. As this directory includes a part for
+the user model files it may grow quite large. Therefore it may
+become necessary to move this directory to a different disk.
+(This should also help performance.)
+</li>
+</ul>
+
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

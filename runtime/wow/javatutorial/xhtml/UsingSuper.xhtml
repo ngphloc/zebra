@@ -1,0 +1,113 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Using super</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Classes and Inheritance
+</font>
+
+<h2>
+Using super
+</h2>
+<blockquote>
+If your method overrides one of its superclass's methods, 
+you can invoke the overridden method through the use of 
+<code>super</code>. You can also use <code>super</code> 
+to refer to a hidden member variable. Consider this class, 
+<code>Superclass</code>:
+
+<blockquote><pre>
+public class Superclass {
+    public boolean aVariable;
+
+    public void aMethod() {
+        aVariable = true;
+    }
+}
+</pre></blockquote>
+
+Now, here's a subclass, called <code>Subclass</code>, that 
+overrides <code>aMethod</code> and hides <code>aVariable</code>: 
+<blockquote><pre>
+public class Subclass extends Superclass {
+    public boolean aVariable; //hides aVariable in Superclass
+    public void aMethod() { //overrides aMethod in Superclass
+        aVariable = false;
+        <B>super.aMethod();</B>
+        System.out.println(aVariable);
+        System.out.println(<B>super.aVariable</B>);
+    }
+}
+</pre></blockquote>
+
+Within <code>Subclass</code>, the simple name 
+<code>aVariable</code> refers to the one declared in 
+<code>SubClass</code>, which hides the one declared 
+in <code>Superclass</code>. Similarly, the simple name 
+<code>aMethod</code> refers to the one declared in 
+<code>Subclass</code>, which overrides the one in 
+<code>Superclass</code>. So to refer to <code>aVariable</code> 
+and <code>aMethod</code> inherited from <code>Superclass</code>, 
+<code>Subclass</code> must use a qualified name, using 
+<code>super</code> as shown. Thus, the print statements 
+in <code>Subclass</code>'s <code>aMethod</code> display 
+the following: 
+<blockquote><pre>
+false
+true
+</pre></blockquote>
+
+You can also use <code>super</code> within a constructor to 
+invoke a superclass's constructor. The following code sample 
+is a partial listing of a subclass of <code>Thread</code> &#151; a 
+core class used to implement multitasking behavior &#151; which 
+performs an animation. The constructor for <code>AnimationThread</code> 
+sets up some default values, such as the frame speed and the 
+number of images, and then loads the images: 
+
+<blockquote><pre>
+class AnimationThread extends Thread {
+    int framesPerSecond;
+    int numImages;
+    Image[] images;
+
+    AnimationThread(int fps, int num) {
+        <B>super("AnimationThread");</B>
+        this.framesPerSecond = fps;
+        this.numImages = num;
+        this.images = new Image[numImages];
+
+        for (int i = 0; i &lt;= numImages; i++) {
+            ...
+            // <I>Load all the images.</I>
+            ...
+        }
+    }
+    ...
+}
+</pre></blockquote>
+
+The line set in boldface is an explicit superclass constructor 
+invocation that calls a constructor provided by the superclass 
+of <code>AnimationThread</code>, namely, <code>Thread</code>. 
+This particular <code>Thread</code> constructor takes a 
+<code>String</code> that sets the name of <code>Thread</code>. 
+If present, an explicit superclass constructor invocation must 
+be the first statement in the subclass constructor: An object 
+should perform the higher-level initialization first. If a 
+constructor does not explicitly invoke a superclass constructor, 
+the Java runtime system automatically invokes the no-argument 
+constructor of the superclass before any 
+statements within the constructor are executed.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

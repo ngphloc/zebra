@@ -1,0 +1,91 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Wildcard Types</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Classes and Inheritance
+</font>
+
+<h2>
+Wildcard Types
+</h2>
+<blockquote>
+To get around the conundrum posed by the first version of 
+the <code>printAll</code> method you can specify that the 
+argument to <code>printAll</code> is a collection whose 
+element type matches anything, written as 
+<code>Collection&lt;?&gt;</code>:
+<blockquote><pre>
+public void printAll(Collection&lt;?&gt; c) {
+    for (Object o : c) {
+        System.out.println(o);
+    }
+}
+</pre></blockquote>
+
+The <code>?</code> type is known as a <i>wildcard type</i>. 
+You can always extract objects from this collection because 
+the returned type is always guaranteed to be <code>Object</code>. 
+However, you cannot add objects to this collection, because 
+<code>?</code> stands for some unknown type and it's not 
+possible to know if the type of the object you want to add 
+is a subtype of the unknown type. The only exception is <code>null</code>, 
+which is a member of every type.
+<br/><br/>
+You can also constrain (or bound) the wildcard by a type. 
+Bounded wildcards are useful when you have partial 
+knowledge about the type argument. For example, suppose 
+you have a class hierarchy consisting of a geometric 
+shape (<code>Shape</code>) and its subtypes (<code>Circle</code>, 
+<code>Rectangle</code>, and so on). The drawing program that 
+references these objects invokes a method <code>drawAll</code> 
+to draw a collection of these shapes:
+<blockquote><pre>
+public void drawAll(Collection&lt;Shapes&gt; shapes) {
+    for (Shape s: shapes) {
+        s.draw();
+    }
+}
+</pre></blockquote>
+Since we have seen that it is not legal to pass in a subtype 
+of <code>Shape</code> (for example, <code>Circle</code>) as 
+the type argument for the generic collection passed to 
+<code>drawAll</code>, this method has limited usefulness: 
+for example, it cannot be called with 
+<code>Collection&lt;Circle&gt;</code>. To enable passing a 
+subtype of <code>Shape</code> as the type argument, you could 
+express the type parameter of the shape collection as a 
+wildcard. However, since we know that the type argument 
+will be some type of shape, the wildcard should be bounded 
+by the superclass <code>Shape</code> as follows:
+
+<blockquote><pre>
+void drawAll(Collection&lt;? extends Shapes&gt; shapes) { ... }
+</pre></blockquote>
+
+This allows <code>drawAll</code> to accept collections of 
+any subclass of <code>Shape</code>. 
+<br/><br/>
+In summary, a wildcard with an upper bound is specified as 
+<code>&lt;? extends <i>Type</i>&gt;</code> and stands for 
+all types that are subtypes of <i>Type</i>. It is also 
+possible to constrain a wildcard with a lower bound. A 
+wildcard with a lower bound is specified as 
+<code>&lt;? super <i>Type</i>&gt;</code> and stands for 
+all types that are supertypes of <i>Type</i>. Note that 
+just as it is not possible to add an object to a 
+collection of unknown type, it is also not legal 
+to add an object to a collection 
+of an unknown type that has a bound. 
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

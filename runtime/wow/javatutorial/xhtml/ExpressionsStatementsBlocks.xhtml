@@ -1,0 +1,228 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Expressions, Statements, and Blocks</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Language Basics
+</font>
+
+<h2>Expressions, Statements, and Blocks</h2>
+<blockquote>
+Variables and operators, which you met in the previous two sections, are basic building blocks of programs. You combine literals, variables, and operators to form expressions &#151; segments of code that perform computations and return values. Certain expressions can be made into statements &#151; complete units of execution. By grouping statements together with braces &#151; { and } &#151; you create blocks of code.
+<br/><br/>
+
+<h3>Expressions</h3>
+Expressions perform the work of a program. Among other things, expressions are used to compute and to assign values to variables and to help control the execution flow of a program. The job of an expression is twofold: to perform the computation indicated by the elements of the expression and to return a value that is the result of the computation.
+<br/><br/>
+
+<blockquote><hr/><strong>Definition: </strong>An <em>expression</em> is a series of variables, operators, and method calls (constructed according to the syntax of the language) that evaluates to a single value.
+<hr/></blockquote>
+
+<p>
+As discussed in the previous section, operators return a value, so the use of an operator is an expression. This partial listing of the
+<a target="_blank" href="resources/MaxVariablesDemo.java"><font color="#bb000f"><code>MaxVariablesDemo</code></font></a><a target="_blank" href="resources/MaxVariablesDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a> program shows some of the program's expressions in boldface:
+<blockquote><pre>
+...
+//other primitive types
+char <b>aChar = 'S'</b>;
+boolean aBoolean = true;
+
+//display them all
+System.out.println(<b>"The largest byte value is "</b>
+                   <b>+ largestByte</b>);
+...
+
+if (<b>Character.isUpperCase(aChar)</b>) {
+    ...
+}
+</pre></blockquote>
+Each expression performs an operation and returns a value, 
+as shown in the following table.
+</p>
+
+<p>
+<table border="1">
+<caption><strong>Some Expressions from MaxVariablesDemo</strong></caption>
+<tr>
+<th>Expression</th>
+<th>Action</th>
+<th>Value Returned</th>
+</tr>
+
+<tr>
+<td valign="top"><code>aChar = 'S'</code></td>
+<td valign="top">Assign the character 'S' to the character variable <code>aChar</code></td>
+<td valign="top">The value of <code>aChar</code> after the assignment ('S')</td>
+</tr>
+
+<tr>
+<td valign="top"><code>"The largest byte value is " + largestByte</code></td>
+<td valign="top">Concatenate the string <code>"The largest byte value is "</code> and the value of <code>largestByte</code> converted to a string</td>
+<td valign="top">The resulting string: <code>The largest byte value is 127</code></td>
+</tr>
+
+<tr>
+<td valign="top"><code>Character.isUpperCase(aChar)</code></td>
+<td valign="top">Call the method <code>isUpperCase</code></td>
+<td valign="top">The return value of the method: <code>true</code></td>
+</tr>
+</table>
+</p>
+
+<p>
+The data type of the value returned by an expression depends on the elements used in the expression. The expression <code>aChar = 'S'</code> returns a character because the assignment operator returns a value of the same data type as its operands and <code>aChar</code> and <code>'S'</code> are characters. As you see from the other expressions, an expression can return a boolean value, a string, and so on.
+</p>
+
+<p>
+The Java programming language allows you to construct compound expressions and statements from various smaller expressions as long as the data type required by one part of the expression matches the data type of the other. Here's an example of a compound expression:
+<blockquote><pre>
+x * y * z
+</pre></blockquote>
+In this particular example, the order in which the expression is evaluated is unimportant because the results of multiplication is independent of order; the outcome is always the same, no matter what order you apply the multiplications. However, this is not true of all expressions. For example, the following expression gives different results, depending on whether you perform the addition or the division operation first:
+<blockquote><pre>
+x + y / 100     //ambiguous
+</pre></blockquote>
+You can specify exactly how you want an expression to be evaluated, using balanced parentheses &#151; <code>(</code> and <code>)</code>. For example, to make the previous expression unambiguous, you could write:
+<blockquote><pre>
+(x + y)/ 100    //unambiguous, recommended
+</pre></blockquote>
+If you don't explicitly indicate the order in which you want the operations in a compound expression to be performed, the order is determined by the <em>precedence</em> assigned to the operators in use within the expression. Operators with a higher precedence get evaluated first. For example, the division operator has a higher precedence than does the addition operator. Thus, the two following statements are equivalent: 
+<blockquote><pre>
+x + y / 100
+x + (y / 100) //unambiguous, recommended
+</pre></blockquote>
+
+When writing compound expressions, you should be explicit and indicate with parentheses which operators should be evaluated first. This pratice will make your code easier to read and to maintain.
+</p>
+
+<p>
+The following table shows the precedence assigned to the operators in the Java platform. The operators in this table are listed in precedence order: The higher in the table an operator appears, the higher its precedence. Operators with higher precedence are evaluated before operators with a relatively lower precedence. Operators on the same line have equal precedence. When operators of equal precedence appear in the same expression, a rule must govern which is evaluated first. All binary operators except for the assignment operators are evaluated from left to right. Assignment operators are evaluated right to left.
+</p>
+
+<p>
+<table cellpadding="5">
+<caption><strong>Operator Precedence</strong></caption>
+
+<tr>
+	<td>postfix operators</td><td><code><em>expr</em>++ <em>expr</em>--</code></td>
+</tr>
+<tr>
+	<td>unary operators</td><td><code>++<em>expr</em> --<em>expr</em> +<em>expr</em> -<em>expr</em> ~ !</code></td>
+</tr>
+<tr>
+	<td>multiplicative</td><td><code>* / %</code></td>
+</tr>
+<tr>
+	<td>additive</td><td><code>+ -</code></td>
+</tr>
+<tr>
+	<td>shift</td><td><code>&lt;&lt; &gt;&gt; &gt;&gt;&gt;</code></td>
+</tr>
+<tr>
+	<td>relational</td><td><code>&lt; &gt; &lt;= &gt;= instanceof</code></td>
+</tr>
+<tr>
+	<td>equality</td><td><code>== !=</code></td>
+</tr>
+<tr>
+	<td>bitwise AND</td><td><code>&amp;</code></td>
+</tr>
+<tr>
+	<td>bitwise exclusive OR</td><td><code>^</code></td>
+</tr>
+<tr>
+	<td>bitwise inclusive OR</td><td><code>|</code></td>
+</tr>
+<tr>
+	<td>logical AND</td><td><code>&amp;&amp;</code></td>
+</tr>
+<tr>
+	<td>logical OR</td><td><code>||</code></td>
+</tr>
+<tr>
+	<td>conditional</td><td><code>? :</code></td>
+</tr>
+<tr>
+	<td>assignment</td><td><code>= += -= *= /= %= &amp;= ^= |= &lt;&lt;= &gt;&gt;= &gt;&gt;&gt;=</code></td>
+</tr>
+</table>
+</p>
+
+<h3>Statements</h3>
+<blockquote>
+Statements are roughly equivalent to sentences in natural languages. A <em>statement</em> forms a complete unit of execution. The following types of expressions can be made into a statement by terminating the expression with a semicolon (<code>;</code>):
+<ul>
+<li> Assignment expressions</li>
+<li> Any use of <code>++</code> or <code>--</code></li>
+<li> Method calls</li>
+<li> Object creation expressions</li>
+</ul>
+
+These kinds of statements are called <em>expression statements</em>. Here are some examples of expression statements:
+
+<blockquote><pre>
+aValue = 8933.234;                      //assignment statement
+aValue++;                               //increment       "
+System.out.println(aValue);             //method call     "
+Integer integerObject = new Integer(4); //object creation "
+</pre></blockquote>
+
+In addition to these kinds of expression statements, there are two other kinds of statements. A <em>declaration statement</em> declares a variable. You've seen many examples of declaration statements. 
+
+<blockquote><pre>
+double aValue = 8933.234;             //declaration statement
+</pre></blockquote>
+
+
+A <em>control flow statement</em> regulates the order in which statements get executed. The <code>for</code> loop and the <code>if</code> statement are both examples of control flow statements. You’ll learn about control flow statements in the section 
+<a href="ControlFlowStatements" class="conditional">Control Flow Statements</a><a href="ControlFlowStatements" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.
+</blockquote>
+
+<h3>Blocks</h3>
+<blockquote>
+A <em>block</em> is a group of zero or more statements between balanced braces and can be used anywhere a single statement is allowed. The following listing shows two blocks from the 
+<a target="_blank" href="resources/MaxVariablesDemo.java"><font color="#bb000f"><code>MaxVariablesDemo</code></font></a><a target="_blank" href="resources/MaxVariablesDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a> program, each containing a single statement: 
+<blockquote><pre>
+if (Character.isUpperCase(aChar)) {
+    System.out.println("The character " + aChar
+                       + " is upper case.");
+} else {
+    System.out.println("The character " + aChar
+                       + " is lower case.");
+}
+</pre></blockquote>
+</blockquote>
+
+
+<h3>Summary of Expressions, Statements, and Blocks</h3>
+<blockquote>
+An expression is a series of variables, operators, and method calls (constructed according to the syntax of the language) that evaluates to a single value. You can write compound expressions by combining expressions as long as the types required by all of the operators involved in the compound expression are correct. When writing compound expressions, you should be explicit and indicate with parentheses which operators should be evaluated first. 
+<p>
+If you choose not to use parentheses, then the Java platform evaluates 
+the compound expression in the order dictated by operator precedence. 
+The table in section 
+<a href="ExpressionsStatementsBlocks" class="conditional">Expressions, Statements, and Blocks</a><a href="ExpressionsStatementsBlocks" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> shows the relative precedence assigned to the operators in the Java platform.
+</p>
+<p>
+A statement forms a complete unit of execution and is terminated with 
+a semicolon (<code>;</code>). There are three kinds of statements: 
+expression statements, declaration statements, and control flow statements.
+</p>
+<p>
+You can group zero or more statements together into a block with braces: 
+<code>{</code> and <code>}</code>. Even though not required, we recommend 
+using blocks with control flow statements even if only one statement is in the block.
+</p>
+</blockquote>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

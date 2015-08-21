@@ -1,0 +1,106 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Manipulating Strings</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>Manipulating Strings</h2>
+<blockquote>
+The <code>String</code> class has several methods that appear to modify a string. Of course, strings can't be modified, so what these methods really do is create and return a second string that contains the result, as indicated in the following table.
+
+<p>
+<table border="1" cellpadding="4" cellspacing="3">
+<caption>Methods in the <code>String</code> Class for Manipulating Strings</caption>
+<tr>
+<th width="30%">Method</th><th>Description</th>
+</tr>
+
+<tr>
+<td>
+<code>
+String concat(String)
+</code>
+</td>
+<td>
+Concatenates the String argument to the end of this string. If the length of the argument is 0, the original string object is returned.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>
+String replace(char, char)
+</code>
+</td>
+<td>
+Replaces all occurrences of the character specified as the first argument with the character specified as the second argument. If no replacements are necessary, the original string object is returned.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>
+String trim()
+</code>
+</td>
+<td>
+Removes white space from both ends of this string.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>
+String toLowerCase()
+<br/>
+String toUpperCase()
+</code>
+</td>
+<td>
+Converts this string to lower- or uppercase. If no conversions are necessary, these methods return the original string.
+</td>
+</tr>
+
+</table>
+</p>
+
+Here's a small program, <code>BostonAccentDemo</code>, that uses the <code>replace</code> method to translate a string into the Bostonian dialect:
+<blockquote><pre>
+// This example demonstrates the use of the replace method
+// in the String class.
+
+public class BostonAccentDemo {
+    private static void bostonAccent(String sentence) {
+        char r = 'r'; 
+        char h = 'h'; 
+        String translatedSentence = sentence.replace(r, h);
+        System.out.println(translatedSentence);
+    }
+    
+    public static void main(String[] args) {
+        String translateThis = 
+           &quot;Park the car in Harvard yard.&quot;;
+        bostonAccent(translateThis);
+    }
+}
+</pre></blockquote>
+
+The <code>replace</code> method switches all the r's to h's in the <code>sentence</code> string so that the output of this program is:
+
+<blockquote><pre>
+Pahk the cah in Hahvahd yahd.
+</pre></blockquote>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

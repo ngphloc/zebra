@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE concept SYSTEM 'concept.dtd'>
+
+<concept>
+  <name>tutorial.formeditor</name>
+  <description>Editor for forms to let end-users update their user model</description>
+  <attributes>
+    <attribute>
+      <name>access</name>
+      <description>triggered by page access</description>
+      <default>false</default>
+      <type>3</type>
+      <actions>
+	<action>
+	  <expr>! tutorial.formeditor.suitability &amp;&amp; tutorial.formeditor.knowledge &lt; 35</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.formeditor.knowledge</variable>
+	      <expr>35</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+	<action>
+	  <expr>tutorial.formeditor.suitability</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.formeditor.knowledge</variable>
+	      <expr>100</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+	<action>
+	  <expr>tutorial.formeditor.suitability</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.formeditor.visited</variable>
+	      <expr>tutorial.formeditor.visited + 1</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+      </actions>
+      <readonly>true</readonly>
+      <system>true</system>
+      <persistent>false</persistent>
+    </attribute>
+    <attribute>
+      <name>knowledge</name>
+      <description>knowledge about this concept</description>
+      <default>0</default>
+      <type>1</type>
+      <actions>
+	<action>
+	  <expr>_tutorial.formeditor.knowledge &gt; 0</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.usermodel.knowledge</variable>
+	      <expr>tutorial.usermodel.knowledge + (0.5 * _tutorial.formeditor.knowledge)</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+      </actions>
+      <readonly>false</readonly>
+      <system>false</system>
+      <persistent>true</persistent>
+    </attribute>
+    <attribute>
+      <name>visited</name>
+      <description>has this page been visited?</description>
+      <default>0</default>
+      <type>1</type>
+      <actions />
+      <readonly>true</readonly>
+      <system>true</system>
+      <persistent>true</persistent>
+    </attribute>
+    <attribute>
+      <name>suitability</name>
+      <description>the suitability of this page</description>
+      <default>true &amp;&amp; ((tutorial.usermodel.knowledge &gt;= 50 ))</default>
+      <type>3</type>
+      <actions />
+      <readonly>true</readonly>
+      <system>false</system>
+      <persistent>false</persistent>
+    </attribute>
+    <attribute>
+      <name>interest</name>
+      <description>is the user interested in this concept</description>
+      <default>0</default>
+      <type>1</type>
+      <actions />
+      <readonly>false</readonly>
+      <system>false</system>
+      <persistent>true</persistent>
+    </attribute>
+  </attributes>
+  <resource>file:/tutorial/xml/formeditor.xhtml</resource>
+  <concepttype>page</concepttype>
+  <title>formeditor</title>
+  <hierarchy>
+    <firstchild></firstchild>
+    <nextsib>tutorial.tutorialform</nextsib>
+    <parent>tutorial.usermodel</parent>
+  </hierarchy>
+</concept>
+

@@ -1,0 +1,73 @@
+// Bayesian network 
+network "tutorial" { //7 variables and 7 probability distributions
+}
+variable  "controlstructure" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "bound = (582, 300, 87, 18)" ;
+	property "type = page" ;
+	property "position = (582, 300)" ;
+}
+variable  "java" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "bound = (708, 216, 24, 18)" ;
+	property "type = page" ;
+	property "position = (708, 216)" ;
+}
+variable  "classandobject" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "position = (721, 309)" ;
+}
+variable  "interface" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "position = (798, 309)" ;
+}
+variable  "jdkinstall" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "position = (871, 255)" ;
+}
+variable  "questions" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "observed false" ;
+	property "bound = (618, 360, 57, 18)" ;
+	property "type = evidencetemp" ;
+	property "position = (618, 360)" ;
+}
+variable  "exercise" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "observed false" ;
+	property "bound = (732, 360, 48, 18)" ;
+	property "type = evidencetemp" ;
+	property "position = (732, 360)" ;
+}
+probability (  "controlstructure" ) { //1 variable(s) and 2 values
+	table 
+		0.5	// p(true | evidence )
+		0.5; 	// p(false | evidence );
+}
+probability (  "java"  "controlstructure"  "classandobject"  "interface"  "jdkinstall" ) { //5 variable(s) and 32 values
+	table 
+		 1.0 0.8999999761581421 0.699999988079071 0.6000000238418579 0.6000000238418579 0.5 0.30000001192092896 0.20000000298023224 0.800000011920929 0.699999988079071 0.5 0.4000000059604645 0.4000000059604645 0.30000001192092896 0.10000000149011612 0.0 0.0 0.10000002384185791 0.30000001192092896 0.3999999761581421 0.3999999761581421 0.5 0.699999988079071 0.7999999970197678 0.19999998807907104 0.30000001192092896 0.5 0.5999999940395355 0.5999999940395355 0.699999988079071 0.8999999985098839 1.0;
+}
+probability (  "classandobject" ) { //1 variable(s) and 2 values
+	table 
+		0.5	// p(true | evidence )
+		0.5; 	// p(false | evidence );
+}
+probability (  "interface" ) { //1 variable(s) and 2 values
+	table 
+		0.5	// p(true | evidence )
+		0.5; 	// p(false | evidence );
+}
+probability (  "jdkinstall" ) { //1 variable(s) and 2 values
+	table 
+		0.5	// p(true | evidence )
+		0.5; 	// p(false | evidence );
+}
+probability (  "questions"  "classandobject" ) { //2 variable(s) and 4 values
+	table 
+		 0.30000001192092896 0.0 0.699999988079071 1.0;
+}
+probability (  "exercise"  "classandobject" ) { //2 variable(s) and 4 values
+	table 
+		 0.699999988079071 0.0 0.30000001192092896 1.0;
+}

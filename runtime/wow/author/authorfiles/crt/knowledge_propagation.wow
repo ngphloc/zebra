@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE wow_relation_type SYSTEM 'wow_relation_type.dtd'>
+<wow_relation_type>
+	<name>knowledge_propagation</name>
+	<listitems>
+		<generateListItem isPropagating="true" location="___child.knowledge" >
+			<requirement>____child.knowledge &gt; 0</requirement>
+			<trueActions>
+				<action combination="DIV_S">
+					<conceptName> ___parent </conceptName>
+					<attributeName> knowledge </attributeName>
+					<expression>___parent.knowledge + (var:DIVIDE * ____child.knowledge)</expression>
+				</action>
+			</trueActions>
+		</generateListItem>
+	</listitems>
+</wow_relation_type>

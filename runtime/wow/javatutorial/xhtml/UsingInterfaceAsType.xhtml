@@ -1,0 +1,46 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Using an Interface as a Type</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Interfaces and Packages
+</font>
+
+<h2>
+Using an Interface as a Type
+</h2>
+<blockquote>
+When you define a new interface, you are defining a new reference 
+data type. You can use interface names anywhere you can use any 
+other data type name. Recall that the data type for the first 
+argument to the <code>watchStock</code> method in the
+<code>StockMonitor</code> class is <code>StockWatcher</code>:  
+
+<blockquote><pre>
+public class StockMonitor {
+    public void watchStock(<B>StockWatcher</B> watcher,
+                           TickerSymbol tickerSymbol,
+                           BigDecimal delta) {
+    ...
+    }
+}
+</pre></blockquote>
+
+Only an instance of a class that implements the interface can 
+be assigned to a reference variable whose type is an interface 
+name. So only instances of a class that implements the <code>StockWatcher</code> 
+interface can register to be notified of stock value changes. 
+<code>StockWatcher</code> objects are guaranteed to have a <code>valueChanged</code> method.<br/> 
+
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

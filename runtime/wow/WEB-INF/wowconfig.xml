@@ -1,0 +1,39 @@
+<!-- the Wow Configuration -->
+<!-- Loc Nguyen modified -->
+<WowConfig>
+	<Settings>
+		<Variable id="WOWROOT">X:/runtime/wow/</Variable>
+		<Variable id="CONTEXTPATH">/wow</Variable>
+		<Variable id="UIDFILE">X:/runtime/wow/xmlroot/uid</Variable>
+		<Variable id="WEBROOT">X:/runtime/wow/</Variable>
+		<Variable id="XMLROOT">X:/runtime/wow/xmlroot</Variable>
+
+		<Variable id="logging">true</Variable>
+
+		<Variable id="dbimpl">xml</Variable>
+		<Variable id="jdbUrl">jdbc:mysql://localhost/wow</Variable>
+		<Variable id="dbuser">root</Variable>
+		<Variable id="dbpassword">root</Variable>
+
+		<Variable id="graphauthorfiles">/author/authorfiles/</Variable>
+
+		<!-- ADD BY SANTI -->
+		<Variable id="testeditorpath">/author/TestEditor/</Variable>
+		<Variable id="testeditordtdpath">/author/TestEditor/dtd/</Variable>
+		<Variable id="testeditoriconpath">/author/TestEditor/icon/</Variable>
+		<Variable id="testeditortypefile">.xml</Variable>
+		<Variable id="testeditorpolicypath">/author/TestEditor/policy/</Variable>
+		
+		<Variable id="itemspath">/items/</Variable>
+		<Variable id="filelistname">fileList</Variable>
+		<Variable id="itemsfilespath">/itemsFiles/</Variable>
+		<Variable id="imagesitemspath">/itemsFiles/images/</Variable>
+		<Variable id="studentlogpath">/studentsFiles/</Variable>
+		<Variable id="testpath">/test/</Variable>
+		<Variable id="imagestestpath">/test/images/</Variable>
+		<!-- END -->    
+	</Settings>
+	<Access>
+		<User login="admin" password="MD5:098f6bcd4621d373cade4e832627b4f6">Admin</User>
+	</Access>
+</WowConfig>

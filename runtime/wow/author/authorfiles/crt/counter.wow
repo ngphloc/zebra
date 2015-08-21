@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE wow_relation_type SYSTEM 'wow_relation_type.dtd'>
+<wow_relation_type>
+	<name>counter</name>
+	<listitems>
+		<generateListItem isPropagating="true" location="___source.access" >
+			<requirement> ___source.count==0 </requirement>
+			<trueActions>
+				<action>
+					<conceptName> ___destination </conceptName>
+					<attributeName> count </attributeName>
+					<expression>___destination.count+1</expression>
+				</action>
+				<action>
+					<conceptName> ___source </conceptName>
+					<attributeName> count </attributeName>
+					<expression>1</expression>
+				</action>
+			</trueActions>
+		</generateListItem>
+	</listitems>
+</wow_relation_type>

@@ -1,0 +1,85 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Using the this Keyword</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Classes and Inheritance
+</font>
+
+<h2>
+Using the this Keyword
+</h2>
+<blockquote>
+Within an instance method or a constructor, <code>this</code> is 
+a reference to the <i>current object</i> &#151; the object whose 
+method or constructor is being called. You can refer to any member 
+of the current object from within an instance method or a constructor 
+by using <code>this</code>. The most common reason for doing so is 
+that a member variable is hidden by an argument to the method or the 
+constructor.
+
+<br/><br/>
+For example, the following constructor for the <code>HSBColor</code> 
+class initializes the object's member variables according to the 
+arguments passed into the constructor. Each argument to the constructor 
+hides one of the object's member variables, so 
+this constructor must refer to the object's member variables through 
+<code>this</code>:
+<blockquote><pre>
+public class HSBColor {
+    private int hue, saturation, brightness;
+    public HSBColor (int hue, int saturation,
+                     int brightness) {
+        <B>this</B>.hue = hue;
+        <B>this</B>.saturation = saturation;
+        <B>this</B>.brightness = brightness;
+    }
+}
+</pre></blockquote>
+
+From within a constructor, you can also use the <code>this</code> keyword 
+to call another constructor in the same class. Doing so is called an 
+<i>explicit constructor invocation</i>. Here's another <code>Rectangle</code> 
+class, with a different implementation from the one in the section 
+<a href="LifeCycleOfObject" class="conditional">The Life Cycle of an Object</a><a href="LifeCycleOfObject" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.
+<blockquote><pre>
+public class Rectangle {
+    private int x, y;
+    private int width, height;
+    public Rectangle() {
+        <B>this(0, 0, 0, 0);</B>
+    }
+    public Rectangle(int width, int height) {
+        <B>this(0, 0, width, height);</B>
+    }
+    public Rectangle(int x, int y, int width, int height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+    }
+    ...
+}
+</pre></blockquote>
+This class contains a set of constructors. Each constructor initializes 
+some or all of the rectangle's member variables. The constructors 
+provide a default value for any member variable whose initial value 
+is not provided by an argument. For example, the no-argument constructor 
+calls the four-argument constructor, using 0s as default values. 
+As before, the compiler determines which constructor to call, based 
+on the number and the type of arguments.
+<br/><br/>
+If present, an explicit constructor invocation must be the first 
+line in the constructor.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

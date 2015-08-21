@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE wow_relation_type SYSTEM 'wow_relation_type.dtd'>
+<wow_relation_type>
+	<name>menu</name>
+	<listitems>
+		<generateListItem isPropagating="true" location="___source.access" >
+			<requirement> true </requirement>
+			<trueActions>
+				<action combination="NONE">
+					<conceptName> ___destination </conceptName>
+					<attributeName> menu </attributeName>
+					<expression>var:</expression>
+				</action>
+			</trueActions>
+		</generateListItem>
+	</listitems>
+</wow_relation_type>

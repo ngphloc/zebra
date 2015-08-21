@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE concept SYSTEM 'concept.dtd'>
+
+<concept>
+  <name>tutorial.createstructure</name>
+  <description>Create basic structure of your application</description>
+  <attributes>
+    <attribute>
+      <name>access</name>
+      <description>triggered by page access</description>
+      <default>false</default>
+      <type>3</type>
+      <actions>
+	<action>
+	  <expr>! tutorial.createstructure.suitability &amp;&amp; tutorial.createstructure.knowledge &lt; 20 / 3</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.createstructure.knowledge</variable>
+	      <expr>20 / 3</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+	<action>
+	  <expr>tutorial.createstructure.suitability &amp;&amp; tutorial.createstructure.knowledge &lt; 20</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.createstructure.knowledge</variable>
+	      <expr>20</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+	<action>
+	  <expr>tutorial.createstructure.suitability</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.createstructure.visited</variable>
+	      <expr>tutorial.createstructure.visited + 1</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+      </actions>
+      <readonly>true</readonly>
+      <system>true</system>
+      <persistent>false</persistent>
+    </attribute>
+    <attribute>
+      <name>knowledge</name>
+      <description>knowledge about this concept</description>
+      <default>0</default>
+      <type>1</type>
+      <actions>
+	<action>
+	  <expr>_tutorial.createstructure.knowledge &gt; 0</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.createconcept.knowledge</variable>
+	      <expr>tutorial.createconcept.knowledge + (0.3333333333333333 * _tutorial.createstructure.knowledge)</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+      </actions>
+      <readonly>false</readonly>
+      <system>false</system>
+      <persistent>true</persistent>
+    </attribute>
+    <attribute>
+      <name>visited</name>
+      <description>has this page been visited?</description>
+      <default>0</default>
+      <type>1</type>
+      <actions />
+      <readonly>false</readonly>
+      <system>true</system>
+      <persistent>true</persistent>
+    </attribute>
+    <attribute>
+      <name>suitability</name>
+      <description>the suitability of this page</description>
+      <default>true &amp;&amp; ((tutorial.createconcept.knowledge &gt;= 50 ))</default>
+      <type>3</type>
+      <actions />
+      <readonly>true</readonly>
+      <system>false</system>
+      <persistent>false</persistent>
+    </attribute>
+    <attribute>
+      <name>interest</name>
+      <description>is the user interested in this concept</description>
+      <default>0</default>
+      <type>1</type>
+      <actions />
+      <readonly>false</readonly>
+      <system>false</system>
+      <persistent>true</persistent>
+    </attribute>
+    <attribute>
+      <name>showability</name>
+      <description>showability this concept</description>
+      <default>0</default>
+      <type>1</type>
+      <actions />
+      <readonly>false</readonly>
+      <system>false</system>
+      <persistent>true</persistent>
+    </attribute>
+  </attributes>
+  <resource>file:/tutorial/xml/createstructure.xhtml</resource>
+  <stable>always</stable>
+  <concepttype>page</concepttype>
+  <title>Create Theoretical Structure</title>
+  <hierarchy>
+    <firstchild></firstchild>
+    <nextsib>tutorial.usetool</nextsib>
+    <parent>tutorial.createconcept</parent>
+  </hierarchy>
+</concept>
+

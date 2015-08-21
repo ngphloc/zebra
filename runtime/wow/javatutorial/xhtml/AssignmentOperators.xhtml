@@ -1,0 +1,130 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Assignment Operators</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Language Basics
+</font>
+
+<h2>Assignment Operators</h2>
+<blockquote>
+
+You use the basic assignment operator, <code>=</code>, to assign one value to another.
+The
+<a target="_blank" href="resources/MaxVariablesDemo.java"><font color="#bb000f"><code>MaxVariablesDemo</code></font></a><a target="_blank" href="resources/MaxVariablesDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a> program uses <code>=</code> to initialize all its local variables:
+<blockquote><pre>
+//integers
+byte largestByte <b>= Byte.MAX_VALUE</b>;
+short largestShort <b>= Short.MAX_VALUE</b>;
+int largestInteger <b>= Integer.MAX_VALUE</b>;
+long largestLong <b>= Long.MAX_VALUE</b>;
+
+//real numbers
+float largestFloat <b>= Float.MAX_VALUE</b>;
+double largestDouble <b>= Double.MAX_VALUE</b>;
+
+//other primitive types
+char aChar <b>= 'S'</b>;
+boolean aBoolean <b>= true</b>;
+</pre></blockquote>
+
+The Java programming language also provides several shortcut assignment operators that allow you to perform an arithmetic, shift, or bitwise operation and an assignment operation all with one operator. Suppose that you wanted to add a number to a variable and assign the result back into the variable, like this:
+<blockquote><pre>
+i = i + 2;
+</pre></blockquote>
+You can shorten this statement using the shortcut operator <code>+=</code>, like this:
+<blockquote><pre>
+i += 2;
+</pre></blockquote>
+The two previous lines of code are equivalent.
+<br/><br/>
+The following table lists the shortcut assignment operators and their lengthy equivalents.
+
+<p>
+<table cellpadding="5">
+<caption><strong>Shortcut Assignment Operators</strong></caption>
+<tr>
+<th align="left">Operator</th>
+<th align="left">Use</th>
+<th align="left">Equivalent to</th>
+</tr>
+
+<tr>
+    <td><code>+=</code></td>
+    <td><code>op1 += op2</code></td>
+    <td><code>op1 = op1 + op2</code></td>
+</tr>
+
+<tr>
+    <td><code>-=</code></td>
+    <td><code>op1 -= op2</code></td>
+    <td><code>op1 = op1 - op2</code></td>
+</tr>
+
+<tr>
+    <td><code>*=</code></td>
+    <td><code>op1 *= op2</code></td>
+    <td><code>op1 = op1 * op2</code></td>
+</tr>
+
+<tr>
+    <td><code>/=</code></td>
+    <td><code>op1 /= op2</code></td>
+    <td><code>op1 = op1 / op2</code></td>
+</tr>
+
+<tr>
+    <td><code>%=</code></td>
+    <td><code>op1 %= op2</code></td>
+    <td><code>op1 = op1 % op2</code></td>
+</tr>
+
+<tr>
+    <td><code>&amp;=</code></td>
+    <td><code>op1 &amp;= op2 </code></td>
+    <td><code>op1 = op1 &amp; op2</code></td>
+</tr>
+
+<tr>
+    <td><code>|=</code></td>
+    <td><code>op1 |= op2</code></td>
+    <td><code>op1 = op1 | op2</code></td>
+</tr>
+
+<tr>
+    <td><code>^=</code></td>
+    <td><code>op1 ^= op2</code></td>
+    <td><code>op1 = op1 ^ op2</code></td>
+</tr>
+
+<tr>
+    <td><code>&lt;&lt;=</code></td>
+    <td><code>op1 &lt;&lt;= op2</code></td>
+    <td><code>op1 = op1 &lt;&lt; op2</code></td>
+</tr>
+
+<tr>
+    <td><code>&gt;&gt;=</code></td>
+    <td><code>op1 &gt;&gt;= op2</code></td>
+    <td><code>op1 = op1 &gt;&gt; op2</code></td>
+</tr>
+
+<tr>
+    <td><code>&gt;&gt;&gt;=</code></td>
+    <td><code>op1 &gt;&gt;&gt;= op2</code></td>
+    <td><code>op1 = op1 &gt;&gt;&gt; op2</code></td>
+</tr>
+</table>
+</p>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

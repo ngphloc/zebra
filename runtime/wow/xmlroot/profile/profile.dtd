@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT profile (record)*>
+
+<!ELEMENT record (key, value, firsttimeupdated)>
+<!ELEMENT key (#PCDATA)>
+<!ELEMENT value (#PCDATA)>
+<!ELEMENT firsttimeupdated (#PCDATA)>

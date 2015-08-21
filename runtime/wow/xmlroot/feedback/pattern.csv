@@ -1,0 +1,32 @@
+[javatutorial]
+1; Do you know what Adaptive Learning is?; singlechoice; Yes; No
+2; Do you know what User Modeling is?; singlechoice; Yes; No
+
+3; Are you satified with the online course presentation? For example: the arrangement of chapters, whether the course is showed simply...; singlechoice; Very satisfied; Satisfied; Normal
+4; Your idea about the way to evaluate your knowledge through online tests; singlechoice; Very good; Good; Normal
+5; Do you feel about that the evaluation of your knowledge is showed as pie chart?; singlechoice; Like much; Like; Normal
+
+6; Do you feel about concept recommendation function; singlechoice; Like much; Like; Normal
+7; How about the search engine; singlechoice; Very useful; Useful; Normal
+8; How about the collaborative learning (chat, knowing your community); singlechoice; Very necessary; Necessary; Normal
+9; How about the lession in form of HTML file; singlechoice; Very good; Good; Normal
+
+10; Have you ever used other adaptive learning systems?; singlechoice; Yes; No
+11; What are the best points of this system?; multichoice; Knowledge evaluation; Many functions; Friendly GUI
+
+
+[tutorial]
+1; Do you know what Adaptive Learning is?; singlechoice; Yes; No
+2; Do you know what User Modeling is?; singlechoice; Yes; No
+
+3; Are you satified with the online course presentation? For example: the arrangement of chapters, whether the course is showed simply...; singlechoice; Very satisfied; Satisfied; Normal
+4; Your idea about the way to evaluate your knowledge through online tests; singlechoice; Very good; Good; Normal
+5; Do you feel about that the evaluation of your knowledge is showed as pie chart?; singlechoice; Like much; Like; Normal
+
+6; Do you feel about concept recommendation function; singlechoice; Like much; Like; Normal
+7; How about the search engine; singlechoice; Very useful; Useful; Normal
+8; How about the collaborative learning (chat, knowing your community); singlechoice; Very necessary; Necessary; Normal
+9; How about the lession in form of HTML file; singlechoice; Very good; Good; Normal
+
+10; Have you ever used other adaptive learning systems?; singlechoice; Yes; No
+11; What are the best points of this system?; multichoice; Knowledge evaluation; Many functions; Friendly GUI

@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE concept SYSTEM 'concept.dtd'>
+
+<concept>
+  <name>javatutorial.LearningJavaLanguage</name>
+  <description>Learning the Java Language</description>
+  <attributes>
+    <attribute>
+      <name>access</name>
+      <description>triggered by page access</description>
+      <default>false</default>
+      <type>3</type>
+      <actions>
+	<action>
+	  <expr>! javatutorial.LearningJavaLanguage.suitability &amp;&amp; javatutorial.LearningJavaLanguage.knowledge &lt; 35</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>javatutorial.LearningJavaLanguage.knowledge</variable>
+	      <expr>35</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+	<action>
+	  <expr>javatutorial.LearningJavaLanguage.suitability</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>javatutorial.LearningJavaLanguage.knowledge</variable>
+	      <expr>100</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+	<action>
+	  <expr>javatutorial.LearningJavaLanguage.suitability</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>javatutorial.LearningJavaLanguage.visited</variable>
+	      <expr>javatutorial.LearningJavaLanguage.visited + 1</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+      </actions>
+      <readonly>true</readonly>
+      <system>true</system>
+      <persistent>false</persistent>
+    </attribute>
+    <attribute>
+      <name>knowledge</name>
+      <description>knowledge about this concept</description>
+      <default>0</default>
+      <type>1</type>
+      <actions>
+	<action>
+	  <expr>_javatutorial.LearningJavaLanguage.knowledge &gt; 0</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>javatutorial.javatutorial.knowledge</variable>
+	      <expr>javatutorial.javatutorial.knowledge + (0.9 * _javatutorial.LearningJavaLanguage.knowledge)</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+	<action>
+	  <expr>_javatutorial.LearningJavaLanguage.knowledge &gt; 0</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>javatutorial.javatutorial.knowledge</variable>
+	      <expr>javatutorial.javatutorial.knowledge + (0.5 * _javatutorial.LearningJavaLanguage.knowledge)</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+      </actions>
+      <readonly>false</readonly>
+      <system>false</system>
+      <persistent>true</persistent>
+    </attribute>
+    <attribute>
+      <name>visited</name>
+      <description>has this page been visited?</description>
+      <default>0</default>
+      <type>1</type>
+      <actions />
+      <readonly>false</readonly>
+      <system>true</system>
+      <persistent>true</persistent>
+    </attribute>
+    <attribute>
+      <name>suitability</name>
+      <description>the suitability of this page</description>
+      <default>true</default>
+      <type>3</type>
+      <actions />
+      <readonly>true</readonly>
+      <system>false</system>
+      <persistent>false</persistent>
+    </attribute>
+    <attribute>
+      <name>interest</name>
+      <description>is the user interested in this concept</description>
+      <default>0</default>
+      <type>1</type>
+      <actions />
+      <readonly>false</readonly>
+      <system>false</system>
+      <persistent>true</persistent>
+    </attribute>
+    <attribute>
+      <name>showability</name>
+      <description>showability this concept</description>
+      <default>0</default>
+      <type>1</type>
+      <actions />
+      <readonly>false</readonly>
+      <system>false</system>
+      <persistent>true</persistent>
+    </attribute>
+    <attribute>
+      <name>hierarchy</name>
+      <description>the visibility of this concept in the hierarchy</description>
+      <default>true</default>
+      <type>3</type>
+      <actions />
+      <readonly>true</readonly>
+      <system>true</system>
+      <persistent>true</persistent>
+    </attribute>
+    <attribute>
+      <name>level</name>
+      <description>level of this concept in the hierarchy</description>
+      <default>0</default>
+      <type>1</type>
+      <actions />
+      <readonly>true</readonly>
+      <system>true</system>
+      <persistent>true</persistent>
+    </attribute>
+  </attributes>
+  <resource>file:/javatutorial/xhtml/LearningJavaLanguage.xhtml</resource>
+  <concepttype>page</concepttype>
+  <title>Learning Java Language</title>
+  <hierarchy>
+    <firstchild>javatutorial.ObjectOrientedProgrammingConcepts</firstchild>
+    <nextsib></nextsib>
+    <parent>javatutorial.javatutorial</parent>
+  </hierarchy>
+</concept>
+

@@ -1,0 +1,134 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>Headers and Footers</h2>
+
+<p>
+Headers and footers are typical examples of <em>unconditionally
+included objects</em>.
+They are included by means of an <tt>object</tt> tag with a
+<tt>data</tt> attribute that refers to the header/footer file
+and a <tt>type="text/wow"</tt> attribute to indicate that the
+content includes special tags just like normal WOW! pages.
+WOW! allows for the inclusion of information from the user model
+anywhere on a page, but this is typically done in a header.
+By naming the header and/or footer files "header.xhtml" and
+"footer.xhtml" the WOW! engine recognizes them as being xhtml and
+allows the use of xhtml in these files.
+The special tags that WOW! allows (and that are typically used
+in headers and footers are) listed below.
+</p>
+<ul>
+<li>
+The <tt>&lt;variable&gt;</tt> tag is used to include the value
+of a <a href="usermodel" class="conditional">user model</a>
+<em>attribute</em>, or an expression over such attributes.
+The typical use in a header is to include attributes of the "personal"
+pseudo-concept, containing values that the user enters in the login or
+registration form. 
+These values can not only be printed in a header or footer but can also
+be used in <a href="rules" class="conditional">adaptation rules</a>.
+An example:
+<pre>
+&lt;variable name="personal.name" /&gt;
+</pre>
+This tag will be replaced by the name of the end-user,
+as entered in the registration form.
+(Anonymous users are called "Anonymous user".)
+Typical variables apart from the user's name are:
+<ul>
+<li>
+<em>personal.id</em>: The user id entered in the registration form.
+(Anonymous users are assigned a special unique anonymous id.)
+</li>
+<li>
+<em>personal.email</em>: The user's email address as entered in the registration form (or "no email" for anonymous users).
+</li>
+<li>
+<em>personal.course</em>: The name of the current application (named "course"
+for historical reasons).
+</li>
+<li>
+<em>numberdone</em>: Not an attribute of "personal", but a special
+calculated variable that is the number of pages (in this application) the
+user has visited (i.e. for which the visited attribute is higher than 0). 
+</li>
+<li>
+<em>numbertodo</em>: Another calculated variable, which is the number of
+pages (in this application) the user has not yet visited.
+</li>
+</ul>
+</li>
+<li>
+Apart from variables there are <em>handlers</em>.
+They create a link anchor through which the end-user can access
+specially generated pages.
+<ul>
+<li>
+<em>logout</em>: When the end-user clicks on this link the session is ended.
+The handler is used as follows:
+<pre>
+&lt;handler&gt;
+&lt;handlername&gt;&lt;logout/&gt;&lt;/handlername&gt;
+&lt;linkdescription&gt;Logout (or any other text)&lt;/linkdescription&gt;
+&lt;/handler&gt;
+</pre>
+</li>
+<li>
+<em>colorconfig</em>: This link will access a form through which the
+end-user can change the color scheme for links.
+These color setting only have an effect in pages that use the
+WOW-extended XHTML format, not in standard XHTML.
+</li>
+<li>
+<em>knowledgeconfig</em>: This link will access a form that lets the
+end-user change the "knowledge" user model attribute of all concepts that
+have such attribute and for which that attribute is not marked as read-only.
+For setting other attributes you should create a custom form
+using the <a href="formeditor" class="conditional">form editor</a>.
+</li>
+<li>
+<em>passwordconfig</em>: This link will access a form to change the
+end-user's password. Anonymous users cannot have a password.
+</li>
+<li>
+<em>done</em>: This link will access a page showing all the pages the
+end-user has read. Each page name is a link to that page.
+</li>
+<li>
+<em>todo</em>: This link will access a page showing all the pages the
+end-user has not (yet) read. Each page name is a link to that page.
+</li>
+</ul>
+</li>
+</ul>
+<p>
+Variables and handlers may of course be freely combined.
+The link
+<handler>
+<name>KnowledgeConfig</name>
+<linkdescription>knowledge of
+<variable name="personal.course" />
+</linkdescription>
+</handler>
+uses the <em>knowledgeconfig</em> handler and uses
+the <em>personal.course</em> variable to show the name
+of the application (i.e. <variable name="personal.course" />)
+as part of the link.
+</p>
+
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

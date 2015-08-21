@@ -1,0 +1,102 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>The Graph Author ".author" Files</h2>
+
+<p>
+The ".author" files are used by the graph author to decide how to draw
+concept relationships of a given type.
+We explain the templates using the examples of <em>knowledge_propagation</em>
+and <em>interest</em>.
+</p>
+<p>
+The file "knowledge_propagation.author" is as follows:
+<pre>
+&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE author_relation_type SYSTEM 'author_relation_type.dtd'&gt;
+&lt;author_relation_type&gt;
+    &lt;name&gt;knowledge_propagation&lt;/name&gt;
+    &lt;color&gt;none&lt;/color&gt;
+    &lt;style&gt;none&lt;/style&gt;
+    &lt;properties acyclic="false" concept_hierarchy="true" /&gt;
+&lt;/author_relation_type&gt;
+</pre>
+The file "interest.author" is:
+<pre>
+&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE author_relation_type SYSTEM 'author_relation_type.dtd'&gt;
+&lt;author_relation_type&gt;
+    &lt;name&gt;interest&lt;/name&gt;
+    &lt;color&gt;blue&lt;/color&gt;
+    &lt;style&gt;full&lt;/style&gt;
+    &lt;properties acyclic="false" />
+&lt;/author_relation_type>
+</pre>
+</p>
+The meaning of the different tags is as follows:
+<ul>
+<li>
+<b>name</b>: This is the name of the concept relationship type,
+as it will be shown by the graph author. To avoid confusion you should
+keep this name the same as the filename (without suffix).
+</li>
+<li>
+<b>color</b>: This is the color used to draw arrows for relationships
+of this type. For knowledge_propagation the color is "none" because
+knowledge_propagation is not drawn. Other relationship types
+do have a color which can be
+black, blue, cyan, gray, green, magenta, red, or yellow.
+</li>
+<li>
+<b>style</b>: This is the drawing style for the arrows. The style is "none"
+for knowledge_propagation because knowledge_propagation is not drawn.
+Possible styles are full, dashed and dotted.
+</li>
+<li>
+<b>properties</b>: indicates properties of the relationships or the graph
+of relationships of this type.
+<ul>
+<li>
+<b>acyclic</b>: Can be true or false. (But in the case of false it is omitted.)
+This means that the graph formed by relationships of this
+type must be acyclic (or not).
+Cyclic relationships can potentially lead to infinite loops
+(but so can combinations of relationships of different types that
+each are acyclic but in combination become cyclic.)
+</li>
+<li>
+<b>concept_hierarchy</b>: Can be true or false.
+(Again, in case of false the property can be omitted.)
+This means that this type of relationship coincides with the
+concept hierarchy. This is true for knowledge_propagation.
+The graph author shows the concept hierarchy in the left frame,
+which looks somewhat like a windows explorer tree.
+Relationships of other types are shown in the right frame using a graph.
+</li>
+<li>
+<b>unary</b>: Can be true or false.
+(Again, in case of false the property can be omitted.)
+A unary relationship involves only one concept.
+Other relationships are binary and have a "source" and "destination",
+or alternatively a "parent" and "child".
+</li>
+</ul>
+</li>
+</ul>
+
+
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT author_relation_type  (name, color, style, properties)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT color (#PCDATA)>
+<!ELEMENT style (#PCDATA)>
+<!ELEMENT properties (#PCDATA)>
+<!ATTLIST properties
+	acyclic (true|false) "false"
+	unary   (true|false) "false"
+	concept_hierarchy (true|false) "false"	
+>

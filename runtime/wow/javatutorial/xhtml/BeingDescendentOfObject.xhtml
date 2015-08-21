@@ -1,0 +1,245 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Being a Descendent of Object</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Classes and Inheritance
+</font>
+
+<h2>
+Being a Descendent of Object
+</h2>
+<blockquote>
+The
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Object.html"><font color="#8800bb"><code>Object</code></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Object.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a> class sits at the top of the class hierarchy 
+tree. Every class is a descendant, direct or indirect, of the 
+<code>Object</code> class. This class defines the basic state 
+and behavior that all objects must have, such as the ability 
+to compare oneself to another object, to convert to a string, 
+to wait on a condition variable, to notify other objects that 
+a condition variable has changed, and to return the class of 
+the object. 
+<br/><br/>
+The following is a list of handy methods that the 
+<code>Object</code> class provides:
+<ul>
+<li><code>clone</code></li>
+<li><code>equals</code> and <code>hashCode</code></li>
+<li><code>finalize</code></li>
+<li><code>toString</code></li>
+<li><code>getClass</code></li>
+<li><code>notify</code>, <code>notifyAll</code>, and <code>wait</code></li>
+</ul>
+With the exception of <code>notify</code>, <code>notifyAll</code>, 
+and <code>wait</code>, these methods are covered in the sections 
+that follow. The <code>notify</code>, <code>notifyAll</code>, and 
+<code>wait</code> methods all play a part in synchronizing the 
+activities of independently running threads in a program, which 
+is discussed in 
+<a href="Threads" class="conditional">Threads: Doing Two or More Tasks At Once</a><a href="Threads" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.
+</blockquote>
+
+<h3>The clone Method</h3>
+<blockquote>
+You use the <code>clone</code> method to create an object 
+from an existing object. To create a clone, you write: 
+<blockquote><pre>
+<i>aCloneableObject</i>.clone();
+</pre></blockquote>
+
+<code>Object</code>'s implementation of this method checks to 
+see whether the object on which <code>clone</code> was invoked 
+implements the <code>Cloneable</code> interface. If the object 
+does not, the method throws a <code>CloneNotSupportedException</code>. 
+Even though <code>Object</code> implements the <code>clone</code> 
+method, the <code>Object</code> class is not declared to implement 
+the <code>Cloneable</code> interface, so classes that don't 
+explicitly implement the interface are not cloneable. If the 
+object on which <code>clone</code> was invoked does implement 
+the <code>Cloneable</code> interface, <code>Object</code>'s 
+implementation of the <code>clone</code> method creates an 
+object of the same type as the original object and initializes 
+the new object's member variables to have the same values as 
+the original object's corresponding member variables. 
+<p>
+The simplest way to make your class cloneable, then, is 
+to add <code>implements</code> <code>Cloneable</code> 
+to your class's declaration. For some classes, the default 
+behavior of <code>Object</code>'s <code>clone</code> method 
+works just fine. Other classes need to override 
+<code>clone</code> to get correct behavior. 
+</p>
+Consider a <code>Stack</code> class that contains a member 
+variable referring to an array of <code>Object</code>s. If 
+<code>Stack</code> relies on <code>Object</code>'s 
+implementation of <code>clone</code>, the original stack 
+and its clone refer to the same array. Changing one stack 
+changes the other, which is undesirable behavior. 
+<br/><br/>
+Here is an appropriate implementation of <code>clone</code> 
+for our <code>Stack</code> class, which clones the array to 
+ensure that the original stack and its clone do not refer 
+to the same list: 
+<blockquote><pre>
+public class Stack implements Cloneable {
+    private Object[] items;
+    private int top;
+    ...
+    // code for Stack's methods and constructor not shown
+    protected Stack clone() {
+        try {
+            Stack s = (Stack)super.clone(); //clone the stack
+            s.items = (Object)items.clone(); //clone the array
+            return s; // return the clone
+        } catch (CloneNotSupportedException e) {
+           //This shouldn't happen because Stack is Cloneable.
+            throw new InternalError();
+        }
+    }
+}
+</pre></blockquote>
+The implementation for <code>Stack</code>'s <code>clone</code>
+method is relatively simple. First, it calls <code>Object</code>'s
+implementation of the <code>clone</code> method by calling
+<code>super.clone</code>, which creates and initializes a
+<code>Stack</code> object. At this point, the original stack
+and its clone refer to the same list. Next, the method clones the list.
+Note that the method returns a <code>Stack</code>, which is a subclass
+of the type returned by the <code>Object.clone</code> method.
+
+<blockquote><hr/><strong>Note: </strong>The <code>clone</code> method should never use <code>new</code> 
+to create the clone and should not call constructors. Instead, 
+the method should call <code>super.clone</code>, which creates 
+an object of the correct type and allows the hierarchy of 
+superclasses to perform the copying necessary to get a proper clone. 
+<hr/></blockquote>
+
+</blockquote>
+
+<h3>The equals and hashCode Methods</h3>
+<blockquote>
+
+The <code>equals</code> method compares two objects for equality 
+and returns <code>true</code> if they are equal. The 
+<code>equals</code> method provided in the <code>Object</code> 
+class uses the identity operator (<code>==</code>) to determine 
+whether two objects are equal. If the objects compared are the 
+exact same object, the method returns <code>true</code>. 
+<br/><br/>
+However, for some classes, two distinct objects 
+of that type might be considered equal if they contain the same 
+information. Consider this code that tests two 
+<code>Integer</code>s, <code>one</code> and 
+<code>anotherOne</code>, for equality: 
+<blockquote><pre>
+Integer one = new Integer(1);
+Integer anotherOne = new Integer(1);
+if (one.equals(anotherOne)) {
+    System.out.println("objects are equal");
+}
+</pre></blockquote>
+
+This program displays <code>objects are equal</code> even 
+though <code>one</code> and <code>anotherOne</code> reference 
+two distinct objects. They are considered equal because the 
+objects compared contain the same integer value. 
+<br/><br/>
+You should override ther/ <code>equals</code> method only if 
+the identity operator is not appropriate for your class. If 
+you override <code>equals</code>, override <code>hashCode</code> 
+as well. 
+<br/><br/>
+The value returned by <code>hashCode</code> is an int that maps 
+an object into a bucket in a hash table. An object must always 
+produce the same hash code. However, objects can share hash 
+codes (they aren't necessarily unique). Writing a "correct" 
+hashing function is easy &#151; always return the same hash code 
+for the same object. Writing an "efficient" hashing function &#151; one 
+that provides a sufficient distribution of objects over the 
+buckets &#151; is difficult and is outside the scope of this tutorial. 
+<br/><br/>
+Even so, the hashing function for some classes is relatively obvious. 
+For example, an obvious hash code for an <code>Integer</code> 
+object is its integer value.
+</blockquote>
+
+<h3>The finalize Method</h3>
+
+<blockquote>
+The <code>Object</code> class provides a method, <code>finalize</code>, 
+that cleans up an object before it is garbage collected. This method's 
+role during garbage collection was discussed previously, in the section 
+<a href="CleaningUpUnusedObjects" class="conditional">Cleaning Up Unused Objects</a><a href="CleaningUpUnusedObjects" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>. The <code>finalize</code> method is called automatically by the system, 
+and most classes do not need to override it. Thus, you can generally 
+ignore this method.
+</blockquote>
+
+<h3>The toString Method</h3>
+<blockquote>
+The <code>Object</code>'s <code>toString</code> method returns a 
+<code>String</code> representation of the object. You can use 
+<code>toString</code> along with <code>System.out.println</code> 
+to display a text representation of an object, such as an instance 
+of <code>Double</code>: 
+<blockquote><pre>
+System.out.println(new Double(Math.PI).toString());
+</pre></blockquote>
+The <code>String</code> representation for an object depends 
+entirely on the object. The <code>String</code> representation 
+of a <code>Double</code> object is the double value displayed 
+as text. Thus, the previous line of code displays <code>3.14159</code>.
+<br/><br/>
+The <code>toString</code> method is very useful for debugging. 
+You should override this method in all your classes. 
+
+</blockquote>
+
+
+<h3>The getClass Method</h3>
+<blockquote>
+The <code>getClass</code> method returns a runtime representation 
+of the class of an object. This method returns a <code>Class</code> 
+object, which you can query for information about the class, such 
+as its name, its superclass, and the names of the interfaces it 
+implements. You cannot override <code>getClass</code>. The 
+following method gets and displays the class name of an object: 
+<blockquote><pre>
+void PrintClassName(Object obj) {
+    System.out.println("The Object's class is "
+                       + obj.getClass().getName());
+}
+</pre></blockquote>
+
+One handy use of a <code>Class</code> object is to create a new 
+instance of a class without knowing what the class is at compile 
+time. The following sample method creates a new instance of 
+the same class as <code>obj</code>, which can be any class 
+that inherits from <code>Object</code>: 
+
+<blockquote><pre>
+Object createNewInstanceOf(Object obj) {
+    return obj.getClass().newInstance();
+}
+</pre></blockquote>
+
+If you already know the name of the class, you can also get 
+a <code>Class</code> object from a class name. The following 
+two lines are equivalent ways to get a <code>Class</code> 
+object for the <code>String</code> class:
+<blockquote><pre>
+String.class
+Class.forName("String")
+</pre></blockquote>
+The first is more efficient than the second.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

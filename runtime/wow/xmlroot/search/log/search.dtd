@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT log (user, record*)>
+
+<!ELEMENT user (#PCDATA)>
+<!ELEMENT record (accessdate, sessionid, course, query)>
+<!ELEMENT accessdate (#PCDATA)>
+<!ELEMENT sessionid (#PCDATA)>
+<!ELEMENT course (#PCDATA)>
+<!ELEMENT query (#PCDATA)>

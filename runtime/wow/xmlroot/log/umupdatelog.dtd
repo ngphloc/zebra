@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT log (record)*>
+
+<!ELEMENT record (accessdate, sessionid, name, oldval, newval, pagename, user)>
+<!ELEMENT accessdate (#PCDATA)>
+<!ELEMENT sessionid (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT oldval (#PCDATA)>
+<!ELEMENT newval (#PCDATA)>
+<!ELEMENT pagename (#PCDATA)>
+<!ELEMENT user (#PCDATA)>

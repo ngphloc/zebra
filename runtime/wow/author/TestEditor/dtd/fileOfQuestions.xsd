@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edited with XML Spy v4.2 U (http://www.xmlspy.com) by Santi (Particular) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="fileOfQuestions">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="concept">
+					<xs:complexType>
+						<xs:attribute name="value" type="xs:string" use="required"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="questions">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="question" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="enunciate" type="xs:string"/>
+										<xs:element name="image" type="xs:string"/>
+										<xs:element name="answers">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="answer" minOccurs="2" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="textAnswer" type="xs:string"/>
+																<xs:element name="correct">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:NMTOKEN">
+																			<xs:enumeration value="true"/>
+																			<xs:enumeration value="false"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="explanation" type="xs:string"/>
+															</xs:sequence>
+															<xs:attribute name="codeAnswer" type="xs:int" use="required"/>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="numberOfCorrect" type="xs:int" use="required"/>
+												<xs:attribute name="numberOfAnswers" type="xs:int" use="required"/>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="irtParameters">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="difficulty" type="xs:float"/>
+													<xs:element name="discrimination" type="xs:float"/>
+													<xs:element name="guessing" type="xs:float"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="statisticParameters">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="exhibitionRate" type="xs:float"/>
+													<xs:element name="answerTime" type="xs:float"/>
+													<xs:element name="successRate" type="xs:float"/>
+													<xs:element name="numberOfUses" type="xs:int"/>
+													<xs:element name="numberOfSuccesses" type="xs:int"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="testFiles" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="classicTest" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="classicTestFilePath" minOccurs="0" maxOccurs="unbounded">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:string"/>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="adaptiveTest" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="adaptiveTestFilePath" minOccurs="0" maxOccurs="unbounded">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:string"/>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="codeQuestion" type="xs:int" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="fileName" type="xs:string" use="required"/>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="course" type="xs:string" use="required"/>
+			<xs:attribute name="path" type="xs:string" use="required"/>
+			<xs:attribute name="numberOfAnswersForFile" type="xs:int" use="required"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,121 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Initializing Instance and Class Members</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Classes and Inheritance
+</font>
+
+<h2>
+Initializing Instance and Class Members
+</h2>
+<blockquote>
+You can provide an initial value for a class or an 
+instance member variable in its declaration: 
+
+<blockquote><pre>
+public class BedAndBreakfast {
+    public static final int MAX_CAPACITY = 10;
+    //initialize to 10
+    private boolean full = false;
+    //initialize to false
+}
+</pre></blockquote>
+
+This works well for member variables of primitive data types. 
+Sometimes, it even works when creating arrays and objects. 
+But this form of initialization has limitations. 
+<ul>
+<li>The initialization must be expressed in an assignment statement. 
+For example, you can't use an <code>if</code>-<code>else</code> 
+statement.
+</li>
+<li>The initialization expression cannot call any method that 
+is declared to throw a nonruntime (checked) exception. 
+If the initialization expression calls a method that throws a 
+runtime exception, such as <code>NullPointerException</code>, 
+it cannot do error recovery. See the chapter 
+<a href="HandlingExceptions" class="conditional">Handling Errors with Exceptions</a><a href="HandlingExceptions" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> for details.
+</li>
+</ul>
+
+If these limitations prevent you from initializing a member 
+variable in its declaration, you have to put the initialization 
+code elsewhere. To initialize a class member variable, put 
+the initialization code in a static initialization block, as 
+the following section shows. To initialize an instance member 
+variable, put the initialization code in a constructor. 
+</blockquote>
+
+<h3>Using Static Initialization Blocks</h3>
+<blockquote>
+Here's an example of a static initialization block:
+<blockquote><pre>
+import java.util.ResourceBundle;
+class Errors {
+    static ResourceBundle errorStrings;
+    static {
+        try {
+            errorStrings = 
+               ResourceBundle.getBundle("ErrorStrings");
+        } catch (java.util.MissingResourceException e) {
+            //error recovery code here
+        }
+    }
+}
+</pre></blockquote>
+
+A <i>static initialization block</i> begins with the <code>static</code> 
+keyword and is a normal block of code enclosed in braces: 
+<code>{</code> and <code>}</code>. The <code>errorStrings</code> 
+resource bundle must be initialized in a static initialization block 
+because the <code>getBundle</code> method can throw an exception if 
+the bundle cannot be found. The code should perform error recovery. 
+Also, <code>errorStrings</code> is a class member, so it should not 
+be initialized in a constructor. 
+<br/><br/>
+A class can have any number of static initialization blocks that 
+appear anywhere in the class body. The runtime system guarantees 
+that static initialization blocks and static initializers are 
+called in the order (left to right, top to bottom) that they 
+appear in the source code.
+</blockquote>
+
+
+<h3>Initializing Instance Members</h3>
+<blockquote>
+If you want to initialize an instance variable and cannot do 
+it in the variable declaration for the reasons cited previously, 
+put the initialization in the constructor(s) for the class. If 
+the <code>errorStrings</code> bundle in the previous example 
+were an instance variable rather than a class variable, you'd 
+move the code that initializes <code>errorStrings</code> to a 
+constructor for the class, as follows:
+
+<blockquote><pre>
+import java.util.ResourceBundle;
+import java.util.ResourceBundle;
+class Errors {
+    ResourceBundle errorStrings;
+    Errors() {
+        try {
+            errorStrings =
+              ResourceBundle.getBundle("ErrorStrings");
+        } catch (java.util.MissingResourceException e) {
+            //error recovery code here
+        }
+    }
+}
+</pre></blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</blockquote>
+</body>
+</html>

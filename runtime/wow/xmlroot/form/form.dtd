@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Created by Davy Floes on 11 januari 2008, 11:00 -->
+
+<!ELEMENT form (cgi | concept | input | select | option | description | button)*>
+
+<!ELEMENT cgi EMPTY>
+<!ATTLIST cgi
+	address CDATA #REQUIRED
+>
+
+<!ELEMENT concept (attribute)>
+<!ATTLIST concept
+	name CDATA #REQUIRED
+>
+
+<!ELEMENT attribute (#PCDATA)>
+<!ATTLIST attribute
+	name CDATA #REQUIRED
+>
+
+<!ELEMENT input (concept, description?)>
+<!ATTLIST input
+	name CDATA #REQUIRED
+	size CDATA	#REQUIRED
+	maxlength CDATA #REQUIRED
+	type (int | string | bool) #REQUIRED
+	default CDATA #REQUIRED
+>
+
+<!ELEMENT select (concept, listitem*, description?)>
+<!ATTLIST select
+	name CDATA #REQUIRED
+	size CDATA #REQUIRED
+	default CDATA #REQUIRED
+>
+
+<!ELEMENT listitem (#PCDATA)>
+<!ATTLIST listitem
+	name CDATA #REQUIRED
+	number CDATA #REQUIRED
+	representation CDATA #IMPLIED
+>
+
+<!ELEMENT option (concept, listitem*, description?)>
+<!ATTLIST option
+	name CDATA #REQUIRED
+	allowed CDATA #REQUIRED
+	default CDATA #REQUIRED
+> 
+
+<!ELEMENT description (#PCDATA)>
+<!ATTLIST description
+	name CDATA #IMPLIED
+>
+
+<!ELEMENT button (#PCDATA)>
+<!ATTLIST button
+	name CDATA #REQUIRED
+	type CDATA #REQUIRED
+      value CDATA #IMPLIED
+>

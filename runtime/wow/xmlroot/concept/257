@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE concept SYSTEM 'concept.dtd'>
+
+<concept>
+  <name>tutorial.templatesreview</name>
+  <description>Review on basic types of concepts</description>
+  <attributes>
+    <attribute>
+      <name>access</name>
+      <description>triggered by page access</description>
+      <default>false</default>
+      <type>3</type>
+      <actions>
+	<action>
+	  <expr>! tutorial.templatesreview.suitability &amp;&amp; tutorial.templatesreview.knowledge &lt; 2</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.templatesreview.knowledge</variable>
+	      <expr>35</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+	<action>
+	  <expr>tutorial.templatesreview.suitability</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.templatesreview.knowledge</variable>
+	      <expr>100</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+	<action>
+	  <expr>tutorial.templatesreview.suitability</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.templatesreview.visited</variable>
+	      <expr>tutorial.templatesreview.visited + 1</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+	<action>
+	  <expr>true</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.templatesreview.visited</variable>
+	      <expr>tutorial.templatesreview.visited + 1</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+	<action>
+	  <expr>tutorial.concepts.knowledge&gt;0</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.templatesreview.showability</variable>
+	      <expr>1</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+	<action>
+	  <expr>!((tutorial.concepts.knowledge&gt;0))</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.templatesreview.showability</variable>
+	      <expr>0</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+      </actions>
+      <readonly>true</readonly>
+      <system>true</system>
+      <persistent>false</persistent>
+    </attribute>
+    <attribute>
+      <name>visited</name>
+      <description>has this fragment been visited?</description>
+      <default>0</default>
+      <type>1</type>
+      <actions />
+      <readonly>false</readonly>
+      <system>false</system>
+      <persistent>true</persistent>
+    </attribute>
+    <attribute>
+      <name>knowledge</name>
+      <description>knowledge about this concept</description>
+      <default>0</default>
+      <type>1</type>
+      <actions>
+	<action>
+	  <expr>_tutorial.templatesreview.knowledge &gt; 0</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.reviews.knowledge</variable>
+	      <expr>tutorial.reviews.knowledge + (0.3333333333333333 * _tutorial.templatesreview.knowledge)</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+      </actions>
+      <readonly>false</readonly>
+      <system>false</system>
+      <persistent>true</persistent>
+    </attribute>
+    <attribute>
+      <name>suitability</name>
+      <description>suitability of this concept</description>
+      <default>true</default>
+      <type>3</type>
+      <actions />
+      <readonly>true</readonly>
+      <system>false</system>
+      <persistent>false</persistent>
+    </attribute>
+    <attribute>
+      <name>visibility</name>
+      <description>visibility of this concept</description>
+      <default>0</default>
+      <type>1</type>
+      <actions />
+      <readonly>false</readonly>
+      <system>false</system>
+      <persistent>true</persistent>
+    </attribute>
+    <attribute>
+      <name>showability</name>
+      <description>showability this concept</description>
+      <default>0</default>
+      <type>1</type>
+      <actions />
+      <readonly>false</readonly>
+      <system>false</system>
+      <persistent>true</persistent>
+      <casegroup>
+	<defaultfragment>file:/tutorial/xml/templatesreview.xhtml</defaultfragment>
+	<casevalue>
+	  <value>1</value>
+	  <returnfragment>file:/tutorial/xml/blank.xhtml</returnfragment>
+	</casevalue>
+      </casegroup>
+    </attribute>
+  </attributes>
+  <concepttype>fragment</concepttype>
+  <title>Templates Review</title>
+  <hierarchy>
+    <firstchild></firstchild>
+    <nextsib>tutorial.crtlistreview</nextsib>
+    <parent>tutorial.reviews</parent>
+  </hierarchy>
+</concept>
+

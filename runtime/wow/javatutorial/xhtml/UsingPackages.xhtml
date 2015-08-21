@@ -1,0 +1,87 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Creating and Using Packages</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Interfaces and Packages
+</font>
+
+<h2>
+Creating and Using Packages
+</h2>
+<blockquote>
+To make types easier to
+  find and to use, to avoid naming conflicts, and to control access,
+  programmers bundle groups of related types into packages. 
+<br/><br/>
+
+<blockquote><hr/><strong>Definition: </strong>
+A <i>package</i> is a collection of related types
+providing access protection and namespace management. 
+Note that <i>types</i> refers to classes, interfaces, enums
+and annotations.  For more information on enums, see the
+section on
+<a href="EnumeratedTypes" class="conditional">Enumerated Types</a><a href="EnumeratedTypes" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.
+<hr/></blockquote>
+<p>
+The types that are part of the Java platform 
+  are members of various packages that bundle classes by function: 
+  fundamental classes are in <code>java.lang</code>, classes for 
+  reading and writing (input and output) are in <code>java.io</code>, 
+  and so on. You can put your types in packages, too.
+</p>
+  Let's look at a set of classes and examine why you might want 
+  to put them in a package. Suppose that you write a group of classes 
+  that represent a collection of graphic objects, such as circles, 
+  rectangles, lines, and points. You also write an interface,
+  <code>Draggable</code>, 
+  that classes implement if they can be dragged with the mouse 
+  by the user: 
+
+<blockquote><pre>
+//<em>in the Graphic.java file</em>
+public abstract class Graphic {
+    . . .
+}
+
+//<em>in the Circle.java file</em>
+public class Circle extends Graphic implements Draggable {
+    . . .
+}
+
+//<em>in the Rectangle.java file</em>
+public class Rectangle extends Graphic implements Draggable {
+    . . .
+}
+
+//<em>in the Draggable.java file</em>
+public interface Draggable {
+    . . .
+}
+</pre></blockquote>
+
+    <br/>You should bundle these classes and the interface in a package
+    for several reasons:<br/>
+    <ul>
+      <li>You and other programmers can easily determine that these
+      types are related.</li>
+      <li>You and other programmers know where to find types
+      that provide graphics-related functions.</li>
+      <li>The names of your types won't conflict with types names
+      in other packages, because the package creates a new namespace.</li>
+      <li>You can allow types within the package to have unrestricted
+      access to one another yet still restrict access for types outside
+      the package.</li>
+    </ul>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

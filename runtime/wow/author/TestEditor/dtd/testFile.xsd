@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edited with XML Spy v4.2 U (http://www.xmlspy.com) by Santi (Particular) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="testFile">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="concepts">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="concept" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="value" type="xs:string" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="abstractConcept" type="xs:string" use="optional"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="questions">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="questionsFile" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="question" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attribute name="codeQuestion" type="xs:int" use="required"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="numberOfQuestions" type="xs:int" use="required"/>
+									<xs:attribute name="path" type="xs:string" use="required"/>
+									<xs:attribute name="concept" type="xs:string" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="numberOfFiles" type="xs:int" use="required"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="parameters">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="runningParameters">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="presentationParameters">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="showInitialInfo">
+														<xs:complexType>
+															<xs:attribute name="value" use="optional" default="true">
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:enumeration value="true"/>
+																		<xs:enumeration value="false"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:attribute>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="questionsOrder">
+														<xs:complexType>
+															<xs:attribute name="value" use="optional" default="SEQUENTIAL">
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:enumeration value="RANDOM"/>
+																		<xs:enumeration value="SEQUENTIAL"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:attribute>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="answersOrder">
+														<xs:complexType>
+															<xs:attribute name="value" use="optional" default="SEQUENTIAL">
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:enumeration value="RANDOM"/>
+																		<xs:enumeration value="SEQUENTIAL"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:attribute>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="showQuestionCorrection">
+														<xs:complexType>
+															<xs:attribute name="value" use="optional" default="true">
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:enumeration value="true"/>
+																		<xs:enumeration value="false"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:attribute>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="verbose">
+														<xs:complexType>
+															<xs:attribute name="value" use="optional" default="true">
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:enumeration value="true"/>
+																		<xs:enumeration value="false"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:attribute>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="showCorrectAnswers">
+														<xs:complexType>
+															<xs:attribute name="value" use="optional" default="true">
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:enumeration value="true"/>
+																		<xs:enumeration value="false"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:attribute>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="timeOfAnswer">
+														<xs:complexType>
+															<xs:attribute name="value" type="xs:int" use="optional" default="0"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="repeatWithoutAnswer">
+														<xs:complexType>
+															<xs:attribute name="value" use="optional" default="false">
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:enumeration value="true"/>
+																		<xs:enumeration value="false"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:attribute>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="showFinalInfo">
+														<xs:complexType>
+															<xs:attribute name="value" use="optional" default="true">
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:enumeration value="true"/>
+																		<xs:enumeration value="false"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:attribute>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="htmlParameters">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="bgColor">
+														<xs:complexType>
+															<xs:attribute name="value" type="xs:string" use="optional" default="#FFFFFF"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="background">
+														<xs:complexType>
+															<xs:attribute name="value" type="xs:string" use="optional" default='""'/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="titleColor">
+														<xs:complexType>
+															<xs:attribute name="value" type="xs:string" use="optional" default="#000000"/>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="evaluationParameters">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="incorrectAnswer">
+														<xs:complexType>
+															<xs:attribute name="value" type="xs:string" use="optional" default="0"/>
+															<xs:attribute name="penalize" use="optional" default="false">
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:enumeration value="true"/>
+																		<xs:enumeration value="false"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:attribute>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="withoutAnswer">
+														<xs:complexType>
+															<xs:attribute name="value" type="xs:int" use="optional" default="0"/>
+															<xs:attribute name="penalize" use="optional" default="false">
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:enumeration value="true"/>
+																		<xs:enumeration value="false"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:attribute>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="knowledgePercentage">
+														<xs:complexType>
+															<xs:attribute name="value" type="xs:float" use="optional" default="100"/>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="irtParameters" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="start">
+											<xs:complexType>
+												<xs:attribute name="initialProficiency" type="xs:double" use="optional" default="0.5"/>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="continuation">
+											<xs:complexType>
+												<xs:attribute name="irtModel" use="optional" default="3">
+													<xs:simpleType>
+														<xs:restriction base="xs:int">
+															<xs:enumeration value="1"/>
+															<xs:enumeration value="2"/>
+															<xs:enumeration value="3"/>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="stop">
+											<xs:complexType>
+												<xs:attribute name="value" use="optional" default="standardError">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:enumeration value="standardError"/>
+															<xs:enumeration value="numberItemsAdministred"/>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:attribute>
+												<xs:attribute name="standardError" type="xs:double" use="optional" default="0.33"/>
+												<xs:attribute name="numberItemsAdministred" type="xs:int" use="optional" default="0"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="students" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="student" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="login" type="xs:string" use="required"/>
+									<xs:attribute name="make" type="xs:int" use="required"/>
+									<xs:attribute name="canRepeat" use="optional" default="false">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="true"/>
+												<xs:enumeration value="false"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="score" type="xs:double" use="required"/>
+									<xs:attribute name="finish" use="optional" default="false">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="true"/>
+												<xs:enumeration value="false"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="theta" type="xs:double" use="optional" default="0.5"/>
+									<xs:attribute name="standardError" type="xs:double" use="optional" default="0.33"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="totalQuestion" type="xs:int" use="optional"/>
+			<xs:attribute name="lastUse" type="xs:date" use="required"/>
+			<xs:attribute name="fileName" type="xs:string" use="required"/>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="course" type="xs:string" use="required"/>
+			<xs:attribute name="type" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="activity"/>
+						<xs:enumeration value="exam"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="execution" use="optional" default="classic">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="classic"/>
+						<xs:enumeration value="adaptive"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="path" type="xs:string" use="required"/>
+			<xs:attribute name="enable" use="optional" default="true">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="true"/>
+						<xs:enumeration value="false"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

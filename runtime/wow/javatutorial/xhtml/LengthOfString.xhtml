@@ -1,0 +1,36 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Getting the Length of a String or String Buffer</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>Getting the Length of a String or String Buffer</h2>
+<blockquote>
+Methods used to obtain information about an object are known as <em>accessor methods</em>. One accessor method that you can use with strings, string buffers,  and string builders is the <code>length</code> method, which returns the number of characters contained in the object. After the following two lines of code have been executed, <code>len</code> equals 17: 
+
+<blockquote><pre>
+String palindrome = "Dot saw I was Tod";
+int len = palindrome.length();
+</pre></blockquote>
+
+In addition to <code>length</code>, the <code>StringBuffer</code> and <code>StringBuilder</code> classes have a method called <code>capacity</code>, which returns the amount of space allocated rather than the amount of space used. For example, the capacity of the string builder referred to by <code>dest</code> in the <code>StringsDemo</code> program never changes, although its length increases by 1 for each iteration of the loop. The following figure shows the capacity and the length of <code>dest</code> after nine characters have been appended to it.
+
+<!-- figure -->
+<p><center><img src="images/objects-stringBuffer.gif" width="396" height="61" align="bottom" alt="A string buffer’s length is the number of characters it contains; a string buffer’s capacity is the number of character spaces that have been"/></center></p>
+A string buffer or string builder's length is the number of characters it contains; its capacity is the number of character spaces that have been allocated.
+<br/><br/>
+The <code>String</code> class doesn't have a <code>capacity</code> method, because a string cannot change.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

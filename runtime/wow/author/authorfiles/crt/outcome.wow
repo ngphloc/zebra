@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<!DOCTYPE wow_relation_type SYSTEM 'wow_relation_type.dtd'>
+<wow_relation_type>
+	<name>outcome</name>
+	<listitems>
+		<generateListItem isPropagating="true" location="___child.access">
+			<requirement> ___source.suitability &amp;&amp; ___source.visited &gt; 0 &amp;&amp; ___destination.knowledge &lt; 101</requirement>
+			<trueActions>
+				<action>
+					<conceptName>___destination</conceptName>
+					<attributeName> knowledge </attributeName>
+					<expression> ___destination.knowledge + 1/3*(100 - ___destination.knowledge) </expression>
+				</action>
+				<action>
+					<conceptName>___source</conceptName>
+					<attributeName> visited </attributeName>
+					<expression> 100 </expression>
+				</action>
+			</trueActions>
+		</generateListItem>	
+		<generateListItem isPropagating="true" location="___child.access">
+			<requirement> ___source.suitability &amp;&amp; ___source.visited == 0 &amp;&amp; ___destination.knowledge &lt; 67</requirement>
+			<trueActions>
+				<action>
+					<conceptName>___destination</conceptName>
+					<attributeName> knowledge </attributeName>
+					<expression> ___destination.knowledge + 100/3 </expression>
+				</action>
+				<action>
+					<conceptName>___source</conceptName>
+					<attributeName> visited </attributeName>
+					<expression> 100 </expression>
+				</action>
+			</trueActions>
+		</generateListItem>	
+		<generateListItem isPropagating="true" location="___child.access">
+			<requirement> ___source.suitability &amp;&amp; ___source.visited == 0 &amp;&amp; ___destination.knowledge &gt; 66 &amp;&amp; ___destination.knowledge &lt; 101</requirement>
+			<trueActions>
+				<action>
+					<conceptName>___destination</conceptName>
+					<attributeName> knowledge </attributeName>
+					<expression> 100 </expression>
+				</action>
+				<action>
+					<conceptName>___source</conceptName>
+					<attributeName> visited </attributeName>
+					<expression> 100 </expression>
+				</action>
+			</trueActions>
+		</generateListItem>	
+		<generateListItem isPropagating="true" location="___child.access">
+			<requirement> (! ___source.suitability) &amp;&amp; ___source.visited == (100*2/3) &amp;&amp; ___destination.knowledge &lt; 101</requirement>
+			<trueActions>
+				<action>
+					<conceptName>___destination</conceptName>
+					<attributeName> knowledge </attributeName>
+					<expression> ___destination.knowledge + 1/6*(100 - ___destination.knowledge) </expression>
+				</action>
+				<action>
+					<conceptName>___source</conceptName>
+					<attributeName> visited </attributeName>
+					<expression> 100 </expression>
+				</action>
+			</trueActions>
+		</generateListItem>
+		<generateListItem isPropagating="true" location="___child.access">
+			<requirement> (! ___source.suitability) &amp;&amp; ___source.visited == (100*1/3) &amp;&amp; ___destination.knowledge &lt; 101</requirement>
+			<trueActions>
+				<action>
+					<conceptName>___destination</conceptName>
+					<attributeName> knowledge </attributeName>
+					<expression> ___destination.knowledge + 1/6*(100 - ___destination.knowledge) </expression>
+				</action>
+				<action>
+					<conceptName>___source</conceptName>
+					<attributeName> visited </attributeName>
+					<expression> (100*2/3) </expression>
+				</action>
+			</trueActions>
+		</generateListItem>
+		<generateListItem isPropagating="true" location="___child.access">
+			<requirement> (! ___source.suitability) &amp;&amp; ___source.visited == 0 &amp;&amp; ___destination.knowledge &lt; 101</requirement>
+			<trueActions>
+				<action>
+					<conceptName>___destination</conceptName>
+					<attributeName> knowledge </attributeName>
+					<expression> ___destination.knowledge + 1/6*(100 - ___destination.knowledge) </expression>
+				</action>
+				<action>
+					<conceptName>___source</conceptName>
+					<attributeName> visited </attributeName>
+					<expression> (100*1/3) </expression>
+				</action>
+			</trueActions>
+		</generateListItem>
+	</listitems>
+</wow_relation_type>

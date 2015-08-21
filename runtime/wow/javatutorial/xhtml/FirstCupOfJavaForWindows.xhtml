@@ -1,0 +1,476 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Your First Cup of Java (for Microsoft Windows)</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Getting Started
+<br/>
+<b>Lesson</b>: First Cup of Java
+</font>
+
+<a name="top"></a>
+<h2>First Cup of Java (for Microsoft Windows)</h2>
+
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td rowspan="2">
+<center>
+<p><center><img src="images/butlersm.gif" align="bottom" alt=""/></center></p>
+</center>
+</td>
+<td>
+<blockquote>
+<b><font face="Arial, Helvetica"><font color="#707070">Detailed Instructions<br/>for Your First Program</font></font></b>
+<p>
+The following instructions will help you write your first program. These instructions are for users of Microsoft Windows platforms, which include Windows
+95/98/2000/ME/XP/NT 4.0. We start with a checklist of what you need to write your first program. Next, we cover the steps to creating an application, steps to creating an applet, and explanations of error messages you may encounter.
+</p>
+</blockquote>
+</td>
+</tr>
+</table>
+
+<table border="0" cellspacing="0" cellpadding="0">
+<tr> 
+<td valign="top"><b><font face="Arial, Helvetica" color="#0000FF">1. </font></b><a href="#1">A Checklist</a>
+</td>
+<td valign="top"><b><font face="Arial, Helvetica" color="#FF0000">2. </font></b><a href="#2">Creating Your First Application</a><br/>
+<font size="-1"> a. <a href="#2a">Create a Java Source File</a></font><br/>
+<font size="-1"> b. <a href="#2b">Compile the Source File</a></font> <br/>
+<font size="-1"> c. <a href="#2c">Run the Program</a></font>
+</td>
+</tr>
+<tr> 
+<td valign="top"><b><font face="Arial, Helvetica" color="#990099">3. </font></b><a href="#3">Creating Your First Applet</a>
+</td>
+</tr>
+</table>
+
+<h2>
+<hr align="left"/><br/>
+<a name="1"></a><font face="Arial, Helvetica, sans-serif"><font color="#0000FF">1. </font>A Checklist </font>
+<img src="images/check.gif" alt=""/>
+</h2>
+
+To write your first program, you need:
+<ol>
+<li>
+<b>The Java<sup><font size="-2">TM</font></sup> 2 Platform, Standard Edition.</b>
+You can <a target="_blank" href="http://java.sun.com/j2se/1.4/download.html"><font color="#009bbb">download the SDK now </font></a><a target="_blank" href="http://java.sun.com/j2se/1.4/download.html"></a> and consult the <a target="_blank" href="http://java.sun.com/j2se/1.4/install-windows.html"><font color="#009bbb">installation instructions</font></a><a target="_blank" href="http://java.sun.com/j2se/1.4/install-windows.html"></a>. (Make sure you download the SDK, <i>not</i> the JRE.) 
+</li>
+
+<li>
+<b>A text editor.</b> In this example, we'll use NotePad, the simple editor included with the Windows platforms. To find NotePad, from the <font color="#990099">Start </font>menu select <font color="#990099">Programs </font> > <font color="#990099">Accessories </font> > <font color="#990099">NotePad </font>. You can easily adapt these instructions if you use a different text editor. 
+</li>
+</ol>
+
+These two items are all you need to write your first Java program.
+<blockquote>
+<hr/><strong>Note: </strong>You may want to consider using an IDE to help you write your programs. 
+Java 2 SDK, Standard Edition v. 1.4, is available bundled with an IDE, the Sun&#153; ONE Studio 4, Community Edition (formerly known as  the Forte <font size="-2"><sup>TM</sup></font> for Java <font size="-2"><sup>TM</sup></font>, Community Edition). You can download this Sun ONE Studio bundle from the <a target="_blank" href="http://java.sun.com/j2se/1.4/download.html"><font color="#009bbb">1.4 download page</font></a><a target="_blank" href="http://java.sun.com/j2se/1.4/download.html"></a>. 
+<hr/>
+</blockquote>
+
+<hr align="left"/>
+
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top">
+<h2>
+<a name="2"></a><font face="Arial, Helvetica, sans-serif"><font color="#FF0000">2. </font>Creating Your First Application</font></h2>
+</td>
+
+<td rowspan="2">
+<table border="0" cellspacing="2" cellpadding="5">
+<tr>
+<td> </td>
+</tr>
+</table>
+</td>
+
+<td valign="top" rowspan="2">
+<table cellspacing="0" cellpadding="10">
+<tr valign="top" bgcolor="#CCFFFF">
+<td valign="top" bgcolor="#DBE3F7">
+<b><font face="Arial, Helvetica, sans-serif"><font color="#990000">Why Bytecodes are Cool</font></font></b>
+<p><font size="-1">So, you've heard that with the Java programming language, you can "write once, run anywhere." This means that when you compile your program, you don't generate instructions for one specific platform. Instead, you generate Java bytecodes, which are instructions for the Java Virtual Machine (Java VM). If your platform--whether it's Windows, UNIX, MacOS, or an Internet browser--has the Java VM, it can understand those bytecodes.</font>
+</p>
+</td>
+</tr>
+</table>
+</td>
+<td valign="top" rowspan="2"> </td>
+</tr>
+
+<tr>
+<td valign="top">Your first program, <code>HelloWorldApp</code>, will simply display the greeting "Hello world!". To create this program, you will: 
+<ul>
+<li>
+<b>Create a <font color="#990099">source file</font>.</b> A source file contains text, written in the Java programming language, that you and other programmers can understand. You can use any text editor to create and edit source files.
+</li>
+<br/>
+<li>
+<b>Compile the source file into a <font color="#990099">bytecode file</font>. </b>The <i>compiler</i>, <code>javac</code>, takes your source file and translates its text into instructions that the <i>Java Virtual Machine </i>(Java VM) can understand. The compiler converts these instructions into a bytecode file.
+</li>
+<br/>
+<li>
+<b>Run the program contained in the bytecode file.</b> The Java interpreter installed on your computer implements the Java VM. This interpreter takes your bytecode file and carries out the instructions by translating them into instructions that your computer can understand.
+</li>
+</ul>
+
+<p><center><img src="images/helloWorld.gif" align="bottom" alt=""/></center></p>
+</td>
+</tr>
+</table>
+
+<p><img src="images/arrow.gif" alt=""/><font size="-1"><a href="#top">top</a></font></p>
+
+<br/>
+<hr align="left" width="70%"/>
+
+<a name="2a"></a>
+
+<h2>
+<font face="Arial, Helvetica, sans-serif" color="red">a.</font> <font face="Arial, Helvetica, sans-serif">Create a Source File.</font>
+</h2>
+
+To create a source file, you have two options:
+<ul>
+<li>You can save the file
+<code>
+<a target="_blank" href="resources/HelloWorldApp.java"><font color="#bb000f"><code>HelloWorldApp.java</code></font></a>
+<a target="_blank" href="resources/HelloWorldApp.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>
+</code>
+on your computer and avoid a lot of typing. Then, you can go straight to <a href="#2b">step b</a>.<br/><br/>
+</li>
+<li>Or, you can follow these longer instructions:</li>
+</ul>
+<p><b><font color="#FF0000">1.</font></b> Start NotePad. In a new document, type in the following code:</p>
+<table cellspacing="2" cellpadding="2" >
+<tr>
+<td width="100%">
+<pre>
+/**
+ * The HelloWorldApp class implements an application that
+ * displays "Hello World!" to the standard output.
+ */
+public class HelloWorldApp {
+    public static void main(String[] args) {
+        // Display "Hello World!"
+        System.out.println("Hello World!");
+    }
+}
+</pre>
+</td>
+</tr>
+</table>
+
+<blockquote>
+<table cellspacing="0" cellpadding="10" >
+<tr bgcolor="#FFFFCC">
+<td bgcolor="#FFFFDB">
+<table border="0" cellspacing="0" cellpadding="0" >
+<tr>
+<td width="77%"> <b><font face="Arial, Helvetica, sans-serif"><font color="#990000">Be Careful When You Type</font></font></b></td>
+<td width="13%"><img src="images/typeA.gif" alt=""/></td>
+
+<td width="10%"><img src="images/typea2.gif" alt=""/></td>
+</tr>
+</table>
+<p><font size="-1">Type all code, commands, and file names exactly as shown. The Java compiler and interpreter are <i>case-sensitive</i>, so you must capitalize consistently.</font>
+</p>
+
+<center><p><code>HelloWorldApp<img src="images/notequal.gif" alt=""/> helloworldapp</code></p></center>
+</td>
+</tr>
+</table>
+</blockquote>
+
+<b><font color="#FF0000">2.</font></b>Save this code to a file. From the menu bar, select <font color="#990099">File</font> > <font color="#990099">Save As</font>. In the <font color="#990099">Save As</font> dialog box: 
+<ul>
+<ul>
+<li>
+Using the <font color="#990099">Save in</font> drop-down menu, specify the folder (directory) where you'll save your file. In this example, the directory is <code>java</code> on the <code>C</code> drive.
+</li>
+
+<li>
+In the <font color="#990099">File name</font> text box, type
+<code>"HelloWorldApp.java"</code>, including the double quotation marks.</li>
+
+<li>
+From the <font color="#990099">Save as type</font> drop-down menu, choose <font color="#990099">Text Document</font>. 
+</li>
+</ul>
+</ul>
+
+<blockquote>When you're finished, the dialog box should look like this:
+<p><center><img src="images/saveas.gif" height="165 " align="bottom" alt=""/></center></p>
+Now click <font color="#990099">Save</font>, and exit NotePad.
+</blockquote>
+
+<img src="images/arrow.gif" alt=""/><font size="-1"><a href="#top">top</a></font>
+
+<br/>
+
+<hr align="left" width="70%"/>
+
+<h2>
+<a name="2b"></a><font face="Arial, Helvetica, sans-serif"><font color="#FF0000">b. </font>Compile the Source File.</font>
+</h2>
+
+<p>
+From the <font color="#990099">Start</font> menu, select the <font color="#990099">MS-DOS Prompt</font> application (Windows 95/98) or <font color="#990099">Command Prompt</font> application (Windows NT). When the application launches, it should look like this:
+</p>
+
+<p><center><img src="images/dos.gif" height="120" align="bottom" alt=""/></center></p>
+<p>
+The prompt shows your <i>current directory</i>. When you bring up the prompt for Windows 95/98, your current directory is usually <code>WINDOWS</code> on your <code>C</code> drive (as shown above) or <code>WINNT</code> for Windows NT. To compile your source code file, change your current directory to the directory where your file is located. For example, if your source directory is <code>java</code> on the <code>C</code> drive, you would type the following command at the prompt and press <font color="#990099">Enter</font>:
+</p>
+
+<blockquote>
+<table cellspacing="2" cellpadding="0">
+<tr>
+<td width="100%"><code> cd c:\java </code></td>
+</tr>
+</table>
+</blockquote>
+
+<p>Now the prompt should change to <code>C:\java></code>.</p>
+
+<blockquote>
+<hr align="left"/>
+<b>Note: </b>To change to a directory on a different drive, you must type an extra command.
+<br/> 
+<table border="0" cellspacing="2" cellpadding="0" >
+<tr>
+<td width="50%">
+<img src="images/extrastep.gif" alt=""/>
+</td>
+<td width="50%">As shown here, to change to the <code>java</code> directory on the <code>D</code> drive, you must reenter the drive, <code>d:</code>
+</td>
+</tr>
+</table>
+
+<hr align="left"/>
+</blockquote>
+
+<p>If you enter <code>dir</code> at the prompt, you should see your file.</p>
+
+<p><center><img src="images/cd.gif" height="260" align="bottom" alt=""/></center></p>
+<p>Now you can compile. At the prompt, type the following command and press <font color="#990099">Enter</font>:</p>
+
+<blockquote>
+<table cellspacing="2" cellpadding="0">
+<tr>
+<td width="100%"><code> javac HelloWorldApp.java </code></td>
+</tr>
+</table>
+</blockquote>
+
+<p>If your prompt reappears without error messages, congratulations. You have successfully compiled your program.</p>
+
+<blockquote> 
+<table cellspacing="0" cellpadding="10" >
+<tr BGCOLOR="#FFCCCC">
+<td BGCOLOR="#FFDDDD"><b><font face="Arial, Helvetica, sans-serif"><font color="#804000"><font size="+1">Error
+Explanation</font></font></font></b>
+
+<p><b><code>Bad command or file name</code></b> <i>(Windows 95/98)</i></p>
+<p><b><code>The name specified is not recognized as an internal or external command, operable program or batch file</code></b> <i>(Windows NT)</i></p>
+
+<p>If you receive this error, Windows cannot find the Java compiler, <code>javac</code>.</p>
+<p>Here's one way to tell Windows where to find <code>javac</code>. Suppose you installed the Java 2 Software Development Kit in <code>C:\jdk1.4</code>. At the prompt you would type the following command and press <b>Enter</b>: </p>
+<blockquote>
+<pre><code>C:\jdk1.4\bin\javac HelloWorldApp.java</code></pre>
+</blockquote>
+<b>Note: </b>If you choose this option, each time you compile or run a program, you'll have to precede your <code>javac</code> and <code>java</code> commands with <code>C:\jdk1.4\bin\</code>. To avoid this extra typing, consult the section <i><a target="_blank" href="http://java.sun.com/j2se/1.4/install-windows.html#Environment"><font color="#009bbb">Update the PATH variable</font></a><a target="_blank" href="http://java.sun.com/j2se/1.4/install-windows.html#Environment"><img src="images/otherIcon.gif" width="11" height="11" border="0" align="middle" alt=" (outside of the tutorial)"/></a> </i> in the installation instructions.
+</td>
+</tr>
+</table>
+</blockquote>
+
+<p><br/>The compiler has generated a Java bytecode file, <code>HelloWorldApp.class</code>.</p>
+At the prompt, type <code>dir</code> to see the new file that was generated:
+
+<p><center><img src="images/dosclass.gif" height="248" align="BOTTOM" alt=""/></center></p>
+Now that you have a <code>.class</code> file, you can run your program.
+
+<img src="images/arrow.gif" alt=""/><font size="-1"><a href="#top">top</a></font>
+
+<br/>
+<hr align="left" width="70%"/>
+<h2>
+<a name="2c"></a><font face="Arial, Helvetica, sans-serif"><font color="#FF0000">c.</font> Run the Program.</font></h2>
+
+<blockquote>In the same directory, enter at the prompt:
+<blockquote>
+<table cellspacing="2" cellpadding="0">
+<tr>
+<td width="100%"><code> java HelloWorldApp </code></td>
+</tr>
+</table>
+</blockquote>
+Now you should see:
+<p><center><img src="images/dosresult.gif" height="131" align="bottom" alt=""/></center></p>
+Congratulations! Your program works.
+</blockquote>
+
+
+<blockquote>
+<blockquote> 
+<table cellspacing="0" cellpadding="10" >
+<tr bgcolor="#FFCCCC">
+<td bgcolor="#FFDDDD">
+<a name="error"></a><b><font face="Arial, Helvetica, sans-serif"><font color="#804000"><font size="+1">Error Explanation</font></font></font></b>
+<p><b><code>Exception in thread "main" java.lang.NoClassDefFoundError: HelloWorldApp</code></b></p>
+<p>If you receive this error, <code>java</code> cannot find your bytecode file,<code> HelloWorldApp.class</code>. </p>
+<p>One of the places <code>java</code> tries to find your bytecode file is your current directory. So, if your bytecode file is in <code>C:\java</code>, you should change your current directory to that. To change your directory, type the following command at the prompt and press <b>Enter</b>:</p>
+<blockquote>
+<pre><code>cd c:\java</code></pre>
+</blockquote>
+The prompt should change to <code>C:\java></code>. If you enter <code>dir</code> at the prompt, you should see your <code>.java</code> and <code>.class</code> files. Now enter <code>java HelloWorldApp</code> again.
+<p>If you still have problems, you might have to change your CLASSPATH variable. To see if this is necessary, try "clobbering" the classpath with the following command:</p>
+<blockquote>
+<pre><code>set CLASSPATH=</code></pre>
+</blockquote>
+Now enter <code>java HelloWorldApp</code> again. If the program works now, you'll have to change your CLASSPATH variable. For more information, consult the section <i>
+<a target="_blank" href="http://java.sun.com/j2se/1.4/install-windows.html"><font color="#009bbb">5. Update the PATH variable</font></a><a target="_blank" href="http://java.sun.com/j2se/1.4/install-windows.html"><img src="images/otherIcon.gif" width="11" height="11" border="0" align="middle" alt=" (outside of the tutorial)"/></a> </i> in the installation instructions.
+</td></tr>
+</table>
+</blockquote>
+</blockquote>
+
+
+<img src="images/arrow.gif" alt=""/><font size="-1"><a href="#top">top</a></font>
+
+<hr align="left"/>
+
+<h2><a name="3"></a><font face="Arial, Helvetica, sans-serif"><font color="#990099">3.</font><font color="#009900"> </font>Creating Your First Applet</font></h2>
+
+<p><code>HelloWorldApp</code> is an example of a Java <i>application</i>, a standalone program. Now you will create a Java <i>applet </i>called <code>HelloWorld</code>, which also displays the greeting "Hello world!".  Unlike <code>HelloWorldApp</code>, however, the applet runs in a Java-enabled Web browser such as HotJava, Netscape Navigator, or Microsoft Internet Explorer.
+</p>
+
+<p>To create this applet, you'll perform the basic steps as before: create a Java source file; compile the source file; and run the program.
+</p>
+<hr align="left" width="70%"/>
+
+<h2>
+<font face="Arial, Helvetica, sans-serif"> <font color="#990099"><a name="3a"></a>
+<font face="Arial, Helvetica, sans-serif"><font color="#990099"></font></font>a. </font>Create a Java Source File.</font>
+</h2>
+
+<blockquote>
+<p>Again, you have two options:</p>
+<ul>
+<li>You can save the files
+<a target="_blank" href="resources/HelloWorld.java"><font color="#bb000f"><code>HelloWorld.java</code></font></a>
+<a target="_blank" href="resources/HelloWorld.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a> and 
+<a target="_blank" href="resources/Hello.html"><code>Hello.html</code></a> on your computer and avoid a lot of typing. Then, you can go straight to 
+<a href="#3b">step b</a>.<br/><br/>
+</li>
+
+<li>Or, you can follow these instructions: </li>
+</ul>
+
+<p><b><font color="#990099">1.</font></b><font color="#990099"> </font>Start NotePad. Type the following code into a new document: </p>
+<table cellspacing="2" cellpadding="2">
+<tr>
+<td width="100%">
+<pre><code>import java.applet.*;
+import java.awt.*;
+ 
+/**
+ * The HelloWorld class implements an applet that
+ * simply displays "Hello World!".
+ */
+public class HelloWorld extends Applet {
+    public void paint(Graphics g) {
+        // Display &quot;Hello World!&quot;
+        g.drawString("Hello world!", 50, 25);
+    }
+}
+</code></pre>
+</td>
+</tr>
+</table>
+
+<p>Save this code to a file called <code>HelloWorld.java</code>.</p>
+
+<p><b><font color="#990099">2.</font> </b>You also need an HTML file to accompany your applet. Type the following code into a new NotePad document:</p>
+
+<table cellspacing="2" cellpadding="2" >
+<tr> 
+<td width="100%"> 
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;A Simple Program&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+Here is the output of my program:
+&lt;applet code=&quot;HelloWorld.class&quot; width=&quot;150&quot; height=&quot;25&quot;&gt;
+&lt;/applet&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</td>
+</tr>
+</table>
+
+<p>Save this code to a file called <code>Hello.html</code>.</p>
+</blockquote>
+
+<hr align="left" width="70%"/>
+
+<h2><font face="Arial, Helvetica, sans-serif"><font color="#990099">
+<a name="3b"></a><font face="Arial, Helvetica, sans-serif"><font color="#990099"></font></font>b. </font>Compile the Source File.</font>
+</h2>
+
+<blockquote> 
+<p>At the prompt, type the following command and press <font color="#990099">Return</font>: </p>
+
+<blockquote> 
+<table cellspacing="2" cellpadding="0" >
+<tr> 
+<td width="100%"><code> javac HelloWorld.java </code></td>
+</tr>
+</table>
+</blockquote>
+<p>The compiler should generate a Java bytecode file, <code>HelloWorld.class</code>.</p>
+</blockquote>
+
+<hr align="left" width="70%"/>
+
+<h2><font face="Arial, Helvetica, sans-serif"><font color="#990099">
+<a name="3c"></a><font face="Arial, Helvetica, sans-serif"><font color="#990099"></font></font>c. </font>Run the Program.</font>
+</h2>
+
+<blockquote> 
+<p>Although you can view your applets using a Web browser, you may find it easier to test your applets using the simple <code>appletviewer </code> application that comes with the Java<sup><font size="-2">TM</font></sup> Platform. To view the <code>HelloWorld</code> applet using <code>appletviewer</code>, enter at the prompt:
+</p>
+<blockquote>
+<table cellspacing="2" cellpadding="0">
+<tr> 
+<td width="100%"><code> appletviewer Hello.html </code></td>
+</tr>
+</table>
+</blockquote>
+<p>Now you should see:</p>
+<img src="images/applet.gif" alt=""/><p>Congratulations! Your applet works.</p>
+</blockquote>
+
+<img src="images/arrow.gif" alt=""/><font size="-1"><a href="#top">top</a></font>
+
+</td>
+</tr>
+</table>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

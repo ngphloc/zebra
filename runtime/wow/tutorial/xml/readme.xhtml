@@ -1,0 +1,127 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<p>
+<strong>CAUTION:</strong>
+This file is part of WOW! based on AHA! (Adaptive Hypermedia for All) which is free software (GNU General Public License) developed by Paul De Bra - Eindhoven University of Technology and University. 
+Copyright (c) 2006 by Eindhoven University of Technology.
+It may be used according to the GNU license of Eindhoven University of Technology
+</p>
+
+<h2>What you need to know first:</h2>
+
+<p>
+Welcome to the WOW! tutorial. In order to enjoy learning about and using
+WOW!, please go over these instructions on how to deal with differences
+between computing environments and browsers, so that you can be certain
+you have the proper environment.
+</p>
+
+<p>
+<em>"Listen very carefully: I will say this only once!</em><br />
+<small>(Quote from the TV show "Allo Allo".)</small>
+</p>
+
+<p>
+This tutorial is offered on-line, on the
+<a href="http://wow.hcmuns.edu.vn/">WOW! website</a>
+but is also included in the WOW! distribution.
+When you installed the WOW! distribution on your own system,
+going through the tutorial is a good way to check whether the
+system is functioning properly. The tutorial is pre-installed
+in the distribution. This tutorial will explain how to uninstall
+it should you decide you no longer want it on your own server.
+</p>
+
+<p>There are a number of things you should pay attention to
+when installing WOW! and using it, either as an end-user or as an author:
+</p>
+<ul>
+<li>
+WOW! is implemented entirely in Java, and works with the Java-based
+webserver Tomcat and with Java servlets. You need recent versions of
+Tomcat and of the Java SDK to make WOW! work. On the browser side
+you should use recent versions (of for instance Mozilla Firefox or
+Microsoft Internet Explorer) to ensure full support of (X)HTML and
+HTTP. If you experience problems with WOW! in combination with your
+browser, please make sure you access the WOW! server right after
+starting the browser (without visiting any other pages).
+Some browsers, especially Internet Explorer, sometimes do not work correctly
+with WOW! after their internal memory has become corrupted through
+visits to other Websites. There should be no problem when WOW! is the first
+site you visit.
+</li>
+<li>
+WOW! provides <em>content adaptation</em> by conditionally
+selecting pages, fragments or objects and through <em>link adaptation</em>
+by conditionally changing the color of link anchors and possibly
+adding icons.
+The adaptation is performed each time a page is requested from the server.
+WOW! tries to "convince" the browser to request a page from the server
+even when you navigate through the browsing history (using the
+<em>back</em> and <em>forward</em> buttons), but this is not guaranteed
+to work with all versions of all browsers.
+(At the time of writing this it does work with Firefox and Internet
+Explorer.)
+When a page is opened in a new browser window only the newly opened
+window shows adaptation.
+The other window will continue to show the previous page
+in its "old" state. Thus, as an author you should try to avoid situations
+where you really depend on adaptation when the end-user is navigating
+through the history or is opening new windows.
+</li>
+<li>
+The <em>link adaptation</em> is performed through the use of
+a <em>style sheet</em>. The browser must be configured to accept
+colors which the html page requests. With most browsers this is the
+default setting.
+In this tutorial you will see that links are sometimes <em>blue</em>
+and sometimes <em>purple</em>. These colors are determined by the
+style sheet, not by the browser's history mechanism.
+Links may also be <em>black</em> (actually <em>dark gray</em>)
+meaning that according to the adaptive application the user is not
+ready to follow them.
+You may also see <em>bright red</em> or <em>dark red</em> links;
+they point to pages that are not part of the tutorial.
+</li>
+<li>
+WOW! pages can (but need not) have a <em>header</em> and/or
+<em>footer</em>,
+showing a progress report and access to forms for changing the
+user profile, color preferences or password, or to log out.
+If this header does not show up when you expect it, it probably
+means that the page was not served through WOW! but straight
+through the web server. (As a result there is then no adaptation.)
+</li>
+<li>
+WOW! runs on any full and recent implementation of the Java 2 platform.
+It is frequently tested on Microsoft Windows (currently XP)
+and Linux (mostly Fedora).
+Linux is the prefered platform, not just because it is Open Source
+like WOW! itself, but also because it is better at multitasking.
+Any "plain" PC (or even a laptop computer) will be adequate for a
+small WOW! server, resulting in sub-second response times.
+</li>
+</ul>
+<p>
+You can now go to the
+<a href="welcome" target="_top" class="conditional">main starting page</a>
+of this tutorial.
+(Alternatively you can just press "reload", because this page will never
+be repeated.)
+</p>
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

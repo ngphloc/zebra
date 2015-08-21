@@ -1,0 +1,113 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Nested Classes</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Classes and Inheritance
+</font>
+
+<h2>
+Nested Classes
+</h2>
+<blockquote>
+You can define a class as a member of another class. Such 
+a class is called a <i>nested class</i> and is illustrated here: 
+
+<blockquote><pre>
+class EnclosingClass {
+    ...
+    class ANestedClass {
+        ...
+    }
+}
+</pre></blockquote>
+You use nested classes to reflect and to enforce the relationship 
+between two classes. You should define a class within another 
+class when the nested class makes sense only in the context of 
+its enclosing class or when it relies on the enclosing class 
+for its function. For example, a text cursor might make sense 
+only in the context of a text component. 
+<p>
+As a member of its enclosing class, a nested class has a special 
+privilege: It has unlimited access to its enclosing class's 
+members, even if they are declared private. However, this 
+special privilege isn't really special at all. It is fully 
+consistent with the meaning of private and the other access 
+specifiers. The access specifiers restrict access to members 
+for classes <i>outside</i> the enclosing class. The nested 
+class is <i>inside</i> its enclosing class so that it has 
+access to its enclosing class's members. 
+</p>
+Like other members, a nested class can be declared static 
+(or not). A static nested class is called just that: a 
+<i>static nested class</i>. A nonstatic nested class is 
+called an <i>inner class</i>.
+
+<blockquote><pre>
+class EnclosingClass {
+    ...
+    static class StaticNestedClass {
+        ...
+    }
+    class InnerClass {
+        ...
+    }
+}
+</pre></blockquote>
+
+As with static methods and variables, which we call class 
+methods and variables, a static nested class is associated 
+with its enclosing class. And like class methods, a static 
+nested class cannot refer directly to instance variables or 
+methods defined in its enclosing class &#151; it can use 
+them only through an object reference. 
+<p>
+As with instance methods and variables, an inner class is 
+associated with an instance of its enclosing class and has 
+direct access to that object's instance variables and 
+methods. Also, because an inner class is associated with 
+an instance, it cannot define any static members itself. 
+</p>
+To help further differentiate the terms nested class and 
+inner class, it's useful to think about them in the 
+following way. The term nested class reflects the 
+syntactic relationship between two classes; that is, 
+syntactically, the code for one class appears within 
+the code of another. In contrast, the term inner class 
+reflects the relationship between objects that are 
+instances of the two classes. Consider the following classes: 
+
+<blockquote><pre>
+class EnclosingClass {
+    ...
+    class InnerClass {
+        ...
+    }
+}
+
+</pre></blockquote>
+
+The interesting feature about the relationship between these 
+two classes is not that <code>InnerClass</code> is 
+syntactically defined within <code>EnclosingClass</code>. 
+Rather, it's that an instance of <code>InnerClass</code> 
+can exist only within an instance of <code>EnclosingClass</code> 
+and that it has direct access to the instance variables and 
+methods of its enclosing instance. The next figure illustrates this idea.
+
+<p><center><img src="../../figures/java/classes-inner.gif" width="289" height="115" align="bottom" alt="An &lt;code&gt;InnerClass&lt;/code&gt; Exists Within an Instance of &lt;code&gt;EnclosingClass&lt;/code&gt;. "/></center></p>
+You may encounter nested classes of both kinds in the Java 
+platform API and be required to use them. However, most nested 
+classes that you write will probably be inner classes. 
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

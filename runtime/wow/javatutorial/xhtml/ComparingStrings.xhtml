@@ -1,0 +1,121 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Comparing Strings and Portions of Strings</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>Comparing Strings and Portions of Strings</h2>
+<blockquote>
+The <code>String</code> class has several methods for comparing strings and portions of strings. The following table lists these methods.
+<p>
+<table border="1" cellpadding="4" cellspacing="3">
+<caption><font size="-1"><sup>*</sup></font>Methods in the <code>String</code> Class for Comparing Strings</caption>
+<tr>
+<th width="40%">Method</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td>
+<code>
+boolean endsWith(String)
+<br/>
+boolean startsWith(String)
+<br/>
+boolean startsWith(String, int)
+</code>
+</td>
+<td>
+Returns true if this string ends with or begins with the substring specified as an argument to the method. The integer argument, when present, indicates the offset within the original string at which to begin looking.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>
+int compareTo(String)
+<br/>
+int compareTo(Object)**
+<br/>
+int compareToIgnoreCase(String)**
+</code>
+</td>
+<td>
+Compares two strings lexicographically and returns an integer indicating whether this string is greater than (result is > 0), equal to (result is = 0), or less than (result is &lt; 0) the argument. The Object argument is converted to a string before the comparison takes place. The com-pareToIgnoreCase method ignores case; thus, &quot;a&quot; and &quot;A&quot; are considered
+equal.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>
+boolean equals(Object)
+<br/>
+boolean equalsIgnoreCase(String)
+</code>
+</td>
+<td>
+Returns true if this string contains the same sequence of characters as the argument. The Object argument is converted to a string before the comparison takes place. The equalsIgnoreCase method ignores case; thus, &quot;a&quot; and &quot;A&quot; are considered equal.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>
+boolean regionMatches(int, String, int, int)
+<br/>
+boolean regionMatches(boolean, int, String,
+int, int)
+</code>
+</td>
+<td>
+Tests whether the specified region of this string matches the specified region of the String argument. The boolean argument indicates whether case should be ignored; if true, the case is ignored when comparing characters.
+</td>
+</tr>
+</table>
+</p>
+
+<font size="-1">
+* Methods marked with ** were added to the <code>String</code> class for Java 2 SDK 1.2.
+</font>
+
+<p>
+The following program, <code>RegionMatchesDemo</code>, uses the <code>regionMatches</code> method to search for a string within another string:
+
+<blockquote><pre>
+public class RegionMatchesDemo {
+	public static void main(String[] args) {
+		String searchMe = &quot;Green Eggs and Ham&quot;;
+		String findMe = &quot;Eggs&quot;;
+		int len = findMe.length();
+		boolean foundIt = false;
+		int i = 0;
+		while (!searchMe.regionMatches(i, findMe, 0, len)) {
+			i++;
+			foundIt = true;
+		}
+		if (foundIt) {
+			System.out.println(searchMe.substring(i, i+len));
+		}
+	}
+}
+</pre></blockquote>
+
+The output from this program is <code>Eggs</code>.
+</p>
+
+The program steps through the string referred to by <code>searchMe</code> one character at a time. For each character, the program calls the regionMatches method to determine whether the substring beginning with the current character matches the string for which the program is looking.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

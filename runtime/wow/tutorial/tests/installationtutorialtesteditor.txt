@@ -1,0 +1,8 @@
+In order to add, the information about Test Editor to WOW! tutorial you have to do:
+
+1.- You need to have Test Editor installed in WOW!, and working. If no, please install it before.
+
+2.- Add the directory \items with all its contents in the directory \wow\xmlroot
+
+3.- Copy the content of the directory \tutorial in the directory \wow\tutorial 
+    (replacling the xml files: end-user.xhtml and multiple-choice.xhtml)

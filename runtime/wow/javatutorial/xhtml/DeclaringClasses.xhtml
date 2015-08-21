@@ -1,0 +1,176 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Declaring Classes</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Classes and Inheritance
+</font>
+
+<h2>
+Declaring Classes
+</h2>
+<blockquote>
+You've seen many class definitions of the following form:
+<blockquote><pre>
+class <i>MyClass</i> {
+    //member variable and method declarations
+}
+</pre></blockquote>
+The first line of code is called the <i>class declaration</i>. The 
+preceding class declaration is a minimal class declaration; it 
+contains only those components of a class declaration that are 
+required. Certain aspects of this class, though unspecified, are 
+assumed. The most important is that the direct superclass of 
+<code>MyClass</code> is the <code>Object</code> class. You can 
+provide more information about the class, such as the name of 
+its superclass, whether it implements any interfaces, whether 
+it can be subclassed, and so on, within the class declaration.
+<br/><br/>
+The next table shows all the possible elements of a class declaration 
+in the order they should or must appear.
+
+<blockquote>
+<table border="1">
+<caption>Class Declaration Elements</caption>
+<tr>
+<th>Element
+ </th>
+ <th>Function
+ </th>
+</tr>
+<tr>
+ <td><code>public</code>
+ </td>
+ <td>(Optional) Class is publicly accessible
+ </td>
+</tr>
+<tr>
+ <td><code>abstract</code>
+ </td>
+ <td>(Optional) Class cannot be instantiated
+ </td>
+</tr>
+<tr>
+ <td><code>final</code>
+ </td>
+ <td>(Optional) Class cannot be subclassed
+ </td>
+</tr>
+<tr>
+ <td><code>class <i>NameOfClass</i></code>
+ </td>
+ <td>Name of the class
+ </td>
+</tr>
+<tr>
+ <td><code>extends <i>Super</i></code>
+ </td>
+ <td>(Optional) Superclass of the class
+ </td>
+</tr>
+<tr>
+ <td><code>implements <i>Interfaces</i></code>
+ </td>
+ <td>(Optional) Interfaces implemented by the class
+ </td>
+</tr>
+<tr>
+<td>
+<pre>{
+    <i>ClassBody</i>
+}</pre>
+</td>
+ <td>Provides the class's functionality
+ </td>
+</tr>
+</table>
+</blockquote>
+
+The right-hand side describes the purpose of each component. 
+The required components are shown in boldface. All the other 
+components are optional, and each appears on a line by itself 
+within the table (thus, <code>extends <i>Super</i></code> is 
+a single component), but you don't have to write your code 
+that way. Italic indicates an identifier, such as the name 
+of a class or an interface. If you do not explicitly declare 
+the optional items, the Java platform assumes certain defaults: 
+a nonpublic, nonabstract, nonfinal subclass of 
+<code>Object</code> that implements no interfaces.
+<p>
+The following list provides a few more details about each 
+class declaration component. The list also provides 
+references to this chapter's sections that talk about 
+what each component means, how to use each, and how it 
+affects your class, other classes, and your program. 
+</p>
+<dl>
+<dt>
+<code>public</code>
+<dd>
+The <code>public</code> modifier declares that the class 
+can be used by any other class. Without the <code>public</code> 
+modifier, your class can be used only by classes in the same 
+package. Look in the section  
+<a href="UsingPackages" class="conditional">Creating and Using Packages</a><a href="UsingPackages" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> for information.
+</dd>
+</dt>
+<dt>
+<code>abstract</code>
+<dd>
+The <code>abstract</code> modifier declares that the 
+class cannot be instantiated. For a discussion about 
+when abstract classes are appropriate 
+and how to write them, see the section
+<a href="WritingAbstractClassesMethods" class="conditional">Writing Abstract Classes and Methods</a><a href="WritingAbstractClassesMethods" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.
+</dd>
+</dt>
+<dt>
+<code>final</code>
+<dd>
+The <code>final</code> modifier declares that 
+the class cannot be subclassed. The section 
+<a href="WritingFinalClassesMethods" class="conditional">Writing Final Classes and Methods</a><a href="WritingFinalClassesMethods" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> discusses the reasons for writing final classes.
+</dd>
+</dt>
+<dt>
+<code>class <em>NameOfClass</em></code>
+<dd>
+The <code>class</code> keyword indicates to the 
+compiler that this is a class declaration. The name 
+of the class &#151; <code>NameOfClass</code> &#151; follows 
+the <code>class</code> keyword. 
+</dd>
+</dt>
+<dt>
+<code>extends <em>Super</em></code>
+<dd>
+The <code>extends</code> clause identifies Super as the 
+superclass of the class, thereby inserting the class within 
+the class hierarchy. The section 
+<a href="Managing Inheritance" class="conditional">Managing Inheritance</a><a href="Managing Inheritance" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> discusses the responsibilities and benefits of subclasses.
+</dd>
+</dt>
+<dt>
+<code>implements <em>Interfaces</em></code>
+<dd>
+To declare that your class implements one or more interfaces, use 
+the keyword <code>implements</code> followed by a comma-separated 
+list of the names of the interfaces implemented by the class. 
+Details about writing your own interfaces and how to use them 
+can be found in the section 
+<a href="UsingInterfaces" class="conditional">Creating and Using Interfaces</a><a href="UsingInterfaces" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.
+</dd>
+</dt>
+</dl>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT layoutconfig (stylesheet?,viewlist,layoutlist)>
+<!ELEMENT stylesheet (#PCDATA)>
+<!ELEMENT viewlist (view*)>
+<!ELEMENT layoutlist (layout*)>
+
+
+<!ELEMENT view (secwnds*)>
+<!ELEMENT secwnds (secwnd*)>
+<!ELEMENT secwnd EMPTY>
+
+<!ELEMENT layout (viewgroup*)>
+<!ELEMENT viewgroup (compound|viewref)>
+<!ELEMENT compound (compound*,viewref*,compound*,viewref*)>
+<!ELEMENT viewref EMPTY>
+
+
+<!ATTLIST layout name CDATA #REQUIRED
+		 trigger  CDATA #REQUIRED>
+
+<!ATTLIST viewgroup name CDATA #REQUIRED
+		   secondary  CDATA #IMPLIED
+		   wndOpt  CDATA #IMPLIED>
+
+<!ATTLIST compound framestruct CDATA #REQUIRED
+		   border  CDATA #IMPLIED>
+		   
+		   
+<!ATTLIST view    name ID #REQUIRED  
+		  type  CDATA #REQUIRED
+		  title  CDATA #IMPLIED
+		  background  CDATA #IMPLIED
+		  params  CDATA #IMPLIED
+		  startFile  CDATA #IMPLIED>	
+
+
+<!ATTLIST viewref name IDREF #REQUIRED> 
+
+<!ATTLIST secwnd link CDATA #REQUIRED
+		 viewgroup  CDATA #REQUIRED
+		 img  CDATA #REQUIRED> 

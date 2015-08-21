@@ -1,0 +1,78 @@
+<html>
+<head>
+<title>WOW! Tutorial, version 1.0</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+<body background="icons/hcmunsbg.gif">
+<table width="100%" border="0">
+  <tbody>
+    <tr>
+      <td width="125"><img alt="Logo HCMUNS" src="icons/hcmunslogo-tall.gif"></td>
+      <td width="*"><p align="center"><font size="+8"><strong>WOW! 1.0 Tutorial</strong></font></p>
+      </td>
+      <td width="162"><img src="icons/agulogo-small.gif" align="right"
+        alt="Logo AGU Stichting"></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+Thank you for choosing WOW!, the Adaptive Hypermedia Education System.
+This tutorial is mainly aimed at authors of adaptive websites,
+but it also contains valuable information for end-users and for
+application designers.
+</p>
+
+<p>
+If you are a new user please go to the
+<a href="Registration.html">registration page</a>.
+If you visited this tutorial before you can resume your session
+by entering your id and password in the form below.
+</p>
+
+<p>
+<hr />
+<form method="POST" action="/wow/Login">
+<table>
+<tr>
+<td>User id:</td>
+<td><input type="text" name="login" size="10" />
+</td>
+</tr>
+<tr>
+<td>Password:</td>
+<td><input type="password" name="password" size="10" />
+</tr>
+</table>
+<BR />
+<input type="hidden" name="start" value="welcome" />
+<input type="hidden" name="course" value="tutorial" />
+<input type="hidden" name="directory" value="tutorial" />
+<input type="hidden" name="title" value="WOW! 1.0 tutorial" />
+<input type="hidden" name="background" value="/wow/tutorial/icons/hcmunsbg.gif" />
+Select <input type="submit" name="enter_button" value="Revisit Tutorial !" />
+to submit this form,
+or <input type="reset" value="Reset" /> to clear the form and try again.
+</form>
+<hr />
+</p>
+
+<p>
+<form method="POST" action="/wow/Anonymous">
+<input type="hidden" name="start" value="welcome" />
+<input type="hidden" name="course" value="tutorial" />
+<input type="hidden" name="directory" value="tutorial" />
+<input type="hidden" name="title" value="WOW! 1.0 tutorial" />
+<input type="hidden" name="background" value="/wow/tutorial/icons/hcmunsbg.gif" />
+Please select
+<input type="submit" name="resume_button" value="resume" />
+an anonymous session, if you used the same browser on the same computer
+for your previous visit(s).
+<br/>
+You can also <input type="submit" name="session_button" value="New Session" />
+to start a new anonymous session.
+</form>
+</p>
+
+</body>
+</html>

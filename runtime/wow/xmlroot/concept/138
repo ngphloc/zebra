@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE concept SYSTEM 'concept.dtd'>
+
+<concept>
+  <name>javatutorial.ControlFlowStatementsTest</name>
+  <description>Test for Control Flow Statements</description>
+  <attributes>
+    <attribute>
+      <name>access</name>
+      <description>triggered by page access</description>
+      <default>false</default>
+      <type>3</type>
+      <actions />
+      <readonly>true</readonly>
+      <system>true</system>
+      <persistent>false</persistent>
+    </attribute>
+    <attribute>
+      <name>knowledge</name>
+      <description>knowledge about this concept</description>
+      <default>0</default>
+      <type>1</type>
+      <actions>
+	<action>
+	  <expr>_javatutorial.ControlFlowStatementsTest.knowledge &gt; 0</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>javatutorial.ControlFlowStatements.knowledge</variable>
+	      <expr>javatutorial.ControlFlowStatements.knowledge + (0.125 * _javatutorial.ControlFlowStatementsTest.knowledge)</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+      </actions>
+      <readonly>false</readonly>
+      <system>false</system>
+      <persistent>true</persistent>
+    </attribute>
+    <attribute>
+      <name>visited</name>
+      <description>did the user take this test?</description>
+      <default>0</default>
+      <type>1</type>
+      <actions />
+      <readonly>false</readonly>
+      <system>true</system>
+      <persistent>true</persistent>
+    </attribute>
+    <attribute>
+      <name>suitability</name>
+      <description>the suitability of this page</description>
+      <default>true</default>
+      <type>3</type>
+      <actions />
+      <readonly>true</readonly>
+      <system>false</system>
+      <persistent>false</persistent>
+    </attribute>
+    <attribute>
+      <name>interest</name>
+      <description>is the user interested in this concept</description>
+      <default>0</default>
+      <type>1</type>
+      <actions />
+      <readonly>false</readonly>
+      <system>false</system>
+      <persistent>true</persistent>
+    </attribute>
+    <attribute>
+      <name>hierarchy</name>
+      <description>the visibility of this concept in the hierarchy</description>
+      <default>true</default>
+      <type>3</type>
+      <actions />
+      <readonly>true</readonly>
+      <system>true</system>
+      <persistent>true</persistent>
+    </attribute>
+    <attribute>
+      <name>level</name>
+      <description>level of this concept in the hierarchy</description>
+      <default>0</default>
+      <type>1</type>
+      <actions />
+      <readonly>true</readonly>
+      <system>true</system>
+      <persistent>true</persistent>
+    </attribute>
+  </attributes>
+  <resource>file:/javatutorial/xhtml/ControlFlowStatementsTest.xhtml</resource>
+  <concepttype>test</concepttype>
+  <title>Test for Control Flow Statements</title>
+  <hierarchy>
+    <firstchild></firstchild>
+    <nextsib></nextsib>
+    <parent>javatutorial.ControlFlowStatements</parent>
+  </hierarchy>
+</concept>
+

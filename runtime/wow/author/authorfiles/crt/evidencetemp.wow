@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!-- Loc Nguyen defined -->
+<!DOCTYPE wow_relation_type SYSTEM 'wow_relation_type.dtd'>
+<wow_relation_type>
+	<name> evidencetemp </name>
+	<listitems>
+		<setdefault location ="___destination.suitability" combination="AND">___source.knowledge &gt;= var:50 </setdefault>
+
+		<generateListItem isPropagating="true" location="___destination.access">
+			<requirement> ___destination.kbayes &lt; 100 </requirement>
+			<trueActions>
+				<action>
+					<conceptName>___destination</conceptName>
+					<attributeName> kbayes </attributeName>
+					<expression> ___destination.kbayes + 10 </expression>
+				</action>
+			</trueActions>
+		</generateListItem>					
+		<generateListItem isPropagating="true" location="___destination.access" >
+			<requirement> ___destination.kbayes &gt; 35 </requirement>
+			<trueActions>
+				<action>
+					<conceptName>___destination</conceptName>
+					<attributeName> robserved </attributeName>
+					<expression> 1 </expression>
+				</action>
+			</trueActions>
+		</generateListItem>
+	</listitems>
+</wow_relation_type>

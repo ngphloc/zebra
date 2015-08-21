@@ -1,0 +1,126 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Formatting Numbers</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>Formatting Numbers</h2>
+<blockquote>
+The <code>toString</code> method is handy for simple conversions, but you might not like the format of its output. For instance, a floating-point number that represents a monetary value in your program should perhaps be formatted with only two decimal points. To get more control over the format of the output of your program, you can use the 
+
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/text/NumberFormat.html"><font color="#8800bb"><code>NumberFormat</code></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/text/NumberFormat.html"><img src="../images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a> class and its subclass 
+ 
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/text/DecimalFormat.html"><font color="#8800bb"><code>DecimalFormat</code></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/text/DecimalFormat.html"><img src="../images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>, to format primitive-type numbers, such as double, and their corresponding wrapper objects, such as <code>Double</code>. The <code>NumberFormat</code> and <code>DecimalFormat</code> classes are in the <code>java.text</code> package.
+
+<br/><br/>
+
+The following code example formats a <code>Double</code>. The <code>getNumberInstance</code> method is a factory method that returns an instance of <code>NumberFormat</code>. The <code>format</code> method accepts the <code>Double</code> as an argument and returns the formatted number in a string:
+
+<blockquote><pre>
+Double amount = new Double(345987.246);
+NumberFormat numberFormatter;
+String amountOut;
+numberFormatter = NumberFormat.getNumberInstance();
+amountOut = numberFormatter.format(amount);
+System.out.println(amountOut);
+</pre></blockquote>
+
+The last line of code prints <code>345,987.246</code>.
+
+<blockquote><hr/><strong>Note: </strong>The output you see when you run the previous code snippet might be
+different from that shown because the <code>NumberFormat</code> and the <code>DecimalFormat</code> classes are <em>locale-sensitive</em>&#8212;they tailor their output according to locale. A locale is an object that identifies a specific geographical, political, or cultural region. The locale is not explicitly set in the previous code snippet; thus, the number format object uses the default locale for the current invocation of the Java VM. The output shown here is the output you get when the default locale specifies the United States. You can use the Locale.getDefault method to figure out what the current default locale is, and you can use Locale.setDefault to change it.
+<br/><br/>
+An alternative to changing the default locale for the current invocation of the Java VM is to specify the locale when you create a number format object. Instead of using the default locale, the number format object uses the one specified when it was created. Here’s how you would create a number format object that tailors its output for France:
+<code>
+NumberFormat numberFormatter =
+NumberFormat.getNumberInstance(Locale.FRANCE);
+</code>
+This note applies to all the format examples, including those that use the <code>DecimalFormat</code> class, in the rest of this section. For more information, refer to the <a href="../../i18n/index.html">internationalization trail</a>.
+<hr/></blockquote>
+</blockquote>
+
+<h3>Formatting Currencies</h3>
+
+<blockquote>
+
+If you're writing business applications, you'll probably need to format and to display currencies. You format currencies in the same manner as numbers, except that you call <code>getCurrencyInstance</code> to create a formatter. When you invoke the <code>format</code> method, it returns a string that includes the formatted number and the appropriate currency sign.
+
+<br/><br/>
+
+This code example shows how to format currency: 
+<blockquote><pre>
+Double currency = new Double(9876543.21);
+NumberFormat currencyFormatter;
+String currencyOut;
+
+currencyFormatter = NumberFormat.getCurrencyInstance();
+currencyOut = currencyFormatter.format(currency);
+System.out.println(currencyOut);
+</pre></blockquote>
+<br/><br/>
+The last line of code prints <code>,876,543.21</code>. 
+
+</blockquote>
+
+<h3>Formatting Percentages</h3>
+
+<blockquote>
+
+You can also use the methods of the <code>NumberFormat</code> class to format percentages. To get the locale-specific formatter, invoke the <code>getPercentInstance</code> method. With this formatter, a decimal fraction such as 0.75 is displayed as 75%.
+<br/><br/>
+The following code sample shows how to format a percentage. 
+<blockquote><pre>
+Double percent = new Double(0.75);
+NumberFormat percentFormatter;
+String percentOut;
+
+percentFormatter = NumberFormat.getPercentInstance();
+percentOut = percentFormatter.format(percent);
+System.out.println(percentOut);
+</pre></blockquote>
+
+The last line of code prints <code>75%</code>.
+</blockquote>
+
+<h3>Using the printf Facility</h3>
+<blockquote>
+JDK 5.0 introduces a <code>printf</code> facility which greatly simplifies the task of formatting your output. The method is defined by
+
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/io/PrintStream.html"><font color="#8800bb"><code>java.io.PrintStream</code></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/io/PrintStream.html"><img src="../images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>, and contains the following signature:
+<blockquote><pre>
+public PrintStream printf(String format, Object... args)
+</pre></blockquote>
+The first argument, <code>format</code>, is a format string specifying how the objects in the second argument, <code>args</code>, are to be formatted.  To use this method, you must first understand the format string syntax. Fortunately, the API specification for this class is well-documented.
+<p>
+Simply put, a format string is a <code>String</code> that can contain plain text, plus one or more <i>format specifiers</i>. The format specifiers
+are special characters which format the arguments of <code>Object... args</code>.  The notation <code>Object... args</code> is a 5.0 syntax called <i>varargs</i>, which means that the number of arguments may vary.
+</p>
+The API specification gives the following example:
+<blockquote><pre>
+Calendar c = ...;
+String s = String.format("Duke's Birthday: %1&#36;tm %1&#36;te,%1&#36;tY",c);
+</pre></blockquote>
+<br/><br/>
+The format specifiers should be easy to spot. There are three of them: <code>%1&#36;tm</code>,<code>%1&#36;te</code>, and <code>%1&#36;tY</code>, which all apply to the <code>Calendar</code> object <code>c</code>. The format specifiers for this example break down as follows:
+<ul>
+<li><code>%</code> begins the format specifier</li>
+<li><code>1&#36;</code> means "the first argument"</li>
+<li><code>tm</code> means "month"</li>
+<li><code>te</code> means "day of month"</li>
+<li><code>tY</code> means "year"</li>
+</ul>
+Because the format specifiers all use special characters such as this, which can be difficult to remember, you will need to refer to the API specification for the complete list. Once you get used to using its syntax, you will find the <code>printf</code> method to be extremely convenient.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

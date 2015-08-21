@@ -1,0 +1,41 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Summary of Creating and Using Objects</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>Summary of Creating and Using Objects</h2>
+<blockquote>
+You create an object from a class by using the <code>new</code> operator and a constructor. The new operator returns a reference to the object that was created. You can assign the reference to a variable or use it directly.
+<br/><br/>
+A class controls access to its instance variables and methods by using the Java platform’s access mechanism. Instance variables and methods that are accessible to code outside of the class that they are declared in can be referred to by using a qualified name. The qualified name of an instance variable looks like this:
+
+<blockquote><pre>
+<em>objectReference.variableName</em>
+</pre></blockquote>
+
+The qualified name of a method looks like this:
+
+<blockquote><pre>
+<em>objectReference.methodName(argumentList)</em>
+
+  or
+
+<em>objectReference.methodName()</em>
+</pre></blockquote>
+
+The garbage collector automatically cleans up unused objects. An object is unused if the program holds no more references to it. You can explicitly drop a reference by setting the variable holding the reference to <code>null</code>. 
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

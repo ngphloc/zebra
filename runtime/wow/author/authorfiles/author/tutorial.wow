@@ -1,0 +1,4634 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE conceptList SYSTEM "../generatelist4.dtd">
+
+<conceptList>
+<name>tutorial</name>
+
+<concept>
+ <name>tutorial.welcome</name>
+ <description>The main welcome page (reached through index)</description>
+ <resource>file:/tutorial/xml/welcome.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>welcome</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.installation</nextsib>
+   <parent>tutorial.tutorial</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="false" >
+      <requirement>true</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.testtutorial</conceptName>
+        <attributeName>hierarchy</attributeName>
+        <expression>false</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.welcome.suitability &amp;&amp; tutorial.welcome.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.welcome</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.welcome.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.welcome</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.welcome.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.welcome</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.welcome.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.welcome.visited&gt;1</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.welcome</conceptName>
+        <attributeName>showability</attributeName>
+        <expression>1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>!((tutorial.welcome.visited&gt;1))</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.welcome</conceptName>
+        <attributeName>showability</attributeName>
+        <expression>0</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.welcome.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.tutorial</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.tutorial.knowledge + (0.1111111111111111 * _tutorial.welcome.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="showability" type="int" isPersistent="true" isSystem="false" isChangeable="false">
+   <description></description>
+   <default>0</default>
+   <casegroup>
+     <defaultfragment>file:/tutorial/xml/readme.xhtml</defaultfragment>
+       <casevalue>
+         <value>1</value>
+         <returnfragment>file:/tutorial/xml/welcome.xhtml</returnfragment>
+       </casevalue>
+     </casegroup>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.tutorial</name>
+ <description>The WOW! 1.0 tutorial</description>
+ <resource></resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>tutorial</title>
+ <hierarchy>
+   <firstchild>tutorial.welcome</firstchild>
+   <nextsib></nextsib>
+   <parent></parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this concept</description>
+   <default>true</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.installation</name>
+ <description>Describes how to install WOW!</description>
+ <resource>file:/tutorial/xml/install.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>installation</title>
+ <hierarchy>
+   <firstchild>tutorial.environment</firstchild>
+   <nextsib>tutorial.enduser</nextsib>
+   <parent>tutorial.tutorial</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.installation.suitability &amp;&amp; tutorial.installation.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.installation</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.installation.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.installation</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.installation.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.installation</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.installation.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.installation.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.tutorial</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.tutorial.knowledge + (0.1111111111111111 * _tutorial.installation.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.welcome.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.environment</name>
+ <description>The supporting software environment (java, tomcat, databaseserver)</description>
+ <resource>file:/tutorial/xml/environment.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>environment</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.compile</nextsib>
+   <parent>tutorial.installation</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.environment.suitability &amp;&amp; tutorial.environment.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.environment</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.environment.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.environment</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.environment.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.environment</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.environment.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.environment.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.installation</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.installation.knowledge + (0.25 * _tutorial.environment.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.installation.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.wowcontext</name>
+ <description>How to create a context for WOW! within Tomcat</description>
+ <resource>file:/tutorial/xml/wowcontext.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>wowcontext</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.firstconfig</nextsib>
+   <parent>tutorial.installation</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.wowcontext.suitability &amp;&amp; tutorial.wowcontext.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.wowcontext</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.wowcontext.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.wowcontext</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.wowcontext.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.wowcontext</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.wowcontext.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.wowcontext.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.installation</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.installation.knowledge + (0.25 * _tutorial.wowcontext.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.installation.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.firstconfig</name>
+ <description>Initial configuration process.</description>
+ <resource>file:/tutorial/xml/firstconfig.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>firstconfig</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib></nextsib>
+   <parent>tutorial.installation</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.firstconfig.suitability &amp;&amp; tutorial.firstconfig.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.firstconfig</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.firstconfig.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.firstconfig</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.firstconfig.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.firstconfig</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.firstconfig.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.firstconfig.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.installation</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.installation.knowledge + (0.25 * _tutorial.firstconfig.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.installation.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.enduser</name>
+ <description>End-User aspects of WOW!</description>
+ <resource>file:/tutorial/xml/end-user.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>enduser</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.authoring</nextsib>
+   <parent>tutorial.tutorial</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.enduser.suitability &amp;&amp; tutorial.enduser.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.enduser</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.enduser.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.enduser</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.enduser.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.enduser</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.enduser.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.enduser.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.tutorial</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.tutorial.knowledge + (0.1111111111111111 * _tutorial.enduser.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.welcome.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.authoring</name>
+ <description>Main authoring page</description>
+ <resource>file:/tutorial/xml/author.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>authoring</title>
+ <hierarchy>
+   <firstchild>tutorial.pages</firstchild>
+   <nextsib>tutorial.advanced</nextsib>
+   <parent>tutorial.tutorial</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.authoring.suitability &amp;&amp; tutorial.authoring.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.authoring</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.authoring.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.authoring</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.authoring.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.authoring</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.authoring.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.authoring.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.tutorial</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.tutorial.knowledge + (0.1111111111111111 * _tutorial.authoring.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.welcome.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.pages</name>
+ <description>Pages for WOW!, in XHTML.</description>
+ <resource>file:/tutorial/xml/pages.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>pages</title>
+ <hierarchy>
+   <firstchild>tutorial.xhtml</firstchild>
+   <nextsib>tutorial.amt</nextsib>
+   <parent>tutorial.authoring</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.pages.suitability &amp;&amp; tutorial.pages.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.pages</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.pages.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.pages</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.pages.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.pages</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.pages.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.pages.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.authoring</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.authoring.knowledge + (0.14285714285714285 * _tutorial.pages.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.authoring.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.xhtml</name>
+ <description>Differences between html and xhtml</description>
+ <resource>file:/tutorial/xml/xhtml.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>xhtml versus html</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.headerfooter</nextsib>
+   <parent>tutorial.pages</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.xhtml.suitability &amp;&amp; tutorial.xhtml.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.xhtml</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.xhtml.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.xhtml</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.xhtml.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.xhtml</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.xhtml.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.xhtml.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.pages</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.pages.knowledge + (0.16666666666666666 * _tutorial.xhtml.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.pages.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.headerfooter</name>
+ <description>Structure of headers and footers</description>
+ <resource>file:/tutorial/xml/headerfooter.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>headers and footers</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.fragments</nextsib>
+   <parent>tutorial.pages</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.headerfooter.suitability &amp;&amp; tutorial.headerfooter.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.headerfooter</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.headerfooter.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.headerfooter</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.headerfooter.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.headerfooter</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.headerfooter.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.headerfooter.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.pages</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.pages.knowledge + (0.16666666666666666 * _tutorial.headerfooter.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.pages.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.fragments</name>
+ <description>Conditionally included fragments</description>
+ <resource>file:/tutorial/xml/fragments.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>conditional fragments</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.objects</nextsib>
+   <parent>tutorial.pages</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.fragments.suitability &amp;&amp; tutorial.fragments.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.fragments</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.fragments.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.fragments</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.fragments.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.fragments</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.fragments.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.fragments.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.pages</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.pages.knowledge + (0.16666666666666666 * _tutorial.fragments.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.pages.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.advanced</name>
+ <description>Advanced topics for system designers</description>
+ <resource>file:/tutorial/xml/designer.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>advanced</title>
+ <hierarchy>
+   <firstchild>tutorial.wowconfig</firstchild>
+   <nextsib>tutorial.contribute</nextsib>
+   <parent>tutorial.tutorial</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.advanced.suitability &amp;&amp; tutorial.advanced.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.advanced</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.advanced.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.advanced</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.advanced.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.advanced</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.advanced.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.advanced.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.tutorial</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.tutorial.knowledge + (0.1111111111111111 * _tutorial.advanced.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.welcome.knowledge &gt;= 50 )&amp;&amp; (tutorial.authoring.knowledge &gt;= 50 )&amp;&amp; (tutorial.domainmodel.knowledge &gt;= 50 )&amp;&amp; (tutorial.usermodel.knowledge &gt;= 50 )&amp;&amp; (tutorial.graphauthor.knowledge &gt;= 50 )&amp;&amp; (tutorial.concepteditor.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.wowconfig</name>
+ <description>Description of WOW! configuration files and parameters</description>
+ <resource>file:/tutorial/xml/wowconfig.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>wowconfig</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.templates</nextsib>
+   <parent>tutorial.advanced</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.wowconfig.suitability &amp;&amp; tutorial.wowconfig.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.wowconfig</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.wowconfig.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.wowconfig</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.wowconfig.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.wowconfig</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.wowconfig.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.wowconfig.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.advanced</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.advanced.knowledge + (0.2 * _tutorial.wowconfig.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.advanced.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.templates</name>
+ <description>WOW! templates for graphauthor and concept editor</description>
+ <resource>file:/tutorial/xml/templates.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>templates</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.concepttemplate</nextsib>
+   <parent>tutorial.advanced</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.templates.suitability &amp;&amp; tutorial.templates.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.templates</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.templates.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.templates</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.templates.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.templates</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.templates.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.templates.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.advanced</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.advanced.knowledge + (0.2 * _tutorial.templates.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.advanced.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.authorfile</name>
+ <description>Internal (graph) format used by graphauthor</description>
+ <resource>file:/tutorial/xml/authorfile.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>authorfile</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.wowfile</nextsib>
+   <parent>tutorial.advanced</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.authorfile.suitability &amp;&amp; tutorial.authorfile.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.authorfile</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.authorfile.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.authorfile</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.authorfile.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.authorfile</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.authorfile.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.authorfile.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.advanced</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.advanced.knowledge + (0.2 * _tutorial.authorfile.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.advanced.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.domainmodel</name>
+ <description>Application Domain Model</description>
+ <resource>file:/tutorial/xml/domainmodel.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>domain model</title>
+ <hierarchy>
+   <firstchild>tutorial.concepts</firstchild>
+   <nextsib>tutorial.usermodel</nextsib>
+   <parent>tutorial.authoring</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.domainmodel.suitability &amp;&amp; tutorial.domainmodel.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.domainmodel</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.domainmodel.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.domainmodel</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.domainmodel.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.domainmodel</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.domainmodel.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.domainmodel.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.authoring</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.authoring.knowledge + (0.14285714285714285 * _tutorial.domainmodel.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.authoring.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.concepteditor</name>
+ <description>The Concept and Rule Editor</description>
+ <resource>file:/tutorial/xml/concepteditor.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>concept editor</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.rules</nextsib>
+   <parent>tutorial.domainmodel</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.concepteditor.suitability &amp;&amp; tutorial.concepteditor.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.concepteditor</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.concepteditor.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.concepteditor</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.concepteditor.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.concepteditor</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.concepteditor.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.concepteditor.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.domainmodel</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.domainmodel.knowledge + (0.25 * _tutorial.concepteditor.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.graphauthor.knowledge &gt;= 50 )&amp;&amp; (tutorial.domainmodel.knowledge &gt;= 50 )&amp;&amp; (tutorial.concepts.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.graphauthor</name>
+ <description>Graphical Authoring Tool</description>
+ <resource>file:/tutorial/xml/graphauthor.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>graph author</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.concepteditor</nextsib>
+   <parent>tutorial.domainmodel</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.graphauthor.count==0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.graphauthor</conceptName>
+        <attributeName>count</attributeName>
+        <expression>tutorial.graphauthor.count+1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.graphauthor.count==0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.graphauthor</conceptName>
+        <attributeName>count</attributeName>
+        <expression>1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.graphauthor.suitability &amp;&amp; tutorial.graphauthor.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.graphauthor</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.graphauthor.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.graphauthor</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.graphauthor.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.graphauthor</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.graphauthor.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.graphauthor.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.domainmodel</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.domainmodel.knowledge + (0.25 * _tutorial.graphauthor.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.domainmodel.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="count" type="int" isPersistent="true" isSystem="false" isChangeable="false">
+   <description>count of this page</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.usermodel</name>
+ <description>Structure and updates of the user model</description>
+ <resource>file:/tutorial/xml/usermodel.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>user model</title>
+ <hierarchy>
+   <firstchild>tutorial.formeditor</firstchild>
+   <nextsib>tutorial.layout</nextsib>
+   <parent>tutorial.authoring</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.usermodel.suitability &amp;&amp; tutorial.usermodel.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.usermodel</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.usermodel.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.usermodel</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.usermodel.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.usermodel</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.usermodel.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.usermodel.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.authoring</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.authoring.knowledge + (0.14285714285714285 * _tutorial.usermodel.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.authoring.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.formeditor</name>
+ <description>Editor for forms to let end-users update their user model</description>
+ <resource>file:/tutorial/xml/formeditor.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>formeditor</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.tutorialform</nextsib>
+   <parent>tutorial.usermodel</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.formeditor.suitability &amp;&amp; tutorial.formeditor.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.formeditor</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.formeditor.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.formeditor</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.formeditor.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.formeditor</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.formeditor.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.formeditor.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.usermodel</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.usermodel.knowledge + (0.5 * _tutorial.formeditor.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.usermodel.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.rules</name>
+ <description>Adaptation Rules</description>
+ <resource>file:/tutorial/xml/rules.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>adaptation rules</title>
+ <hierarchy>
+   <firstchild>tutorial.adaptationrule</firstchild>
+   <nextsib></nextsib>
+   <parent>tutorial.domainmodel</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.rules.suitability &amp;&amp; tutorial.rules.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.rules</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.rules.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.rules</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.rules.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.rules</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.rules.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.rules.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.domainmodel</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.domainmodel.knowledge + (0.25 * _tutorial.rules.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.domainmodel.knowledge &gt;= 50 )&amp;&amp; (tutorial.concepts.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.contribute</name>
+ <description>How to contribute to WOW!</description>
+ <resource>file:/tutorial/xml/contribute.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>contribute</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.testtutorial</nextsib>
+   <parent>tutorial.tutorial</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.contribute.suitability &amp;&amp; tutorial.contribute.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.contribute</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.contribute.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.contribute</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.contribute.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.contribute</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.contribute.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.contribute.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.tutorial</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.tutorial.knowledge + (0.1111111111111111 * _tutorial.contribute.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.welcome.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.login</name>
+ <description>syntax for the login form</description>
+ <resource>file:/tutorial/xml/login.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>login</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.multiplechoice</nextsib>
+   <parent>tutorial.authoring</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.login.suitability &amp;&amp; tutorial.login.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.login</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.login.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.login</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.login.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.login</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.login.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.login.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.authoring</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.authoring.knowledge + (0.14285714285714285 * _tutorial.login.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.authoring.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.concepts</name>
+ <description>Application Domain Concepts, structure and properties</description>
+ <resource>file:/tutorial/xml/concepts.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>concepts</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.graphauthor</nextsib>
+   <parent>tutorial.domainmodel</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.concepts.suitability &amp;&amp; tutorial.concepts.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.concepts</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.concepts.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.concepts</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.concepts.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.concepts</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.concepts.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.concepts.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.domainmodel</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.domainmodel.knowledge + (0.25 * _tutorial.concepts.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.domainmodel.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.wowfile</name>
+ <description>files defining graph author to WOW! translation</description>
+ <resource>file:/tutorial/xml/wowfile.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>wowfile</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib></nextsib>
+   <parent>tutorial.advanced</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.wowfile.suitability &amp;&amp; tutorial.wowfile.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.wowfile</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.wowfile.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.wowfile</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.wowfile.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.wowfile</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.wowfile.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.wowfile.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.advanced</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.advanced.knowledge + (0.2 * _tutorial.wowfile.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.advanced.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.multiplechoice</name>
+ <description>How to create and use multiple choice tests</description>
+ <resource>file:/tutorial/xml/multiple-choice.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>multiple choice tests</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib></nextsib>
+   <parent>tutorial.authoring</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.multiplechoice.suitability &amp;&amp; tutorial.multiplechoice.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.multiplechoice</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.multiplechoice.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.multiplechoice</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.multiplechoice.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.multiplechoice</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.multiplechoice.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.multiplechoice.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.authoring</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.authoring.knowledge + (0.14285714285714285 * _tutorial.multiplechoice.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.authoring.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.compile</name>
+ <description>How to build WOW!</description>
+ <resource>file:/tutorial/xml/compile.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>build</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.wowcontext</nextsib>
+   <parent>tutorial.installation</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.compile.suitability &amp;&amp; tutorial.compile.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.compile</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.compile.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.compile</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.compile.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.compile</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.compile.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.compile.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.installation</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.installation.knowledge + (0.25 * _tutorial.compile.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.installation.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.layout</name>
+ <description>Defining layout of an application</description>
+ <resource>file:/tutorial/xml/layout.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>look and feel</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.login</nextsib>
+   <parent>tutorial.authoring</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.layout.suitability &amp;&amp; tutorial.layout.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.layout</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.layout.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.layout</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.layout.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.layout</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.layout.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.layout.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.authoring</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.authoring.knowledge + (0.14285714285714285 * _tutorial.layout.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.amt</name>
+ <description>application management tool</description>
+ <resource>file:/tutorial/xml/amt.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>application management tool</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.domainmodel</nextsib>
+   <parent>tutorial.authoring</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.amt.suitability &amp;&amp; tutorial.amt.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.amt</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.amt.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.amt</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.amt.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.amt</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.amt.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.amt.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.authoring</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.authoring.knowledge + (0.14285714285714285 * _tutorial.amt.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.objects</name>
+ <description>Conditional Inclusion of Objects</description>
+ <resource>file:/tutorial/xml/objects.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>conditional objects</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.standardxhtml</nextsib>
+   <parent>tutorial.pages</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.objects.suitability &amp;&amp; tutorial.objects.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.objects</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.objects.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.objects</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.objects.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.objects</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.objects.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.objects.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.pages</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.pages.knowledge + (0.16666666666666666 * _tutorial.objects.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.pages.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.concepttemplate</name>
+ <description>Template for creating a new concept</description>
+ <resource>file:/tutorial/xml/concepttemplate.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>concept templates</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.authorfile</nextsib>
+   <parent>tutorial.advanced</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.concepttemplate.suitability &amp;&amp; tutorial.concepttemplate.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.concepttemplate</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.concepttemplate.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.concepttemplate</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.concepttemplate.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.concepttemplate</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.concepttemplate.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.concepttemplate.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.advanced</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.advanced.knowledge + (0.2 * _tutorial.concepttemplate.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.adaptationrule</name>
+ <description>adaptation or event-condition-action rule</description>
+ <resource></resource> 
+ <stable></stable>
+ <concepttype>fragment</concepttype>
+ <title>adaptation rules</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib></nextsib>
+   <parent>tutorial.rules</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.adaptationrule.suitability &amp;&amp; tutorial.adaptationrule.knowledge &lt; 2</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.adaptationrule</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.adaptationrule.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.adaptationrule</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.adaptationrule.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.adaptationrule</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.adaptationrule.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>true</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.adaptationrule</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.adaptationrule.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.rules.knowledge&gt;50</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.adaptationrule</conceptName>
+        <attributeName>showability</attributeName>
+        <expression>1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>!((tutorial.rules.knowledge&gt;50))</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.adaptationrule</conceptName>
+        <attributeName>showability</attributeName>
+        <expression>0</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>has this fragment been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.adaptationrule.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.rules</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.rules.knowledge + (1.0 * _tutorial.adaptationrule.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>suitability of this concept</description>
+   <default>true</default>
+  </attribute>
+  <attribute name="visibility" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>visibility of this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="showability" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>showability this concept</description>
+   <default>0</default>
+   <casegroup>
+     <defaultfragment>file:/tutorial/xml/adaptationrule.xhtml</defaultfragment>
+       <casevalue>
+         <value>1</value>
+         <returnfragment>file:/tutorial/xml/eventconditionactionrule.xhtml</returnfragment>
+       </casevalue>
+     </casegroup>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.standardxhtml</name>
+ <description>How to use WOW! with standard xhtml</description>
+ <resource>file:/tutorial/xml/standard-xhtml.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>standard XHTML</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.visibility</nextsib>
+   <parent>tutorial.pages</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.standardxhtml.suitability &amp;&amp; tutorial.standardxhtml.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.standardxhtml</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.standardxhtml.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.standardxhtml</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.standardxhtml.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.standardxhtml</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.standardxhtml.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.standardxhtml.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.pages</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.pages.knowledge + (0.16666666666666666 * _tutorial.standardxhtml.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.pages.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.visibility</name>
+ <description>Adapting the presentation of text fragments</description>
+ <resource>file:/tutorial/xml/visibility.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>visibility</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib></nextsib>
+   <parent>tutorial.pages</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.visibility.suitability &amp;&amp; tutorial.visibility.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.visibility</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.visibility.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.visibility</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.visibility.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.visibility</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.visibility.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.visibility.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.pages</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.pages.knowledge + (0.16666666666666666 * _tutorial.visibility.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.pages.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.testtutorial</name>
+ <description>Test for the tutorial</description>
+ <resource>file:/tutorial/testtutorial_tutorial_C_activity.xml</resource> 
+ <stable></stable>
+ <concepttype>test</concepttype>
+ <title>WOW! Tutorial Test</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.example</nextsib>
+   <parent>tutorial.tutorial</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.testtutorial.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.tutorial</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.tutorial.knowledge + (0.1111111111111111 * _tutorial.testtutorial.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="true">
+   <description>did the user take this test?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="hierarchy" type="bool" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>Does the concept belong to the hierarchy?</description>
+   <default>true</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.example</name>
+ <description>Example illustrating how to build an application</description>
+ <resource>file:/tutorial/xml/example.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>example</title>
+ <hierarchy>
+   <firstchild>tutorial.createconcept</firstchild>
+   <nextsib>tutorial.java</nextsib>
+   <parent>tutorial.tutorial</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.example.suitability &amp;&amp; tutorial.example.knowledge &lt; 20 / 3</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.example</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>20 / 3</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.example.suitability &amp;&amp; tutorial.example.knowledge &lt; 20</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.example</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>20</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.example.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.example</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.example.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.example.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.tutorial</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.tutorial.knowledge + (0.1111111111111111 * _tutorial.example.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="true">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.welcome.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="showability" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>showability this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.createconcept</name>
+ <description>Create conceptual Structure of the Application</description>
+ <resource>file:/tutorial/xml/createconcept.xhtml</resource> 
+ <stable>always</stable>
+ <concepttype>page</concepttype>
+ <title>Create Concepts</title>
+ <hierarchy>
+   <firstchild>tutorial.createstructure</firstchild>
+   <nextsib>tutorial.generaterules</nextsib>
+   <parent>tutorial.example</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.createconcept.suitability &amp;&amp; tutorial.createconcept.knowledge &lt; 20 / 3</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.createconcept</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>20 / 3</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.createconcept.suitability &amp;&amp; tutorial.createconcept.knowledge &lt; 20</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.createconcept</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>20</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.createconcept.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.createconcept</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.createconcept.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.createconcept.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.example</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.example.knowledge + (0.2 * _tutorial.createconcept.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="true">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.example.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="showability" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>showability this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.generaterules</name>
+ <description>Generate rules for the application</description>
+ <resource>file:/tutorial/xml/generaterules.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>Generate Rules</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.writepages</nextsib>
+   <parent>tutorial.example</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.generaterules.suitability &amp;&amp; tutorial.generaterules.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.generaterules</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.generaterules.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.generaterules</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.generaterules.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.generaterules</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.generaterules.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.generaterules.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.example</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.example.knowledge + (0.2 * _tutorial.generaterules.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="true">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.example.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="showability" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>showability this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="hierarchy" type="bool" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>the visibility of this concept in the hierarchy</description>
+   <default>true</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.writepages</name>
+ <description>Write Pages for your application</description>
+ <resource>file:/tutorial/xml/writepages.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>Write Pages</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.definelook</nextsib>
+   <parent>tutorial.example</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.writepages.suitability &amp;&amp; tutorial.writepages.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.writepages</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.writepages.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.writepages</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.writepages.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.writepages</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.writepages.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.writepages.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.example</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.example.knowledge + (0.2 * _tutorial.writepages.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="true">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.example.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="showability" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>showability this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="hierarchy" type="bool" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>the visibility of this concept in the hierarchy</description>
+   <default>true</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.definelook</name>
+ <description>Define look and feel or  layout of the application</description>
+ <resource>file:/tutorial/xml/definelook.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>Define Look</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.reviews</nextsib>
+   <parent>tutorial.example</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.definelook.suitability &amp;&amp; tutorial.definelook.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.definelook</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.definelook.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.definelook</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.definelook.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.definelook</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.definelook.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.definelook.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.example</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.example.knowledge + (0.2 * _tutorial.definelook.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="true">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.example.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="showability" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>showability this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="hierarchy" type="bool" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>the visibility of this concept in the hierarchy</description>
+   <default>true</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.createstructure</name>
+ <description>Create basic structure of your application</description>
+ <resource>file:/tutorial/xml/createstructure.xhtml</resource> 
+ <stable>always</stable>
+ <concepttype>page</concepttype>
+ <title>Create Theoretical Structure</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.usetool</nextsib>
+   <parent>tutorial.createconcept</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.createstructure.suitability &amp;&amp; tutorial.createstructure.knowledge &lt; 20 / 3</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.createstructure</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>20 / 3</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.createstructure.suitability &amp;&amp; tutorial.createstructure.knowledge &lt; 20</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.createstructure</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>20</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.createstructure.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.createstructure</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.createstructure.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.createstructure.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.createconcept</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.createconcept.knowledge + (0.3333333333333333 * _tutorial.createstructure.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="true">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.createconcept.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="showability" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>showability this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.usetool</name>
+ <description>Use the Graph Author Tool</description>
+ <resource>file:/tutorial/xml/usetool.xhtml</resource> 
+ <stable>always</stable>
+ <concepttype>page</concepttype>
+ <title>Use Graph Author Tool</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.drawcrt</nextsib>
+   <parent>tutorial.createconcept</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.usetool.suitability &amp;&amp; tutorial.usetool.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.usetool</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.usetool.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.usetool</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.usetool.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.usetool</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.usetool.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.usetool.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.createconcept</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.createconcept.knowledge + (0.3333333333333333 * _tutorial.usetool.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="true">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.createconcept.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="showability" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>showability this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="hierarchy" type="bool" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>the visibility of this concept in the hierarchy</description>
+   <default>true</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.drawcrt</name>
+ <description>Draw Concept Relationships</description>
+ <resource>file:/tutorial/xml/drawcrt.xhtml</resource> 
+ <stable>always</stable>
+ <concepttype>page</concepttype>
+ <title>Draw CRT</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib></nextsib>
+   <parent>tutorial.createconcept</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.drawcrt.suitability &amp;&amp; tutorial.drawcrt.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.drawcrt</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.drawcrt.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.drawcrt</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.drawcrt.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.drawcrt</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.drawcrt.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.drawcrt.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.createconcept</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.createconcept.knowledge + (0.3333333333333333 * _tutorial.drawcrt.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="true">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.createconcept.knowledge &gt;= 50 ))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="showability" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>showability this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="hierarchy" type="bool" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>the visibility of this concept in the hierarchy</description>
+   <default>true</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.reviews</name>
+ <description>Abstract concepts to bind various reviews required to understand the example</description>
+ <resource></resource> 
+ <stable></stable>
+ <concepttype>abstract</concepttype>
+ <title>Reviews</title>
+ <hierarchy>
+   <firstchild>tutorial.conceptreview</firstchild>
+   <nextsib></nextsib>
+   <parent>tutorial.example</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.reviews.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.example</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.example.knowledge + (0.2 * _tutorial.reviews.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this concept</description>
+   <default>true</default>
+  </attribute>
+  <attribute name="hierarchy" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>the visibility of this concept in the hierarchy</description>
+   <default>false</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.conceptreview</name>
+ <description>Review for information on concepts</description>
+ <resource></resource> 
+ <stable></stable>
+ <concepttype>fragment</concepttype>
+ <title>Concept Review</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.templatesreview</nextsib>
+   <parent>tutorial.reviews</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.conceptreview.suitability &amp;&amp; tutorial.conceptreview.knowledge &lt; 2</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.conceptreview</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.conceptreview.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.conceptreview</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.conceptreview.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.conceptreview</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.conceptreview.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>true</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.conceptreview</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.conceptreview.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.concepts.knowledge&gt;0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.conceptreview</conceptName>
+        <attributeName>showability</attributeName>
+        <expression>1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>!((tutorial.concepts.knowledge&gt;0))</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.conceptreview</conceptName>
+        <attributeName>showability</attributeName>
+        <expression>0</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>has this fragment been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.conceptreview.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.reviews</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.reviews.knowledge + (0.3333333333333333 * _tutorial.conceptreview.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>suitability of this concept</description>
+   <default>true</default>
+  </attribute>
+  <attribute name="visibility" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>visibility of this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="showability" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>showability this concept</description>
+   <default>0</default>
+   <casegroup>
+     <defaultfragment>file:/tutorial/xml/conceptreview.xhtml</defaultfragment>
+       <casevalue>
+         <value>1</value>
+         <returnfragment>file:/tutorial/xml/blank.xhtml</returnfragment>
+       </casevalue>
+     </casegroup>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.templatesreview</name>
+ <description>Review on basic types of concepts</description>
+ <resource></resource> 
+ <stable></stable>
+ <concepttype>fragment</concepttype>
+ <title>Templates Review</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.crtlistreview</nextsib>
+   <parent>tutorial.reviews</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.templatesreview.suitability &amp;&amp; tutorial.templatesreview.knowledge &lt; 2</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.templatesreview</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.templatesreview.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.templatesreview</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.templatesreview.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.templatesreview</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.templatesreview.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>true</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.templatesreview</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.templatesreview.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.concepts.knowledge&gt;0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.templatesreview</conceptName>
+        <attributeName>showability</attributeName>
+        <expression>1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>!((tutorial.concepts.knowledge&gt;0))</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.templatesreview</conceptName>
+        <attributeName>showability</attributeName>
+        <expression>0</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>has this fragment been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.templatesreview.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.reviews</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.reviews.knowledge + (0.3333333333333333 * _tutorial.templatesreview.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>suitability of this concept</description>
+   <default>true</default>
+  </attribute>
+  <attribute name="visibility" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>visibility of this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="showability" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>showability this concept</description>
+   <default>0</default>
+   <casegroup>
+     <defaultfragment>file:/tutorial/xml/templatesreview.xhtml</defaultfragment>
+       <casevalue>
+         <value>1</value>
+         <returnfragment>file:/tutorial/xml/blank.xhtml</returnfragment>
+       </casevalue>
+     </casegroup>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.crtlistreview</name>
+ <description>Review on CRT List provided with WOW!</description>
+ <resource></resource> 
+ <stable></stable>
+ <concepttype>fragment</concepttype>
+ <title>CRT List Review</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib></nextsib>
+   <parent>tutorial.reviews</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.crtlistreview.suitability &amp;&amp; tutorial.crtlistreview.knowledge &lt; 2</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.crtlistreview</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.crtlistreview.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.crtlistreview</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.crtlistreview.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.crtlistreview</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.crtlistreview.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>true</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.crtlistreview</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.crtlistreview.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.graphauthor.knowledge&gt;0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.crtlistreview</conceptName>
+        <attributeName>showability</attributeName>
+        <expression>1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>!((tutorial.graphauthor.knowledge&gt;0))</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.crtlistreview</conceptName>
+        <attributeName>showability</attributeName>
+        <expression>0</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>has this fragment been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.crtlistreview.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.reviews</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.reviews.knowledge + (0.3333333333333333 * _tutorial.crtlistreview.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>suitability of this concept</description>
+   <default>true</default>
+  </attribute>
+  <attribute name="visibility" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>visibility of this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="showability" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>showability this concept</description>
+   <default>0</default>
+   <casegroup>
+     <defaultfragment>file:/tutorial/xml/crtlistreview.xhtml</defaultfragment>
+       <casevalue>
+         <value>1</value>
+         <returnfragment>file:/tutorial/xml/blank.xhtml</returnfragment>
+       </casevalue>
+     </casegroup>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.tutorialform</name>
+ <description>Example form</description>
+ <resource>file:/tutorial/xml/tutorial-form.frm</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>example form</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib></nextsib>
+   <parent>tutorial.usermodel</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.tutorialform.suitability &amp;&amp; tutorial.tutorialform.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.tutorialform</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.tutorialform.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.tutorialform</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.tutorialform.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.tutorialform</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.tutorialform.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.tutorialform.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.usermodel</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.usermodel.knowledge + (0.5 * _tutorial.tutorialform.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="true">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="showability" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>showability this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="hierarchy" type="bool" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>the visibility of this concept in the hierarchy</description>
+   <default>true</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.java</name>
+ <description>Java Concept</description>
+ <resource>file:/tutorial/xml/java.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>java</title>
+ <hierarchy>
+   <firstchild>tutorial.controlstructure</firstchild>
+   <nextsib></nextsib>
+   <parent>tutorial.tutorial</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.java.suitability &amp;&amp; tutorial.java.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.java</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.java.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.java</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.java.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.java</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.java.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.java.do$bayes$infer$valueidx == 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.java</conceptName>
+        <attributeName>showability</attributeName>
+        <expression>1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>!((tutorial.java.do$bayes$infer$valueidx == 0))</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.java</conceptName>
+        <attributeName>showability</attributeName>
+        <expression>0</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.java.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.tutorial</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.tutorial.knowledge + (0.1111111111111111 * _tutorial.java.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="true">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="showability" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>showability this concept</description>
+   <default>0</default>
+   <casegroup>
+     <defaultfragment>file:/tutorial/xml/java.xhtml</defaultfragment>
+       <casevalue>
+         <value>1</value>
+         <returnfragment>file:/tutorial/xml/java$valueidx.xhtml</returnfragment>
+       </casevalue>
+     </casegroup>
+  </attribute>
+  <attribute name="hierarchy" type="bool" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>the visibility of this concept in the hierarchy</description>
+   <default>true</default>
+  </attribute>
+  <attribute name="level" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>level of this concept in the hierarchy</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.controlstructure</name>
+ <description>Control Structure</description>
+ <resource>file:/tutorial/xml/controlstructure.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>controlstructure</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.classandobject</nextsib>
+   <parent>tutorial.java</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.controlstructure.suitability &amp;&amp; tutorial.controlstructure.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.controlstructure</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.controlstructure.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.controlstructure</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.controlstructure.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.controlstructure</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.controlstructure.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.controlstructure.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.java</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.java.knowledge + (0.2 * _tutorial.controlstructure.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.controlstructure.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.java</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.java.knowledge + (0.25 * _tutorial.controlstructure.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="true">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="showability" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>showability this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="hierarchy" type="bool" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>the visibility of this concept in the hierarchy</description>
+   <default>true</default>
+  </attribute>
+  <attribute name="level" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>level of this concept in the hierarchy</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.classandobject</name>
+ <description>Class and Object</description>
+ <resource>file:/tutorial/xml/classandobject.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>classandobject</title>
+ <hierarchy>
+   <firstchild>tutorial.questions</firstchild>
+   <nextsib>tutorial.interface</nextsib>
+   <parent>tutorial.java</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.classandobject.suitability &amp;&amp; tutorial.classandobject.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.classandobject</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.classandobject.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.classandobject</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.classandobject.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.classandobject</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.classandobject.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.classandobject.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.java</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.java.knowledge + (0.4 * _tutorial.classandobject.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.classandobject.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.java</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.java.knowledge + (0.25 * _tutorial.classandobject.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="true">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="showability" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>showability this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="hierarchy" type="bool" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>the visibility of this concept in the hierarchy</description>
+   <default>true</default>
+  </attribute>
+  <attribute name="level" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>level of this concept in the hierarchy</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.interface</name>
+ <description>Interface</description>
+ <resource>file:/tutorial/xml/interface.xhtml</resource> 
+ <stable></stable>
+ <concepttype>page</concepttype>
+ <title>interface</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.jdkinstall</nextsib>
+   <parent>tutorial.java</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.interface.suitability &amp;&amp; tutorial.interface.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.interface</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.interface.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.interface</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.interface.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.interface</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.interface.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.interface.do$bayes$infer &gt; 50</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.interface</conceptName>
+        <attributeName>showability</attributeName>
+        <expression>1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>!((tutorial.interface.do$bayes$infer &gt; 50))</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.interface</conceptName>
+        <attributeName>showability</attributeName>
+        <expression>0</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.interface.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.java</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.java.knowledge + (0.3 * _tutorial.interface.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.interface.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.java</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.java.knowledge + (0.25 * _tutorial.interface.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="true">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="showability" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>showability this concept</description>
+   <default>0</default>
+   <casegroup>
+     <defaultfragment>file:/tutorial/xml/interface.xhtml</defaultfragment>
+       <casevalue>
+         <value>1</value>
+         <returnfragment>file:/tutorial/xml/interface$0.xhtml</returnfragment>
+       </casevalue>
+     </casegroup>
+  </attribute>
+  <attribute name="hierarchy" type="bool" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>the visibility of this concept in the hierarchy</description>
+   <default>true</default>
+  </attribute>
+  <attribute name="level" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>level of this concept in the hierarchy</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.questions</name>
+ <description>That the number of questions are greater than 10</description>
+ <resource>file:/tutorial/xml/questions.xhtml</resource> 
+ <stable></stable>
+ <concepttype>evidencetemp</concepttype>
+ <title>questions</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib>tutorial.exercise</nextsib>
+   <parent>tutorial.classandobject</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.questions.kbayes &lt; 100</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.questions</conceptName>
+        <attributeName>kbayes</attributeName>
+        <expression>tutorial.questions.kbayes + 10</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.questions.kbayes &gt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.questions</conceptName>
+        <attributeName>robserved</attributeName>
+        <expression>1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.questions.suitability &amp;&amp; tutorial.questions.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.questions</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.questions.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.questions</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.questions.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.questions</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.questions.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.questions.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.classandobject</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.classandobject.knowledge + (0.5 * _tutorial.questions.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="true">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.classandobject.knowledge &gt;= 0.3))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="showability" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>showability this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="hierarchy" type="bool" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>the visibility of this concept in the hierarchy</description>
+   <default>true</default>
+  </attribute>
+  <attribute name="level" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>level of this concept in the hierarchy</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="robserved" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>reverse observation of this concept in the hierarchy, eg: 0 corresponding to false</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="kbayes" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>Bayesian knowledge about this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.exercise</name>
+ <description>Exercise set up class human</description>
+ <resource>file:/tutorial/xml/exercise.xhtml</resource> 
+ <stable></stable>
+ <concepttype>evidencetemp</concepttype>
+ <title>exercise</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib></nextsib>
+   <parent>tutorial.classandobject</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.exercise.kbayes &lt; 100</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.exercise</conceptName>
+        <attributeName>kbayes</attributeName>
+        <expression>tutorial.exercise.kbayes + 10</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.exercise.kbayes &gt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.exercise</conceptName>
+        <attributeName>robserved</attributeName>
+        <expression>1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.exercise.suitability &amp;&amp; tutorial.exercise.knowledge &lt; 35</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.exercise</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.exercise.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.exercise</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.exercise.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.exercise</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.exercise.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.exercise.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.classandobject</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.classandobject.knowledge + (0.5 * _tutorial.exercise.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="true" isChangeable="true">
+   <description>has this page been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>the suitability of this page</description>
+   <default>true &amp;&amp; ((tutorial.classandobject.knowledge &gt;= 0.7))</default>
+  </attribute>
+  <attribute name="interest" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>is the user interested in this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="showability" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>showability this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="hierarchy" type="bool" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>the visibility of this concept in the hierarchy</description>
+   <default>true</default>
+  </attribute>
+  <attribute name="level" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>level of this concept in the hierarchy</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="robserved" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>reverse observation of this concept in the hierarchy, eg: 0 corresponding to false</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="kbayes" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>Bayesian knowledge about this concept</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+
+<concept>
+ <name>tutorial.jdkinstall</name>
+ <description>JDK Install</description>
+ <resource></resource> 
+ <stable></stable>
+ <concepttype>fragment</concepttype>
+ <title>jdkinstall</title>
+ <hierarchy>
+   <firstchild></firstchild>
+   <nextsib></nextsib>
+   <parent>tutorial.java</parent>
+ </hierarchy>
+  <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+   <description>triggered by page access</description>
+   <default>false</default>
+    <generateListItem isPropagating="true" >
+      <requirement>! tutorial.jdkinstall.suitability &amp;&amp; tutorial.jdkinstall.knowledge &lt; 2</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.jdkinstall</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>35</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.jdkinstall.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.jdkinstall</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>100</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.jdkinstall.suitability</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.jdkinstall</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.jdkinstall.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>true</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.jdkinstall</conceptName>
+        <attributeName>visited</attributeName>
+        <expression>tutorial.jdkinstall.visited + 1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.jdkinstall.do$bayes$infer$0 &gt; 50</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.jdkinstall</conceptName>
+        <attributeName>showability</attributeName>
+        <expression>1</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.jdkinstall.do$bayes$infer$1 &gt; 50</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.jdkinstall</conceptName>
+        <attributeName>showability</attributeName>
+        <expression>2</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>tutorial.jdkinstall.do$bayes$infer$valueidx == 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.jdkinstall</conceptName>
+        <attributeName>showability</attributeName>
+        <expression>3</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>!((tutorial.jdkinstall.do$bayes$infer$0 &gt; 50) || ( tutorial.jdkinstall.do$bayes$infer$1 &gt; 50) || ( tutorial.jdkinstall.do$bayes$infer$valueidx == 0))</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.jdkinstall</conceptName>
+        <attributeName>showability</attributeName>
+        <expression>0</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="visited" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>has this fragment been visited?</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>knowledge about this concept</description>
+   <default>0</default>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.jdkinstall.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.java</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.java.knowledge + (0.1 * _tutorial.jdkinstall.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+    <generateListItem isPropagating="true" >
+      <requirement>_tutorial.jdkinstall.knowledge &gt; 0</requirement>
+      <trueActions>
+       <action>
+        <conceptName>tutorial.java</conceptName>
+        <attributeName>knowledge</attributeName>
+        <expression>tutorial.java.knowledge + (0.25 * _tutorial.jdkinstall.knowledge)</expression>
+       </action>
+      </trueActions>
+    </generateListItem>
+  </attribute>
+  <attribute name="suitability" type="bool" isPersistent="false" isSystem="false" isChangeable="false">
+   <description>suitability of this concept</description>
+   <default>true</default>
+  </attribute>
+  <attribute name="visibility" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>visibility of this concept</description>
+   <default>0</default>
+  </attribute>
+  <attribute name="showability" type="int" isPersistent="true" isSystem="false" isChangeable="true">
+   <description>showability this concept</description>
+   <default>0</default>
+   <casegroup>
+     <defaultfragment>file:/tutorial/xml/jdkinstall.xhtml</defaultfragment>
+       <casevalue>
+         <value>1</value>
+         <returnfragment>file:/tutorial/xml/jdkinstall$0.xhtml</returnfragment>
+       </casevalue>
+       <casevalue>
+         <value>2</value>
+         <returnfragment>file:/tutorial/xml/jdkinstall$1.xhtml</returnfragment>
+       </casevalue>
+       <casevalue>
+         <value>3</value>
+         <returnfragment>file:/tutorial/xml/jdkinstall$valueidx.xhtml</returnfragment>
+       </casevalue>
+     </casegroup>
+  </attribute>
+  <attribute name="level" type="int" isPersistent="true" isSystem="true" isChangeable="false">
+   <description>level of this concept in the hierarchy</description>
+   <default>0</default>
+  </attribute>
+ </concept>
+</conceptList>

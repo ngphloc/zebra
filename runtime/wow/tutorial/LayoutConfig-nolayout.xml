@@ -1,0 +1,14 @@
+<!DOCTYPE layoutconfig SYSTEM '../WOWstandard/LayoutConfig.dtd'>
+
+<layoutconfig>
+  <viewlist>
+    <view name="v1" type="MainView" title="Main View" />
+  </viewlist>
+  <layoutlist>
+    <layout name="page_c_layout" trigger="_self">
+      <viewgroup name="_self" wndOpt="status=1,layout=0,menubar=1,resizable=1,toolbar=1,width=800,height=600">
+        <viewref name="v1" />
+      </viewgroup>
+    </layout>
+  </layoutlist>
+</layoutconfig>

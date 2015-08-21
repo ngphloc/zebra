@@ -1,0 +1,141 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>The WOW! User Model</h2>
+
+<p>
+For every individual user WOW! maintains a <em>user model</em>,
+consisting of <em>concepts</em> with <em>attributes</em>.
+As an author you never deal with the user model directly,
+but influence the possible updates to the model through the
+<a href="concepts" class="conditional">concept structure</a> and the
+associated
+<object name="tutorial.adaptationrule" type="wow/text" />
+<a href="rules" class="conditional">rules</a>.
+Whether the user model is stored in the form of XML files or
+in the mySQL database, it contains the same information:
+</p>
+<ul>
+<li>
+There is a <em>pseudo concept</em> called <tt>personal</tt>
+which represents information about the user, independent of the
+application domain.
+It can have arbitrarily many attributes that are created through
+an application's registration form.
+If the registration form contains a form field:
+<pre>
+&lt;input type="hidden" name="myattribute" value="mystring" /&gt;
+</pre>
+then an attribute <tt>myattribute</tt> will be added to the
+concept <tt>personal</tt> and it will get the value <tt>mystring</tt>.
+Of course you can use any other type of field
+(e.g. text instead of hidden) to let the
+user enter information in the field.
+<br />
+The concept <tt>personal</tt> can be used like any other concept.
+Attribute values can be used in
+<object name="tutorial.adaptationrule" type="wow/text" />
+<a href="rules" class="conditional">rules</a>
+to create behavior that depends on the information a user entered in the
+registration form.
+Attributes can be created through input fields
+(text fields, selection lists, etc), requiring that the user enter
+some information, but can also be created through hidden fields,
+for instance to define the name of the application the user logs on to.
+All "personal" attributes can be used in the conditions for
+<a href="fragments" class="conditional">conditionally included
+fragments</a> or <a href="objects" class="conditional">objects</a>.
+Apart from attributes defined by the author
+there are some predefined
+attributes of the <tt>personal</tt> concept that are often
+used by WOW! applications:
+<ul>
+<li>
+<tt>name</tt>: This is the end-user's name, entered in the registration form.
+The name is not system-defined but often used in a
+<a href="headerfooter" class="conditional">header or footer</a>,
+using the <tt>&lt;username/&gt;</tt> variable.
+Anonymous users do not have a name, but a standard name ("Anonymous user")
+can be created through the registration form.
+</li>
+<li>
+<tt>email</tt>: This is the end-user's email address,
+entered in the registration form.
+The address can be included in a header or footer using the
+<tt>&lt;email/&gt;</tt> variable.
+Anonymous users do not have an email address but a standard name
+("no email") can be created through the registration form.
+</li>
+<li>
+<tt>id</tt>: This the login id chosen by the end-user or generated
+automatically for an anonymous user. The <tt>id</tt> is a "database key"
+for the user model database and is thus system-defined and must be unique.
+The login id can be included
+in a header using the <tt>&lt;loginid/&gt;</tt> variable.
+</li>
+<li>
+<tt>password</tt>: This is the end-user's password.
+The the password is not stored in encrypted form so anyone
+who might get access to the user models can also read the passwords.
+Therefore one should never use an important and very secret password
+with WOW! applications.
+<tt>password</tt> is a system-defined attribute.
+Anonymous users cannot have a password.
+</li>
+<li>
+<tt>course</tt>: Each WOW! application is identified as a "course"
+(for historical reasons). This attribute is typically also the name of the
+subdirectory of an WOW! server containing the application.
+However, the attribute <tt>directory</tt> defines that directory.
+</li>
+<li>
+<tt>title</tt>: Each WOW! application can be identified using a "title".
+This attribute can be included in a header using the
+<tt>&lt;title/&gt;</tt> variable. (Not "title" for implementation
+reasons.)
+In this tutorial the header shows "knowledge of
+<variable name="personal.title" />".
+The part "<variable name="personal.title" />" is the title of this application.
+</li>
+<li>
+<tt>background</tt>: This is the name for the background image used
+on every page. (In the tutorial this is "/wow/tutorial/icons/hcmunsbg.gif".)
+The <tt>background</tt> only works on
+<a href="pages" class="conditional">XHTML+WOW pages</a> with an
+automatically generated background, not in standard XHTML pages
+that include a stylesheet defining the background image.
+</li>
+</ul>
+</li>
+<li>
+All other concepts belong to the application domain.
+The <a href="concepts" class="conditional">concept structure</a>
+determines which concepts exist and which attributes they have.
+For every attribute of a concept the user model stores: the <em>type</em>
+of the attribute (Boolean, integer or string), the <em>value</em>,
+and a Boolean to indicate whether the attribute value is <em>persistent</em>.
+</li>
+<li>
+When an attribute is defined (in the concept structure) as "changeable"
+then it is possible to include it in a form that gives the end-user
+control of the attribute's value.
+WOW! includes a <a href="formeditor" class="conditional">form editor</a>
+that helps you create such forms.
+</li>
+</ul>
+
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

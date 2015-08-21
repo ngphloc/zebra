@@ -1,0 +1,169 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Declaring Member Variables</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Classes and Inheritance
+</font>
+
+<h2>
+Declaring Member Variables
+</h2>
+<blockquote>
+<code>Stack</code> uses the following line of code to define its 
+member variables:
+<blockquote><pre>
+private Object[] items;
+private int top;
+</pre></blockquote>
+
+This code declares member variables and not other types of 
+variable, such as local variables, because the declaration 
+appears within the class body but outside any methods or 
+constructors. The member variables declared are named 
+<code>items</code> and <code>top</code>. Their data types 
+are array of <code>Object</code> and <code>int</code> 
+respectively. Also, the <code>private</code> keyword identifies 
+<code>items</code> and <code>top</code> as private members. 
+This means that only the <code>Stack</code> class has access to them. 
+<br/><br/>
+The declaration of <code>items</code> and <code>top</code> 
+are simple member variable declarations, but declarations 
+can be more complex. You can specify not only type, name, 
+and access level but also other attributes, including whether 
+the variable is a class variable and whether it's a constant. 
+The following table shows all the possible 
+components of a member variable declaration.
+
+<blockquote>
+<table border="1">
+<caption>Variable Declaration Elements
+</caption>
+<tr>
+ <th>Element
+ </th>
+ <th>Function
+ </th>
+</tr>
+<tr>
+ <td><code><i>accessLevel</i></code>
+ </td>
+ <td>(Optional) Access level for the variable
+ </td>
+</tr>
+<tr>
+ <td><code>static</code>
+ </td>
+ <td>(Optional) Declares a class variable
+ </td>
+</tr>
+<tr>
+ <td><code>final</code>
+ </td>
+ <td>(Optional) Indicates that the variable is a constant
+ </td>
+</tr>
+<tr>
+ <td><code>transient</code>
+ </td>
+ <td>(Optional) Indicates that the variable is transient
+ </td>
+</tr>
+<tr>
+ <td><code>volatile</code>
+ </td>
+ <td>(Optional) Indicates that the variable is volatile
+ </td>
+</tr>
+<tr>
+ <td><code><i>type name</i></code>
+ </td>
+ <td>The type and name of the variable
+ </td>
+</tr>
+</table>
+</blockquote>
+Each component of a member variable declaration is further defined 
+and discussed in later sections of this chapter, as follows: 
+
+<dl>
+<dt>
+<em>accessLevel</em>
+<dd>
+Lets you control what other classes have access to a member variable 
+by specifying one of four access levels: public, protected, package, 
+and private. You control access to methods in the same way. 
+<a href="ControllingAccessToClass" class="conditional">Controlling Access to Members of a Class</a><a href="ControllingAccessToClass" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> covers access levels in detail.
+</dd>
+</dt>
+<dt>
+<code>static</code>
+<dd>
+Declares this is a class variable rather than an instance variable. You
+also use <code>static</code> to declare class methods.
+<a href="UnderstandingInstanceAndClassMembers" class="conditional">Understanding Instance and Class Members</a><a href="UnderstandingInstanceAndClassMembers" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> talks about declaring instance and class variables.
+</dd>
+</dt>
+<dt>
+<code>final</code>
+<dd>
+Indicates that the value of this member cannot change. The following
+variable declaration defines a constant named <code>PI</code>,
+whose value is whose value is pi, the ratio of the circumference of a 
+circle to its diameter (3.141592653589793) and cannot be changed:
+<blockquote><pre>
+final double PI = 3.141592653589793;
+</pre></blockquote>
+It's a compile-time error if your program ever tries to change a final
+variable. By convention, the name of constant values are spelled in
+uppercase letters.
+</dd>
+</dt>
+<dt>
+<code>transient</code>
+<dd>
+Marks member variables that should not be serialized. 
+This component is used in object serialization, which 
+is covered in 
+<a href="ObjectSerialization" class="conditional">Object Serialization</a><a href="ObjectSerialization" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.
+</dd>
+</dt>
+<dt>
+<code>volatile</code>
+<dd>
+Prevents the compiler from performing certain optimizations on a member. 
+This advanced feature, used by few programmers, is outside 
+the scope of this tutorial.
+</dd>
+</dt>
+<dt>
+<em>type</em>
+<dd>
+Like other variables, a member variable must have a type. You can use
+primitive type names such as <code>int</code>,
+<code>float</code>, or <code>boolean</code>. Or you can use
+reference types, such as array, object, or interface names.
+</dd>
+</dt>
+<dt>
+<em>name</em>
+<dd>
+A member variable's name can be any legal identifier and, 
+by convention, begins with a lowercase letter. A member 
+variable cannot have the same name as any other member 
+variable in the same class.
+</dd>
+</dt>
+</dl>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

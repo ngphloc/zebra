@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Adaptive Hypermedia Header and Footer Source DTD
+	Author: G.H. Granneman
+	Version: 1.0 (August 1999)
+-->
+
+<!ELEMENT xml (#PCDATA|handler|variable|stopapplet)*>
+
+<!ELEMENT handler (name, linkdescription)>
+<!ELEMENT name (logout | colorsettings | knowledgesettings |
+			passwordsettings | done | todo | userfeedback)>
+
+<!ELEMENT logout EMPTY>
+<!ELEMENT colorsettings EMPTY>
+<!ELEMENT knowledgesettings EMPTY>
+<!ELEMENT passwordsettings EMPTY>
+<!ELEMENT done EMPTY>
+<!ELEMENT todo EMPTY>
+<!ELEMENT userfeedback EMPTY>
+
+<!ELEMENT linkdescription (#PCDATA|variable)*>
+
+<!ELEMENT variable (username | loginid | email | university | department |
+			course | title | numberdone | numbertodo)>
+<!ELEMENT username EMPTY>
+<!ELEMENT loginid EMPTY>
+<!ELEMENT email EMPTY>
+<!ELEMENT university EMPTY>
+<!ELEMENT department EMPTY>
+<!ELEMENT course EMPTY>
+<!ELEMENT title EMPTY>
+<!ELEMENT numberdone EMPTY>
+<!ELEMENT numbertodo EMPTY>
+
+<!ELEMENT stopapplet EMPTY>

@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE concept SYSTEM 'concept.dtd'>
+
+<concept>
+  <name>javatutorial.javatutorial</name>
+  <description>Java Tutorial</description>
+  <attributes>
+    <attribute>
+      <name>access</name>
+      <description>triggered by page access</description>
+      <default>false</default>
+      <type>3</type>
+      <actions />
+      <readonly>true</readonly>
+      <system>true</system>
+      <persistent>false</persistent>
+    </attribute>
+    <attribute>
+      <name>knowledge</name>
+      <description>knowledge about this concept</description>
+      <default>0</default>
+      <type>1</type>
+      <actions />
+      <readonly>false</readonly>
+      <system>false</system>
+      <persistent>true</persistent>
+    </attribute>
+    <attribute>
+      <name>visited</name>
+      <description>has this page been visited?</description>
+      <default>0</default>
+      <type>1</type>
+      <actions />
+      <readonly>true</readonly>
+      <system>true</system>
+      <persistent>true</persistent>
+    </attribute>
+    <attribute>
+      <name>suitability</name>
+      <description>the suitability of this concept</description>
+      <default>true</default>
+      <type>3</type>
+      <actions />
+      <readonly>true</readonly>
+      <system>false</system>
+      <persistent>false</persistent>
+    </attribute>
+    <attribute>
+      <name>hierarchy</name>
+      <description>the visibility of this concept in the hierarchy</description>
+      <default>false</default>
+      <type>3</type>
+      <actions />
+      <readonly>true</readonly>
+      <system>true</system>
+      <persistent>false</persistent>
+    </attribute>
+    <attribute>
+      <name>level</name>
+      <description>level of this concept in the hierarchy</description>
+      <default>0</default>
+      <type>1</type>
+      <actions />
+      <readonly>true</readonly>
+      <system>true</system>
+      <persistent>true</persistent>
+    </attribute>
+  </attributes>
+  <concepttype>abstract</concepttype>
+  <title>Java Tutorial</title>
+  <hierarchy>
+    <firstchild>javatutorial.GettingStarted</firstchild>
+    <nextsib></nextsib>
+    <parent></parent>
+  </hierarchy>
+</concept>
+

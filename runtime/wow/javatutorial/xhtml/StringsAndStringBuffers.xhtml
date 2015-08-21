@@ -1,0 +1,56 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Strings and String Buffers</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>Strings and String Buffers</h2>
+<blockquote>
+Traditionally, the The Java platform has always provided two classes, <code>String</code>, and <code>StringBuffer</code>, which store and manipulate strings- character data consisting of more than one character. The <code>String</code> class provides for strings whose value will not change. For example, if you write a method that requires string data and the method is not going to modify the string in any way, pass a <code>String</code> object into it. The <code>StringBuffer</code> class provides for strings that will be modified; you use string buffers when you know that the value of the character data will change. You typically use string buffers for constructing character data dynamically: for example, when reading text data from a file. String buffers are safe for use in a multi-threaded environment. The <code>StringBuilder</code> class, introduced in JDK 5.0, is a faster, drop-in replacement for string buffers. You use a string builder in the same way as a string buffer, but <i>only</i> if it's going to be accessed by a single thread. 
+
+<p>
+Use the following guidelines for deciding which class to use:
+<ul>
+<li> If your text is not going to change, use a string.</li>
+<li> If your text will change, and will only be accessed from a single thread, use a string builder.</li>
+<li> If your text will change, but will be accessed from multiple threads, use a string buffer.</li>
+</ul>
+</p>
+
+Following is a sample program called 
+<a target="_blank" href="resources/StringsDemo.java"><font color="#bb000f"><code>StringsDemo</code></font></a><a target="_blank" href="resources/StringsDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>, which reverses the characters of a string. This program uses both a string and a string builder. If you are using a pre-5.0 JDK, simply change all occurances of <code>StringBuilder</code>  to <code>StringBuffer</code> and the code will compile.
+
+<blockquote><pre>
+public class StringsDemo {
+	public static void main(String[] args) {
+		String palindrome = &quot;Dot saw I was Tod&quot;;
+		int len = palindrome.length();
+		StringBuilder dest = new StringBuilder(len);
+		for (int i = (len - 1); i &gt;= 0; i--) {
+			dest.append(palindrome.charAt(i));
+		}
+		System.out.println(dest.toString());
+	}
+}
+</pre></blockquote>
+
+The output from this program is:
+<blockquote><pre>
+doT saw I was toD
+</pre></blockquote>
+
+The following sections discuss several features of the <code>String</code>, <code>StringBuffer</code>, and <code>StringBuilder</code> classes.
+ 
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

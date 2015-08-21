@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT CAF (domainmodel?, goalmodel?)>
+
+<!ELEMENT domainmodel (concept+)>
+<!ELEMENT concept (name, attribute*, concept*, relation*)>
+<!ELEMENT attribute (name, contents)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT contents (#PCDATA)>
+<!ELEMENT relation (name, relationlink+)>
+<!ELEMENT relationlink (#PCDATA)>
+
+<!ATTLIST relationlink
+    weight CDATA ""
+    label CDATA ""
+    type CDATA ""
+>
+
+<!ELEMENT goalmodel (lesson)>
+<!ELEMENT link (#PCDATA)>
+
+<!ATTLIST link 
+    weight CDATA ""
+    label CDATA ""
+>
+
+<!ELEMENT lesson (link*, lesson*)>
+
+<!ATTLIST lesson
+    weight CDATA ""
+    label CDATA ""
+>

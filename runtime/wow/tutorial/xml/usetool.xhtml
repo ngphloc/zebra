@@ -1,0 +1,126 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>Creating Concepts Using Graph Author Tool</h2>
+<p>
+We will see how to make simple
+<a href="concepts" class="conditional">concepts</a> using the Graph Author
+Tool provided with WOW!e.</p>
+<p>
+The <a href="graphauthor" class="conditional">Graph Author Tool</a> is
+the main authoring tool for the concept structure.
+It lets you create a concept hierarchy and concept relationships
+of different types.<br />
+Note: The use of <a href="concepteditor" class="conditional">Concept
+Editor Tool</a> and manual editing of the XML file that contains
+the concept structure is not recommended.
+</p>
+<ol>
+<li>
+First you need to start the Graph Author tool.
+This can be done through the
+<a href="../../author/AMt/AMt.html" target="_blank" class="unconditional">Application Management Tool</a> (AMT).
+<br />
+AMT requires you to <strong>Log In</strong> as an author first.
+(WOW! comes with a default author called "author", with password "wow".
+You then see the applications of this author.
+</li>
+<li>
+Create a new application by either using the menu toolbar or using the
+button <img src="/wow/tutorial/images/graphnewbutton.gif" width="29" height="29" />.
+We will assume that you create a new application, called <em>example</em>.
+</li>
+<li>After you created the <em>example</em> application you can open
+the application with the Graph Author. (Right click on the application for
+a menu of actions, or go to the Author files tab and double click on the
+"example.gaf" file.)
+After it is opened the Graph Author should look like in
+<a href="/wow/tutorial/images/graphauthor_new.gif" target="_blank" class="unconditional">this screendump</a> (but the toplevel concept will be named "example").
+<if expr="tutorial.graphauthor.knowledge==0">
+<block>
+<br />
+Note: All the functions performed by the
+<a href="/wow/tutorial/images/graphauthorbuttons.gif" target="_blank" class="unconditional">buttons</a>
+in the toolbar can also be achieved by corresponding menu items.
+The functions of buttons are mentioned in their tooltips.
+For further reference visit the
+<a href="graphauthor" class="conditional">Graph Author Page</a> of this tutoria
+</block>
+</if>
+</li>
+<li>In the left of the tool you see the
+<a href="/wow/tutorial/images/graphauthor_new.gif" target="_blank" class="unconditional">concept hierarchy</a>.
+Right click on the the concept named 'example' and click [Edit].<br />
+</li>
+<li>What you see now is a <a href="/wow/tutorial/images/grapheditconcept.gif" target="_blank" class="unconditional">Edit Concept Dialog Box</a>.
+It contains the following fields:
+<ul>
+  <li>Name : This is the name of the <a href="concepts" class="conditional">concept</a>. Every concept must have a unique name, which in WOW! must be a single
+  word (alphanumeric and starting with a letter). It is advisable to use descriptive names. The first <a href="concepts" class="conditional">concept</a> should have the same name as that of the application. Let us name it <strong>'example'</strong></li>
+  <li>Description : This corresponds to the self defined short description of the <a href="concepts" class="conditional">concept. </a>This is basically used for further usage and cross usability.</li>
+  <li>Resource : This corresponds to the page written in HTML or XHTML which this page corresponds to. It follows a strict format<br />
+  file:/name_of_the_application/relative_path_of_the_file<br />
+  Let us keep this field blank as for now.</li>
+  <li>Template : This drop down menu lets you select predefined <a href="concepttemplate" class="conditional">concept templates</a> included in WOW!. We select the 'abstract concept' template. <br />
+    Note: The abstract concepts don't have any resources.</li>
+</ul>
+After the completion of above steps the Edit Concept Dialog Box looks like this <a href="/wow/tutorial/images/grapheditconcept_filled.gif" target="_blank" class="unconditional">screendump</a>. <br />
+  Now press OK. Notice how the name of the concept has changed.
+</li>
+<li>
+Now add a concept named 'welcome' (child)  by selecting 'example' (parent) and then clicking [Add New Concept] <img src="/wow/tutorial/images/graphnewconceptbutton.gif" width="30" height="30" /> or right clicking 'example' and then selecting [Add Concept].</li>
+<li>
+Now fill in the following fields in the <a href="/wow/tutorial/images/graphaddconcept.gif" target="_blank" class="unconditional">Add Concept Dialog Box</a>
+<ul>
+  <li>Name : welcome </li>
+  <li>Description : Welcome Page </li>
+  <li>Resource : file:/example/welcome.xhtml</li>
+  <li>Template : page concept</li>
+</ul>
+This is how it looks like finally : <a href="/wow/tutorial/images/graphaddconcept_filled.gif" target="_blank" class="unconditional">screendump.</a>
+</li>
+<li>
+Repeat Step 7 and add concepts 'history','basic','advanced' and 'final' respectively. Make sure to use the corresponding names in the Resource field. It is advisable to keep the name of the concept and name of the resource file as same. This <a href="/wow/tutorial/images/examplehierarchy.gif" target="_blank" class="unconditional">screendump</a> shows the what the hierarchy looks like.</li>
+<li>
+Note how the image next to 'example' in the <strong>concept hierarchy</strong> has changed. Clicking on it expands the concept, indiacating that 'welcome', 'history', 'basic', 'advanced' and 'final' are indeed its children.
+</li>
+<li>
+Now right click on 'basic' and 'advanced' concepts and select [edit]. Change the template of both of them to be [container page concept].
+(We do this because we create subconcepts for them, so they are a page
+but there are other pages that deal with parts of the concept.)</li>
+<li>
+Now add concept named 'document'  to the 'basic' concept by selecting 'basic' and then clicking [Add Concept] or right clicking 'basic' and then selecting <br />
+[Add Concept]. Fill the fields as shown:
+<ul>
+  <li>Name : document </li>
+  <li>Description : Document Tags</li>
+  <li>Resource : file:/example/docuement.xhtml</li>
+  <li>Template : page concept</li>
+</ul>
+</li>
+<li>Repeat Step 10 and add concepts 'lists' and 'textstructure' respectively.</li>
+<li>Repeat Step 9 and Step 10 and add 2 new concepts to the 'advanced' concept. Name these concepts as 'special' and 'anchors'.
+</li>
+</ol>
+<p>The final concept hierarchy looks like this....<a href="/wow/tutorial/images/examplehierarchy2.gif" target="_blank" class="unconditional">screendump </a></p>
+
+
+<object name="tutorial.templatesreview" type="text/wow"/>
+
+
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

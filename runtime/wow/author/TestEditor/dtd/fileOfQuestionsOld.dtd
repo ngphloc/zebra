@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!ELEMENT test (question)+>
+<!ATTLIST test
+	title CDATA #REQUIRED
+	concept CDATA #REQUIRED
+	total CDATA #REQUIRED
+	ask CDATA #REQUIRED
+	verbose (true | false) #REQUIRED
+>
+<!ELEMENT question (#PCDATA | answer)*>
+<!ATTLIST question
+	answers CDATA #REQUIRED
+	right CDATA #REQUIRED
+>
+<!ELEMENT answer (#PCDATA | explain)*>
+<!ATTLIST answer
+	correct (true | false) #REQUIRED
+>
+<!ELEMENT explain (#PCDATA)>

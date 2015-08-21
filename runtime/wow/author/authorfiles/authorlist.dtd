@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT authorList (author*)>
+<!ELEMENT author (name, courseList*)>
+<!ATTLIST author login CDATA #REQUIRED
+	password CDATA #REQUIRED
+>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT courseList (courseName*)>
+<!ELEMENT courseName (#PCDATA)>
+

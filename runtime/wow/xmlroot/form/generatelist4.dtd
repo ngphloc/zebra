@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT conceptList (name, concept*)>
+<!ELEMENT concept (name, description?, resource?, requirement?, nocommit?, stable?, stable_expr?, attribute+)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT resource (#PCDATA)>
+<!ELEMENT requirement (#PCDATA)>
+<!ELEMENT nocommit (#PCDATA)>
+<!ELEMENT attribute (description?, default?, stable?, stable_expr?, casegroup?, generateListItem*)>
+<!ATTLIST attribute name CDATA #REQUIRED
+	type (string | int | bool) #REQUIRED
+	isChangeable (true | false) "false"
+	isPersistent (true | false) "true"
+	isSystem (true | false) "false"	
+>
+<!ELEMENT stable (#PCDATA)>
+<!ELEMENT stable_expr (#PCDATA)>
+<!ELEMENT casegroup (defaultfragment, casevalue*)>
+<!ELEMENT casevalue (value,returnfragment)>
+<!ELEMENT defaultfragment (#PCDATA)>
+<!ELEMENT value (#PCDATA)>
+<!ELEMENT returnfragment (#PCDATA)>
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT default (#PCDATA)>
+<!ELEMENT generateListItem (requirement, trueActions, falseActions?)>
+<!ATTLIST generateListItem isPropagating (true | false) "true"> 
+<!ELEMENT trueActions (action+)>
+<!ELEMENT falseActions (action+)>
+<!ELEMENT action (conceptName, attributeName, expression)>
+<!ELEMENT conceptName (#PCDATA)>
+<!ELEMENT attributeName (#PCDATA)>
+<!ELEMENT expression (#PCDATA)>

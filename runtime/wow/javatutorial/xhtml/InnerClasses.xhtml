@@ -1,0 +1,149 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Inner Classes</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Classes and Inheritance
+</font>
+
+<h2>
+Inner Classes
+</h2>
+<blockquote>
+To help you get a handle on inner classes and what they 
+are good for, let's revisit the <code>Stack</code> class. 
+Suppose that you want to add to this class a feature that 
+lets another class enumerate the elements in the stack, 
+using the <code>java.util.Iterator</code> interface. This 
+interface contains three method declarations: 
+<blockquote><pre>
+public boolean hasNext();
+public Object next();
+public void remove();
+</pre></blockquote>
+
+<code>Iterator</code> defines the interface for stepping 
+once through the elements within an ordered set in order. 
+You use it like this: 
+<blockquote><pre>
+while (hasNext()) {
+    next();
+}
+</pre></blockquote>
+
+The <code>Stack</code> class itself should not implement 
+the <code>Iterator</code> interface, because of certain 
+limitations imposed by the API of the <code>Iterator</code> 
+interface: two separate objects could not enumerate the 
+items in the <code>Stack</code> concurrently, because 
+there's no way of knowing who's calling the next method; 
+the enumeration could not be restarted, because the 
+<code>Iterator</code> interface doesn't have methods 
+to support that; and the enumeration could be invoked 
+only once, because the <code>Iterator</code> interface 
+doesn't have methods for going back to the beginning. 
+Instead, a helper class should do the work for <code>Stack</code>. 
+<p>
+The helper class must have access to the <code>Stack</code>'s 
+elements and also must be able to access them directly because 
+the <code>Stack</code>'s public interface supports only LIFO 
+access. This is where inner classes come in. 
+</p>
+Here's a <code>Stack</code> implementation that defines a 
+helper class, called <code>StackIterator</code>, for 
+enumerating the stack's elements: 
+
+<blockquote><pre>
+public class Stack {
+    private Object[] items;
+
+    <i>//code for Stack's methods and constructors
+    not shown</i>
+
+    public Iterator iterator() {
+        return new StackIterator();
+    }
+    class StackIterator implements Iterator {
+        int currentItem = items.size() - 1;
+
+        public boolean hasNext() {
+            ...
+        }
+        public Object next() {
+            ...
+        }
+        public void remove() {
+            ...
+        }
+    }
+}
+</pre></blockquote>
+
+Note that the <code>StackIterator</code> class refers directly 
+to <code>Stack</code>'s items instance variable. 
+<p>
+Inner classes are used primarily to implement helper classes 
+like the one shown in this example. If you plan on handling 
+user-interface events, you'll need to know about using inner 
+classes because the event-handling mechanism makes extensive 
+use of them. 
+</p>
+You can declare an inner class without naming it, called an 
+<i>anonymous</i> class. Here's yet another version of the 
+<code>Stack</code> class, in this case using an anonymous 
+class for its iterator: 
+
+<blockquote><pre>
+public class Stack {
+    private Object[] items;
+
+    <i>//code for Stack's methods and constructors
+    not shown</i>
+
+    public Iterator iterator() {
+        return new Iterator() {
+            int currentItem = items.size() - 1;
+            public boolean hasNext() {
+                ...
+            }
+            public Object next() {
+                ...
+            }
+            public void remove() {
+                ...
+            }
+        }
+    }
+}
+</pre></blockquote>
+
+Anonymous classes can make code difficult to read. You should 
+limit their use to those classes that are very small (no more 
+than a method or two) and whose use is well understood, such 
+as event-handling classes.
+</blockquote>
+
+<h3>Other Facts about Nested Classes</h3>
+
+<blockquote>
+Like other classes, nested classes can be declared <code>abstract</code> 
+or <code>final</code>. The meaning of these two modifiers for nested 
+classes is the same as for other classes. Also, you may use the access 
+specifiers &#151; <code>private</code>, <code>public</code>, and 
+<code>protected</code> &#151; to restrict access to nested classes, 
+just as you do to other class members. 
+<br/><br/>
+Any nested class, not just anonymous ones, can be declared in any block 
+of code. A nested class declared within a method or other smaller block 
+of code has access to any final or local variables in scope.
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

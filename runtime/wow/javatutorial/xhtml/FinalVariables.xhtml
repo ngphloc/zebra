@@ -1,0 +1,41 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Final Variables</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Language Basics
+</font>
+
+<h2>Final Variables</h2>
+<blockquote>
+
+<p>
+You can declare a variable in any scope to be <em>final</em>. The value of a final variable cannot change after it has been initialized. Such variables are similar to constants in other programming languages.
+</p>
+
+To declare a final variable, use the <code>final</code> keyword in the variable declaration before the type:
+<blockquote><pre>
+final int aFinalVar = 0;
+</pre></blockquote>
+
+The previous statement declares a final variable and initializes it, all at once. Subsequent attempts to assign a value to <code>aFinalVar</code> result in a compiler error. You may, if necessary, defer initialization of a final <em>local</em> variable. Simply declare the local variable and initialize it later, like this:
+<blockquote><pre>
+final int blankfinal;
+. . .
+blankfinal = 0;
+</pre></blockquote>
+
+A final local variable that has been declared but not yet initialized is called a <em>blankfinal</em>. Again, once a final local variable has been initialized, it cannot be set, and any later attempts to assign a value to <code>blankfinal</code> result in a compile-time error.
+
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

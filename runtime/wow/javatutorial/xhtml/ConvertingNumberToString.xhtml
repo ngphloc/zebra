@@ -1,0 +1,51 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Converting Numbers to Strings</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>Converting Numbers to Strings</h2>
+<blockquote>
+Sometimes, you need to convert a number to a string because you need to operate on the value in its string form. All classes inherit a method called <code>toString</code> from the <code>Object</code> class. The type-wrapper classes override this method to provide a reasonable string representation of the value held by the number object. The following program, 
+
+<a target="_blank" href="resources/ToStringDemo.java"><font color="#bb000f"><code>ToStringDemo</code></font></a><a target="_blank" href="resources/ToStringDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>, uses the <code>toString</code> method to convert a number to a string. Next, the program uses some string methods to compute the number of digits before and after the decimal point:
+
+<blockquote><pre>
+public class ToStringDemo {
+    public static void main(String[] args) {
+        double d = 858.48;
+        String s = Double.toString(d);
+
+        int dot = s.indexOf('.');
+        System.out.println(s.substring(0, dot).length()
+                           + &quot; digits before decimal point.&quot;);
+        System.out.println(s.substring(dot+1).length()
+                           + &quot; digits after decimal point.&quot;);
+    }
+}
+</pre></blockquote>
+
+The output of this program is:
+
+<blockquote><pre>
+3 digits before decimal point.
+2 digits after decimal point.
+</pre></blockquote>
+
+The <code>toString</code> method called by this program is the class method. Each of the number classes has an instance method called <code>toString</code>, which you call on an instance of that type.
+<br/><br/>
+You don't have to explicitly call the <code>toString</code> method to display numbers with the <code>System.out.println</code> method or when concatenating numeric values to a string. The Java platform handles the conversion by calling <code>toString</code> implicitly.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

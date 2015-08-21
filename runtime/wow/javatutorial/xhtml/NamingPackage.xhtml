@@ -1,0 +1,53 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Naming a Package</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Interfaces and Packages
+</font>
+
+<h2>
+Naming a Package
+</h2>
+<blockquote>
+<!--Naming a Package-->
+
+With programmers all over the world writing classes, interfaces, enums
+    and annotations using the Java programming language, it is likely
+    that two programmers 
+    will use the same name for two different classes. In fact, the 
+    previous example does just that: It defines a <code>Rectangle</code> 
+    class when there is already a <code>Rectangle</code> class in 
+    the <code>java.awt</code> package. Yet the compiler allows both 
+    classes to have the same name. Why? Because they are in different 
+    packages, and the fully qualified name of each class includes 
+    the package name. That is, the fully qualified name of the <code>Rectangle</code> 
+    class in the <code>graphics</code> package is <code>graphics.Rectangle</code>, 
+    and the fully qualified name of the <code>Rectangle</code> class 
+    in the <code>java.awt</code> package is <code>java.awt.Rectangle</code>. 
+
+<p>
+    This generally works just fine unless two independent programmers 
+    use the same name for their packages. What prevents this problem? Convention. 
+
+</p>
+<blockquote><hr/><strong>By Convention:</strong> Companies use their 
+      reversed Internet domain name in their package names, like this: 
+      <code>com.company.package</code>. Name collisions that occur within
+      a single company need to be handled by convention within that company, 
+      perhaps by including the 
+      region or the project name after the company name, for example, 
+      <code>com.company.region.package</code>.  
+<hr/></blockquote>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

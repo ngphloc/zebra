@@ -1,0 +1,8 @@
+content branding jar:browser.jar!/content/branding/ xpcnativewrappers=yes
+override chrome://global/content/license.html chrome://browser/content/license.html
+style chrome://global/content/customizeToolbar.xul chrome://browser/content/browser.css
+overlay chrome://global/content/viewPartialSource.xul chrome://browser/content/viewSourceOverlay.xul
+overlay chrome://global/content/viewSource.xul chrome://browser/content/viewSourceOverlay.xul
+style chrome://global/content/customizeToolbar.xul chrome://browser/skin/
+content browser jar:browser.jar!/content/browser/ xpcnativewrappers=yes contentaccessible=yes
+overlay chrome://browser/content/browser.xul         chrome://browser/content/safebrowsing/report-phishing-overlay.xul

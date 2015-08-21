@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!DOCTYPE author_relation_type SYSTEM 'author_relation_type.dtd'>
+<author_relation_type>
+	<name>knowledge_propagation</name>
+	<color> none </color>
+	<style> none </style>
+	<properties acyclic="false" concept_hierarchy="true" />
+</author_relation_type>

@@ -1,0 +1,486 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Beyond Basic Arithmetic</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>Beyond Basic Arithmetic</h2>
+<blockquote>
+The Java programming language supports basic arithmetic computation with its arithmetic operators: +, -, *, /, and %. In the <code>java.lang</code> package, the Java platform provides a class called 
+
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Math.html"><font color="#8800bb"><code>Math</code></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Math.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a> that provides methods and variables for doing more advanced mathematical computation, such as computing the sine of an angle, or raising a number to a certain power.
+
+<p>
+The methods in the <code>Math</code> class are class methods, so you call them directly from the class, like this:
+
+<blockquote><pre>
+Math.round(34.87);
+</pre></blockquote>
+
+The first set of methods in the <code>Math</code> class that we are going to look at perform various basic mathematical functions, such as computing a number's absolute value and rounding numbers. The following table lists and describes these methods.
+</p>
+
+<table border="1" cellpadding="4" cellspacing="3">
+<caption>Basic Mathematical Functions Implemented by Methods in the <code>Math</code> Class</caption>
+
+<tr>
+<th width="30%">
+Method
+</th>
+<th>
+Description
+</th>
+</tr>
+
+<tr>
+<td>
+<code>
+double abs(double)
+<br/>
+float abs(float)
+<br/>
+int abs(int)
+<br/>
+long abs(long)
+</code>
+</td>
+<td>
+Returns the absolute value of the argument.
+</td>
+</tr>
+<tr>
+<td>
+<code>
+double ceil(double)
+</code>
+</td>
+<td>
+Returns the smallest double value that is greater than or equal to the argument and is equal to a mathematical integer.
+</td>
+</tr>
+<tr>
+<td>
+<code>
+double floor(double)
+</code>
+</td>
+<td>
+Returns the largest double value that is less than or equal to the argument and is equal to a mathematical integer.
+</td>
+</tr>
+<tr>
+<td>
+<code>
+double rint(double)
+</code>
+</td>
+<td>
+Returns the double value that is closest in value to the argument and is equal to a mathematical integer.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>
+long round(double)
+<br/>
+int round(float)
+</code>
+</td>
+<td>
+Returns the closest long or int, as indicated by the method’s return value, to the argument.
+</td>
+</tr>
+
+</table>
+<br/><br/>
+
+
+The following program, 
+
+<a target="_blank" href="resources/BasicMathDemo.java"><font color="#bb000f"><code><code>BasicMathDemo</code></code></font></a><a target="_blank" href="resources/BasicMathDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>
+, illustrates how to use some of these methods:
+
+<blockquote><pre>
+public class BasicMathDemo {
+    public static void main(String[] args) {
+        double aNumber = -191.635;
+
+        System.out.println(&quot;The absolute value of &quot; + aNumber + &quot; is &quot; + Math.abs(aNumber));
+        System.out.println(&quot;The ceiling of &quot; + aNumber + &quot; is &quot; + Math.ceil(aNumber));
+        System.out.println(&quot;The floor of &quot; + aNumber + &quot; is &quot; + Math.floor(aNumber));
+        System.out.println(&quot;The rint of &quot; + aNumber + &quot; is &quot; + Math.rint(aNumber));
+    }
+}
+</pre></blockquote>
+
+Here's the output from this program:
+
+<blockquote><pre>
+The absolute value of -191.635 is 191.635
+The ceiling of -191.635 is -191
+The floor of -191.635 is -192
+The rint of -191.635 is -192
+</pre></blockquote>
+
+Two other basic methods in the <code>Math</code> class are <code>min</code> and <code>max</code>. The following table shows the different forms of the <code>min</code> and <code>max</code> methods, which compare two numbers and return the smaller or larger, respectively, of the two.
+
+<p>
+<table border="1" cellpadding="4" cellspacing="3">
+<caption>Comparative Functions Implemented by Methods in the <code>Math</code> Class</caption>
+
+<tr>
+<th width="30%">
+Method
+</th>
+<th>
+Description
+</th>
+</tr>
+
+<tr>
+<td>
+<code>
+double min(double, double)
+<br/>
+float min(float, float)
+<br/>
+int min(int, int)
+<br/>
+long min(long, long)
+</code>
+</td>
+<td>
+Returns the smaller of the two arguments.
+</td>
+</tr>
+<tr>
+<td>
+<code>
+double max(double, double)
+<br/>
+float max(float, float)
+<br/>
+int max(int, int)
+<br/>
+long max(long, long)
+</code>
+</td>
+<td>
+Returns the larger of the two arguments.
+</td>
+</tr>
+</table>
+</p>
+
+<a target="_blank" href="resources/MinDemo.java"><font color="#bb000f"><code><code>MinDemo</code></code></font></a><a target="_blank" href="resources/MinDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>, shown following, uses <code>min</code> to figure out the smaller of two values:
+
+<blockquote><pre>
+public class MinDemo {
+    public static void main(String[] args) {
+
+        double enrollmentPrice = 45.875;
+        double closingPrice = 54.375;
+
+        System.out.println(&quot;Your purchase price is: $&quot;
+                           + Math.min(enrollmentPrice, closingPrice));
+    }
+}
+</pre></blockquote>
+
+The program correctly prints the smaller price:
+<br/><br/>
+<code>
+Your purchase price is: &#36;45.875
+</code>
+<br/><br/>
+The next set of methods provided by the <code>Math</code> class are exponential functions. In addition to these functions, you can get the value of <em>e</em>, the base of the natural logarithms, by using <code>Math.E</code>.
+
+<p>
+<table border="1" cellpadding="4" cellspacing="3">
+<caption>Exponential Functions Implemented by Methods in the <code>Math</code> Class</caption>
+
+<tr>
+<th width="30%">
+Method
+</th>
+<th>
+Description
+</th>
+</tr>
+
+<tr>
+<td>
+<code>
+double exp(double)
+</code>
+</td>
+<td>
+Returns the base of the natural logarithms, e, to the power of the argument.
+</td>
+</tr>
+<tr>
+<td>
+<code>
+double log(double)
+</code>
+</td>
+<td>
+Returns the natural logarithm of the argument.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>
+double pow(double, double)
+</code>
+</td>
+<td>
+Returns of value of the first argument raised to the power of the second argument.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>
+double sqrt(double)
+</code>
+</td>
+<td>
+Returns the square root of the argument.
+</td>
+</tr>
+</table>
+</p>
+
+The following program, 
+
+<a target="_blank" href="resources/ExponentialDemo.java"><font color="#bb000f"><code><code>ExponentialDemo</code></code></font></a><a target="_blank" href="resources/ExponentialDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>, displays the value of <code>e</code>, then calls each of the methods listed in the previous table on arbitrarily chosen numbers:
+
+<blockquote><pre>
+public class ExponentialDemo {
+    public static void main(String[] args) {
+        double x = 11.635;
+        double y = 2.76;
+
+        System.out.println(&quot;The value of e is &quot; + 
+                            Math.E);
+        System.out.println(&quot;exp(&quot; + x + &quot;) is &quot; + 
+                            Math.exp(x));
+        System.out.println(&quot;log(&quot; + x + &quot;) is &quot; + 
+                            Math.log(x));
+        System.out.println(&quot;pow(&quot; + x + &quot;, &quot; + y + &quot;) is &quot; + 
+                            Math.pow(x, y));
+        System.out.println(&quot;sqrt(&quot; + x + &quot;) is &quot; + 
+                            Math.sqrt(x));
+    }
+}
+</pre></blockquote>
+
+Here's the output you'll see when you run <code>ExponentialDemo</code>:
+
+<blockquote><pre>
+The value of e is 2.71828
+exp(11.635) is 112984
+log(11.635) is 2.45402
+pow(11.635, 2.76) is 874.008
+sqrt(11.635) is 3.41101
+</pre></blockquote>
+
+The <code>Math</code> class provides a collection of trigonometric functions, which are summarized in the following table. The value passed into each of these methods is an angle expressed in radians. You can use the <code>toDegrees</code> and <code>toRadians</code> methods to convert from degrees to radians and back. Also, you can use <code>Math.PI</code> to get the double value that is closer than any other to <i>pi</i>, the ratio of a circumference of a circle to its diameter.
+
+<p>
+<table border="1" cellpadding="4" cellspacing="3">
+<caption>Exponential Functions Implemented by Methods in the <code>Math</code> Class</caption>
+
+<tr>
+<th width="30%">
+Method
+</th>
+<th>
+Description
+</th>
+</tr>
+
+<tr>
+<td>
+<code>
+double sin(double)
+</code>
+</td>
+<td>
+Returns the sine of the specified double value.
+</td>
+</tr>
+<tr>
+<td>
+<code>
+double cos(double)
+</code>
+</td>
+<td>
+Returns the cosine of the specified double value.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>
+double tan(double)
+</code>
+</td>
+<td>
+Returns the tangent of the specified double value.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>
+double asin(double)
+</code>
+</td>
+<td>
+Returns the arc sine of the specified double value.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>
+double acos(double)
+</code>
+</td>
+<td>
+Returns the arc cosine of the specified double value.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>
+double atan(double)
+</code>
+</td>
+<td>
+Returns the arc tangent of the specified double value.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>
+double atan(double)
+</code>
+</td>
+<td>
+Returns the arc tangent of the specified double value.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>
+double atan2(double)
+</code>
+</td>
+<td>
+Converts rectangular coordinates (b, a) to polar (r, theta).
+</td>
+</tr>
+
+<tr>
+<td>
+<code>
+double toDegrees(double)<sup>*</sup>
+<br/>
+double toRadians(double)<sup>*</sup>
+</code>
+</td>
+<td>
+Converts the argument to degrees or radians as indicated by the method name.
+</td>
+</tr>
+</table>
+<font size="-1">* Added to the Math class for Java 2 SDK 1.2.</font>
+</p>
+
+Here's a program, 
+
+<a target="_blank" href="resources/TrigonometricDemo.java"><font color="#bb000f"><code><code>TrigonometricDemo</code></code></font></a><a target="_blank" href="resources/TrigonometricDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>
+, that uses each of these methods to compute various trigonometric values for a 45-degree angle:
+
+<blockquote><pre>
+public class TrigonometricDemo {
+    public static void main(String[] args) {
+        double degrees = 45.0;
+        double radians = Math.toRadians(degrees);
+        
+        System.out.println(&quot;The value of pi is &quot; + 
+                           Math.PI);
+        System.out.println(&quot;The sine of &quot; + degrees + 
+                           &quot; is &quot; + Math.sin(radians));
+        System.out.println(&quot;The cosine of &quot; + degrees + 
+                           &quot; is &quot; + Math.cos(radians));
+        System.out.println(&quot;The tangent of &quot; + degrees + 
+                           &quot; is &quot; + Math.tan(radians));
+        System.out.println(&quot;The arc sine of &quot; + 
+                           Math.sin(radians) + &quot; is &quot; +
+                      Math.toDegrees(Math.asin(Math.sin(radians))) +
+                           &quot; degrees&quot;);
+        System.out.println(&quot;The arc cosine of &quot; + Math.cos(radians) + 
+                           &quot; is &quot; + 
+                           Math.toDegrees(Math.acos(Math.cos(radians))) + 
+                           &quot; degrees&quot;);
+        System.out.println(&quot;The arc tangent of &quot; + 
+                           Math.tan(radians) + &quot; is &quot; + 
+                           Math.toDegrees(Math.atan(Math.tan(radians))) + 
+                           &quot; degrees&quot;);
+    }
+}
+
+
+</pre></blockquote>
+
+The output of this program is as follows:
+
+<blockquote><pre>
+The value of pi is 3.141592653589793
+The sine of 45.0 is 0.8060754911159176
+The cosine of 45.0 is -0.5918127259718502
+The tangent of 45.0 is -1.3620448762608377
+The arc sine of 45.0 is NaN
+The arc cosine of 45.0 is NaN
+The arc tangent of 45.0 is 1.570408475869457
+</pre></blockquote>
+
+Notice that <code>NaN</code> is displayed when the result is undefined for the argument passed into the method. <code>NaN</code> is the acronym for Not a Number. Various methods in the <code>Math</code> class return this value when the result of a particular function is undefined for the argument passed into the method. Both the <code>Double</code> and <code>Float</code> classes contain constants called <code>NaN</code>. By comparing the return value of a method to one of these constants, your program can determine whether the <code>NaN</code> value is returned from a method. Thus, your program can do something reasonable when the mathematical result of a method call is undefined.
+
+<br/><br/>
+
+The last <code>Math</code> method that we'll cover is <code>random</code>. The <code>random</code> method returns a pseudo-randomly selected number between 0.0 and 1.0. The range includes 0.0 but not 1.0. In other words: <code>0.0 &lt;= Math.random() &lt; 1.0</code>. To get a number in a different range, you can perform arithmetic on the value returned by the random method. For example, to generate an integer between 1 and 10, you would write:
+
+<blockquote><pre>
+int number = (int)(Math.random() * 10 + 1);
+</pre></blockquote>
+
+By multiplying the value by 10, the range of possible values becomes <code>0.0 &lt;= number &lt; 10.0</code>. By then adding 1, the range of possible values becomes <code>1.0 &lt;= number &lt; 11.0</code>. Finally, by converting the number to an integer with an explicit cast <code>(int)</code>, the value is as desired: an integer value between 1 and 10.
+
+<br/><br/>
+
+Using <code>Math.random</code> is fine if you need to generate a single number. If you need to generate a series of random numbers, you should create an instance of <code>java.util.Random</code> and call methods on that object to generate numbers. The <code>RandomBag</code> class in the online Bingo example uses this technique to generate a random series of bingo balls. The <code>Math.random</code> method uses an instance of <code>java.util.Random</code> to generate its numbers.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

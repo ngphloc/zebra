@@ -1,0 +1,81 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Getting Characters by Index from a String or String Buffer</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>Getting Characters by Index from a String or String Buffer</h2>
+<blockquote>
+You can get the character at a particular index within a string, string buffer, or string builder by invoking the <code>charAt</code> accessor method. The index of the first character is 0; the index of the last is <code>length()-1</code>. For example, the following code gets the character at index 9 in a string:
+
+<blockquote><pre>
+String anotherPalindrome = "Niagara. O roar again!"; 
+char aChar = anotherPalindrome.charAt(9);
+</pre></blockquote>
+
+Indices begin at 0, so the character at index 9 is 'O', as illustrated in the following figure:
+
+<!-- figure -->
+<p><center><img src="images/objects-charAt.gif" width="512" height="61" align="bottom" alt="Use the charAt method to get a character at a particular index."/></center></p>
+
+Use the <code>charAt</code> method to get a character at a particular index.
+
+<p>
+The figure also shows that to compute the index of the last character of a string, you have to subtract 1 from the value returned by the <code>length</code> method.
+</p>
+
+<p>
+If you want to get more than one character from a string, string buffer, or string builder, you can use the <code>substring</code> method. The <code>substring</code> method has two versions, as shown in the following table:
+</p>
+
+<!-- table -->
+<table border="1" cellpadding="4" cellspacing="3">
+<caption>
+<font size="-1"><sup>*</sup></font>The <code>substring</code> Methods in the <code>String</code>, <code>StringBuffer</code> and <code>StringBuilder</code> Classes
+</caption>
+<tr>
+<th width="30%">Method</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td>
+<code>String substring(int)<br/>
+String substring(int, int)</code>
+</td>
+<td>
+Returns a new string that is a substring of this string, string buffer, or string builder.The first integer argument specifies the index of the first character. The second integer argument is the index of the last character <code>-1</code>. The length of the substring is therefore the second <code>int</code> minus the first <code>int</code>. If the second integer is not present, the substring extends to the end of the original string.
+</td>
+</tr>
+</table>
+
+<font size="-1">
+* The substring methods were added to the StringBuffer class for Java 2 SDK 1.2.
+</font>
+
+<br/><br/>
+
+The following code gets from the Niagara palindrome the substring that extends from index 11 to index 15, which is the word "roar":
+<blockquote><pre>
+String anotherPalindrome = "Niagara. O roar again!"; 
+String roar = anotherPalindrome.substring(11, 15); 
+</pre></blockquote>
+
+Use the <code>substring</code> method to get part of a string, string buffer, or string builder. Remember that indices begin at 0.
+
+<!-- figure -->
+<p><center><img src="images/objects-substring.gif" width="511" height="85" align="bottom" alt="Use the substring method to get part of a string, string buffer, or string builder."/></center></p>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

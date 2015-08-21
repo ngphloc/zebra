@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!-- Loc Nguyen defined -->
+<!DOCTYPE author_relation_type SYSTEM 'author_relation_type.dtd'>
+<author_relation_type>
+	<name> evidencetemp </name>
+	<color> blue </color>
+	<style> dashed </style>
+	<properties acyclic="true" />
+</author_relation_type>

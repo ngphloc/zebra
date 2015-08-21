@@ -1,0 +1,142 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Solving Common Compiler and Interpreter Problems</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Getting Started
+</font>
+
+<h2>Lesson: Solving Common Compiler and Interpreter Problems</h2>
+
+<blockquote>
+If you're having trouble compiling your Java source code or running your application, this section might be able to help you. If nothing in this section helps, please refer to the documentation for the compiler or interpreter you're using. 
+</blockquote>
+
+<a name="compiler">
+<h3>Compiler Problems</h3>
+</a>
+
+<blockquote>
+<strong>Can't Locate the Compiler</strong>
+<p>On UNIX systems, you may see the following error message if your path isn't set properly: </p>
+
+<blockquote><pre>
+javac: Command not found
+</pre></blockquote>
+
+Use <code>setenv</code> or a similar command to modify your <code>PATH</code> environment variable so that it includes the directory where the Java compiler lives. 
+
+<br/><br/>
+
+<strong>Syntax Errors</strong>
+<p>
+If you mistype part of a program, the compiler may issue a <em>syntax</em> error. The message usually displays the type of the error, the line number where the error was detected, the code on that line, and the position of the error within the code. Here's an error caused by omitting a semicolon (<code>;</code>) at the end of a statement:
+</p>
+
+<blockquote><pre>
+testing.java:14: `;' expected.
+System.out.println("Input has " + count + " chars.")
+                                                     ^
+1 error
+</pre></blockquote>
+
+Sometimes the compiler can't guess your intent and prints a confusing error message or multiple error messages if the error cascades over several lines. For example, the following code snippet omits a semicolon (<code>;</code>) from the bold line:
+
+<blockquote><pre>
+while (System.in.read() != -1)
+    <b>count++</b>
+System.out.println("Input has " + count + " chars."); 
+</pre></blockquote>
+
+When processing this code, the compiler issues two error messages:
+
+<blockquote><pre>
+testing.java:13: Invalid type expression.
+        count++
+                 ^
+testing.java:14: Invalid declaration.
+    System.out.println("Input has " + count + " chars.");
+                      ^
+2 errors
+</pre></blockquote>
+
+The compiler issues two error messages because after it processes <code>count++</code>, the compiler's state indicates that it's in the middle of an expression. Without the semicolon, the compiler has no way of knowing that the statement is complete. 
+<p> 
+If you see any compiler errors, then your program did not successfully compile, and the compiler did not create a <code>.class</code> file. Carefully verify the program, fix any errors that you detect, and try again. 
+</p>
+
+<p><strong>Semantic Errors</strong></p>
+
+In addition to verifying that your program is syntactically correct, the compiler checks for other basic correctness. For example, the compiler warns you each time you use a variable that has not been initialized:
+
+<blockquote><pre>
+testing.java:13: Variable count may not have been initialized.
+        count++
+        ^
+testing.java:14: Variable count may not have been initialized.
+    System.out.println("Input has " + count + " chars.");
+                                       ^
+2 errors
+</pre></blockquote>
+
+Again, your program did not successfully compile, and the compiler did not create a <code>.class</code> file. Fix the error and try again.
+
+</blockquote>
+
+<a name="interpreter">
+<h3>Interpreter Problems</h3>
+</a>
+
+<blockquote>
+
+<strong>Can't Find Class</strong>
+<p>
+A common error of beginner Java programmers using the UNIX or Windows 95/NT JDK is to try to interpret the <code>.class</code> file created by the compiler. For example, if you try to interpret the file <code>HelloWorldApp.class</code>  rather than the class <code>HelloWorldApp</code>, the interpreter displays this error message:
+</p>
+
+<blockquote><pre>
+Can't find class HelloWorldApp.class
+</pre></blockquote>
+
+The argument to the Java interpreter is the <em>name of the class</em> that you want to use, <em>not</em> the filename.
+
+<p><strong>The <code>main</code> Method Is Not Defined</strong></p>
+
+The Java interpreter requires that the class you execute with it have a method named <code>main</code>, because the interpreter must have somewhere
+to begin execution of your Java application.
+<a href="MainMethod" class="conditional">The main Method</a>
+<a href="MainMethod" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Getting Started trail)"/></a>
+discusses the <code>main</code> method in detail. 
+
+<p>
+If you try to run a class with the Java interpreter that does not have a <code>main</code> method, the interpreter prints this error message:
+</p>
+
+<blockquote><pre>
+In class <em>classname</em>: void main(String argv[]) is not defined
+</pre></blockquote>
+
+In the above message, <code><em>classname</em></code> is the name of the class that you tried to run.
+
+<p><strong>Changes to My Program Didn't Take Effect</strong></p>
+Sometimes when you are in the edit/debug/run cycle, it appears that your changes to an application didn't take effect -- a print statement isn't printing, for example. This is common when running Java applications on MacOS using Java Runner. If you recompile a <code>.class</code> file, you must quit Java Runner and bring it up again, since Java Runner does not reload classes.
+
+</blockquote>
+
+<h3>Applet Problems</h3>
+
+<blockquote>
+See 
+<a href="SolvingAppletProblems" class="conditional">Solving Common Applet Problems</a>
+<a href="SolvingAppletProblems" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Getting Started trail)"/></a>
+if you have trouble getting your applet to run.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

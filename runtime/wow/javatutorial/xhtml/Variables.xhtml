@@ -1,0 +1,124 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Variables</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Language Basics
+</font>
+
+<h2>Variables</h2>
+<blockquote>
+
+An object stores its state in variables.
+
+<blockquote><hr/><strong>Definition: </strong>A <em>variable</em> is an item of data named by an identifier.
+<hr/></blockquote>
+
+You must explicitly provide a name and a type for each variable you want to use in your program. The variable's name must be a legal <em>identifier</em> &#151; an unlimited-length sequence of Unicode characters that begins with a letter. You use the variable name to refer to the data that the variable contains. The variable's type determines what values it can hold and what operations can be performed on it. To give a variable a type and a name, you write a variable <em>declaration</em>, which generally looks like this:
+<blockquote><pre>
+<em>type name</em>
+</pre></blockquote>
+
+In addition to the name and type that you explicitly give a variable, a variable has <em>scope</em>. The section of code where the variable's simple name 
+can be used is the variable's scope. The variable's scope is determined implicitly by the location of the variable declaration, that is, where the declaration appears in relation to other code elements. You'll learn more about scope in the section 
+<a href="Scope" class="conditional">Scope</a>
+<a href="Scope" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.
+
+<p>
+The boldface type in the following program, called 
+<a target="_blank" href="resources/MaxVariablesDemo.java"><font color="#bb000f"><code>MaxVariablesDemo</code></font></a>
+<a target="_blank" href="resources/MaxVariablesDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>, highlights all the variable declarations in the program. 
+<blockquote><pre>
+public class MaxVariablesDemo {
+    public static void main(<b>String args[]</b>) {
+
+        //integers
+        <b>byte largestByte</b> = Byte.MAX_VALUE;
+        <b>short largestShort</b> = Short.MAX_VALUE;
+        <b>int largestInteger</b> = Integer.MAX_VALUE;
+        <b>long largestLong</b> = Long.MAX_VALUE;
+
+        //real numbers
+        <b>float largestFloat</b> = Float.MAX_VALUE;
+        <b>double largestDouble</b> = Double.MAX_VALUE;
+
+        //other primitive types
+        <b>char aChar</b> = 'S';
+        <b>boolean aBoolean</b> = true;
+
+        //display them all
+        System.out.println("The largest byte value is "
+                           + largestByte);
+        System.out.println("The largest short value is "
+                           + largestShort);
+        System.out.println("The largest integer value is "
+                           + largestInteger);
+        System.out.println("The largest long value is "
+                           + largestLong);
+
+        System.out.println("The largest float value is "
+                           + largestFloat);
+        System.out.println("The largest double value is "
+                           + largestDouble);
+
+        if (Character.isUpperCase(aChar)) {
+            System.out.println("The character " + aChar
+                               + " is upper case.");
+        } else {
+            System.out.println("The character " + aChar
+                               + " is lower case.");
+        }
+        System.out.println("The value of aBoolean is "
+                           + aBoolean);
+    }
+}
+</pre></blockquote>
+</p>
+
+The output from this program is:
+<blockquote><pre>
+The largest byte value is 127
+The largest short value is 32767
+The largest integer value is 2147483647
+The largest long value is 9223372036854775807
+The largest float value is 3.40282e+38
+The largest double value is 1.79769e+308
+The character S is upper case.
+The value of aBoolean is true
+</pre></blockquote>
+
+
+The following sections further explore the various aspects of 
+variables:
+<ul>
+<li><a href="DataTypes" class="conditional">Data Types</a><a href="DataTypes" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a></li>
+
+<li><a href="VariableNames" class="conditional">Variable Names</a><a href="VariableNames" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a></li>
+
+<li><a href="Scope" class="conditional">Scope</a><a href="Scope" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a></li>
+
+<li><a href="VariableInitialization" class="conditional">Variable Initialization</a><a href="VariableInitialization" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a></li>
+
+<li><a href="FinalVariables" class="conditional">Final Variables</a><a target="_top" href="finalVariables.html"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a></li>
+
+<li><a href="SummaryOfVariables" class="conditional">Summary of Variables</a><a href="SummaryOfVariables" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a></li>
+
+<li><a href="VariablesTest" class="conditional">Questions and Exercises: Variables</a><a href="VariablesTest" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a></li>
+</ul>
+
+The <code>MaxVariablesDemo</code> program uses two items with which you might not yet be familiar and are not covered in variable discussion: several constants named <code>MAX_VALUE</code> and an <code>if</code>-<code>else</code> statement. Each <code>MAX_VALUE</code> constant is defined in one of the number classes provided by the Java platform and is the largest value that can be assigned to a variable of that numeric type. These classes are covered in the section 
+<a href="Numbers" class="conditional">Numbers</a><a href="Numbers" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>. The <code>if</code>-<code>else</code> statement is covered later in this chapter in the section 
+<a href="IfElseStatements" class="conditional">The if/else Statements</a><a href="IfElseStatements" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>. 
+
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

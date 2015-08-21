@@ -1,0 +1,188 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>Creating Multiple-Choice Tests</h2>
+
+<p>
+Although WOW! is not primarily intended to be an educational tool,
+it has found educational applications (first), and some type of
+assessment is necessary in a learning application, hence the
+facility for creating and using multiple-choice tests.
+</p>
+<p>
+The University of Cordoba (Spain) has kindly donated an environment
+for creating and using <em>classic</em> and <em>adaptive</em>
+multiple-choice tests.
+</p>
+<p>
+WOW! 1.0 comes with a (new) authoring tool for different types of
+multiple-choice tests: the (<a href="/wow/tutorial/images/testeditor.gif"
+target="_blank" class="unconditional">Test Editor</a>).
+Test Editor is an authoring tool for building <em>adaptive</em>
+(and randomized) and <em>classic</em> (non-randomized) multiple-choice tests.
+The specific life cycle of tests we have used is:</p>
+<p align="center">
+<img src="/wow/tutorial/images/testlifecycle.gif" />:
+</p>
+<ul>
+<li>
+Before designing a multiple-choice test the course concept structure
+must have been created (using the
+<a href="graphauthor" class="conditional">Graph Author</a> or the
+<a href="concepteditor" class="conditional">Concept Editor</a>).
+A multiple-choice test will evaluate the user's knowledge of one or more
+of the previously defined concepts.
+</li>
+<li>
+The second step is to build an <em>items file</em> or <em>questions file</em>
+for the test. (A test may use several items files.)
+Each items file contains questions that evaluate the user's knowledge
+about a single concept.
+The items file creation starts with		
+<a href="/wow/tutorial/images/selectconceptincreatefileitem.gif"
+target="_blank" class="unconditional">selecting the concept</a>
+that is evaluated by the question, and by indicating a default
+number of answers for each question.
+The next step is to add questions to the file, one by one, setting some
+<a href="/wow/tutorial/images/obligatoryparametersitem.gif" target="_blank"
+class="unconditional">obligatory parameters</a> (like the enunciate flag,
+the answers and a flag to indicate whether the answers are correct),
+and some optional parameters (like image, explanation and
+<a href="/wow/tutorial/images/optionalparametersitem.gif" target="_blank"
+class="unconditional">Item Response Theory  (IRT) parameters</a>:
+item difficulty and discrimination). 
+The items are stored in an XML file. An items file can be loaded again
+to inspect it, add more items, or change or delete existing ones.
+</li>
+<li>The third step is to build tests out of items.
+Creating a test consist of selecting a number of items and
+setting some configuration parameters
+(the type of test, number of questions, etc.).
+First you have to select the course and decide which
+<a href="/wow/tutorial/images/selecttestype.gif" target="_blank"
+class="unconditional">test type</a> (classic test or adaptive test)
+you want to create, and whether to use just one or several items files
+(to evaluate just one or several concepts).
+If the test evaluates only one concept we consider it to be an "activity".
+If the test evaluates several concepts we consider it to be an
+"exam", about one chapter or a whole course.
+Next, you
+<a href="/wow/tutorial/images/selectionfileitem.gif" target="_blank"
+class="unconditional">select the specific items files</a>
+and the maximum number of items of each file.
+You can use <a href="/wow/tutorial/images/selectionmethod.gif" target="_blank"
+class="unconditional">different methods</a> to select which specific items
+from these items files will be used in the test 
+(the selection can be done manually, randomly or randomly with some
+restrictions). 
+Then you set
+<a href="/wow/tutorial/images/parametershown.gif" target="_blank"
+class="unconditional">parameters about how questions are shown</a>
+to the students
+(the order in which questions and answers are shown,
+to show or hide explanations of the answers through the "verbose" flag,
+the maximum time to respond, whether show the correct answer or just a score,
+etc.),
+<a href="/wow/tutorial/images/parametersevaluation.gif" target="_blank"
+class="unconditional">parameters about test evaluation</a>
+(to penalize incorrect answers, to penalize questions without an answer
+and what percentage of knowledge the final score represents in the
+associated concept or concepts)
+and <a href="/wow/tutorial/images/parameterswebpage.gif" target="_blank"
+class="unconditional">parameters about the web page</a> that will show
+the test to the user.
+If the test is adaptive, you also have to set the
+<a href="/wow/tutorial/images/adaptivetestparameters.gif" target="_blank"
+class="unconditional">adaptive algorithm parameters</a>
+(question selection procedure, IRT model of 1, 2 or 3 parameters,
+and termination criterion). 
+Finally, each test is stored in an XML file that is prepared to be used
+in an WOW! course or mobile application.
+(We have an
+<a href="http://localhost:8080/wow/lib/TestEditor.jar">example of a mobile
+test .jar file</a> that be downloaded
+into a mobile telephone using Bluetooth, Infrared, serial bus, etc.).
+Creating mobile tests requires software not needed for a normal
+WOW! installation, including J2ME (mobile java software development kit).
+</li>
+<li>
+In order to use (to provide a link to) a previously created test in an WOW!
+application, you must use a link of the form:
+<pre>
+&lt;a href="nameofthetestfile.xml|DoAppletTest"&gt;link anchor&lt;/a&gt;
+</pre>
+The suffix "<tt>|DoAppletTest</tt> tells the WOW! engine to serve the
+test Applet to the browser.
+Multiple-choice tests are always served through a Java Applet
+that not only controls the presentation and the interaction,
+but also monitors the maximum amount of time the end-user has for
+answering a question.
+This tutorial includes an
+<a href="testtutorial_tutorial_C_activity.xml|DoAppletTest">example test</a>
+through which you can not only check your knowledge of a small part
+of this tutorial but that also simply shows how multiple-choice tests
+are shown to the end-user.
+<br />
+When a student starts a test (by clicking in the test link),
+then some
+<a href="/wow/tutorial/images/testinformation.gif" target="_blank"
+class="unconditional">starting information</a> is normally shown,
+explaining the kind of test, number of questions, time to answer, etc.
+The real test begins when the user presses the 
+"Begin Test" button.
+Each
+<a href="/wow/tutorial/images/showquestion.gif" target="_blank"
+class="unconditional">question</a> is shown separately, and has to be answered
+in order to move to the next question. (The user must press the
+"Correct The Question" button.)
+The feedback whether the answer was
+<a href="/wow/tutorial/images/correctanswer.gif" target="_blank"
+class="unconditional">correct</a> or
+<a href="/wow/tutorial/images/incorrectanswer.gif" target="_blank"
+class="unconditional">incorrect</a> may or may not include an additional
+explanation, depending on parameters of the test.
+After the final question the system gives a
+<a href="/wow/tutorial/images/finalscore.gif" target="_blank"
+class="unconditional">final score</a>.
+<br />
+As an author you can decide whether students can repeat a test or not.
+</li>
+<li>
+After students have executed tests, you can perform maintenance
+by carrying out modifications to items and tests files.
+In order to facilitate this task, the Test Editor shows
+<a href="/wow/tutorial/images/teststatistic.gif" target="_blank"
+class="unconditional">statistics</a> about students' usage
+(questions success percentage, mean times to answer the questions,
+questions usage percentage, etc.) to help you in making decisions
+about future changes to the tests.
+You can not only decide to modify or delete bad items, and to add new items,
+but also to
+<a href="/wow/tutorial/images/edittest.gif" target="_blank"
+class="unconditional">edit the test configuration</a> .
+You can also allow certain students to repeat certain tests,
+or grant or deny them access to certain tests.
+You can also perform a <a href="/wow/tutorial/images/calibrateitemfile.gif"
+target="_blank" class="unconditional">"calibration" of the items files</a>
+of a classic test, to transform it into adaptive one,
+or to optimaze the items IRT parameters in an adaptive test.
+</li>
+
+</ul>
+
+
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Creating Strings and String Buffers</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>Creating Strings and String Buffers</h2>
+<blockquote>
+A string is often created from a <i>string literal</i>&#8212;a series of characters enclosed in double quotes. For example, when it encounters the following string literal, the Java platform creates a <code>String</code> object whose value is <code>Gobbledygook</code>.
+
+<blockquote><pre>
+"Gobbledygook"
+</pre></blockquote>
+
+The <code>StringsDemo</code> program uses this technique to create the string referred to by the <code>palindrome</code> variable:
+
+<blockquote><pre>
+String palindrome = "Dot saw I was Tod";
+</pre></blockquote>
+
+You can also create <code>String</code> objects as you would any other Java object: using the <code>new</code> keyword and a constructor. The <code>String</code> class provides several constructors that allow you to provide the initial value of the string, using different sources, such as an array of characters, an array of bytes, a string buffer, or a string builder. The following table shows the constructors provided by the String class.
+<p>
+<table border="1" cellpadding="4" cellspacing="3">
+<caption><font size="-1"><sup>*</sup></font>Constructors in the <code>String</code> Class</caption>
+<tr>
+<th width="30%">Constructor</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td><code>String()</code></td>
+<td>Creates an empty string.</td>
+</tr>
+
+<tr>
+<td>
+<code>
+String(byte[])<br/>
+String(byte[], int, int)<br/>
+String(byte[], int, int, String)<br/>
+String(byte[], String)
+</code>
+</td>
+<td>
+Creates a string whose value is set from the contents of an array of bytes. The two integer arguments, when present, set the offset and the length, respectively, of the subarray from which to take the initial values. The String argument, when present, specifies the character encoding to use to convert bytes to characters.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>
+String(char[])<br/>
+String(char[], int, int)
+</code>
+</td>
+<td>
+Creates a string whose value is set from the contents of an array of characters. The two integer arguments, when present, set the offset and the length, respectively, of the subarray from which to take the initial values.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>
+String(String)
+</code>
+</td>
+<td>
+Creates a string whose value is set from another string. Using this constructor with a literal string argument is not recommended, because it creates two identical strings.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>
+String(StringBuffer)
+</code>
+</td>
+<td>
+Creates a string whose value is set from a string buffer.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>
+String(StringBuilder)
+</code>
+</td>
+<td>
+Creates a string whose value is set from a string builder.
+</td>
+</tr>
+</table>
+</p>
+
+<font size="-1">
+* The <code>String</code> class defines other constructors not listed in this table. Those constructors have been deprecated, and their use is not recommended.
+</font>
+
+<p>
+Here's an example of creating a string from a character array:
+<blockquote><pre>
+char[] helloArray = { 'h', 'e', 'l', 'l', 'o' };
+String helloString = new String(helloArray);
+System.out.println(helloString);
+</pre></blockquote>
+</p>
+
+The last line of this code snippet displays: <code>hello</code>.
+<br/><br/>
+
+You must always use <code>new</code> to create a string buffer or string builder. Because the two classes have similar constructors, the following table lists only the constructors for string buffers. 
+
+<p>
+<table border="1" cellpadding="4" cellspacing="3">
+<caption>Constructors in the <code>StringBuffer</code> Class</caption>
+<tr>
+<th width="30%">Constructor</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td>
+StringBuffer()
+</td>
+<td>
+Creates an empty string buffer whose initial capacity is 16 characters.
+</td>
+</tr>
+
+<tr>
+<td>
+StringBuffer(CharSequence)
+</td>
+<td>
+Constructs a string buffer containing the same characters as the specified CharSequence. This constructor was introduced in JDK 5.0.
+</td>
+</tr>
+
+<tr>
+<td>
+StringBuffer(int)
+</td>
+<td>
+Creates an empty string buffer with the specified initial capacity.
+</td>
+</tr>
+
+<tr>
+<td>
+StringBuffer(String)
+</td>
+<td>
+Creates a string buffer whose value is initialized by the specified String. The capacity of the string buffer is the length of the original string plus 16.
+</td>
+</tr>
+</table>
+</p>
+
+The <code>StringsDemo</code> program creates the string builder referred to by <code>dest</code>, using the constructor that sets the buffer's capacity:
+<blockquote><pre>
+String palindrome = "Dot saw I was Tod";
+int len = palindrome.length();
+StringBuilder dest = new StringBuilder(len);
+</pre></blockquote>
+
+This code creates the string builder with an initial capacity equal to the length of the string referred to by the name <code>palindrome</code>. This ensures only one memory allocation for <code>dest</code> because it's just big enough to contain the characters that will be copied to it. By initializing a string builder or string buffer's capacity to a reasonable first guess, you minimize the number of times memory must be allocated for it. This makes your code more efficient because memory allocation is a relatively expensive operation.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

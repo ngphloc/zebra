@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!ELEMENT student (test*)>
+<!ATTLIST student
+	login CDATA #REQUIRED
+	name CDATA #REQUIRED
+	fileName CDATA #REQUIRED
+	path CDATA #REQUIRED
+	course CDATA #REQUIRED
+	totalClassicTest CDATA #REQUIRED
+	totalAdaptiveTest CDATA #REQUIRED
+>
+<!ELEMENT test (evaluatedTest+)>
+<!ATTLIST test
+	name CDATA #REQUIRED
+	fileName CDATA #REQUIRED
+	path CDATA #REQUIRED
+	make CDATA #REQUIRED
+	finish (true | false) #REQUIRED
+	lastScore CDATA #REQUIRED
+	executionType (classic | adaptive) #REQUIRED
+	lastTheta CDATA #IMPLIED
+	lastStandardError CDATA #IMPLIED
+>
+<!ELEMENT evaluatedTest (questionsFile+)>
+<!ATTLIST evaluatedTest
+	score CDATA #REQUIRED
+	timeTotal CDATA #REQUIRED
+	date CDATA #REQUIRED
+	totalQuestion CDATA #REQUIRED
+	correct CDATA #REQUIRED
+	incorrect CDATA #REQUIRED
+	withoutAnswer CDATA #REQUIRED
+	questionsDone CDATA #REQUIRED
+	theta CDATA #IMPLIED
+	thetaPrevious CDATA #IMPLIED
+	standardError CDATA #IMPLIED
+>
+<!ELEMENT questionsFile (question+)>
+<!ATTLIST questionsFile
+	numberOfQuestions CDATA #REQUIRED
+	path CDATA #REQUIRED
+>
+<!ELEMENT question (answer*)>
+<!ATTLIST question
+	codeQuestion CDATA #REQUIRED
+	answerValue (correct | incorrect | withoutAnswer) #REQUIRED
+	time CDATA #REQUIRED
+	done (true | false) #REQUIRED
+>
+<!ELEMENT answer EMPTY>
+<!ATTLIST answer
+	codeAnswer CDATA #REQUIRED
+>

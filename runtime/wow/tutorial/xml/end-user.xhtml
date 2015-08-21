@@ -1,0 +1,174 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>WOW! for End-Users</h2>
+
+<p>
+As an end-user there are only a few things you have to know
+about the WOW! system. How the adaptation works in an application
+largely depends on the
+<object name="tutorial.adaptationrule" type="text/wow" />
+<a href="rules" class="conditional">rules</a>
+an author creates, so we concentrate
+here on aspects that are application independent.
+</p>
+
+<ul>
+<li>
+In order for WOW! to perform adaptation each user must be known
+through a unique <em>identity</em>, which is chosen in the
+registration form. Anonymous users are assigned a unique
+randomly chosen identity. That identity is remembered by the
+browser through the "cookie" mechanism. You can restart an
+anonymous session only from the same machine using the same browser.
+Non-anonymous (normal) users have a <em>password</em> to prevent
+unauthorized use of their login. An application may offer a
+form (called "password" in this tutorial) to let you change the password.
+</li>
+<li>
+One WOW! server can contain several applications. You can reuse
+your identity when you go from one application to another.
+You can also return to the first application or go back and forth.
+However, you should not try to use two applications simultaneously
+from different browsers or browser windows, because WOW! maintains
+only one session per user at a time. Using multiple applications
+simultaneously can lead to unexpected results (like the name of
+one application being displayed in the other application,
+or the wrong background image on pages).
+</li>
+<li>
+WOW! registers every page access (every click on a link anchor).
+A set of
+<object name="tutorial.adaptationrule" type="text/wow" />
+<a href="rules" class="conditional">rules</a>
+(written by the author, possibly through authoring tools) determines how a
+<a href="usermodel" class="conditional">user model</a> is updated.
+This user model consists of
+<em>concepts</em> with <em>attributes</em>. There may (or may not)
+be forms in the application that let you inspect and change
+certain attributes of certain concepts.
+This tutorial has a standard form ("knowledge of tutorial")
+that lets you change the knowledge value of certain concepts.
+(The author determines which concepts
+have a user-changeable knowledge value.)
+</li>
+<li>
+Another set of author-defined rules determines the status of
+(links to) concepts and associates a presentation style for links
+to the concepts. Although the rules can be completely arbitrary,
+resulting in a plethora of link presentations, it is more typical
+that some simple rules are used that associate the link presentation
+with the <em>suitability</em> of the link destination.
+This is also what we did in this tutorial.
+The presentation (as used here) can be:
+<ul>
+<li>
+GOOD: the link points to a suitable page you have not visited before.
+The standard color for such link anchors is blue.
+</li>
+<li>
+NEUTRAL: the link points to a suitable page you have visited before.
+The standard color for such link anchors is purple.
+</li>
+<li>
+BAD: the link points to an unsuitable page. Whether or not you visited
+this page before the standard color for such link anchors is
+(almost) black.
+</li>
+</ul>
+In addition to link colors the presentation of links may also include
+icons. In this tutorial the navigation menu shows colored bullets
+(green, white or red), whereas in the text pages it does not.
+In the <a href="advanced" class="conditional">advanced</a> authoring
+section we explain how this works.
+<br />
+An application may offer a form through which you can change the link
+color scheme. (This tutorial offers such a form: "link colors").<br />
+Each time you visit a page the suitability of all the links on that
+page is determined. As a result the set of links you see may differ
+each time.
+</li>
+<li>
+<a href="pages" class="conditional">Pages</a>
+may also contain rules (or conditions) to determine the suitability of
+<a href="fragments" class="conditional">fragments</a>
+(like sentences or paragraphs).
+Each time you visit a page the suitability of each fragment is
+determined. As a result the information you see on the page
+may differ each time.
+</li>
+<li>
+<a href="pages" class="conditional">Pages</a> may also contain
+text fragments of which the
+<a href="visibility" class="conditional">presentation</a>
+can be adapted. Text can be made smaller or larger or emphasized
+in other ways.
+</li>
+<li>
+When you navigate through your browser's history (using the
+<em>back</em> and <em>forward</em> buttons) the browser may not request the
+pages you revisit from the WOW! server but may use cached versions.
+This results in pages being shown exactly as you saw them before,
+and not in the "new" form that would correspond to the most recent
+user model. WOW! attempts to instruct the browser to not used such
+cached versions (and at the time of this writing this works with
+Internet Explorer and Mozilla Firefox) but some browsers may ignore
+these instructions.<br />
+Also, when you open a new browser window (or tab) when following a link
+and then close it, the page you "return to" is not reloaded automatically.
+When in doubt you can use the browser's <em>reload</em>
+function to retrieve a newly adapted page, or you can navigate using
+a topic menu, as shown on the left in this tutorial.
+</li>
+<li>
+Apart from information pages an WOW! application may contain
+<em>forms</em> that let you change settings in your
+<a href="usermodel" class="conditional">user model</a>.
+We have included an
+<a href="tutorial-form.frm" class="unconditional">example form</a>
+to show that authors can allow users to manipulate certain items
+in their user model.
+</li>
+<li>
+There can also be forms that are intended as
+<a href="multiplechoice" class="conditional">multiple-choice tests</a>,
+but typically such tests are served through the newer
+"test engine".
+We show an
+<a href="testtutorial_tutorial_C_activity.xml|DoAppletTest">example test</a>
+here
+<if expr="tutorial.tutorial.knowledge&lt;70">
+<block>
+(but you probably need to study the tutorial further
+in order to answer the questions of the correctly)
+</block>
+</if>.
+</li>
+<li>
+You can "log off" from an WOW! application (in the tutorial this
+is possible through a link in the page header). The "log off" button
+or link will bring you back to the login page for the application.
+When you are logged on and you do not request any page for a long time
+your session will time out and you will be logged out automatically.
+The server will forget your session
+and thus also which application you were using.
+As a result you will be redirected to the top page of the WOW! server,
+not to the login page for the application.
+</li>
+</ul>
+
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

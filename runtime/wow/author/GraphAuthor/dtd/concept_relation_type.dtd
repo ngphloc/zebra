@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT concept_relation_type  (name, color, style, properties, listitems+)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT color (#PCDATA)>
+<!ELEMENT style (#PCDATA)>
+<!ELEMENT properties (#PCDATA)>
+<!ELEMENT listitems (setdefault*, generateListItem*)>
+<!ATTLIST properties
+	acyclic (true|false) "false"
+	unary   (true|false) "false"
+	concept_hierarchy (true|false) "false"	
+>
+<!ELEMENT setdefault (#PCDATA)>
+<!ATTLIST setdefault
+	location CDATA #REQUIRED
+	combination (AND|OR|DIV_S|DIV_D|NONE) "NONE"
+>
+<!ELEMENT generateListItem (requirement, trueActions, falseActions?)>
+<!ATTLIST generateListItem
+	location CDATA #REQUIRED
+	isPropagating (true|false) "false"
+>
+<!ELEMENT requirement (#PCDATA)>
+<!ELEMENT trueActions (action*)>
+<!ELEMENT falseActions (action*)>
+<!ELEMENT action (conceptName,attributeName,expression)>
+<!ATTLIST action
+	combination (AND|OR|DIV_S|DIV_D|NONE) "NONE"
+>
+<!ELEMENT conceptName (#PCDATA)>
+<!ELEMENT attributeName (#PCDATA)>
+<!ELEMENT expression (#PCDATA)>

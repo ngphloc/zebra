@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE concept SYSTEM 'concept.dtd'>
+
+<concept>
+  <name>tutorial.jdkinstall</name>
+  <description>JDK Install</description>
+  <attributes>
+    <attribute>
+      <name>access</name>
+      <description>triggered by page access</description>
+      <default>false</default>
+      <type>3</type>
+      <actions>
+	<action>
+	  <expr>! tutorial.jdkinstall.suitability &amp;&amp; tutorial.jdkinstall.knowledge &lt; 2</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.jdkinstall.knowledge</variable>
+	      <expr>35</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+	<action>
+	  <expr>tutorial.jdkinstall.suitability</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.jdkinstall.knowledge</variable>
+	      <expr>100</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+	<action>
+	  <expr>tutorial.jdkinstall.suitability</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.jdkinstall.visited</variable>
+	      <expr>tutorial.jdkinstall.visited + 1</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+	<action>
+	  <expr>true</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.jdkinstall.visited</variable>
+	      <expr>tutorial.jdkinstall.visited + 1</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+	<action>
+	  <expr>tutorial.jdkinstall.do$bayes$infer$0 &gt; 50</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.jdkinstall.showability</variable>
+	      <expr>1</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+	<action>
+	  <expr>tutorial.jdkinstall.do$bayes$infer$1 &gt; 50</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.jdkinstall.showability</variable>
+	      <expr>2</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+	<action>
+	  <expr>tutorial.jdkinstall.do$bayes$infer$valueidx == 0</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.jdkinstall.showability</variable>
+	      <expr>3</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+	<action>
+	  <expr>!((tutorial.jdkinstall.do$bayes$infer$0 &gt; 50) || ( tutorial.jdkinstall.do$bayes$infer$1 &gt; 50) || ( tutorial.jdkinstall.do$bayes$infer$valueidx == 0))</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.jdkinstall.showability</variable>
+	      <expr>0</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+      </actions>
+      <readonly>true</readonly>
+      <system>true</system>
+      <persistent>false</persistent>
+    </attribute>
+    <attribute>
+      <name>visited</name>
+      <description>has this fragment been visited?</description>
+      <default>0</default>
+      <type>1</type>
+      <actions />
+      <readonly>false</readonly>
+      <system>false</system>
+      <persistent>true</persistent>
+    </attribute>
+    <attribute>
+      <name>knowledge</name>
+      <description>knowledge about this concept</description>
+      <default>0</default>
+      <type>1</type>
+      <actions>
+	<action>
+	  <expr>_tutorial.jdkinstall.knowledge &gt; 0</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.java.knowledge</variable>
+	      <expr>tutorial.java.knowledge + (0.1 * _tutorial.jdkinstall.knowledge)</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+	<action>
+	  <expr>_tutorial.jdkinstall.knowledge &gt; 0</expr>
+	  <trigger>true</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>tutorial.java.knowledge</variable>
+	      <expr>tutorial.java.knowledge + (0.25 * _tutorial.jdkinstall.knowledge)</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+      </actions>
+      <readonly>false</readonly>
+      <system>false</system>
+      <persistent>true</persistent>
+    </attribute>
+    <attribute>
+      <name>suitability</name>
+      <description>suitability of this concept</description>
+      <default>true</default>
+      <type>3</type>
+      <actions />
+      <readonly>true</readonly>
+      <system>false</system>
+      <persistent>false</persistent>
+    </attribute>
+    <attribute>
+      <name>visibility</name>
+      <description>visibility of this concept</description>
+      <default>0</default>
+      <type>1</type>
+      <actions />
+      <readonly>false</readonly>
+      <system>false</system>
+      <persistent>true</persistent>
+    </attribute>
+    <attribute>
+      <name>showability</name>
+      <description>showability this concept</description>
+      <default>0</default>
+      <type>1</type>
+      <actions />
+      <readonly>false</readonly>
+      <system>false</system>
+      <persistent>true</persistent>
+      <casegroup>
+	<defaultfragment>file:/tutorial/xml/jdkinstall.xhtml</defaultfragment>
+	<casevalue>
+	  <value>1</value>
+	  <returnfragment>file:/tutorial/xml/jdkinstall$0.xhtml</returnfragment>
+	</casevalue>
+	<casevalue>
+	  <value>2</value>
+	  <returnfragment>file:/tutorial/xml/jdkinstall$1.xhtml</returnfragment>
+	</casevalue>
+	<casevalue>
+	  <value>3</value>
+	  <returnfragment>file:/tutorial/xml/jdkinstall$valueidx.xhtml</returnfragment>
+	</casevalue>
+      </casegroup>
+    </attribute>
+    <attribute>
+      <name>level</name>
+      <description>level of this concept in the hierarchy</description>
+      <default>0</default>
+      <type>1</type>
+      <actions />
+      <readonly>true</readonly>
+      <system>true</system>
+      <persistent>true</persistent>
+    </attribute>
+  </attributes>
+  <concepttype>fragment</concepttype>
+  <title>jdkinstall</title>
+  <hierarchy>
+    <firstchild></firstchild>
+    <nextsib></nextsib>
+    <parent>tutorial.java</parent>
+  </hierarchy>
+</concept>
+

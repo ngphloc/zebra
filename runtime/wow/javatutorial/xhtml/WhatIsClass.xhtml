@@ -1,0 +1,65 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>What Is a Class?</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object-Oriented Programming Concepts
+</font>
+
+<h2>What Is a Class?</h2>
+<blockquote>
+
+In the real world, you often have many objects of the same kind. For example, your bicycle is just one of many bicycles in the world. Using object-oriented terminology, we say that your bicycle object is an <em>instance</em> of the class of objects known as bicycles. Bicycles have some 
+state (current gear, current cadence, two wheels) and behavior (change gears, brake) in common. However, each bicycle's state is independent of and can be different from that of other bicycles.
+
+<p>
+When building bicycles, manufacturers take advantage of the fact that bicycles share characteristics, building many bicycles from the same blueprint. It would be very inefficient to produce a new blueprint for every individual bicycle manufactured.
+</p>
+
+<br/>
+In object-oriented software, it's also possible to have many objects of the same kind that share characteristics: rectangles, employee records, video clips, and so on. Like the bicycle manufacturers, you can take advantage of the fact that objects of the same kind are similar and you can create a blueprint for those objects. A software blueprint for objects is called a <em>class</em>.
+
+<blockquote><hr/><strong>Definition: </strong>A class is a blueprint that defines the variables and the methods common to all objects of a certain kind.<hr/></blockquote>
+
+A class can be visually represented like this:
+
+<p><center><img src="images/concepts-class.gif" width="356" height="179" align="bottom" alt="A visual representation of a class."/></center></p>
+The class for our bicycle example would declare the instance variables necessary to contain the current gear, the current cadence, and so on, for each bicycle object. The class would also declare and provide implementations for the instance methods that allow the rider to change gears, brake, and change the pedaling cadence, as shown in the next figure.
+
+<p><center><img src="../../figures/java/concepts-bicycleClass.gif" width="317" height="179" align="bottom" alt="The bicycle class."/></center></p>
+After you've created the bicycle class, you can create any number of bicycle objects from the class. When you create an instance of a class, the system allocates enough memory for the object and all its instance variables. Each instance gets its own copy of all the instance variables defined in the class (as shown in the next figure).
+<br/><br/>
+
+<p><center><img src="images/concepts-2BicycleObjects.gif" width="317" height="427" align="bottom" alt="MyBike and YourBike are two different instances of the Bike class."/></center></p>
+In addition to instance variables, classes can define <em>class variables</em>. A class variable contains information that is shared by all instances of the class. For example, suppose that all bicycles had the same number of gears. In this case, defining an instance variable to hold the number of gears is inefficient; each instance would have its own copy of the variable, but the value would be the same for every instance. In such situations, you can define a class variable that contains the number of gears. All instances share this variable. If one object changes the variable, it changes for all other objects of that type. A class can also declare <em>class methods</em>. You can invoke a class method directly from the class, whereas you must invoke instance methods on a particular instance.
+<br/><br/>
+
+<p><center><img src="images/concepts-yourBike.gif" width="335" height="492" align="bottom" alt="YourBike, an instance of Bike, has access to the numberOfGears variable in the Bike class; however, the YourBike instance does not have a copy of this class variable. "/></center></p>
+The section 
+<a href="UnderstandingInstanceAndClassMembers" class="conditional">Understanding Instance and Class Members</a>
+<a href="UnderstandingInstanceAndClassMembers" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>
+discusses instance variables and methods and class variables and methods in detail.
+
+<p>
+Objects provide the benefit of modularity and information hiding. Classes provide the benefit of reusability. Bicycle manufacturers reuse the same blueprint over and over again to build lots of bicycles. Software programmers use the same class, and thus the same code, over and over again to create many objects.
+</p>
+
+</blockquote>
+
+<h3>Objects versus Classes</h3>
+<blockquote>
+You probably noticed that the illustrations of objects and classes look very similar. And indeed, the difference between classes and objects is often the source of some confusion. In the real world, it's obvious that classes are not themselves the objects they describe: A blueprint of a bicycle is not a bicycle. However, it's a little more difficult to differentiate classes and objects in software. This is partially because software objects are merely electronic models of real-world objects or abstract concepts in the first place. But it's also because the term "object" is sometimes used to refer to both classes and instances.
+<p>
+In the figures, the class is not shaded, because it represents a blueprint of an object rather than an object itself. In comparison, an object is shaded, indicating that the object exists and that you can use it.
+</p>
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

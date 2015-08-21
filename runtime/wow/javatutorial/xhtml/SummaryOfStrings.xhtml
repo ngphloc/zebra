@@ -1,0 +1,85 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Summary of Characters and Strings</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>Summary of Characters and Strings</h2>
+<blockquote>
+Use a <code>Character</code> object to contain a single character value, use a <code>String</code> object to contain a sequence of characters that won't change, and use a <code>StringBuilder</code> or <code>StringBuffer</code> object to construct or to modify a sequence of characters dynamically.
+
+Here's a fun program, 
+<a target="_blank" href="resources/Palindrome.java"><font color="#bb000f"><code>Palindrome</code></font></a><a target="_blank" href="resources/Palindrome.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>, that determines whether a string is a palindrome. This program uses many methods from the <code>String</code> and the <code>StringBuilder</code> classes:
+
+<blockquote><pre>
+public class Palindrome {
+
+    public static boolean isPalindrome(String stringToTest) {
+        String workingCopy = removeJunk(stringToTest);
+        String reversedCopy = reverse(workingCopy);
+        
+        return reversedCopy.equalsIgnoreCase(workingCopy);
+    }
+
+    protected static String removeJunk(String string) {
+        int i, len = string.length();
+  	StringBuilder dest = new StringBuilder(len);
+	char c;
+
+	for (i = (len - 1); i &gt;= 0; i--) {
+	    c = string.charAt(i);
+	    if (Character.isLetterOrDigit(c)) {
+		dest.append(c);
+	    }
+	}
+
+        return dest.toString();
+    }
+
+    protected static String reverse(String string) {
+  	StringBuilder sb = new StringBuilder(string);
+
+        return sb.reverse().toString();
+    }
+
+    public static void main(String[] args) {
+        String string = &quot;Madam, I'm Adam.&quot;;
+
+        System.out.println();
+        System.out.println(&quot;Testing whether the following &quot;
+                         + &quot;string is a palindrome:&quot;);
+        System.out.println(&quot;    &quot; + string);
+        System.out.println();
+
+        if (isPalindrome(string)) {
+            System.out.println(&quot;It IS a palindrome!&quot;);
+        } else {
+            System.out.println(&quot;It is NOT a palindrome!&quot;);
+        }
+        System.out.println();
+    }
+}
+</pre></blockquote>
+
+The output from this program is:
+
+<blockquote><pre>
+Testing whether the following string is a palindrome:
+    Madam, I'm Adam.
+
+It IS a palindrome!
+</pre></blockquote>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

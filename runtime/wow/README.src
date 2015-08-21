@@ -1,0 +1,168 @@
+CAUTION
+This file is part of WOW! based on AHA! (Adaptive Hypermedia for All) which is free software (GNU General Public License) developed by Paul De Bra - Eindhoven University of Technology and University. 
+Copyright (c) 2006 by Eindhoven University of Technology.
+It may be used according to the GNU license of Eindhoven University of Technology
+
+		WOW! Developer documentation
+
+with version: 1.0 release
+date        : June 01  2008
+todo        : extend & improve
+author      : Rob Essink (ok shoot me)
+corrections : Paul De Bra, reviewed and modified by Loc Nguyen (don't shoot me, only trying to fix things)
+
+This document is an attempt to give a view of the structure of WOW!.
+To give a (new) WOW! developper/debugger the possibility the
+oppertunity to get to know the system reasonably fast.
+
+--------------------------------------------------------------------------
+
+As you might know WOW! is an adaptive hypermedia system.
+WOW! has a number of documents (xml or xhtml), called resources.
+The resources are stored in the root of the WOW-tree (the example
+is the course 2L690).
+
+These resources are linked to concepts (you could call them semantics),
+these concepts have attributes like knowledge.
+Further there are users who have a profile (references to concepts/attributes)
+Profiles and concepts are stored into a database, that database may
+be implemented in XML (in local files, wow/xmlroot ) or in Database server.
+
+When a user accesses a resource the profile is modified using the
+rules of the concept database.
+
+The layout of a page is again determined by the profile.
+
+--------------------------------------------------------------------------
+
+  Libraries
+
+The WOW! system uses the following libraries:
+
+  * Xerces 1.4 (http://xml.apache.org), is usually part of TomCat or JWSDP
+      A XML library for parsing the WOW-documents
+
+  * JDBC library for each database server
+
+  * JEP (http://jep.sourceforge.net/)
+      The Java Expression Parser used for evaluating WOW-expressions
+    
+  * Sun XML library
+      Used to go through the XML-database
+
+All libraries, if not provided by the server, can be found in wow/WEB-INF/lib
+
+--------------------------------------------------------------------------
+
+The WOW! javacode consists of a library structure (vn.spring.WOW) and
+a number of servlets.
+
+The servlets in wow/WEB-INF/classes:
+
+     WEB-INF/classes/Anonymous.java
+         a login function for non-registered users
+     
+     WEB-INF/classes/ConfDB.java
+         (config) a tool for setting the system-database configuration
+     
+     WEB-INF/classes/Config.java
+         (config) the main system configuration servlet
+     
+     WEB-INF/classes/Get.java
+         the main servlet, fetches the WOW documents
+         from the WOW database, presents and evaluates multiple choice tests,
+	 shows forms for modifying the user model and handles them
+     
+     WEB-INF/classes/Initial.java
+         (config) creates an Initial configuration
+     
+     WEB-INF/classes/Login.java
+         login function for the WOW user system
+     
+     WEB-INF/classes/Logoff.java
+         logging out of the WOW session
+     
+     WEB-INF/classes/Logout.java
+         (config) logging out of the configuration session
+     
+     WEB-INF/classes/Managers.java
+         (config) creating/modifying/removing new WOW configuration managers
+      
+     WEB-INF/classes/ProcessInput.java 
+         process the input of a form
+     
+     WEB-INF/classes/Register.java
+         register a new user
+     
+     WEB-INF/classes/SaveForm.java
+         save a constructed form     		
+     
+     WEB-INF/classes/ServeForm.java
+         serve a form     
+     
+     WEB-INF/classes/SQLSetup.java
+         (config) setting up a new SQL database for WOW
+     
+     WEB-INF/classes/convertDB.java
+         (config) a tool to convert all WOW-concepts from Database to XML
+         or vice-versa, called when changing database implementation
+         in ConfDB
+     
+(config) means it's part of the system-configuration
+
+--------------------------------------------------------------------------
+
+The WOW library functions:
+   
+   WEB-INF/classes/vn/spring/WOW/WOWStatic.java
+     The STATIC WOW environment, the configuration file
+     is opened here as well as the database (XML or Database).
+     All static WOW-system related information is stored here.
+     Please be so kind to store variable information in
+     the configuration file.
+   
+   WEB-INF/classes/vn/spring/WOW/WOWDB
+     The database environment: there is a XML database implementation
+      (the file are in /wow/xmlroot/profile and /wow/xmlroot/concept)
+     or a MYSQL implementation (configurable)
+   
+   WEB-INF/classes/vn/spring/WOW/DBconvert
+     (unused??)
+   
+   WEB-INF/classes/vn/spring/WOW/Utils
+     libraries for setting up and evaluating tests
+   
+   WEB-INF/classes/vn/spring/WOW/config
+     Loads (and stores) the configuration file and
+     keeps track of the WOW-administrators
+   
+   WEB-INF/classes/vn/spring/WOW/databasedefs
+     Only a SQL file of the database, this is used for
+     SQLSetup.
+   
+   WEB-INF/classes/vn/spring/WOW/datacomponents
+     Datastructures for WOW
+   
+   WEB-INF/classes/vn/spring/WOW/engine
+     The processing of documents and data.
+     This is the complicated part
+   
+   WEB-INF/classes/vn/spring/WOW/exceptions
+     WOW Exception classes
+
+   WEB-INF/classes/vn/spring/WOW/formeditor
+     form editor classes
+--------------------------------------------------------------------------
+
+The deployment file (web.xml)
+
+This file is a part of every TomCat context/webapp.
+Make sure that every (used) servlet is present in
+this file, there is also a environment-entry pointing
+to wowconfig.xml (see below).
+
+--------------------------------------------------------------------------
+
+The WOW Configuration file (wowconfig.xml)
+
+Contains configuration things for WOW!.

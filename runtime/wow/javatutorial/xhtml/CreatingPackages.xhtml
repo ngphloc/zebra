@@ -1,0 +1,77 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Creating a Package</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Interfaces and Packages
+</font>
+
+<h2>
+Creating a Package
+</h2>
+<blockquote>
+<!--Creating a Package-->   
+    To create a package, you put a type (class, interface, enum
+    or annotation) in it. 
+    To do this, you put a <code>package</code> statement at the top 
+    of the source file in which the type is defined. 
+    For example, the following code appears in the source file <code>Circle.java</code> 
+    and puts the <code>Circle</code> class in the <code>graphics</code> 
+    package: 
+<blockquote><pre>
+package graphics;
+
+public class Circle extends Graphic implements Draggable {
+    . . .
+}
+</pre></blockquote>
+
+The <code>Circle</code> class is a public member of the <code>graphics</code> 
+    package. 
+    <br/><br/>
+    You must include a <code>package</code> statement at the top 
+    of every source file that defines a class or an interface that 
+    is to be a member of the <code>graphics</code> package. So you 
+    would also include the statement in <code>Rectangle.java</code> 
+    and so on:  
+<blockquote><pre>
+package graphics;
+
+public class Rectangle extends Graphic implements Draggable {
+    . . .
+}
+</pre></blockquote>
+The scope of the <code>package</code> statement is the entire 
+    source file, so all classes, interfaces, enums and annotations
+    defined in <code>Circle.java</code> and <code>Rectangle.java</code>
+    are also members of the <code>graphics</code> 
+    package. If you put multiple classes in a single source file, 
+    only one may be public, and it must share the name of the source 
+    file's base name. 
+    Only public package members are accessible from outside the package.
+
+<!--The following was a footnote.-->
+<blockquote><hr/><strong>Note: </strong>Some compilers might allow more than one public class per <code>.java</code> 
+file. However, we recommend that you use the convention one public 
+class per file, because it makes public classes easier to find and 
+works for all compilers.
+<hr/></blockquote>
+
+    If you do not use a <code>package</code> statement, your type
+    ends up in the <i>default package</i>, which is 
+    a package that has no name. Generally speaking, the default package 
+    is only for small or temporary applications or when you are just 
+    beginning development. Otherwise, classes, enums and annotations belong 
+    in named packages. 
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

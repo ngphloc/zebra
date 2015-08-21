@@ -1,0 +1,65 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="stylesheet" type="text/css" href="/wow/tutorial/tutorial.css" />
+<title>WOW! Tutorial</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+<h2>Using WOW! with standard XHTML</h2>
+<p>
+Pages in standard XHTML start with:<br />
+<tt>&lt;!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml1-strict.dtd"&gt;</tt>
+</p>
+<p>
+When using WOW! with standard XHTML you must create pages that
+contain a <tt>&lt;head&gt;</tt> and a <tt>&lt;body</tt> part.
+(In the XHTML+WOW format you should <em>not</em> have a
+<tt>&lt;head&gt;</tt> and a <tt>&lt;body</tt> part as they
+are generated automatically by WOW!.)
+</p>
+<p>
+In the <tt>&lt;head&gt;</tt> part you can include a reference
+to an external style sheet, like
+<tt>&lt;link rel="stylesheet" type="text/css" "tutorial.css" /&gt;</tt>.
+In the style sheet you can for instance define the
+<a href="visibility" class="conditional">presentation style
+of text fragments</a>, depending on the <em>visibility</em>
+attribute of a concept.
+</p>
+<p>
+Another possible application of using standard XHTML is that
+extensions other than the WOW! extension can be used.
+You can for instance provide the following HTML tag:<br />
+<tt>&lt;html xmlns="http://www.w3.org/1999/xhtml" xmlns:t="urn:schemas-microsoft-com:time"&gt;</tt><br />
+and then in the <tt>&lt;head&gt;</tt> add the import command<br />
+<tt>&lt;?IMPORT namespace="t" implementation="#default#time2"?&gt;</tt><br />
+This then allows you to use the HTML+TIME extensions defined by Microsoft,
+and closely related to the timing part of the
+<a href="http://www.w3.org/AudioVideo/">W3C SMIL</a> standard.
+Using these timing extensions it becomes possible to create
+(adaptive) multimedia applications in which video fragments
+can be played either upon mouse clicks or triggered by a timer
+or an offset into other timed objects.
+It is beyond the scope of this tutorial to explain the use of
+HTML+TIME. Please note that when you use such extensions your
+application will no longer be browser-independent. (HTML+TIME currently
+works with Internet Explorer and with Realplayer.)
+</p>
+
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Warning! Interfaces Cannot Grow</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Interfaces and Packages
+</font>
+
+<h2>
+Warning! Interfaces Cannot Grow
+</h2>
+<blockquote>
+Suppose that you want to add some functionality to <CODE>StockWatcher</CODE>. 
+For instance, suppose that you want to add a method that reports 
+the current stock price, regardless of whether the value changed: 
+
+<blockquote><pre>
+public interface StockWatcher {
+    void valueChanged(TickerSymbol tickerSymbol,
+                      BigDecimal newValue); 
+    void currentValue(TickerSymbol tickerSymbol,
+                      BigDecimal newValue); 
+}
+</pre></blockquote>
+
+However, if you make this change, all classes that implement 
+the old <CODE>StockWatcher</CODE> interface will break because 
+they don't implement the interface anymore! Programmers relying 
+on this interface will protest loudly. 
+<br/><br/>
+Try to anticipate all uses for your interface up front and specify 
+it completely from the beginning. Given that this is often impossible, 
+you may need either to create more interfaces later or to break 
+your customer's code. For example, you could create a <CODE>StockWatcher</CODE> 
+subinterface called <CODE>StockTracker</CODE> that declared the 
+new method:
+
+<blockquote><pre>
+public interface StockTracker extends StockWatcher {
+    void currentValue(TickerSymbol tickerSymbol,
+                      BigDecimal newValue);
+}
+</pre></blockquote>
+
+Now users of your code can choose to upgrade to the new interface
+or to stick with the old interface. 
+
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>The switch Statement</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Language Basics
+</font>
+
+<h2>The switch Statement</h2>
+<blockquote>
+Use the <em>switch</em> statement to conditionally perform statements based on an integer expression or enumerated type. Following is a sample program,
+<a target="_blank" href="resources/SwitchDemo.java"><font color="#bb000f"><code>SwitchDemo</code></font></a><a target="_blank" href="resources/SwitchDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>, that declares an integer named <code>month</code> whose value supposedly represents the month in a date. The program displays the name of the month, based on the value of <code>month</code>, using the <code>switch</code> statement:
+<blockquote><pre>
+public class SwitchDemo {
+    public static void main(String[] args) {
+
+        int month = 8;
+        switch (month) {
+            case 1:  System.out.println("January"); break;
+            case 2:  System.out.println("February"); break;
+            case 3:  System.out.println("March"); break;
+            case 4:  System.out.println("April"); break;
+            case 5:  System.out.println("May"); break;
+            case 6:  System.out.println("June"); break;
+            case 7:  System.out.println("July"); break;
+            case 8:  System.out.println("August"); break;
+            case 9:  System.out.println("September"); break;
+            case 10: System.out.println("October"); break;
+            case 11: System.out.println("November"); break;
+            case 12: System.out.println("December"); break;
+            default: System.out.println("Not a month!"); break;
+        }
+    }
+}
+</pre></blockquote>
+
+The <code>switch</code> statement evaluates its expression, in this case the value of <code>month</code>, and executes the appropriate <em>case</em> statement. Thus, the output of the program is <code>August</code>. Of course, you could implement this by using an <code>if</code> statement:
+<blockquote><pre>
+int month = 8;
+if (month == 1) {
+    System.out.println("January");
+} else if (month == 2) {
+    System.out.println("February");
+}
+. . . //<em>and so on</em>
+</pre></blockquote>
+
+Deciding whether to use an <code>if</code> statement or a <code>switch</code> statement is a judgment call. You can decide which to use, based on readability and other factors. An <code>if</code> statement can be used to make decisions based on ranges of values or conditions, whereas a <code>switch</code> statement can make decisions based only on a single integer or enumerated value. Also, the value provided to each <code>case</code> statement must be unique.
+<br/><br/>
+
+Another point of interest in the <code>switch</code> statement is the <em>break</em> statement after each <code>case</code>. Each <code>break</code> statement terminates the enclosing <code>switch</code> statement, and the flow of control continues with the first statement following the <code>switch</code> block. The <code>break</code> statements are necessary because without them, the <code>case</code> statements fall through. That is, without an explicit <code>break</code>, control will flow sequentially through subsequent <code>case</code> statements. Following is an example,  
+<a target="_blank" href="resources/SwitchDemo2.java"><font color="#bb000f"><code>SwitchDemo2</code></font></a><a target="_blank" href="resources/SwitchDemo2.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>, that illustrates why it might be useful to have <code>case</code> statements fall through:
+<blockquote><pre>
+public class SwitchDemo2 {
+    public static void main(String[] args) {
+
+        int month = 2;
+        int year = 2000;
+        int numDays = 0;
+
+        switch (month) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                numDays = 31;
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                numDays = 30;
+                break;
+            case 2:
+                if ( ((year % 4 == 0) &amp;&amp; !(year % 100 == 0))
+                     || (year % 400 == 0) )
+                    numDays = 29;
+                else
+                    numDays = 28;
+                break;
+            default:
+                numDays = 0;
+                break;
+        }
+        System.out.println("Number of Days = " + numDays);
+    }
+}
+</pre></blockquote>
+
+The output from this program is:
+<blockquote><pre>
+Number of Days = 29
+</pre></blockquote>
+
+Technically, the final <code>break</code> is not required, because flow would fall out of the <code>switch</code> statement anyway. However, we recommend using a <code>break</code> so that modifying the code is easier and less error-prone. You will see <code>break</code> used to terminate loops in the section 
+<a href="BranchingStatements" class="conditional">Branching Statements</a><a href="BranchingStatements" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.
+<p>
+Finally, you should use the <em>default</em> statement at the end of the <code>switch</code> to handle all values that aren't explicitly handled by one of the <code>case</code> statements.
+</p>
+
+</blockquote>
+<h3><a name="enum">Enumerated Types in switch Statements</a></h3>
+<blockquote>
+
+<em>Enumerated types</em>, a feature introduced in 5.0, can be used in <code>switch</code> statements. You'll learn all about enumerated types later, in the
+<a href="ClassesAndInheritance" class="conditional">Classes and Inheritance</a><a href="ClassesAndInheritance" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> chapter.
+This section just shows how you can use them in a <code>switch</code> statement. Fortunately, it's just like using integers in a <code>switch</code> statement.
+
+<p>
+The following code, taken from 
+<a target="_blank" href="resources/SwitchEnumDemo.java"><font color="#bb000f"><code>SwitchEnumDemo</code></font></a><a target="_blank" href="resources/SwitchEnumDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a> is almost identical to the code you previously saw from
+<a target="_blank" href="resources/SwitchDemo2.java"><font color="#bb000f"><code>SwitchDemo2</code></font></a><a target="_blank" href="resources/SwitchDemo2.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>. It substitutes enumerated values for the integers, but otherwise the <code>switch</code> statement is the same.
+
+<blockquote><pre>
+public class SwitchEnumDemo {
+    public enum Month { JANUARY, FEBRUARY, MARCH, APRIL,
+                        MAY, JUNE, JULY, AUGUST, SEPTEMBER,
+                        OCTOBER, NOVEMBER, DECEMBER }
+
+    public static void main(String[] args) {
+        Month month = Month.FEBRUARY;
+        int year = 2000;
+        int numDays = 0;
+
+        switch (month) {
+            case JANUARY:
+            case MARCH:
+            case MAY:
+            case JULY:
+            case AUGUST:
+            case OCTOBER:
+            case DECEMBER:
+                numDays = 31;
+                break;
+            case APRIL:
+            case JUNE:
+            case SEPTEMBER:
+            case NOVEMBER:
+                numDays = 30;
+                break;
+            case FEBRUARY:
+                if ( ((year % 4 == 0) &amp;&amp; !(year % 100 == 0))
+                     || (year % 400 == 0) )
+                    numDays = 29;
+                else
+                    numDays = 28;
+                break;
+            default:
+                numDays=0;
+                break;
+        }
+        System.out.println("Number of Days = " + numDays);
+    }
+}
+</pre></blockquote>
+</p>
+
+This example showed just a bit
+of what Java language enumerations can do.
+To learn more, see
+<a target="_top" href="../javaOO/enum.html">Enumerated Types</a><a target="_top" href="../javaOO/enum.html"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE profile SYSTEM 'profile.dtd'>
+
+<profile>
+  <record>
+    <key>personal.directory</key>
+    <value>javatutorial</value>
+    <firsttimeupdated>false</firsttimeupdated>
+  </record>
+  <record>
+    <key>personal.umlocked</key>
+    <value>false</value>
+    <firsttimeupdated>false</firsttimeupdated>
+  </record>
+  <record>
+    <key>personal.name</key>
+    <value>Leonardo de Vinci</value>
+    <firsttimeupdated>false</firsttimeupdated>
+  </record>
+  <record>
+    <key>personal.email</key>
+    <value>xyz@hcmus.edu.vn</value>
+    <firsttimeupdated>false</firsttimeupdated>
+  </record>
+  <record>
+    <key>personal.password</key>
+    <value>test</value>
+    <firsttimeupdated>false</firsttimeupdated>
+  </record>
+  <record>
+    <key>personal.course</key>
+    <value>javatutorial</value>
+    <firsttimeupdated>false</firsttimeupdated>
+  </record>
+  <record>
+    <key>personal.id</key>
+    <value>leonardo</value>
+    <firsttimeupdated>false</firsttimeupdated>
+  </record>
+</profile>
+

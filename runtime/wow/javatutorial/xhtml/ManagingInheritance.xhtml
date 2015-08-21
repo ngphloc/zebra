@@ -1,0 +1,46 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Managing Inheritance</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Classes and Inheritance
+</font>
+
+<h2>
+Managing Inheritance
+</h2>
+<blockquote>
+The 
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Object.html"><font color="#8800bb"><code>Object</code></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Object.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a> class, defined in the <code>java.lang</code> package, defines 
+and implements behavior that every class needs. As depicted in 
+the following figure, many classes derive from <code>Object</code>, 
+many classes derive from those classes, and so on, forming a 
+hierarchy of classes.
+<p><center><img src="images/classes-object.gif" width="440" height="241" align="bottom" alt="All Classes are Descendants of &lt;code&gt;Object&lt;/code&gt;"/></center></p>
+At the top of the hierarchy, <code>Object</code> is the most 
+general of all classes. Classes near the bottom of the hierarchy 
+provide more specialized behavior. A <i>subclass</i> derives 
+from another class. The term <i>superclass</i> refers to a 
+class's direct ancestor or to any of its ascendant classes. 
+Every class has one and only one immediate superclass. 
+<br/><br/>
+A subclass inherits all the member variables and methods from 
+its superclass. However, the subclass might not have access to 
+an inherited member variable or method. For example, a subclass 
+cannot access a private member inherited from its superclass. 
+One might say, then, that the item was not inherited at all. But 
+the item <i>is</i> inherited. This becomes important when using 
+an inner class, which does have access to its enclosing class's 
+private members. Note that constructors are not members and 
+so are not inherited by subclasses. 
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

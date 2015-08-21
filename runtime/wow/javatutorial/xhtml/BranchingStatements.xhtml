@@ -1,0 +1,207 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Branching Statements</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Language Basics
+</font>
+
+<h2>Branching Statements</h2>
+
+<blockquote>
+The Java programming language supports three branching statements:
+<ul>
+<li><a href="#break">The <code>break</code> statement</a></li>
+<li><a href="#continue">The <code>continue</code> statement</a></li>
+<li><a href="#return">The <code>return</code> statement</a></li>
+</ul>
+</blockquote>
+
+The <code>break</code> statement and the <code>continue</code> statement, which are covered next, can be used with or without a label. A <em>label</em> is an identifier placed before a statement. The label is followed by a colon (<code>:</code>): 
+
+<blockquote><pre>
+<em>statementName: someJavaStatement;</em>
+</pre></blockquote>
+
+You'll see an example of a label within the context of a program in the next section.
+
+<a name="break"><h3>The break Statement</h3></a>
+<blockquote>
+The <em>break</em> statement has two forms: unlabeled and labeled. You saw the unlabeled form of the <code>break</code> statement used with <code>switch</code> earlier. As noted there, an unlabeled <code>break</code> terminates the enclosing <code>switch</code> statement, and flow of control transfers to the statement immediately following the <code>switch</code>. You can also use the unlabeled form of the <code>break</code> statement to terminate a <code>for</code>, <code>while</code>, or <code>do-while</code> loop. The following sample program, 
+<a target="_blank" href="resources/BreakDemo.java"><font color="#bb000f"><code>BreakDemo</code></font></a><a target="_blank" href="resources/BreakDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>, contains a <code>for</code> loop that searches for a particular value within an array:
+<blockquote><pre>
+public class BreakDemo {
+    public static void main(String[] args) {
+
+        int[] arrayOfInts = { 32, 87, 3, 589, 12, 1076,
+                              2000, 8, 622, 127 };
+        int searchfor = 12;
+
+        int i = 0;
+        boolean foundIt = false;
+
+        for ( ; i &lt; arrayOfInts.length; i++) {
+            if (arrayOfInts[i] == searchfor) {
+                foundIt = true;
+                <B>break;</B>
+            }
+        }
+
+        if (foundIt) {
+            System.out.println("Found " + searchfor
+                               + " at index " + i);
+        } else {
+            System.out.println(searchfor
+                               + "not in the array");
+        }
+    }
+}
+</pre></blockquote>
+The <code>break</code> statement, shown in boldface, terminates the <code>for</code> loop when the value is found. The flow of control transfers to the statement following the enclosing <code>for</code>, which is the <code>print</code> statement at the end of the program.
+<br/><br/>
+The output of this program is:
+<blockquote><pre>
+Found 12 at index 4
+</pre></blockquote>
+
+The unlabeled form of the break statement, <code>break</code>, is used to terminate the innermost <code>switch</code>, <code>for</code>, <code>while</code>, or <code>do-while</code>; the labeled form terminates an outer statement, which is identified by the label specified in the <code>break</code> statement. The following program, 
+<a target="_blank" href="resources/BreakWithLabelDemo.java"><font color="#bb000f"><code>BreakWithLabelDemo</code></font></a><a target="_blank" href="resources/BreakWithLabelDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>, is similar to the previous one, but it searches for a value in a two-dimensional array. Two nested <code>for</code> loops traverse the array. When the value is found, a labeled <code>break</code> terminates the statement labeled <code>search</code>, which is the outer <code>for</code> loop:
+<blockquote><pre>
+public class BreakWithLabelDemo {
+    public static void main(String[] args) {
+
+        int[][] arrayOfInts = { { 32, 87, 3, 589 },
+                                { 12, 1076, 2000, 8 },
+                                { 622, 127, 77, 955 }
+                              };
+        int searchfor = 12;
+
+        int i = 0;
+        int j = 0;
+        boolean foundIt = false;
+
+    <b>search:</b>
+        for ( ; i &lt; arrayOfInts.length; i++) {
+            for (j = 0; j &lt; arrayOfInts[i].length; j++) {
+                if (arrayOfInts[i][j] == searchfor) {
+                    foundIt = true;
+                    break search;
+                }
+            }
+        }
+
+        if (foundIt) {
+            System.out.println("Found " + searchfor +
+                               " at " + i + ", " + j);
+        } else {
+            System.out.println(searchfor
+                               + "not in the array");
+        }
+
+    }
+}
+</pre></blockquote>
+The output of this program is:
+<blockquote><pre>
+Found 12 at 1, 0
+</pre></blockquote>
+This syntax can be a little confusing. The <code>break</code> statement terminates the labeled statement; it does not transfer the flow of control to the
+label. The flow of control transfers to the statement immediately following the labeled (terminated) statement.
+</blockquote>
+
+<a name="continue"><h3>The continue Statement</h3></a>
+<blockquote>
+You use the <em>continue</em> statement to skip the current iteration of a <code>for</code>, <code>while</code>, or <code>do-while</code> loop. The unlabeled form skips to the end of the innermost loop's body and evaluates the boolean expression that controls the loop, basically skipping the remainder of this iteration of the loop. The following program, 
+<a target="_blank" href="resources/ContinueDemo.java"><font color="#bb000f"><code>ContinueDemo</code></font></a><a target="_blank" href="resources/ContinueDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>, steps through a string buffer, checking each letter. If the current character is not a <code>p</code>, the <code>continue</code> statement skips the rest of the loop and proceeds to the next character. If it is a <code>p</code>, the program increments a counter, and converts the <code>p</code> to an uppercase letter.
+<blockquote><pre>
+public class ContinueDemo {
+    public static void main(String[] args) {
+
+        StringBuffer searchMe = new StringBuffer(
+            "peter piper picked a peck of pickled peppers");
+        int max = searchMe.length();
+        int numPs = 0;
+
+        for (int i = 0; i &lt; max; i++) {
+            //interested only in p's
+            if (searchMe.charAt(i) != 'p')
+                <b>continue;</b>
+
+            //process p's
+            numPs++;
+            searchMe.setCharAt(i, 'P');
+        }
+        System.out.println("Found " + numPs
+                           + " p's in the string.");
+        System.out.println(searchMe);
+    }
+}
+</pre></blockquote>
+Here is the output of this program:
+<blockquote><pre>
+Found 9 p's in the string.
+Peter PiPer Picked a Peck of Pickled PePPers
+</pre></blockquote>
+The labeled form of the <code>continue</code> statement skips the current iteration of an outer loop marked with the given label. The following example
+program,
+<a target="_blank" href="resources/ContinueWithLabelDemo.java"><font color="#bb000f"><code>ContinueWithLabelDemo</code></font></a><a target="_blank" href="resources/ContinueWithLabelDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>, uses nested loops to search for a substring within another string. Two nested loops are required: one to iterate over the substring and one to iterate over the string being searched. This program uses the labeled form of <code>continue</code> to skip an iteration in the outer loop:
+<blockquote><pre>
+public class ContinueWithLabelDemo {
+    public static void main(String[] args) {
+
+        String searchMe = "Look for a substring in me";
+        String substring = "sub";
+        boolean foundIt = false;
+
+        int max = searchMe.length() - substring.length();
+
+    <b>test:</b>
+        for (int i = 0; i &lt;= max; i++) {
+            int n = substring.length();
+            int j = i;
+            int k = 0;
+            while (n-- != 0) {
+                if (searchMe.charAt(j++)
+                        != substring.charAt(k++)) {
+                    <b>continue test;</b>
+                }
+            }
+            foundIt = true;
+                    break test;
+        }
+        System.out.println(foundIt ? "Found it" :
+                                     "Didn't find it");
+    }
+}
+</pre></blockquote>
+Here is the output from this program:
+<blockquote><pre>
+Found it
+</pre></blockquote>
+</blockquote>
+
+<a name="return"><h3>The return Statement</h3></a>
+<blockquote>
+The last of the branching statements is the <em>return</em> statement. You use <code>return</code> to exit from the current method. The flow of control returns to the statement that follows the original method call. The <code>return</code> statement has two forms: one that returns a value and one that doesn't. To return a value, simply put the value (or an expression that calculates the value) after the <code>return</code> keyword:
+<blockquote><pre>
+return ++count;
+</pre></blockquote>
+The data type of the value returned by <code>return</code> must match the type of the method's declared return value. When a method is declared <code>void</code>, use the form of <code>return</code> that doesn't return a value:
+<blockquote><pre>
+return;
+</pre></blockquote>
+
+For information about writing methods for your classes, refer to the section 
+<a href="DefiningMethods" class="conditional">Defining Methods</a><a href="DefiningMethods" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

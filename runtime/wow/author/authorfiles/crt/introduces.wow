@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE wow_relation_type SYSTEM 'wow_relation_type.dtd'>
+<wow_relation_type>
+	<name>introduces</name>
+	<listitems>
+		<generateListItem isPropagating="true" location="___child.access">
+			<requirement> ___source.suitability &amp;&amp; ___destination.knowledge &lt;= 33</requirement>
+			<trueActions>
+				<action>
+					<conceptName>___destination</conceptName>
+					<attributeName> knowledge </attributeName>
+					<expression> 100/3 </expression>
+				</action>
+			</trueActions>
+		</generateListItem>	
+		<generateListItem isPropagating="false" location="___child.access">
+			<requirement> true </requirement>
+			<trueActions>
+				<action>
+					<conceptName>___source</conceptName>
+					<attributeName> visited </attributeName>
+					<expression> 100 </expression>
+				</action>
+			</trueActions>
+		</generateListItem>
+	</listitems>
+</wow_relation_type>

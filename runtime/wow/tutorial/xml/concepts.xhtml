@@ -1,0 +1,212 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>Concepts in WOW!</h2>
+
+<p>
+Each WOW! application consists of a set of <em>concepts</em>.
+For each <a href="pages" class="conditional">page</a> and each
+<a href="objects" class="conditional">conditionally included object</a>
+there should be a concept, but there may also be
+many other concepts. The concept structure can be created using the
+high level
+<a href="graphauthor" class="conditional">graph author tool</a>,
+the low level
+<a href="concepteditor" class="conditional">concept editor</a>
+or by directly editing the XML file that contains the application's
+concept structure. We strongly recommend to use only the
+<a href="graphauthor" class="conditional">graph author tool</a>
+as it is sufficient for almost all applications and is easy to use.
+</p>
+
+<p>
+<b>Note:</b> Even when you use a high-level authoring tool like
+the <a href="graphauthor" class="conditional">graph author</a>,
+we recommend that you study the structure of concepts in WOW!.
+</p>
+
+<p>
+WOW! stores concepts in three formats: an authoring format (which
+is XML) and two internal formats (one XML and one mySQL).
+The structure of concepts is always the same and independent of
+the representation format. Each concept contains the following elements:
+</p>
+
+<ul>
+<li>
+<em>name</em>: Every concept must have a unique name, which in WOW! must
+be a single word (alphanumeric and starting with a letter).
+Whenever you refer to a concept you can prefix the name with that
+of the application to create a name that is unique for the whole server.
+(This can be useful when one application wishes to refer to a concept
+of another application.)
+</li>
+<li>
+<em>description</em>: It is possible to add a description to each concept.
+Currently the description can only be plain text, and is not used by
+WOW! in any way. It just serves for authors to remind themselves of
+the purpose for creating the concept. However, in the future a description
+might be used in a (still non-existent) search facility. Searching adaptive
+content is not really feasible (as the search result depends on what would
+really be shown to the user at the time of searching) but searching based
+on the description is doable.
+</li>
+<li>
+<em>resource</em>: Concepts can be <em>abstract</em> or
+<em>associated with a page</em>. 
+A concept that represents a "chapter" may be <em>abstract</em>,
+meaning that it has no associated page, but it may be a
+<em>container page</em> in which it has a <em>resource</em>.
+In the chapter itself the <em>page</em> concepts also all have a
+<em>resource</em>.
+For such page (and container-page) concepts a (partial) URL needs
+to be specified. For a local file such as the current page this URL
+looks like:
+<pre>
+file:/tutorial/xml/concepts.xhtml
+</pre>
+(Note that all local file URLs are relative to the <em>document base</em>
+specified in the
+<a href="wowcontext" class="conditional">WOW! context</a>.)
+<br />
+A resource can refer to a page on a different website,
+using the <tt>http</tt> protocol (instead of <tt>file</tt>).
+Accessing such a known remote page triggers
+<a href="usermodel" class="conditional">user model</a> updates
+just like with local pages, because the end-user really accesses the
+concept (and not the page). The WOW! server retrieves and serves the
+page associated with the concept.
+</li>
+<li>
+<em>title</em>: This is the name used for this concept in automatically
+generated lists (usually of links, like the "menu" in the left frame
+of this tutorial).
+</li>
+<li>
+<em>hierarchy</em>: concepts are part of a hierarchy, which has
+the application's "toplevel" concept as the root. The hierarchy has
+three sub-elements: <em>firstchild</em> is the name of the first
+child of the current concept, if that exists; <em>nextsib</em>
+is the name of the next sibling in the hierarchy, if that exists;
+<em>parent</em> is the name of the parent concept, if that exists.
+The hierarchy is used to generate the tree structure you see in
+navigation aids like the menu in the left frame of this tutorial.
+</li>
+<li>
+<em>attributes</em>: For each concept WOW! stores a number of attributes that
+may be different for every concept. Every attribute has a number of
+properties and a set of
+<object name="tutorial.adaptationrule" type="text/wow" />
+<a href="rules" class="conditional">rules</a>.
+The properties are:
+<ul>
+<li>
+<em>name</em>: Each attribute has a name, like <em>access</em>,
+<em>suitability</em>, <em>knowledge</em>, <em>visited</em>, <em>interest</em>,
+etc.
+</li>
+<li>
+<em>type</em>: An attribute can be a Boolean, integer or string.
+Calculations on integer attributes may result in <em>truncated</em>
+values, not <em>rounded</em> values.
+</li>
+<li>
+<em>isPersistent</em>: Each time the end-user accesses a page some
+attributes of concepts are updated. Attributes can be used to store
+some value temporarily during the rule execution (isPersistent=false)
+or can be remembered in the user model (isPersistent=true).
+</li>
+<li>
+<em>isSystem</em>: While you can create arbitrarily many different
+attributes for each concept there are a few attributes that have
+a special function in WOW!, and that should be marked with
+isSystem=true. At the moment these attributes are: <em>access</em>,
+which is a non-persistent Boolean attribute that temporarily becomes
+true when the resource associated with the concept is accessed,
+and <em>visibility</em>, which is a persistent integer attribute that
+is used for the <a href="visibility" class="conditional">adaptive
+visibility/presentation of fragments</a>.
+There are other attributes that are not system-defined but that are
+used by the "standard" WOW! templates:
+<em>visited</em>, which is a persistent integer attribute that
+counts the number of accesses to a concept,
+<em>suitability</em>, which is a Boolean attribute (that can be
+persistent or not) that determines whether the concept is considered
+desirable (and linked to with GOOD or NEUTRAL color) or undesirable
+(and linked to with BAD color),
+and <em>showability</em>, which is an attribute used for selecting
+conditionally included objects. These attributes are not marked
+as being system attributes.
+</li>
+<li>
+<em>isChangeable</em>: WOW! contains a
+<a href="formeditor" class="conditional">form editor</a>
+to create forms through which an end-user can update her user model.
+Only attribute of concepts marked as changeable can be included
+in such forms. The
+<handler><name>KnowledgeConfig</name><linkdescription>standard form
+to change knowledge values</linkdescription></handler> also
+uses the <em>isChangeable</em> property to decide which concepts to show.
+</li>
+<li>
+<em>description</em>: Like with concepts you can add a description
+to each attribute to indicate the meaning of the attribute.
+This description is not used by WOW! in any way.
+</li>
+<li>
+<em>default</em>: This field indicates the initial value of the attribute.
+It can be a constant (value) or an expression.
+It is assigned once for persistent attributes and repeatedly for
+non-persistent attributes. The attribute <em>suitability</em> is a good
+example of a volatile attribute that typically has an expression as default.
+An example would be:
+<pre>
+tutorial.enduser.knowledge &gt; 50 and tutorial.concepts.knowledge &lt; 40
+</pre>
+</li>
+</ul>
+</li>
+<li>
+<object name="tutorial.adaptationrule" type="text/wow" />
+<a href="rules" class="conditional">rules</a>:
+With every attribute of every concept
+you can associate arbitrarily many
+<object name="tutorial.adaptationrule" type="text/wow"/> rules
+that define how a page access results in user model updates.
+<if expr="tutorial.rules.knowledge&lt;50">
+<block>
+These rules are actually <em>event-condition-action rules</em>.
+</block>
+</if>
+The rules are triggered by an <em>event</em> which is typically the
+access of a page.
+The rules contain a <em>condition</em> and an <em>action</em>.
+Writing these rules is non-trivial.
+The <a href="graphauthor" class="conditional">graph author tool</a>
+can relieve you of this task and is highly recommended.
+The complete concept and rule structure for this WOW! tutorial
+is created using this graph author tool.
+</li>
+</ul>
+<p>
+WOW! uses a special "pseudo-concept", called "personal".
+It can be used like any other concept, (except that it cannot be
+prefixed with the name of the application) but it typically has very
+different attributes, most of which are specified in the application's
+<a href="login" class="conditional">login and registration forms</a>.
+</p>
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

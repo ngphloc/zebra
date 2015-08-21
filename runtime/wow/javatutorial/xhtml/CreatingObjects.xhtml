@@ -1,0 +1,208 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Creating Objects</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>Creating Objects</h2>
+<blockquote>
+As you know, a 
+<a href="WhatIsClass" class="conditional">class</a><a href="WhatIsClass" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> provides the blueprint for 
+
+<a href="WhatIsObject" class="conditional">objects</a><a href="WhatIsObject" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>; you create an object from a class.
+
+Each of the following statements taken from the
+<a target="_blank" href="resources/CreateObjectDemo.java"><font color="#bb000f"><code>CreateObjectDemo</code></font></a><a target="_blank" href="resources/CreateObjectDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a> program creates an object and assigns it to a variable:
+ 
+<blockquote><pre>
+<strong>Point originOne</strong> = new Point(23, 94);
+<strong>Rectangle rectOne</strong> = new Rectangle(originOne, 100, 200);
+<strong>Rectangle rectTwo</strong> = new Rectangle(50, 100);
+</pre></blockquote>
+
+The first line creates an object from the
+<a target="_blank" href="resources/Point.java"><font color="#bb000f"><code>Point</code></font></a><a target="_blank" href="resources/Point.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a> class and the second and third lines each create an object from the
+<a target="_blank" href="resources/Rectangle.java"><font color="#bb000f"><code>Rectangle</code></font></a><a target="_blank" href="resources/Rectangle.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a> class.
+
+<br/><br/>
+Each statement has the following three parts:
+<ol>
+<li>
+<strong>Declaration</strong>: The code set in <strong>bold</strong>  are all variable declarations that associate a variable name with an object type. 
+</li>
+<li>
+<strong>Instantiation</strong>: The <tt>new</tt> keyword is a Java operator that creates the object. As discussed below, this is also known as <i>instantiating a class</i>.
+</li>
+<li>
+<strong>Initialization</strong>: The <tt>new</tt> operator is followed by a call to a constructor. For example, <tt>Point(23, 94)</tt> is a call to <tt>Point</tt>'s only constructor. The constructor initializes the new object. 
+</li>
+</ol>
+
+The next three subsections discuss each of these actions in detail:
+<ul>
+<li><a href="#declaring">Declaring a Variable to Refer to an Object</a></li>
+<li><a href="#instantiating">Instantiating a Class</a></li>
+<li><a href="#initializing">Initializing an Object</a></li>
+</ul>
+
+</blockquote>
+
+<a name="declaring"><h3>Declaring a Variable to Refer to an Object</h3></a>
+<blockquote>
+
+From the
+<a href="Variables" class="conditional">Variables</a><a href="Variables" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> section in the previous lesson, you learned that to declare a variable, you write:
+
+<blockquote><pre>
+<em>type name</em>
+</pre></blockquote>
+
+This notifies the compiler that you will use <em>name</em> to refer to data whose type is <em>type</em>. The Java programming language divides variable types into two main categories: <i>primitive types</i>, and <i>reference types</i>. 
+<br/><br/>
+Variables of primitive types (byte, short, int, long, char, float, double, or boolean) always hold a primitive value of that same type.
+<br/><br/>
+Variables of reference types, however, are slightly more complex. They may be declared in any of the following ways:
+<ul>
+<li>The declared type matches the class of the object: <br/><code><strong>MyClass myObject</strong> = new MyClass();</code><br/></li>
+<li>The declared type is a parent class of the object's class: <br/><code><strong>MyParent myObject</strong> = new MyClass();</code><br/></li>
+<li>The declared type is an interface which the object's class implements: <br/><code><strong>MyInterface myObject</strong> = new MyClass();</code></li>
+</ul>
+
+<br/>
+You can also declare a variable on its own line, such as:
+<blockquote><pre>
+MyClass myObject;
+</pre></blockquote>
+
+When you use this approach, the value of <code>myObject</code> will be automatically set to <code>null</code> until an object is actually created and assigned to it. Remember, variable declaration alone does not actually create an object. For that, you need to use the <code>new</code> operator, as described in the next section.
+<br/><br/>
+A variable in this state, which currently references no object, is said to hold a <em>null reference</em>. If the code in 
+<a target="_blank" href="resources/CreateObjectDemo.java"><font color="#bb000f"><code>CreateObjectDemo</code></font></a><a target="_blank" href="resources/CreateObjectDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>
+had declared its <code>originOne</code> variable in this manner, it could be illustrated as follows (variable name, plus reference pointing to nothing):
+<p><center><img src="images/objects-null.gif" width="117" height="14" align="bottom" alt="originOne is null."/></center></p>
+A variable of reference type may also hold an <i>object reference</i>, as discussed in the following sections. 
+
+</blockquote>
+
+<a name="instantiating"><h3>Instantiating a Class</h3></a>
+
+<blockquote>
+
+The <tt>new</tt> operator instantiates a class by allocating memory for a new object. 
+<p>
+<blockquote><hr/><strong>Note: </strong>The phrase "instantiating a class" means the same thing as "creating an object"; you can think of the two as being synonymous. When you create an object, you are creating an instance of a class, therefore "instantiating" a class.
+<hr/></blockquote>
+</p>
+<p>
+The <tt>new</tt> operator requires a single, postfix argument: a call to a constructor. The name of the constructor provides the name of the class to instantiate. The constructor initializes the new object.
+</p>
+The <tt>new</tt> operator returns a reference to the object it created. Often, this reference is assigned to a variable of the appropriate type. If the reference is not assigned to a variable, the object is unreachable after the statement in which the <tt>new</tt> operator appears finishes executing. 
+
+</blockquote>
+
+<a name="initializing"></a><h3>Initializing an Object</h3>
+<blockquote>
+
+Here's the code for the <tt>Point</tt> class: 
+
+<blockquote><pre>
+public class Point {
+    public int x = 0;
+    public int y = 0;
+    <B>//A constructor!
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }</B>
+}
+</pre></blockquote>
+
+This class contains a single constructor. You can recognize a constructor because it has the same name as the class and has no return type. The constructor in the <tt>Point</tt> class takes two integer arguments, as declared by the code <tt>(int x, int y)</tt>. The following statement provides 23 and 94 as values for those arguments: 
+
+<blockquote><pre>
+Point originOne = new Point(23, 94);
+</pre></blockquote>
+
+The effect of the previous line of code can be illustrated in the next figure: 
+<p><center><img src="images/objects-oneRef.gif" width="305" height="163" align="bottom" alt="originOne now points to a Point object."/></center></p>
+Here's the code for the <tt>Rectangle</tt> class, which contains four constructors: 
+
+<blockquote><pre>
+public class Rectangle {
+    public int width = 0;
+    public int height = 0;
+    public Point origin;
+
+    //Four constructors
+    public Rectangle() {
+        origin = new Point(0, 0);
+    }
+
+    public Rectangle(Point p) {
+        origin = p;
+    }
+
+    public Rectangle(int w, int h) {
+        this(new Point(0, 0), w, h);
+    }
+
+    public Rectangle(Point p, int w, int h) {
+        origin = p;
+        width = w;
+        height = h;
+    }
+
+    //A method for moving the rectangle
+    public void move(int x, int y) {
+        origin.x = x;
+        origin.y = y;
+    }
+
+    //A method for computing the area of the rectangle
+    public int area() {
+        return width * height;
+    }
+}
+</pre></blockquote>
+
+Each constructor lets you provide initial values for different aspects of the rectangle: the origin; the width, and the height; all three; or none. If a class has multiple constructors, they all have the same name but a different number of arguments or different typed arguments. The Java platform differentiates the constructors based on the number and the type of the arguments. When the Java platform encounters the following code, it knows to call the constructor in the <tt>Rectangle</tt> class that requires a <tt>Point</tt> argument followed by two integer arguments:
+
+<blockquote><pre> 
+Rectangle rectOne = new Rectangle(originOne, 100, 200);
+</pre></blockquote>
+
+This call initializes the rectangle's <tt>origin</tt> variable to the <tt>Point</tt> object referred to by <tt>originOne</tt>. The code also sets <tt>width</tt> to 100 and <tt>height</tt> to 200. Now there are two references to the same <tt>Point object</tt>; an object can have multiple references to it, as shown in the next figure:
+
+<p><center><img src="images/objects-multipleRefs.gif" width="358" height="275" align="bottom" alt="Now the rectangle's origin field also points to the Point."/></center></p>
+The following line of code calls the constructor that requires two integer arguments, which provide the initial values for <tt>width</tt> and <tt>height</tt>. If you inspect the code within the constructor, you will see that it creates a new <tt>Point</tt> object whose <tt>x</tt> and <tt>y</tt> values are initialized to 0: 
+
+<blockquote><pre>
+Rectangle rectTwo = new Rectangle(50, 100);
+</pre></blockquote>
+
+The <tt>Rectangle</tt> constructor used in the following statement doesn't take any arguments, so it's called a <em>no-argument constructor</em>:
+
+<blockquote><pre>
+Rectangle rect = new Rectangle();
+</pre></blockquote> 
+
+If a class does not explicitly declare any constructors, the Java platform automatically provides a no-argument constructor, called the <em>default constructor</em>, that does nothing. Thus, all classes have at least one constructor. 
+
+<p>
+This section talked about how to use a constructor.The section 
+<a href="DefiningConstructors" class="conditional">Providing Constructors for Your Classes</a><a href="DefiningConstructors" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> explains how to write constructors for your classes.
+</p>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

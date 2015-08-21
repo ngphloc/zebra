@@ -1,0 +1,107 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>Creating a Login or Registration Page</h2>
+
+<p>
+By looking at the source of the
+<a href="/wow/tutorial" class="unconditional">tutorial login page</a> and the
+<a href="/wow/tutorial/Registration.html" class="unconditional">registration page</a>
+you can get a good idea what these pages must contain.
+We briefly summarize the attributes and fields that can be present in
+the login and registration forms:
+</p>
+<ul>
+<li>
+<b>action</b>: Every HTML form must have an action attribute.
+It is the name of the servlet to call. It must be "/wow/Register"
+on the registration page and "/wow/Login" on the login page.
+For anonymous login and registration the action is "/wow/Anonymous".
+</li>
+<li>
+<b>name</b>: This is the user's name. It can be shown anywhere in pages
+but is typically shown in
+<a href="headerfooter" class="conditional">headers or footers</a>,
+and it can be used in
+<object name="tutorial.adaptationrule" type="text/wow" />
+<a href="rules" class="conditional">rules</a>.
+So can all other fields that appear on the login and registration forms.
+The name field has no special function.
+</li>
+<li>
+<b>email</b>: This is the user's email address.
+</li>
+<li>
+<b>login</b>: This is the user's login id. It must be unique in the system.
+It is used when logging in again.
+</li>
+<li>
+<b>password</b>: This is the user's password. It should be kept secret
+and be different from passwords used with other systems.
+WOW! currently does not store passwords in a very secure way.
+</li>
+<li>
+<b>start</b>: This is the name of the first concept to be shown after
+registering or logging in. This is typically a hidden field.
+It is mandatory: WOW! does not know which page to show without this field.
+</li>
+<li>
+<b>course</b>: This is the name of the WOW! application.
+(The name "course" was chosen for historical reasons.)
+The application name is used in conjunction with the concept structure.
+This is typically a hidden field. It is mandatory. WOW! will not work
+when this field is missing.
+</li>
+<li>
+<b>directory</b>: This is the name of the directory on the server
+containing the application. In principle this can be different
+from the application's name, but not all tools are guaranteed
+to recognize applications where the name is different from the directory.
+</li>
+<li>
+<b>title</b>: The title that can be used to refer to the application.
+The title can have several words whereas "course" can be only one word.
+</li>
+<li>
+<b>background</b>: This is the name of an optional background image to
+be used on the application's pages (in XHTML+WOW format).
+</li>
+<li>
+Other fields may be used as well. They result in attributes of the
+"personal" concept in the
+<a href="usermodel" class="conditional">user model</a>
+which can be used in the
+<a href="rules" class="conditional"><object name="tutorial.adaptationrule" type="text/wow"/> rules</a>.
+</li>
+<li>
+The <b>submit</b> button must have the correct name to be recognized by WOW!.
+It is "enter_button" on the registration form and 
+</li>
+<li>
+For an anonymous login there is a separate form with
+"/wow/Anonymous" as its action.
+In the form the submit button must have a "name"
+field with value "session_button" on the registration page
+and "resume_button" on the login page.
+Other than that the form may contain the same fields as
+for non-anonymous logins, although there are typically no
+fields to be filled out. The only fields that cannot be present
+(or will be ignored) are "login" and "password".
+</li>
+</ul>
+
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

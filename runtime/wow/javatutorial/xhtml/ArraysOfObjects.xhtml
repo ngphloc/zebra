@@ -1,0 +1,116 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Arrays of Objects</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>
+Arrays of Objects
+</h2>
+<blockquote>
+Arrays can hold reference types as well as primitive types.
+You create such an array in much the same way you create
+an array with primitive types.
+Here's a small program,
+<a target="_blank" href="../resources/ArrayOfStringsDemo.java"><font color="#bb000f"><code>ArrayOfStringsDemo</code></font></a><a target="_blank" href="../resources/ArrayOfStringsDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a> that creates
+an array containing three string objects
+then prints the strings in all lower case letters.
+<blockquote><pre>
+public class ArrayOfStringsDemo {
+    public static void main(String[] args) {
+        String[] anArray = { &quot;String One&quot;, 
+                             &quot;String Two&quot;, 
+                             &quot;String Three&quot; };
+
+        for (int i = 0; i &lt; anArray.length; i++) {
+            System.out.println(anArray[i].toLowerCase());
+        }
+    }
+}
+</pre></blockquote>
+
+The output from this program is
+
+<blockquote><pre>
+string one
+string two
+string three
+</pre></blockquote>
+
+<blockquote><hr/><strong>Note: </strong>If you are using JDK 5.0 or later, it is also possible to loop
+through an array using the enhanced for syntax:
+<pre>
+ String[] anArray = {"String One","String Two","String Three"};
+     for (String s : anArray) {
+         System.out.println(s.toLowerCase());
+      }
+</pre>
+The colon in the for loop should be read as "in". So this loop
+would be read as: "for each String s in anArray". 
+<hr/></blockquote>
+
+
+This program creates and populates the array in a single statement by using
+an array initializer. The next program, 
+
+<a target="_blank" href="resources/ArrayOfIntegersDemo.java"><font color="#bb000f"><code>ArrayOfIntegersDemo</code></font></a><a target="_blank" href="resources/ArrayOfIntegersDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>
+, populates the array with <code>Integer</code> objects. Notice that the program creates one <code>Integer</code> object and places it in the array during each iteration of the for loop:
+
+<blockquote><pre>
+public class ArrayOfIntegersDemo {
+    public static void main(String[] args) {
+        Integer[] anArray = new Integer[10];
+
+        for (int i = 0; i &lt; anArray.length; i++) {
+            anArray[i] = new Integer(i);
+            System.out.println(anArray[i]);
+        }
+    }
+}
+</pre></blockquote>
+
+The output from this program is
+
+<blockquote><pre>
+0
+1
+2
+3
+4
+</pre></blockquote>
+
+The following line of code taken from the <code>ArrayOfIntegersDemo</code> program creates an array without putting any elements in it:
+
+<blockquote><pre>
+Integer[] anArray = new Integer[5];
+</pre></blockquote>
+
+This brings us to a potential stumbling block, often encountered by new programmers, when using arrays that contain objects. After the previous line of
+code is executed, the array called <code>anArray</code> exists and has enough room to hold five integer objects. However, the array doesn't contain any objects yet. It is empty. The program must explicitly create objects and put them in the array. This might seem obvious; however, many beginners assume that the previous line of code creates the array and creates five empty objects in it. Thus, they end up writing code like the following, which raises a
+<code>NullPointerException</code>:
+
+<blockquote><pre>
+Integer[] anArray = new Integer[5];
+for (int i = 0; i &lt; anArray.length; i++) {
+	//ERROR: the following line gives a runtime error
+	System.out.println(anArray[i]);
+}
+</pre></blockquote>
+
+This problem is most likely to occur when the array is created in a constructor
+or other initializer and then used somewhere else in the program.
+
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

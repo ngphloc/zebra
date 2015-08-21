@@ -1,0 +1,172 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Summary of Control Flow Statements</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Language Basics
+</font>
+
+<h2>Summary of Control Flow Statements</h2>
+<blockquote>
+For controlling the flow of a program, the Java programming language has three loop constructs, a flexible <code>if</code>-<code>else</code> statement, a <code>switch</code> statement, exception-handling statements, and branching statements.
+</blockquote>
+
+<br/>
+<h3>Loops</h3>
+<blockquote>
+Use the <code>while</code> statement to loop over a block of statements while a boolean expression remains <code>true</code>. The expression is evaluated at the top of the loop:
+<blockquote><pre>
+while (<em>boolean expression</em>) {
+    <em>statement(s)</em>
+}
+</pre></blockquote>
+<br/><br/>
+Use the <code>do</code>-<code>while</code> statement to loop over a block of statements while a boolean expression remains <code>true</code>. The expression is evaluated at the bottom of the loop, so the statements within the <code>do</code>-<code>while</code> block execute at least once:
+<blockquote><pre>
+do {
+    <em>statement(s)</em>
+} while (<em>expression</em>);
+</pre></blockquote>
+<br/><br/>
+The <code>for</code> statement loops over a block of statements and includes an initialization expression, a termination condition expression, and an increment expression:
+<blockquote><pre>
+for (<em>initialization</em> ; <em>termination</em> ; <em>increment</em>) {
+    <em>statement(s)</em>
+}
+</pre></blockquote>
+</blockquote>
+
+<br/>
+<h3>Decision-Making Statements</h3>
+<blockquote>
+The Java programming language has two decision-making statements: <code>if</code>-<code>else</code> and <code>switch</code>. The more general-purpose statement is <code>if</code>; use <code>switch</code> to make multiple-choice decisions based on a single integer value.
+<br/><br/>
+The following is the most basic <code>if</code> statement whose single statement block is executed if the boolean expression is <code>true</code>:
+<blockquote><pre>
+if (<em>boolean expression</em>) {
+    <em>statement(s)</em>
+}
+</pre></blockquote>
+Here's an <code>if</code> statement with a companion <code>else</code> statement. The <code>if</code> statement executes the first block if the boolean expression is <code>true</code>; otherwise, it executes the second block:
+<blockquote><pre>
+if (<em>boolean expression</em>) {
+    <em>statement(s)</em>
+} else {
+    <em>statement(s)</em>
+}
+</pre></blockquote>
+
+You can use <code>else if</code> to construct compound <code>if</code> statements:
+<blockquote><pre>
+if (<em>boolean expression</em>) {
+    <em>statement(s)</em>
+} else if (<em>boolean expression</em>) {
+    <em>statement(s)</em>
+} else if (<em>boolean expression</em>) {
+    <em>statement(s)</em>
+} else {
+    <em>statement(s)</em>
+}
+</pre></blockquote>
+
+The <code>switch</code> statement evaluates an integer expression or enum and executes the appropriate <code>case</code> statement.
+
+<blockquote><pre>
+switch (<em>integer expression</em>) {
+    case <em>integer expression</em>:
+         <em>statement(s)</em>
+         break;
+    ...
+    default:
+         <em>statement(s)</em>
+         break;
+}
+</pre></blockquote>
+<blockquote><pre>
+switch (<em>expression of enum type</em>) {
+    case <em>enum constant</em>:
+         <em>statement(s)</em>
+         break;
+    ...
+    default:
+         <em>statement(s)</em>
+         break;
+}
+</pre></blockquote>
+
+</blockquote>
+
+
+
+<br/>
+<h3>Exception-Handling Statements</h3>
+<blockquote>
+
+Use the <code>try</code>, <code>catch</code>, and <code>finally</code> statements to handle exceptions:
+
+<blockquote><pre>
+try {
+    <em>statement(s)</em>
+} catch (<em>exceptiontype</em> <em>name</em>) {
+    <em>statement(s)</em>
+} catch (<em>exceptiontype</em> <em>name</em>) {
+    <em>statement(s)</em>
+} finally {
+    <em>statement(s)</em>
+}
+</pre></blockquote>
+
+Exception handling is covered in detail in the chapter 
+<a href="HandlingExceptions" class="conditional">Handling Errors with Exceptions</a><a href="HandlingExceptions" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.
+
+</blockquote>
+
+<br/>
+<h3>Branching Statements</h3>
+<blockquote>
+
+Some branching statements change the flow of control in a program to a labeled statement. You label a statement by placing a legal identifier (the label) followed by a colon (<code>:</code>) before the statement:
+<blockquote><pre>
+<em>statementName: someJavaStatement</em>;
+</pre></blockquote>
+
+Use the unlabeled form of the <code>break</code> statement to terminate the innermost <code>switch</code>, <code>for</code>, <code>while</code>, or <code>do</code>-<code>while</code> statement:
+<blockquote><pre>
+break;
+</pre></blockquote>
+
+Use the labeled form of the <code>break</code> statement to terminate an outer <code>switch</code>, <code>for</code>, <code>while</code>, or <code>do</code>-<code>while</code> statement with the given label:
+<blockquote><pre>
+break <em>label</em>;
+</pre></blockquote>
+
+A <code>continue</code> statement terminates the current iteration of the innermost loop and evaluates the boolean expression that controls the loop:
+<blockquote><pre>
+continue;
+</pre></blockquote>
+The labeled form of the <code>continue</code> statement skips the current iteration of the loop with the given label:
+<blockquote><pre>
+continue <em>label</em>;
+</pre></blockquote>
+
+Use <code>return</code> to terminate the current method:
+<blockquote><pre>
+return;
+</pre></blockquote>
+
+You can return a value to the method's caller, by using the form of <code>return</code> that takes a value:
+<blockquote><pre>
+return <em>value</em>;
+</pre></blockquote>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

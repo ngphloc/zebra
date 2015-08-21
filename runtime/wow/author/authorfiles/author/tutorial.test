@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE fileList SYSTEM "../../TestEditor/dtd/fileListAuthor.dtd">
+<fileList><course courseName="tutorial"><questionsFile /><testFile><classic><classicTestFileName>install_tutorial_C_activity</classicTestFileName><classicTestFileName>testtutorial_tutorial_C_activity</classicTestFileName></classic><adaptive /></testFile></course></fileList>

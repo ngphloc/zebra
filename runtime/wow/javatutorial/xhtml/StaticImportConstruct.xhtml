@@ -1,0 +1,91 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>The "Static Import" Construct</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Interfaces and Packages
+</font>
+
+<h2>
+The "Static Import" Construct
+</h2>
+<blockquote>
+<!--The Static Import Construct-->
+
+Some types define static constants or methods that 
+are useful to other types. For example, the 
+<code>java.lang.Math</code> class defines the 
+<code>PI</code> constant and the <code>cos</code> method:
+
+
+<blockquote><pre>
+public static final double PI 3.141592653589793
+public static double cos(double a)
+</pre></blockquote>
+
+Ordinarily, to use these objects from another class, 
+you prefix the class name:
+
+<blockquote><pre>
+double r = Math.cos(Math.PI * theta);
+</pre></blockquote>
+
+Prefixing the class name over and over can result in 
+cluttered code. To avoid this programmers sometimes put 
+static objects into an interface and inherit from that 
+interface. This practice, called the <i>Constant Interface 
+Antipattern</i>, is not recommended. (You can find more 
+information on the Constant Interface Antipattern in the book
+<a target="_blank" href="http://java.sun.com/docs/books/effective"><font color="#009bbb"><i>Effective Java</i></font></a><a target="_blank" href="http://java.sun.com/docs/books/effective"><img src="images/otherIcon.gif" width="11" height="11" border="0" align="middle" alt=" (outside of the tutorial)"/></a> by Joshua Bloch.) This 
+is considered bad Java programming practice because
+when a class implements an interface, it becomes 
+part of the class's public API. Implementation details,
+such as using the static members of another class,
+should not leak into public APIs.
+<br/><br/>
+Release 5.0 introduced another solution for this situation: 
+the static import construct. This construct, 
+similar to a normal <code>import</code>, allows unqualified 
+access to static objects without inheriting from the type 
+containing the static objects. (For more information on a 
+standard <code>import</code>, see 
+<!--Using Package Members-->
+<a href="UsingPackageMembers" class="conditional">Using Package Members</a><a href="UsingPackageMembers" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.) The objects can be imported either individually:
+<blockquote><pre>
+import static java.lang.Math.PI;
+</pre></blockquote>
+
+or as a group:
+<blockquote><pre>
+import static java.lang.Math.*;
+</pre></blockquote>
+
+Once the class has been imported, the objects can be 
+used without qualification. For example, the previous 
+code snippet would become:
+<blockquote><pre>
+double r = cos(PI * theta);
+</pre></blockquote>
+
+<blockquote><hr/><strong>Note: </strong>Use static import very sparingly, if at all. It's useful 
+for situations when you need frequent access to a few 
+static objects from one or two classes. Overusing static 
+import can result in code that is difficult to read and 
+maintain, since readers of the code won't know which 
+class defines a particular static object. Used properly, 
+it makes code more readable by removing the 
+repetition of class names.
+<hr/></blockquote>
+
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Implementing an Interface</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Interfaces and Packages
+</font>
+
+<h2>
+Implementing an Interface
+</h2>
+<blockquote>
+<p>An interface defines a protocol of behavior. A class that implements 
+an interface adheres to the protocol defined by that interface. 
+To declare a class that implements an interface, include an <code>implements</code> 
+clause in the class declaration. Your class can implement more 
+than one interface (the Java platform supports multiple inheritance 
+for interfaces), so the <code>implements</code> keyword is followed  
+by a comma-separated list of the interfaces implemented by the 
+class. 
+</p>
+<blockquote><hr/><strong>By Convention: </strong>The <code>implements</code>
+clause follows the <code>extends</code> clause, if it exists. 
+<hr/></blockquote>
+
+<p>Here's a partial example of an applet that implements the <code>StockWatcher</code>
+interface:
+</p>
+
+<blockquote><pre>
+public class StockApplet extends Applet
+                         <B>implements StockWatcher</B> {
+
+    public void valueChanged(TickerSymbol tickerSymbol,
+                             BigDecimal newValue) {
+        switch (tickerSymbol) {
+            case SUNW:
+                ...
+                break;
+            case ORCL:
+                ...
+                break;
+            case CSCO:
+                ...
+                break;
+            default:
+                // handle unknown stocks
+                ...
+                break;
+        }
+    }
+}
+</pre></blockquote>
+
+When a class implements an interface, it is essentially signing 
+a contract. Either the class must implement all the methods declared 
+in the interface and its superinterfaces, or the class must be 
+declared <code>abstract</code>. The method signature &#151; the name and 
+the number and type of arguments &#151; in the class must match the method 
+signature as it appears in the interface. The <code>StockApplet</code> 
+implements the <code>StockWatcher</code> interface, so the applet 
+provides an implementation for the <code>valueChanged</code> method. 
+The method ostensibly updates the applets display or otherwise 
+uses this information. 
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

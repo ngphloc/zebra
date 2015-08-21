@@ -1,0 +1,70 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>A Closer Look at HelloWorld Application</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<h2>Lesson: Hello World Application</h2>
+<blockquote>
+
+Now that you've seen a Java application (and perhaps even compiled and run it), you might be wondering how it works and how similar it is to other Java applications. Remember that a <em>Java application</em> is a standalone Java program--a program written in the Java language that runs independently of any browser.
+
+<br/>
+
+<p>
+<blockquote>
+<hr/><strong>Note: </strong> If you couldn't care less about Java applications, you're already familiar with object-oriented concepts, and you understand the Java code you've seen so far, feel free to skip ahead to 
+<a href="HelloWorldApplet" class="conditional">Writing Applets</a>
+<a href="HelloWorldApplet" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Getting Started trail)"/></a>.
+<hr/>
+</blockquote>
+</p>
+
+<p>
+This section dissects the "Hello World" application you've already seen. Here, again, is its code:
+<blockquote>
+<pre>
+/** 
+ * The HelloWorldApp class implements an application that
+ * simply displays &quot;Hello World!&quot; to the standard output.
+ */
+class HelloWorldApp {
+    public static void main(String[] args) {
+        System.out.println(&quot;Hello World!&quot;); //Display the string.
+    }
+}
+</pre>
+</blockquote>
+</p>
+</blockquote>
+
+<h3><a href="CommentsInCode" class="conditional">Comments in Java Code</a></h3>
+
+<blockquote>
+The "Hello World" application has two blocks of comments. The first block, at the top of the program, uses <code>/**</code> and <code>*/</code> elimiters. Later, a line of code is explained with a comment that's marked by <code>//</code> characters. The Java language supports a third kind of comment, as well -- the familiar C-style comment, which is delimited with <code>/*</code> and <code>*/</code>.
+<a href="CommentsInCode" class="conditional">Comments in Java Code</a> further explains the three forms of comments that the Java language supports.
+</blockquote>
+
+<h3><a href="DefiningClass" class="conditional">Defining a Class</a></h3>
+<blockquote>
+In the Java language, each method (function) and variable exists within a <em>class</em> or an <em>object</em> (an instance of a class). The Java language does not support global functions or variables. Thus, the skeleton of any Java program is a <em>class definition</em>.
+<a href="DefiningClass" class="conditional">Defining a Class</a> gives you more information.
+</blockquote>
+
+<h3><a href="MainMethod" class="conditional">The <code>main</code> Method</a></h3>
+<blockquote>
+The entry point of every Java application is its <code>main</code> method. When you run an application with the Java interpreter, you specify the name of the class that you want to run. The interpreter invokes the <code>main</code> method defined within that class. The <code>main</code> method controls the flow of the program, allocates whatever resources are needed, and runs any other methods that provide the functionality for the application.
+<a href="MainMethod" class="conditional">The <code>main</code> Method</a> tells you more.
+</blockquote>
+
+<h3><a href="ClassesAndObjects" class="conditional">Using Classes and Objects</a></h3>
+<blockquote>
+The other components of a Java application are the supporting objects, classes, methods, and Java language statements that you write to implement the application.
+<a href="ClassesAndObjects" class="conditional">Using Classes and Objects</a> introduces you to these components.
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

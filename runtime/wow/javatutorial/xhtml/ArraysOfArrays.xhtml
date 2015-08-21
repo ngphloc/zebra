@@ -1,0 +1,104 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Arrays of Arrays</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>Arrays of Arrays</h2>
+<blockquote>
+Arrays can contain arrays.
+<a target="_blank" href="resources/ArrayOfArraysDemo.java"><font color="#bb000f"><code>ArrayOfArraysDemo</code></font></a><a target="_blank" href="resources/ArrayOfArraysDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a> creates an array and uses an initializer to populate it with four sub-arrays.
+
+<blockquote><pre>
+public class ArrayOfArraysDemo {
+    public static void main(String[] args) {
+        String[][] cartoons =
+        {
+	    { &quot;Flintstones&quot;, &quot;Fred&quot;, &quot;Wilma&quot;, 
+              &quot;Pebbles&quot;, &quot;Dino&quot; },
+            { &quot;Rubbles&quot;, &quot;Barney&quot;, &quot;Betty&quot;, 
+               &quot;Bam Bam&quot; },
+            { &quot;Jetsons&quot;, &quot;George&quot;, &quot;Jane&quot;, 
+              &quot;Elroy&quot;, &quot;Judy&quot;, &quot;Rosie&quot;, &quot;Astro&quot; },
+            { &quot;Scooby Doo Gang&quot;, &quot;Scooby Doo&quot;, 
+              &quot;Shaggy&quot;, &quot;Velma&quot;, &quot;Fred&quot;, &quot;Daphne&quot; }
+        };
+
+        for (int i = 0; i &lt; cartoons.length; i++) {
+	    System.out.print(cartoons[i][0] + &quot;: &quot;);
+            for (int j = 1; j &lt; cartoons[i].length; j++) {
+	        System.out.print(cartoons[i][j] + &quot; &quot;);
+	    }
+	    System.out.println();
+        }
+    }
+}
+</pre></blockquote>
+
+The output from this program is:
+
+<blockquote><pre>
+Flintstones: Fred Wilma Pebbles Dino
+Rubbles: Barney Betty Bam Bam
+Jetsons: George Jane Elroy Judy Rosie Astro
+Scooby Doo Gang: Scooby Doo Shaggy Velma Fred Daphne
+</pre></blockquote>
+
+Notice that the sub-arrays are all of different lengths.
+The names of the sub-arrays are <code>cartoons[0]</code>,
+<code>cartoons[1]</code>, and so on.
+
+<br/><br/>
+
+As with arrays of objects, you must explicitly create the subarrays within an array. So if you don't use an initializer, you need to write code as in the following program, called 
+<a target="_blank" href="resources/ArrayOfArraysDemo2.java"><font color="#bb000f"><code>ArrayOfArraysDemo2</code></font></a><a target="_blank" href="resources/ArrayOfArraysDemo2.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a><blockquote><pre>
+public class ArrayOfArraysDemo2 {
+    public static void main(String[] args) {
+        int[][] aMatrix = new int[4][];
+
+	//populate matrix
+        for (int i = 0; i &lt; aMatrix.length; i++) {
+	    aMatrix[i] = new int[5];	//create sub-array
+	    for (int j = 0; j &lt; aMatrix[i].length; j++) {
+	        aMatrix[i][j] = i + j;
+	    }
+        }
+
+        //print matrix
+        for (int i = 0; i &lt; aMatrix.length; i++) {
+	    for (int j = 0; j &lt; aMatrix[i].length; j++) {
+	        System.out.print(aMatrix[i][j] + &quot; &quot;);
+	    }
+	    System.out.println();
+        }
+    }
+}
+</pre></blockquote>
+
+The output of this program is:
+
+<blockquote><pre>
+0 1 2 3 4
+1 2 3 4 5
+2 3 4 5 6
+3 4 5 6 7
+</pre></blockquote>
+
+You must specify the length of an array when you create it. For an array that
+contains subarrays, you specify the length of the primary array when you
+create it but don't have to specify the length of any of the subarrays until you
+create them.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

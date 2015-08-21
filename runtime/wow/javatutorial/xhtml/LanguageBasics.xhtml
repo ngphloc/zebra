@@ -1,0 +1,87 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Language Basics</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+</font>
+
+<h2>Lesson: Language Basics</h2>
+<blockquote>
+<blockquote><hr/><strong>
+This chapter has been updated to reflect features and conventions of the latest release, JDK 5.0. 
+<a href="ForStatement" class="conditional">The for Statement</a> now covers the <em>enhanced for</em> language feature, and <em>enumerated types</em> are reflected in the keywords table and covered as they pertain to 
+<a href="SwitchStatement" class="conditional">The switch Statement</a>.  (The main coverage of enumerated types is in 
+<a href="ClassesAndInheritance" class="conditional">Classes and Inheritance</a>.)
+</strong><hr/></blockquote>
+The
+<a target="_blank" href="resources/BasicsDemo.java"><font color="#bb000f"><code>BasicsDemo</code></font></a>
+<a target="_blank" href="resources/BasicsDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a> program that follows adds the numbers from 1 to 10 and displays the result. 
+
+<blockquote><pre>
+public class BasicsDemo {
+    public static void main(String[] args) {
+        int sum = 0;
+        for (int current = 1; current &lt;= 10; current++) {
+            sum += current;
+        }
+        System.out.println(&quot;Sum = &quot; + sum);
+    }
+}
+</pre></blockquote>
+
+<br/><br/>
+
+The output from this program is:
+
+<blockquote><pre>
+Sum = 55
+</pre></blockquote>
+
+<p>
+Even a small program such as this uses many of the most basic features of the Java programming language, including variables, operators, and control flow statements. The code might look a little mysterious now. But this chapter teaches what you need to know about the nuts and bolts of the Java programming language to understand this program.
+</p>
+
+
+
+<h3>
+<a href="Variables" class="conditional">Variables</a>
+<a href="Variables" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>
+</h3>
+<blockquote>
+You use variables in your program to hold data. This section discusses data types, how to initialize variables, and how to refer to variables within blocks of code.
+</blockquote>
+
+<h3>
+<a href="Operators" class="conditional">Operators</a>
+<a href="Operators" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>
+</h3>
+<blockquote>
+This section details how you perform various operations, such as arithmetic and assignment operations.
+</blockquote>
+
+<h3>
+<a href="ExpressionsStatementsBlocks" class="conditional">Expressions, Statements, and Blocks</a>
+<a href="ExpressionsStatementsBlocks" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>
+</h3>
+<blockquote>
+This section discusses how to combine operators and variables into sequences known as expressions. Expressions are the building blocks of your code. You will also learn how to construct statements and statement blocks.
+</blockquote>
+
+<h3>
+<a href="ControlFlowStatements" class="conditional">Control Flow Statements</a>
+<a href="ControlFlowStatements" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>
+</h3>
+<blockquote>
+Programs use control flow statements to conditionally execute statements, to loop over statements, or to jump to another area in the program. This section shows you how to control your program's flow with such statements as <code>if-else</code> and <code>while</code>.
+</blockquote>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

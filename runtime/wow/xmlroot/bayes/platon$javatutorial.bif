@@ -1,0 +1,395 @@
+// Bayesian network 
+network "javatutorial" { //40 variables and 40 probability distributions
+}
+variable  "GettingStarted" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "bound = (12, 102, 80, 18)" ;
+	property "type = page" ;
+	property "position = (12, 102)" ;
+}
+variable  "javatutorial" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "bound = (198, 12, 61, 18)" ;
+	property "type = abstract" ;
+	property "position = (198, 12)" ;
+}
+variable  "LearningJavaLanguage" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "position = (624, 105)" ;
+}
+variable  "ObjectOrientedProgrammingConcepts" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "position = (238, 183)" ;
+}
+variable  "LanguageBasics" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "position = (606, 183)" ;
+}
+variable  "SimpleDataObjects" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "position = (984, 183)" ;
+}
+variable  "ClassesAndInheritance" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "position = (1295, 183)" ;
+}
+variable  "InterfacesAndPackages" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "position = (1752, 183)" ;
+}
+variable  "Variables" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "position = (405, 261)" ;
+}
+variable  "Operators" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "position = (460, 291)" ;
+}
+variable  "ExpressionsStatementsBlocks" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "position = (589, 267)" ;
+}
+variable  "ControlFlowStatements" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "position = (725, 297)" ;
+}
+variable  "LifeCycleOfObject" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "position = (859, 261)" ;
+}
+variable  "Strings" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "position = (938, 285)" ;
+}
+variable  "Numbers" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "position = (999, 261)" ;
+}
+variable  "Arrays" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "position = (1086, 279)" ;
+}
+variable  "CreatingClasses" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "position = (1194, 255)" ;
+}
+variable  "ManagingInheritance" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "position = (1294, 285)" ;
+}
+variable  "NestedClasses" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "position = (1394, 255)" ;
+}
+variable  "EnumeratedTypes" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "position = (1503, 279)" ;
+}
+variable  "Generics" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "position = (1586, 249)" ;
+}
+variable  "UsingInterfaces" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "position = (1706, 249)" ;
+}
+variable  "UsingPackages" { //2 values
+	type discrete[2] {  "true"  "false" };
+	property "position = (1827, 249)" ;
+}
+variable  "ObjectOrientedProgrammingConceptsTest" { //11 values
+	type discrete[11] {  "10"  "9"  "8"  "7"  "6"  "5"  "4"  "3"  "2"  "1"  "0" };
+	property "observed 0" ;
+	property "bound = (108, 252, 237, 18)" ;
+	property "type = test" ;
+	property "position = (108, 252)" ;
+}
+variable  "VariablesTest" { //11 values
+	type discrete[11] {  "10"  "9"  "8"  "7"  "6"  "5"  "4"  "3"  "2"  "1"  "0" };
+	property "observed 0" ;
+	property "bound = (330, 360, 78, 18)" ;
+	property "type = test" ;
+	property "position = (330, 360)" ;
+}
+variable  "OperatorsTest" { //11 values
+	type discrete[11] {  "10"  "9"  "8"  "7"  "6"  "5"  "4"  "3"  "2"  "1"  "0" };
+	property "observed 0" ;
+	property "bound = (420, 360, 81, 18)" ;
+	property "type = test" ;
+	property "position = (420, 360)" ;
+}
+variable  "ExpressionsStatementsBlocksTest" { //11 values
+	type discrete[11] {  "10"  "9"  "8"  "7"  "6"  "5"  "4"  "3"  "2"  "1"  "0" };
+	property "observed 0" ;
+	property "bound = (492, 330, 195, 18)" ;
+	property "type = test" ;
+	property "position = (492, 330)" ;
+}
+variable  "ControlFlowStatementsTest" { //11 values
+	type discrete[11] {  "10"  "9"  "8"  "7"  "6"  "5"  "4"  "3"  "2"  "1"  "0" };
+	property "observed 0" ;
+	property "bound = (642, 366, 155, 18)" ;
+	property "type = test" ;
+	property "position = (642, 366)" ;
+}
+variable  "LifeCycleOfObjectTest" { //11 values
+	type discrete[11] {  "10"  "9"  "8"  "7"  "6"  "5"  "4"  "3"  "2"  "1"  "0" };
+	property "observed 0" ;
+	property "bound = (792, 318, 123, 18)" ;
+	property "type = test" ;
+	property "position = (792, 318)" ;
+}
+variable  "StringsTest" { //11 values
+	type discrete[11] {  "10"  "9"  "8"  "7"  "6"  "5"  "4"  "3"  "2"  "1"  "0" };
+	property "observed 0" ;
+	property "bound = (906, 348, 65, 18)" ;
+	property "type = test" ;
+	property "position = (906, 348)" ;
+}
+variable  "NumbersTest" { //11 values
+	type discrete[11] {  "10"  "9"  "8"  "7"  "6"  "5"  "4"  "3"  "2"  "1"  "0" };
+	property "observed 0" ;
+	property "bound = (966, 312, 78, 18)" ;
+	property "type = test" ;
+	property "position = (966, 312)" ;
+}
+variable  "ArraysTest" { //11 values
+	type discrete[11] {  "10"  "9"  "8"  "7"  "6"  "5"  "4"  "3"  "2"  "1"  "0" };
+	property "observed 0" ;
+	property "bound = (1056, 342, 60, 18)" ;
+	property "type = test" ;
+	property "position = (1056, 342)" ;
+}
+variable  "CreatingClassesTest" { //11 values
+	type discrete[11] {  "10"  "9"  "8"  "7"  "6"  "5"  "4"  "3"  "2"  "1"  "0" };
+	property "observed 0" ;
+	property "bound = (1134, 312, 120, 18)" ;
+	property "type = test" ;
+	property "position = (1134, 312)" ;
+}
+variable  "ManagingInheritanceTest" { //11 values
+	type discrete[11] {  "10"  "9"  "8"  "7"  "6"  "5"  "4"  "3"  "2"  "1"  "0" };
+	property "observed 0" ;
+	property "bound = (1230, 342, 141, 18)" ;
+	property "type = test" ;
+	property "position = (1230, 342)" ;
+}
+variable  "NestedClassesTest" { //11 values
+	type discrete[11] {  "10"  "9"  "8"  "7"  "6"  "5"  "4"  "3"  "2"  "1"  "0" };
+	property "observed 0" ;
+	property "bound = (1344, 306, 113, 18)" ;
+	property "type = test" ;
+	property "position = (1344, 306)" ;
+}
+variable  "EnumeratedTypesTest" { //11 values
+	type discrete[11] {  "10"  "9"  "8"  "7"  "6"  "5"  "4"  "3"  "2"  "1"  "0" };
+	property "observed 0" ;
+	property "bound = (1440, 342, 127, 18)" ;
+	property "type = test" ;
+	property "position = (1440, 342)" ;
+}
+variable  "GenericsTest" { //11 values
+	type discrete[11] {  "10"  "9"  "8"  "7"  "6"  "5"  "4"  "3"  "2"  "1"  "0" };
+	property "observed 0" ;
+	property "bound = (1548, 306, 76, 18)" ;
+	property "type = test" ;
+	property "position = (1548, 306)" ;
+}
+variable  "UsingInterfacesTest" { //11 values
+	type discrete[11] {  "10"  "9"  "8"  "7"  "6"  "5"  "4"  "3"  "2"  "1"  "0" };
+	property "observed 0" ;
+	property "bound = (1656, 306, 113, 18)" ;
+	property "type = test" ;
+	property "position = (1656, 306)" ;
+}
+variable  "UsingPackagesTest" { //11 values
+	type discrete[11] {  "10"  "9"  "8"  "7"  "6"  "5"  "4"  "3"  "2"  "1"  "0" };
+	property "observed 0" ;
+	property "bound = (1776, 306, 114, 18)" ;
+	property "type = test" ;
+	property "position = (1776, 306)" ;
+}
+variable  "GettingStartedTest" { //11 values
+	type discrete[11] {  "10"  "9"  "8"  "7"  "6"  "5"  "4"  "3"  "2"  "1"  "0" };
+	property "observed 0" ;
+	property "bound = (6, 174, 104, 18)" ;
+	property "type = test" ;
+	property "position = (6, 174)" ;
+}
+probability (  "GettingStarted" ) { //1 variable(s) and 2 values
+	table 
+		0.5	// p(true | evidence )
+		0.5; 	// p(false | evidence );
+}
+probability (  "javatutorial"  "GettingStarted"  "LearningJavaLanguage" ) { //3 variable(s) and 8 values
+	table 
+		 1.0 0.10000000149011612 0.8999999761581421 0.0 0.0 0.8999999985098839 0.10000002384185791 1.0;
+}
+probability (  "LearningJavaLanguage"  "ObjectOrientedProgrammingConcepts"  "LanguageBasics"  "SimpleDataObjects"  "ClassesAndInheritance"  "InterfacesAndPackages" ) { //6 variable(s) and 64 values
+	table 
+		 1.0 0.800000011920929 0.75 0.550000011920929 0.800000011920929 0.6000000238418579 0.550000011920929 0.3499999940395355 0.699999988079071 0.5 0.44999998807907104 0.25 0.5 0.30000001192092896 0.25 0.05000000074505806 0.949999988079071 0.75 0.699999988079071 0.5 0.75 0.550000011920929 0.5 0.30000001192092896 0.6499999761581421 0.44999998807907104 0.4000000059604645 0.20000000298023224 0.44999998807907104 0.25 0.20000000298023224 0.0 0.0 0.19999998807907104 0.25 0.44999998807907104 0.19999998807907104 0.3999999761581421 0.44999998807907104 0.6500000059604645 0.30000001192092896 0.5 0.550000011920929 0.75 0.5 0.699999988079071 0.75 0.9499999992549419 0.050000011920928955 0.25 0.30000001192092896 0.5 0.25 0.44999998807907104 0.5 0.699999988079071 0.3500000238418579 0.550000011920929 0.5999999940395355 0.7999999970197678 0.550000011920929 0.75 0.7999999970197678 1.0;
+}
+probability (  "ObjectOrientedProgrammingConcepts" ) { //1 variable(s) and 2 values
+	table 
+		0.5	// p(true | evidence )
+		0.5; 	// p(false | evidence );
+}
+probability (  "LanguageBasics"  "Variables"  "Operators"  "ExpressionsStatementsBlocks"  "ControlFlowStatements" ) { //5 variable(s) and 32 values
+	table 
+		 1.0 0.699999988079071 0.800000011920929 0.5 0.75 0.44999998807907104 0.550000011920929 0.25 0.75 0.44999998807907104 0.550000011920929 0.25 0.5 0.20000000298023224 0.30000001192092896 0.0 0.0 0.30000001192092896 0.19999998807907104 0.5 0.25 0.550000011920929 0.44999998807907104 0.75 0.25 0.550000011920929 0.44999998807907104 0.75 0.5 0.7999999970197678 0.699999988079071 1.0;
+}
+probability (  "SimpleDataObjects"  "LifeCycleOfObject"  "Strings"  "Numbers"  "Arrays" ) { //5 variable(s) and 32 values
+	table 
+		 1.0 0.699999988079071 0.800000011920929 0.5 0.699999988079071 0.4000000059604645 0.5 0.20000000298023224 0.800000011920929 0.5 0.6000000238418579 0.30000001192092896 0.5 0.20000000298023224 0.30000001192092896 0.0 0.0 0.30000001192092896 0.19999998807907104 0.5 0.30000001192092896 0.5999999940395355 0.5 0.7999999970197678 0.19999998807907104 0.5 0.3999999761581421 0.699999988079071 0.5 0.7999999970197678 0.699999988079071 1.0;
+}
+probability (  "ClassesAndInheritance"  "CreatingClasses"  "ManagingInheritance"  "NestedClasses"  "EnumeratedTypes"  "Generics" ) { //6 variable(s) and 64 values
+	table 
+		 1.0 0.800000011920929 0.8999999761581421 0.699999988079071 0.8999999761581421 0.699999988079071 0.800000011920929 0.6000000238418579 0.699999988079071 0.5 0.6000000238418579 0.4000000059604645 0.6000000238418579 0.4000000059604645 0.5 0.30000001192092896 0.699999988079071 0.5 0.6000000238418579 0.4000000059604645 0.6000000238418579 0.4000000059604645 0.5 0.30000001192092896 0.4000000059604645 0.20000000298023224 0.30000001192092896 0.10000000149011612 0.30000001192092896 0.10000000149011612 0.20000000298023224 0.0 0.0 0.19999998807907104 0.10000002384185791 0.30000001192092896 0.10000002384185791 0.30000001192092896 0.19999998807907104 0.3999999761581421 0.30000001192092896 0.5 0.3999999761581421 0.5999999940395355 0.3999999761581421 0.5999999940395355 0.5 0.699999988079071 0.30000001192092896 0.5 0.3999999761581421 0.5999999940395355 0.3999999761581421 0.5999999940395355 0.5 0.699999988079071 0.5999999940395355 0.7999999970197678 0.699999988079071 0.8999999985098839 0.699999988079071 0.8999999985098839 0.7999999970197678 1.0;
+}
+probability (  "InterfacesAndPackages"  "UsingInterfaces"  "UsingPackages" ) { //3 variable(s) and 8 values
+	table 
+		 1.0 0.6000000238418579 0.4000000059604645 0.0 0.0 0.3999999761581421 0.5999999940395355 1.0;
+}
+probability (  "Variables" ) { //1 variable(s) and 2 values
+	table 
+		0.5	// p(true | evidence )
+		0.5; 	// p(false | evidence );
+}
+probability (  "Operators" ) { //1 variable(s) and 2 values
+	table 
+		0.5	// p(true | evidence )
+		0.5; 	// p(false | evidence );
+}
+probability (  "ExpressionsStatementsBlocks" ) { //1 variable(s) and 2 values
+	table 
+		0.5	// p(true | evidence )
+		0.5; 	// p(false | evidence );
+}
+probability (  "ControlFlowStatements" ) { //1 variable(s) and 2 values
+	table 
+		0.5	// p(true | evidence )
+		0.5; 	// p(false | evidence );
+}
+probability (  "LifeCycleOfObject" ) { //1 variable(s) and 2 values
+	table 
+		0.5	// p(true | evidence )
+		0.5; 	// p(false | evidence );
+}
+probability (  "Strings" ) { //1 variable(s) and 2 values
+	table 
+		0.5	// p(true | evidence )
+		0.5; 	// p(false | evidence );
+}
+probability (  "Numbers" ) { //1 variable(s) and 2 values
+	table 
+		0.5	// p(true | evidence )
+		0.5; 	// p(false | evidence );
+}
+probability (  "Arrays" ) { //1 variable(s) and 2 values
+	table 
+		0.5	// p(true | evidence )
+		0.5; 	// p(false | evidence );
+}
+probability (  "CreatingClasses" ) { //1 variable(s) and 2 values
+	table 
+		0.5	// p(true | evidence )
+		0.5; 	// p(false | evidence );
+}
+probability (  "ManagingInheritance" ) { //1 variable(s) and 2 values
+	table 
+		0.5	// p(true | evidence )
+		0.5; 	// p(false | evidence );
+}
+probability (  "NestedClasses" ) { //1 variable(s) and 2 values
+	table 
+		0.5	// p(true | evidence )
+		0.5; 	// p(false | evidence );
+}
+probability (  "EnumeratedTypes" ) { //1 variable(s) and 2 values
+	table 
+		0.5	// p(true | evidence )
+		0.5; 	// p(false | evidence );
+}
+probability (  "Generics" ) { //1 variable(s) and 2 values
+	table 
+		0.5	// p(true | evidence )
+		0.5; 	// p(false | evidence );
+}
+probability (  "UsingInterfaces" ) { //1 variable(s) and 2 values
+	table 
+		0.5	// p(true | evidence )
+		0.5; 	// p(false | evidence );
+}
+probability (  "UsingPackages" ) { //1 variable(s) and 2 values
+	table 
+		0.5	// p(true | evidence )
+		0.5; 	// p(false | evidence );
+}
+probability (  "ObjectOrientedProgrammingConceptsTest"  "ObjectOrientedProgrammingConcepts" ) { //2 variable(s) and 22 values
+	table 
+		 0.01818181818181818 0.0 0.016363635930148036 0.0018181818452748385 0.014545454762198708 0.003636363690549677 0.012727272510528565 0.0054545456712896175 0.010909091342579235 0.007272727381099354 0.00909090909090909 0.00909090909090909 0.007272727381099354 0.010909091342579235 0.0054545456712896175 0.012727272510528565 0.003636363690549677 0.014545454762198708 0.0018181818452748385 0.016363635930148036 0.0 0.01818181818181818;
+}
+probability (  "VariablesTest"  "Variables" ) { //2 variable(s) and 22 values
+	table 
+		 0.01818181818181818 0.0 0.016363635930148036 0.0018181818452748385 0.014545454762198708 0.003636363690549677 0.012727272510528565 0.0054545456712896175 0.010909091342579235 0.007272727381099354 0.00909090909090909 0.00909090909090909 0.007272727381099354 0.010909091342579235 0.0054545456712896175 0.012727272510528565 0.003636363690549677 0.014545454762198708 0.0018181818452748385 0.016363635930148036 0.0 0.01818181818181818;
+}
+probability (  "OperatorsTest"  "Operators" ) { //2 variable(s) and 22 values
+	table 
+		 0.01818181818181818 0.0 0.016363635930148036 0.0018181818452748385 0.014545454762198708 0.003636363690549677 0.012727272510528565 0.0054545456712896175 0.010909091342579235 0.007272727381099354 0.00909090909090909 0.00909090909090909 0.007272727381099354 0.010909091342579235 0.0054545456712896175 0.012727272510528565 0.003636363690549677 0.014545454762198708 0.0018181818452748385 0.016363635930148036 0.0 0.01818181818181818;
+}
+probability (  "ExpressionsStatementsBlocksTest"  "ExpressionsStatementsBlocks" ) { //2 variable(s) and 22 values
+	table 
+		 0.01818181818181818 0.0 0.016363635930148036 0.0018181818452748385 0.014545454762198708 0.003636363690549677 0.012727272510528565 0.0054545456712896175 0.010909091342579235 0.007272727381099354 0.00909090909090909 0.00909090909090909 0.007272727381099354 0.010909091342579235 0.0054545456712896175 0.012727272510528565 0.003636363690549677 0.014545454762198708 0.0018181818452748385 0.016363635930148036 0.0 0.01818181818181818;
+}
+probability (  "ControlFlowStatementsTest"  "ControlFlowStatements" ) { //2 variable(s) and 22 values
+	table 
+		 0.01818181818181818 0.0 0.016363635930148036 0.0018181818452748385 0.014545454762198708 0.003636363690549677 0.012727272510528565 0.0054545456712896175 0.010909091342579235 0.007272727381099354 0.00909090909090909 0.00909090909090909 0.007272727381099354 0.010909091342579235 0.0054545456712896175 0.012727272510528565 0.003636363690549677 0.014545454762198708 0.0018181818452748385 0.016363635930148036 0.0 0.01818181818181818;
+}
+probability (  "LifeCycleOfObjectTest"  "LifeCycleOfObject" ) { //2 variable(s) and 22 values
+	table 
+		 0.01818181818181818 0.0 0.016363635930148036 0.0018181818452748385 0.014545454762198708 0.003636363690549677 0.012727272510528565 0.0054545456712896175 0.010909091342579235 0.007272727381099354 0.00909090909090909 0.00909090909090909 0.007272727381099354 0.010909091342579235 0.0054545456712896175 0.012727272510528565 0.003636363690549677 0.014545454762198708 0.0018181818452748385 0.016363635930148036 0.0 0.01818181818181818;
+}
+probability (  "StringsTest"  "Strings" ) { //2 variable(s) and 22 values
+	table 
+		 0.01818181818181818 0.0 0.016363635930148036 0.0018181818452748385 0.014545454762198708 0.003636363690549677 0.012727272510528565 0.0054545456712896175 0.010909091342579235 0.007272727381099354 0.00909090909090909 0.00909090909090909 0.007272727381099354 0.010909091342579235 0.0054545456712896175 0.012727272510528565 0.003636363690549677 0.014545454762198708 0.0018181818452748385 0.016363635930148036 0.0 0.01818181818181818;
+}
+probability (  "NumbersTest"  "Numbers" ) { //2 variable(s) and 22 values
+	table 
+		 0.01818181818181818 0.0 0.016363635930148036 0.0018181818452748385 0.014545454762198708 0.003636363690549677 0.012727272510528565 0.0054545456712896175 0.010909091342579235 0.007272727381099354 0.00909090909090909 0.00909090909090909 0.007272727381099354 0.010909091342579235 0.0054545456712896175 0.012727272510528565 0.003636363690549677 0.014545454762198708 0.0018181818452748385 0.016363635930148036 0.0 0.01818181818181818;
+}
+probability (  "ArraysTest"  "Arrays" ) { //2 variable(s) and 22 values
+	table 
+		 0.01818181818181818 0.0 0.016363635930148036 0.0018181818452748385 0.014545454762198708 0.003636363690549677 0.012727272510528565 0.0054545456712896175 0.010909091342579235 0.007272727381099354 0.00909090909090909 0.00909090909090909 0.007272727381099354 0.010909091342579235 0.0054545456712896175 0.012727272510528565 0.003636363690549677 0.014545454762198708 0.0018181818452748385 0.016363635930148036 0.0 0.01818181818181818;
+}
+probability (  "CreatingClassesTest"  "CreatingClasses" ) { //2 variable(s) and 22 values
+	table 
+		 0.01818181818181818 0.0 0.016363635930148036 0.0018181818452748385 0.014545454762198708 0.003636363690549677 0.012727272510528565 0.0054545456712896175 0.010909091342579235 0.007272727381099354 0.00909090909090909 0.00909090909090909 0.007272727381099354 0.010909091342579235 0.0054545456712896175 0.012727272510528565 0.003636363690549677 0.014545454762198708 0.0018181818452748385 0.016363635930148036 0.0 0.01818181818181818;
+}
+probability (  "ManagingInheritanceTest"  "ManagingInheritance" ) { //2 variable(s) and 22 values
+	table 
+		 0.01818181818181818 0.0 0.016363635930148036 0.0018181818452748385 0.014545454762198708 0.003636363690549677 0.012727272510528565 0.0054545456712896175 0.010909091342579235 0.007272727381099354 0.00909090909090909 0.00909090909090909 0.007272727381099354 0.010909091342579235 0.0054545456712896175 0.012727272510528565 0.003636363690549677 0.014545454762198708 0.0018181818452748385 0.016363635930148036 0.0 0.01818181818181818;
+}
+probability (  "NestedClassesTest"  "NestedClasses" ) { //2 variable(s) and 22 values
+	table 
+		 0.01818181818181818 0.0 0.016363635930148036 0.0018181818452748385 0.014545454762198708 0.003636363690549677 0.012727272510528565 0.0054545456712896175 0.010909091342579235 0.007272727381099354 0.00909090909090909 0.00909090909090909 0.007272727381099354 0.010909091342579235 0.0054545456712896175 0.012727272510528565 0.003636363690549677 0.014545454762198708 0.0018181818452748385 0.016363635930148036 0.0 0.01818181818181818;
+}
+probability (  "EnumeratedTypesTest"  "EnumeratedTypes" ) { //2 variable(s) and 22 values
+	table 
+		 0.01818181818181818 0.0 0.016363635930148036 0.0018181818452748385 0.014545454762198708 0.003636363690549677 0.012727272510528565 0.0054545456712896175 0.010909091342579235 0.007272727381099354 0.00909090909090909 0.00909090909090909 0.007272727381099354 0.010909091342579235 0.0054545456712896175 0.012727272510528565 0.003636363690549677 0.014545454762198708 0.0018181818452748385 0.016363635930148036 0.0 0.01818181818181818;
+}
+probability (  "GenericsTest"  "Generics" ) { //2 variable(s) and 22 values
+	table 
+		 0.01818181818181818 0.0 0.016363635930148036 0.0018181818452748385 0.014545454762198708 0.003636363690549677 0.012727272510528565 0.0054545456712896175 0.010909091342579235 0.007272727381099354 0.00909090909090909 0.00909090909090909 0.007272727381099354 0.010909091342579235 0.0054545456712896175 0.012727272510528565 0.003636363690549677 0.014545454762198708 0.0018181818452748385 0.016363635930148036 0.0 0.01818181818181818;
+}
+probability (  "UsingInterfacesTest"  "UsingInterfaces" ) { //2 variable(s) and 22 values
+	table 
+		 0.01818181818181818 0.0 0.016363635930148036 0.0018181818452748385 0.014545454762198708 0.003636363690549677 0.012727272510528565 0.0054545456712896175 0.010909091342579235 0.007272727381099354 0.00909090909090909 0.00909090909090909 0.007272727381099354 0.010909091342579235 0.0054545456712896175 0.012727272510528565 0.003636363690549677 0.014545454762198708 0.0018181818452748385 0.016363635930148036 0.0 0.01818181818181818;
+}
+probability (  "UsingPackagesTest"  "UsingPackages" ) { //2 variable(s) and 22 values
+	table 
+		 0.01818181818181818 0.0 0.016363635930148036 0.0018181818452748385 0.014545454762198708 0.003636363690549677 0.012727272510528565 0.0054545456712896175 0.010909091342579235 0.007272727381099354 0.00909090909090909 0.00909090909090909 0.007272727381099354 0.010909091342579235 0.0054545456712896175 0.012727272510528565 0.003636363690549677 0.014545454762198708 0.0018181818452748385 0.016363635930148036 0.0 0.01818181818181818;
+}
+probability (  "GettingStartedTest"  "GettingStarted" ) { //2 variable(s) and 22 values
+	table 
+		 0.01818181818181818 0.0 0.016363635930148036 0.0018181818452748385 0.014545454762198708 0.003636363690549677 0.012727272510528565 0.0054545456712896175 0.010909091342579235 0.007272727381099354 0.00909090909090909 0.00909090909090909 0.007272727381099354 0.010909091342579235 0.0054545456712896175 0.012727272510528565 0.003636363690549677 0.014545454762198708 0.0018181818452748385 0.016363635930148036 0.0 0.01818181818181818;
+}

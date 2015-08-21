@@ -1,0 +1,127 @@
+<!DOCTYPE layoutconfig SYSTEM '../WOWstandard/LayoutConfig.dtd'>
+
+<layoutconfig>
+
+<stylesheet>wow.css</stylesheet>
+
+<viewlist>
+	<view name="v3" type="MainView" >
+	</view>
+	
+	<view name="v1" type="TOCView" title="TOC view" background="icons/hcmunsbg.gif" params="leftspace=70">
+	</view>
+	
+	<view name="v2" type="ConceptbarView" title="Concept bar view" background="icons/hcmunsbg.gif" params="leftspace=0">
+	</view>
+	
+	<view name="v4" type="GlossaryView" title="Glossary view" background="icons/hcmunsbg.gif" params="leftspace=0,cType=page,bgCONCEPTS=icons/hcmunsbg.gif,bgCHAR=icons/hcmunsbg.gif,bgGLOSSARY=icons/hcmunsbg.gif">
+	</view>
+	
+	<view name="v5" type="ToolboxView" title="Toolbox" background="icons/hcmunsbg.gif">
+		<secwnds>
+			<secwnd link="TOC" viewgroup="TOC" img="icons/ContentBtn.bmp"/>
+			<secwnd link="Glossary" viewgroup="Glossary" img="icons/GlossaryBtn.bmp"/>
+		</secwnds>
+	</view>
+	
+	<view name="v6" type="EmptyView" title="Empty" background="icons/hcmunsbg.gif">
+	</view>
+	
+	<view name="v7" type="StaticTreeView" title="TREE view" background="icons/hcmunsbg.gif" params="leftspace=10">
+	</view>
+	
+	<view name="v8" type="ZebraStaticTreeView" title="TREE view" background="icons/hcmunsbg.gif" params="leftspace=10">
+	</view>
+
+	<view name="v9" type="ZebraStaticTreeView2" title="TREE view" background="icons/hcmunsbg.gif" params="leftspace=10">
+	</view>
+
+	<view name="v10" type="ZebraRecommendView" title="Recommend View" background="icons/hcmunsbg.gif" params="leftspace=10">
+	</view>
+
+	<view name="v11" type="ZebraCollaborativeView" title="Collaborative View" background="icons/hcmunsbg.gif" params="leftspace=10">
+	</view>
+
+	<view name="v12" type="ZebraKnowledgeEvalChartView" title="Knowledge Evaluation View" background="icons/hcmunsbg.gif" params="leftspace=10">
+	</view>
+
+	<view name="v13" type="ZebraMainView">
+	</view>
+
+	<view name="v14" type="ZebraMainView2">
+	</view>
+
+	<view name="v15" type="ZebraSearchView" title="Search View" background="icons/hcmunsbg.gif" >
+	</view>
+
+	<view name="v16" type="ZebraTOCView" title="Zebra TOC View" background="icons/hcmunsbg.gif" params="leftspace=70">
+	</view>
+
+	<view name="v17" type="ZebraUserQueryView" title="User Query View" background="icons/hcmunsbg.gif" params="leftspace=10">
+	</view>
+</viewlist>
+
+
+<layoutlist>
+	<layout name="page_c_layout" trigger="Java Tutorial">
+		<viewgroup name="Java Tutorial" wndOpt="status=1,menubar=1,resizable=1,toolbar=1,width=800,height=600">
+			<compound framestruct="cols=25%,75%" border="1">
+				<compound framestruct="rows=50%,30%,20%" border="1">
+					<viewref name="v9" />
+					<viewref name="v12" />
+					<viewref name="v10" />
+				</compound>
+				<viewref name="v14" />
+			</compound>
+		</viewgroup>
+		
+		<viewgroup name="TOC" secondary="true" wndOpt="status=1,menubar=1,resizable=1,toolbar=1,width=300,height=400">
+			<viewref name="v1"/>	
+		</viewgroup>
+		
+		<viewgroup name="Glossary" secondary="true" wndOpt="status=1,menubar=1,resizable=1,toolbar=1,width=300,height=400">
+			<viewref name="v4"/>	
+		</viewgroup>
+
+		<viewgroup name="Collaborative" secondary="true" wndOpt="status=1,menubar=1,resizable=1,toolbar=1,width=300,height=400">
+			<viewref name="v11"/>	
+		</viewgroup>
+
+		<viewgroup name="Search" secondary="true" wndOpt="status=1,menubar=1,resizable=1,toolbar=1,width=300,height=400">
+			<viewref name="v15"/>	
+		</viewgroup>
+
+		<viewgroup name="ZebraTOC" secondary="true" wndOpt="status=1,menubar=1,resizable=1,toolbar=1,width=300,height=400">
+			<viewref name="v16"/>	
+		</viewgroup>
+
+		<viewgroup name="UserQuery" secondary="true" wndOpt="status=1,menubar=1,resizable=1,toolbar=1,width=300,height=400">
+			<viewref name="v17"/>	
+		</viewgroup>
+	</layout>
+	
+	<layout name="leaf_c_layout" trigger="Java Tutorial">
+			<viewgroup name="Java Tutorial" wndOpt="status=1,menubar=1,resizable=1,toolbar=1,width=800,height=600">
+				<compound framestruct="rows=20%,*" border="0">
+					<compound framestruct="cols=*,145" border="0">
+						<viewref name="v7" />
+						<viewref name="v5" />
+					</compound>
+					<compound framestruct="cols=70,*,145" >
+						<viewref name="v6" />
+						<viewref name="v3" />
+						<viewref name="v2" />
+					</compound>
+					
+				</compound>
+			</viewgroup>
+			
+			<viewgroup name="TOC" secondary="true" wndOpt="status=1,menubar=1,resizable=1,toolbar=1,width=500,height=400">
+				<viewref name="v1"/>	
+			</viewgroup>
+			
+	</layout>
+	
+</layoutlist>
+
+</layoutconfig>

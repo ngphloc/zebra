@@ -1,0 +1,75 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Importing Classes and Packages</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Getting Started
+<br/>
+<b>Lesson</b>: Hello World Applet
+</font>
+
+<h2>Importing Classes and Packages</h2>
+<blockquote>
+The first two lines of the following listing import two classes used in the applet: <code>Applet</code> and <code>Graphics</code>.
+
+<blockquote><pre>
+<b>import java.applet.Applet;
+import java.awt.Graphics;</b>
+
+public class HelloWorld extends Applet {
+    public void paint(Graphics g) {
+        g.drawString("Hello world!", 50, 25);
+    }
+}
+</pre></blockquote>
+<br/>
+
+If you removed the first two lines, the applet could still compile and run, but only if you changed the rest of the code like this:
+
+<blockquote><pre>
+public class HelloWorld extends <b>java.applet.</b>Applet {
+    public void paint(<b>java.awt.</b>Graphics g) {
+        g.drawString("Hello world!", 50, 25);
+    }
+}
+</pre></blockquote>
+
+As you can see, importing the <code>Applet</code> and <code>Graphics</code> classes lets the program refer to them later without any prefixes. The <code>java.applet.</code> and <code>java.awt.</code> prefixes tell the compiler which packages it should search for the <code>Applet</code> and <code>Graphics</code> classes. Both the <code>java.applet</code> and <code>java.awt</code> packages are part of the core Java API -- API that every Java program can count on being in the Java environment. The <code>java.applet</code> package contains classes that are essential to Java applets. The <code>java.awt</code> package contains the most frequently used classes in the Abstract Window Toolkit (AWT), which provides the Java graphical user interface (GUI).
+
+<p>
+You might have noticed that the
+<a href="HelloWorldApplication" class="conditional">Hello World Application</a>
+<a href="HelloWorldApplication" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Getting Started trail)"/></a>
+example from the previous lesson uses the <code>System</code> class without any prefix, and yet does not import the <code>System</code> class. The reason is that the <code>System</code> class is part of the <code>java.lang</code> package, and everything in the <code>java.lang</code> package is utomatically imported into every Java program.
+</p>
+
+Besides importing individual classes, you can also import entire packages. Here's an example:
+
+<blockquote><pre>
+<b>import java.applet.*;
+import java.awt.*;</b>
+
+public class HelloWorld extends Applet {
+    public void paint(Graphics g) {
+        g.drawString("Hello world!", 50, 25);
+    }
+}
+</pre></blockquote>
+
+In the Java language, every class is in a package. If the source code for a class doesn't have a <b>package</b> statement at the top, declaring the package the class is in, then the class is in the <em>default package</em>. Almost all of the example classes in this tutorial are in the default package. See
+<a href="UsingPackages" class="conditional">Creating and Using Packages</a>
+<a href="UsingPackages" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Getting Started trail)"/></a>
+for information on using the <code>package</code> statement.
+<br/>
+
+Within a package, all classes can refer to each other without prefixes. For example, the <code>java.awt Component</code> class refers to the <code>java.awt Graphics</code> class without any prefixes, without importing the <code>Graphics</code> class.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

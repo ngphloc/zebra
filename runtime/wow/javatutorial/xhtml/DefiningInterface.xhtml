@@ -1,0 +1,108 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Defining an Interface</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Interfaces and Packages
+</font>
+
+<h2>
+Defining an Interface
+</h2>
+<blockquote>
+<!--Defining an Interface-->
+
+<br/>
+The figure below shows that an interface definition has two components: 
+the interface declaration and the interface body. The interface 
+declaration declares various attributes about the interface, such 
+as its name and whether it extends other interfaces. The interface 
+body contains the constant and the method declarations for that 
+interface.
+<p><center><img src="images/ip-stockwatcherInterface.gif" width="371" height="139" align="bottom" alt="The StockWatcher interface and the structure of an interface definition."/></center></p>
+<blockquote>The <code>StockWatcher</code> interface 
+and the structure of an interface definition.
+</blockquote>
+<br/><br/>
+
+<blockquote><pre>
+public interface StockWatcher {
+    void valueChanged(TickerSymbol tickerSymbol,
+                      BigDecimal newValue);
+}
+</pre></blockquote>
+
+<br/><br/>The interface shown in the figure above is the <code>StockWatcher</code> 
+interface mentioned previously.  This interface 
+declares, but does not implement, the <code>valueChanged</code> 
+method. Classes that implement this interface provide the implementation 
+for that method. 
+
+<h3>The Interface Declaration</h3>
+
+<br/>The following figure shows all possible components of an interface 
+declaration. <br/>
+<p><center><img src="images/ip-possibleInterfaceComps.gif" width="330" height="182" align="bottom" alt="The possible components of an interface declaration and their purposes."/></center></p>
+<blockquote>The possible components of an interface 
+declaration and their purposes.
+</blockquote>
+
+<p>
+Two elements are required in an interface declaration
+&#151; the <code>interface</code> 
+keyword and the name of the interface. The <code>public</code> 
+access specifier indicates that the interface can be used by any 
+class in any package. If you do not specify that your interface 
+is public, your interface will be accessible only to classes that 
+are defined in the same package as the interface. 
+</p>
+An interface declaration can have one other component: a list 
+of superinterfaces. An interface can extend other interfaces, 
+just as a class can extend or subclass another class. However, 
+whereas a class can extend only one other class, an interface 
+can extend any number of interfaces. The list of superinterfaces 
+is a comma-separated list of all the interfaces extended by the 
+new interface. <br/>
+
+
+<h3>The Interface Body</h3>
+
+<p>The interface body contains method declarations for all the 
+methods included in the interface. A method declaration within 
+an interface is followed by a semicolon (<code>;</code>) because 
+ an interface does not provide implementations for the methods 
+declared within it. All methods declared in an interface are implicitly 
+<code>public</code> and <code>abstract</code>. 
+</p>
+An interface can contain constant declarations in addition to 
+method declarations. All constant values defined in an interface 
+are implicitly <code>public</code>, <code>static</code>, and <code>final</code>. 
+<p>
+Member declarations in an interface disallow the use of some declaration 
+modifiers; you cannot use <code>transient</code>, <code>volatile</code>, 
+or <code>synchronized</code> in a member declaration in an interface. 
+Also, you may not use the <code>private</code> and <code>protected</code> 
+specifiers when declaring members of an interface. <br/>
+</p>
+
+<blockquote><hr/><strong>Note: </strong>Previous releases of the 
+  Java platform allowed you to use the <code>abstract</code> modifier 
+  on interface declarations and on method declarations within interfaces.  
+  However, this is unnecessary, because interfaces and their methods  
+  are implicitly abstract. You should not use <code>abstract</code>  
+  in your interface declarations or in your method declarations  
+  within interfaces. 
+<hr/></blockquote>
+
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE authorList SYSTEM "authorlist.dtd">
+<authorList>
+  <author login="author" password="MD5:098f6bcd4621d373cade4e832627b4f6">
+    <name>General Author</name>
+    <courseList>
+      <courseName>javatutorial</courseName>
+      <courseName>tutorial</courseName>
+    </courseList>
+  </author>
+</authorList>

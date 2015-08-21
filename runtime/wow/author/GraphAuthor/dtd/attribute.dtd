@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT attribute  (name, description, default, type, isPersistent, isSystem, isChangeable)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT default (#PCDATA)>
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT isPersistent (#PCDATA)>
+<!ELEMENT isSystem (#PCDATA)>
+<!ELEMENT isChangeable (#PCDATA)>

@@ -1,0 +1,97 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>The Life Cycle of an Object</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>The Life Cycle of an Object</h2>
+<blockquote>
+A typical Java program creates many objects, which as you know, interact by sending 
+<a href="WhatIsMessage" class="conditional">messages</a><a href="WhatIsMessage" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>
+. Through these object interactions, a program can carry out various tasks, such as implementing a GUI, running an animation, or sending and receiving information over a network. Once an object has completed the work for which it was created, its resources are recycled for use by other objects.
+
+<p>
+Here's a small program, called
+<a target="_blank" href="resources/CreateObjectDemo.java"><font color="#bb000f"><code>CreateObjectDemo</code></font></a><a target="_blank" href="resources/CreateObjectDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>, that creates three objects: one
+<a target="_blank" href="resources/Point.java"><font color="#bb000f"><code>Point</code></font></a><a target="_blank" href="resources/Point.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a> object and two
+<a target="_blank" href="resources/Rectangle.java"><font color="#bb000f"><code>Rectangle</code></font></a><a target="_blank" href="resources/Rectangle.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a> objects. You will need all three source files to compile this program.
+ 
+<blockquote><pre>
+public class CreateObjectDemo {
+	public static void main(String[] args) {
+		// declare and create a point object
+		// and two rectangle objects
+		Point originOne = new Point(23, 94);
+		Rectangle rectOne = new Rectangle(originOne, 100, 200);
+		Rectangle rectTwo = new Rectangle(50, 100);
+		// display rectOne's width, height, and area
+		System.out.println(&quot;Width of rectOne: &quot; +
+			rectOne.width);
+		System.out.println(&quot;Height of rectOne: &quot; +
+			rectOne.height);
+		System.out.println(&quot;Area of rectOne: &quot; + rectOne.area());
+		// set rectTwo's position
+		rectTwo.origin = originOne;
+		// display rectTwo's position
+		System.out.println(&quot;X Position of rectTwo: &quot;
+			+ rectTwo.origin.x);
+		System.out.println(&quot;Y Position of rectTwo: &quot;
+		+ rectTwo.origin.y);
+		// move rectTwo and display its new position
+		rectTwo.move(40, 72);
+		System.out.println(&quot;X Position of rectTwo: &quot;
+			+ rectTwo.origin.x);
+		System.out.println(&quot;Y Position of rectTwo: &quot;
+			+ rectTwo.origin.y);
+	}
+}
+</pre></blockquote>
+
+This program creates, manipulates, and and displays information about various objects. Here's the output:
+
+<blockquote><pre>
+Width of rectOne: 100
+Height of rectOne: 200
+Area of rectOne: 20000
+X Position of rectTwo: 23
+Y Position of rectTwo: 94
+X Position of rectTwo: 40
+Y Position of rectTwo: 72
+</pre></blockquote>
+</p>
+
+<p>
+The following sections use the above example to describe the life cycle of an object within a program. From them, you will learn how to write code that creates and uses objects in your own programs. You will also learn how the system cleans up after an object after its life has ended.
+
+<ul>
+<li>
+<a href="CreatingObjects" class="conditional">Creating Objects</a><a href="CreatingObjects" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>
+</li>
+<li>
+<a href="UsingObjects" class="conditional">Using Objects</a><a href="UsingObjects" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>
+</li>
+<li>
+<a href="CleaningUpUnusedObjects" class="conditional">Cleaning Up Unused Objects</a><a href="CleaningUpUnusedObjects" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>
+</li>
+<li>
+<a href="SummaryOfUsingObjects" class="conditional">Summary of Creating and Using Objects</a><a href="SummaryOfUsingObjects" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>
+</li>
+<li>
+<a href="UsingObjectsTest" class="conditional">Questions and Exercises: Creating and Using Objects</a><a href="UsingObjectsTest" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>
+</li>
+</ul>
+</p>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

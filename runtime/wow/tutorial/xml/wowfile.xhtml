@@ -1,0 +1,115 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>The Graph Author ".wow" Files</h2>
+
+<p>
+The ".wow" files are used by the graph author for translating
+concept relationships of a given type into WOW!
+<a href="rules" class="conditional">event-condition-action rules</a>.
+We explain the templates using the examples of <em>knowledge_propagation</em>
+and <em>prerequisite</em>. We use these examples because the former
+defines a user model update whereas the latter defines a suitability
+requirement.
+</p>
+<p>
+The file "knowledge_propagation.wow" is as follows:
+<pre>
+&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE wow_relation_type SYSTEM 'wow_relation_type.dtd'&gt;
+&lt;wow_relation_type&gt;
+    &lt;name&gt;knowledge_propagation&lt;/name&gt;
+    &lt;listitems&gt;
+        &lt;generateListItem isPropagating="true" location="child.access" &gt;
+            &lt;requirement&gt; true &lt;/requirement&gt;
+            &lt;trueActions&gt;
+                &lt;action combination="DIV_S"&gt;
+                    &lt;conceptName&gt; parent &lt;/conceptName&gt;
+                    &lt;attributeName&gt; knowledge &lt;/attributeName&gt;
+                    &lt;expression&gt;parent.knowledge + (var:DIVIDE * _child.knowledge)&lt;/expression&gt;
+                &lt;/action&gt;
+            &lt;/trueActions&gt;
+        &lt;/generateListItem&gt;
+    &lt;/listitems&gt;
+&lt;/wow_relation_type&gt;
+</pre>
+The similarity with the syntax of
+<a href="rules" class="conditional">event-condition-action rules</a>
+is obvious. The elements that need explaining are:
+</p>
+<ul>
+<li>
+"location": the <tt>generateListItem</tt> element contains
+a <tt>location</tt> attribute. This indicates to which attribute of
+which concept the rule belongs. In the example the location is
+<tt>child.access</tt> meaning the <tt>access</tt> attribute of
+the <tt>child</tt> (alternatively called <tt>source</tt>) concept.
+This is the concept from where the drawn arrow starts.
+</li>
+<li>
+"combination": It is possible to have a value in the action that
+depends on different rules that influence the same attribute of the
+same concept. <tt>DIV_S</tt> means that the value will be divided
+by the number of children or sources of arrows (relationships of
+this type) pointing to the same parent (or destination).
+Another possibility would be <tt>DIV_D</tt>, meaning that the value
+will be divided by the number of parents or destinations of arrows
+(relationships of this type) starting from the same child (or source).
+</li>
+<li>
+"var": When a value is preceded by the word "var:" it means that this
+value is the default but can be overridden by entering a value for
+the concept relationship in the graph author.
+</li>
+<li>
+"DIVIDE": This keyword is used in combination with <tt>DIV_S</tt>
+or <tt>DIV_D</tt> to indicate that a factor should be used that depends
+on the number of children (or sources), resp. parents (or destinations).
+E.g., when there are four concepts supplying knowledge to a concept
+and you don't override the value for the knowledge_propagation
+relationship the expression <tt>var:DIVIDE</tt> will result in 0.25.
+</li>
+</ul>
+<p>
+The file "prerequisite.wow" is:
+<pre>
+&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE wow_relation_type SYSTEM 'wow_relation_type.dtd'&gt;
+&lt;wow_relation_type&gt;
+    &lt;name&gt;prerequisite&lt;/name&gt;
+    &lt;listitems&gt;
+        &lt;setdefault location="destination.suitability" 
+            combination="AND"&gt;source.knowledge &amp;gt; var:0 &lt;/setdefault&gt;
+    &lt;/listitems&gt;
+&lt;/wow_relation_type&gt;
+</pre>
+A prerequisite defines a <em>requirement</em> for the destination
+(or parent) of the prerequisite relationship.
+The example shows that this is done by setting the default value
+of the <tt>suitability</tt> attribute of the destination concept.
+Because <tt>suitability</tt> is a non-persistent attribute
+and the default value is an expression, that expression is
+evaluated each time it is needed.
+</p>
+<p>
+When there are different prerequisites thay are combined using the
+logical "AND" operator. Requirements set by concept relationships can
+be combined with "AND" and "OR" but for the combination of requirements
+defined by different types of relationships the combination is
+always and automatically taken to be "AND".
+</p>
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

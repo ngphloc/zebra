@@ -1,0 +1,158 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Searching for a Character or a Substring within a String</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>Searching for a Character or a Substring within a String</h2>
+<blockquote>
+
+The <code>String</code> class provides two accessor methods that return the position within the string of a specific character or substring: <code>indexOf</code> and <code>lastIndexOf</code>. The <code>indexOf</code> method searches forward from the beginning of the string, and <code>lastIndexOf</code> searches backward from the end of the string. The following table describes the various forms of the <code>indexOf</code> and <code>lastIndexOf</code> methods.
+<p>
+<table border="1" cellpadding="4" cellspacing="3">
+<caption>The <code>indexOf</code> and <code>lastIndexOf</code> Methods in the <code>String</code> Class</caption>
+<tr>
+<th width="30%">Method</th><th>Description</th>
+</tr>
+
+<tr>
+<td>
+<code>
+int indexOf(int)
+<br/>
+int lastIndexOf(int)
+</code>
+</td>
+<td>
+Returns the index of the first (last) occurrence of the specified character.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>
+int indexOf(int, int)
+<br/>
+int lastIndexOf(int, int)
+</code>
+</td>
+<td>
+Returns the index of the first (last) occurrence of the specified character, searching forward (backward) from the specified index.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>
+int indexOf(String)
+<br/>
+int lastIndexOf(String)
+</code>
+</td>
+<td>
+Returns the index of the first (last) occurrence of the specified string.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>
+int indexOf(String, int)
+<br/>
+int lastIndexOf(String, int)
+</code>
+</td>
+<td>
+Returns the index of the first (last) occurrence of the specified string, searching forward (backward) from the specified index.
+</td>
+</tr>
+</table>
+</p>
+
+The <code>StringBuffer</code> and <code>StringBuilder</code> classes does not support the <code>indexOf</code> or the <code>lastIndexOf</code> methods. If you need to use these methods on such an object, first convert the string buffer to a string by using its <code>toString</code> method.
+
+<p>
+The following class, 
+<a target="_blank" href="resources/Filename.java"><font color="#bb000f"><code>Filename</code></font></a><a target="_blank" href="resources/Filename.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>, illustrates the use of <code>lastIndexOf</code> and <code>substring</code> to isolate different parts of a file name.
+</p>
+
+<blockquote><hr/><strong>Note: </strong>The methods in the following <code>Filename</code> class don't do any error checking and assume that their argument contains a full directory path and a filename with an extension. If these methods were production code they would verify that their arguments were properly constructed.
+<hr/></blockquote>
+
+<blockquote><pre>
+// This class assumes that the string used to initialize
+// fullPath has a directory path, filename, and extension.
+// The methods won't work if it doesn't.
+public class Filename {
+    private String fullPath;
+    private char pathSeparator, extensionSeparator;
+
+    public Filename(String str, char sep, char ext) {
+        fullPath = str;
+        pathSeparator = sep;
+        extensionSeparator = ext;
+    }
+
+    public String extension() {
+        int dot = fullPath.lastIndexOf(extensionSeparator);
+        return fullPath.substring(dot + 1);
+    }
+
+    public String filename() {
+        int dot = fullPath.lastIndexOf(extensionSeparator);
+        int sep = fullPath.lastIndexOf(pathSeparator);
+        return fullPath.substring(sep + 1, dot);
+    }
+
+    public String path() {
+        int sep = fullPath.lastIndexOf(pathSeparator);
+        return fullPath.substring(0, sep);
+    }
+}
+</pre></blockquote>
+Here's a small program that constructs a <code>Filename</code> object and calls all of its methods:
+
+<blockquote><pre>
+public class FilenameDemo {
+    public static void main(String[] args) {
+        final String FPATH = &quot;/home/mem/index.html&quot;;
+        Filename myHomePage = new Filename(FPATH,
+                                           '/', '.');
+        System.out.println(&quot;Extension = &quot; + 
+             myHomePage.extension());
+        System.out.println(&quot;Filename = &quot; + 
+             myHomePage.filename());
+        System.out.println(&quot;Path = &quot; + 
+             myHomePage.path());
+    }
+}
+</pre></blockquote>
+
+And here's the output from the program:
+<blockquote><pre>
+Extension = html
+Filename = index
+Path = /home/mem
+</pre></blockquote>
+
+
+As shown in the following figure, our <code>extension</code> method uses <code>lastIndexOf</code> to locate the last occurrence of the period (.) in the file name. Then <code>substring</code> uses the return value of <code>lastIndexOf</code> to extract the file name extension&#8212;that is, the substring from the period to the end of the string. This code assumes that the file name has a period in it; if the file name does not have a period, <code>lastIndexOf</code> returns -1, and the substring method throws a <code>StringIndexOutOfBoundsException</code>.
+
+<p><center><img src="images/objects-lastIndexOf.gif" width="" height="" align="bottom" ALT="The use of lastIndexOf and substring in the extension method"/></center></p>
+<br/><br/>
+Also, notice that the <code>extension</code> method uses <code>dot + 1</code> as the argument to <code>substring</code>. If the period character (.) is the last character of the string, <code>dot + 1</code> is equal to the length of the string, which is one larger than the largest index into the string
+(because indices start at 0). This is a legal argument to <code>substring</code> because that method accepts an index equal to but not greater than the length of the string and interprets it to mean &quot;the end of the string.&quot;
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

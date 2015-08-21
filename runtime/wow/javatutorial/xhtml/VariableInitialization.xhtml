@@ -1,0 +1,43 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Variable Initialization</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Language Basics
+</font>
+
+<h2>Variable Initialization</h2>
+<blockquote>
+
+Local variables and member variables can be initialized with an assignment statement when they're declared. The data type of the variable must match the data type of the value assigned to it. The 
+<a target="_blank" href="resources/MaxVariablesDemo.java"><font color="#bb000f"><code>MaxVariablesDemo</code></font></a><a target="_blank" href="resources/MaxVariablesDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a> program provides initial values for all its local variables when they are declared. The local variable declarations from that program follow, with the initialization code set in boldface: 
+
+<blockquote><pre>
+//integers
+byte largestByte <B>= Byte.MAX_VALUE</B>;
+short largestShort <B>= Short.MAX_VALUE</B>;
+int largestInteger <B>= Integer.MAX_VALUE</B>;
+long largestLong <B>= Long.MAX_VALUE</B>;
+
+//real numbers
+float largestFloat <B>= Float.MAX_VALUE</B>;
+double largestDouble <B>= Double.MAX_VALUE</B>;
+
+//other primitive types
+char aChar <B>= 'S'</B>;
+boolean aBoolean <B>= true</B>;
+</pre></blockquote>
+
+Parameters and exception-handler parameters cannot be initialized in this way. The value for a parameter is set by the caller.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

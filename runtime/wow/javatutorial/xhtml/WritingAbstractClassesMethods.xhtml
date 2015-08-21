@@ -1,0 +1,137 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Writing Abstract Classes and Methods</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Classes and Inheritance
+</font>
+
+<h2>
+Writing Abstract Classes and Methods
+</h2>
+<blockquote>
+</blockquote>
+<h3>Abstract Classes</h3>
+<blockquote>
+Sometimes, a class that you define represents an abstract 
+concept and, as such, should not be instantiated. Take, for 
+example, food. Have you ever seen an instance of food? 
+Probably not. What you see instead are instances of carrot, 
+apple, and chocolate chip cookies. Food represents the 
+abstract concept of what we can eat. It doesn't make 
+sense for an instance of food to exist. 
+<p>
+Similarly, in object-oriented programming, you may want to 
+model an abstract concept without being able to create an 
+instance of it. For example, the <code>Number</code> class 
+represents the abstract concept of numbers. It makes sense 
+to model numbers, but it doesn't make sense to create a 
+generic number object. Instead, the <code>Number</code> 
+class makes sense only as a superclass to such classes 
+as <code>Integer</code> and <code>Float</code>, both 
+of which implement specific kinds of numbers. A class
+such as <code>Number</code>, which represents an abstract 
+concept and should not be instantiated, is called an 
+<i>abstract class</i>. An abstract class can only be subclassed.
+</p>
+To declare that your class is an abstract class, use the 
+keyword <code>abstract</code> before the <code>class</code> 
+keyword in your class declaration: 
+
+<blockquote><pre>
+abstract class Number {
+    ...
+}
+</pre></blockquote>
+
+If you attempt to instantiate an abstract class, the compiler 
+displays an error message.
+</blockquote>
+
+<h3>Abstract Methods</h3>
+<blockquote>
+An abstract class can contain <i>abstract methods</i> &#151; methods 
+with no implementation. In this way, an abstract class can define a 
+complete programming interface for its subclasses but allows its 
+subclasses to fill in the implementation details of those methods. 
+In practice, abstract classes usually provide a complete or partial 
+implementation of at least one method. If an abstract class 
+contains only abstract method declarations, it should be 
+implemented as an interface instead. Interfaces are covered 
+in the section 
+<a href="InterfacesAndPackages" class="conditional">Interfaces and Packages</a><a href="InterfacesAndPackages" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.
+<br/><br/>
+Let's look at an example of when you might want to create 
+an abstract class with an abstract method in it. In an 
+object-oriented drawing application, you can draw circles, 
+rectangles, lines, Bezier curves, and so on. These graphic 
+objects all have certain states (position, bounding box) 
+and behaviors (move, resize, draw) in common. You can take 
+advantage of these similarities and declare them all to 
+inherit from the same parent object &#151; for example, 
+<code>GraphicObject</code>, as shown in the next figure.
+
+<p><center><img src="images/classes-graphicObject.gif" width="372" height="80" align="bottom" alt="Classes Rectangle, Line, Bezier, and Circle inherit from GraphicObject "/></center></p>
+Graphic objects are substantially different in many ways: 
+drawing a circle is quite different from drawing a rectangle. 
+The graphic objects cannot share these types of states or 
+behavior. On the other hand, all <code>GraphicObject</code>s 
+must know how to draw themselves; they just differ in how they 
+are drawn. This is a perfect situation for an abstract superclass. 
+<br/><br/>
+First, you would declare an abstract class, <code>GraphicObject</code>, 
+to provide member variables and methods that were wholly shared by 
+all subclasses, such as the current position and the 
+<code>moveTo</code> method. <code>GraphicObject</code> 
+also declares abstract methods for methods, such as 
+<code>draw</code>, that need to be implemented by all 
+subclasses but that are implemented in entirely different 
+ways (no default implementation in the superclass makes 
+sense). The <code>GraphicObject</code> class would look 
+something like this: 
+
+<blockquote><pre>
+abstract class GraphicObject {
+    int x, y;
+    ...
+    void moveTo(int newX, int newY) {
+        ...
+    }
+    abstract void draw();
+}
+</pre></blockquote>
+
+Each nonabstract subclass of <code>GraphicObject</code>, such 
+as <code>Circle</code> and <code>Rectangle</code>, must provide 
+an implementation for the <code>draw</code> method:
+
+<blockquote><pre>
+class Circle extends GraphicObject {
+    void draw() {
+        ...
+    }
+}
+class Rectangle extends GraphicObject {
+    void draw() {
+        ...
+    }
+}
+</pre></blockquote>
+
+An abstract class is not required to have an abstract method in 
+it. But any class that has an abstract method in it or that 
+does not provide an implementation for any abstract methods 
+declared in its superclasses or implemented interfaces 
+<i>must</i> be declared as an abstract class. 
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

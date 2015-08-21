@@ -1,0 +1,441 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Summary of Operators</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Language Basics
+</font>
+
+<h2>Summary of Operators</h2>
+<blockquote>
+
+</blockquote>
+
+<a name="arithmetic">
+<h3>Summary of Arithmetic Operators</h3>
+</a>
+<blockquote>
+The following table lists the basic arithmetic operators provided by the Java programming language. Except for <code>+</code>, which is also used to concatenate strings, these operators can be used only on numeric values.
+<p>
+<table cellpadding="5">
+<caption><strong>Binary Arithmetic Operators</strong></caption>
+<tr>
+<th width="15%" align="left">Operator</th>
+<th width="30%" align="left">Use</th>
+<th width="55%" align="left">Description</th>
+</tr>
+<tr>
+    <td><code>+</code></td>
+    <td><code>op1 + op2</code> </td>
+    <td>Adds <code>op1</code> and <code>op2</code>; also used to concatenate strings</td>
+</tr>
+<tr>
+    <td><code>-</code></td>
+    <td><code>op1 - op2 </code> </td>
+    <td>Subtracts <code>op2</code> from <code>op1</code> </td>
+</tr>
+<tr>
+    <td><code>*</code></td>
+    <td><code>op1 * op2</code> </td>
+    <td>Multiplies <code>op1</code> by <code>op2</code> </td>
+</tr>
+<tr>
+    <td><code>/</code></td>
+    <td><code>op1 / op2</code> </td>
+    <td>Divides <code>op1</code> by <code>op2</code> </td>
+</tr>
+<tr>
+    <td><code>%</code></td>
+    <td><code>op1 % op2</code> </td>
+    <td>Computes the remainder of dividing <code>op1</code> by <code>op2</code> </td>
+</tr>
+</table>
+</p>
+
+These short cut operators increment or decrement a number by one.
+<p>
+<table cellpadding="5">
+<caption><strong>Shortcut Arithmetic Operators</strong></caption>
+<tr>
+<th align="left">Operator</th>
+<th align="left">Use</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+    <td><code>++</code></td>
+    <td><code>op++</code></td>
+    <td>Increments <code>op</code> by 1; evaluates to the value of <code>op</code> before it was incremented</td>
+</tr>
+<tr>
+    <td><code>++</code></td>
+    <td><code>++op</code></td>
+    <td>Increments <code>op</code> by 1; evaluates to the value of <code>op</code> after it was incremented</td>
+</tr>
+<tr>
+    <td><code>--</code></td>
+    <td><code>op--</code></td>
+    <td>Decrements <code>op</code> by 1; evaluates to the value of <code>op</code> before it was decremented</td>
+</tr>
+<tr>
+    <td><code>--</code></td>
+    <td><code>--op</code></td>
+    <td>Decrements <code>op</code> by 1; evaluates to the value of <code>op</code> after it was decremented</td>
+</tr>
+</table>
+</p>
+
+Here are the Java programming language's other arithmetic operators.
+<p>
+<table cellpadding="5">
+<caption><strong>Unary Arithmetic Operators</strong></caption>
+<tr>
+<th align="left">Operator</th>
+<th align="left">Use</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+    <td><code>+</code></td>
+    <td><code>+op</code></td>
+    <td>Promotes <code>op</code> to <code>int</code> if it's a <code>byte</code>, <code>short</code>, or <code>char</code></td>
+</tr>
+
+<tr>
+    <td><code>-</code></td>
+    <td><code>-op</code></td>
+    <td>Arithmetically negates <code>op</code></td>
+</tr>
+</table>
+</p>
+
+</blockquote>
+
+<a name="relational">
+<h3>Summary of Relational and Conditional Operators</h3>
+</a>
+<blockquote>
+Use these relational operators to determine the relationship between two values.
+<p>
+<table cellpadding="5">
+<caption><strong>Relational Operators</strong></caption>
+<tr>
+<th align="left">Operator</th>
+<th align="left">Use</th>
+<th align="left">Description</th>
+</tr>
+
+<tr>
+    <td><code>></code></td>
+    <td><code>op1 &gt; op2 </code></td>
+    <td>Returns <code>true</code> if <code>op1</code> is greater than <code>op2</code></td>
+</tr>
+<tr>
+    <td><code>&gt;=</code></td>
+    <td><code>op1 &gt;= op2</code></td>
+    <td>Returns <code>true</code> if <code>op1</code> is greater than or equal to <code>op2</code></td>
+</tr>
+<tr>
+    <td><code>&lt;</code></td>
+    <td><code>op1 &lt; op2</code></td>
+    <td>Returns <code>true</code> if <code>op1</code> is less than <code>op2</code></td>
+</tr>
+<tr>
+    <td><code>&lt;=</code></td>
+    <td><code>op1 &lt;= op2 </code></td>
+    <td>Returns <code>true</code> if <code>op1</code> is less than or equal to <code>op2</code></td>
+</tr>
+<tr>
+    <td><code>==</code></td>
+    <td><code>op1 == op2</code></td>
+    <td>Returns <code>true</code> if <code>op1</code> and <code>op2</code> are equal</td>
+</tr>
+<tr>
+    <td><code>!=</code></td>
+    <td><code>op1 != op2 </code></td>
+    <td>Returns <code>true</code> if <code>op1</code> and <code>op2</code> are not equal</td>
+</tr>
+</table>
+</p>
+
+You can use the following conditional operators to form multi-part decisions.
+<p>
+<table cellpadding="5">
+<caption><strong>Conditional Operators</strong></caption>
+<tr>
+<th align="left">Operator</th>
+<th align="left">Use</th>
+<th align="left">Description</th>
+</tr>
+
+<tr>
+    <td><code>&amp;&amp;</code></td>
+    <td><code>op1 &amp;&amp; op2</code></td>
+    <td>Returns <code>true</code> if <code>op1</code> and <code>op2</code> are both <code>true</code>; conditionally evaluates <code>op2</code></td>
+</tr>
+<tr>
+    <td><code>||</code></td>
+    <td><code>op1 || op2</code></td>
+    <td>Returns <code>true</code> if either <code>op1</code> or <code>op2</code> is <code>true</code>; conditionally evaluates <code>op2</code></td>
+</tr>
+<tr>
+    <td><code>!</code></td>
+    <td><code>!op</code></td>
+    <td>Returns <code>true</code> if <code>op</code> is <code>false</code></td>
+</tr>
+<tr>
+    <td><code>&amp;</code></td>
+    <td><code>op1 &amp; op2</code></td>
+    <td>Returns <code>true</code> if <code>op1</code> and <code>op2</code> are both boolean and both <code>true</code>; always evaluates <code>op1</code> and <code>op2</code>; if both operands are numbers, performs bitwise <code>AND</code> operation
+    </td>
+</tr>
+<tr>
+    <td><code>|</code></td>
+    <td><code>op1 | op2</code></td>
+    <td>Returns <code>true</code> if both <code>op1</code> and <code>op2</code> are boolean and either <code>op1</code> or <code>op2</code> is <code>true</code>; always evaluates <code>op1</code> and <code>op2</code>; if both operands are numbers, performs bitwise inclusive <code>OR</code> operation</td>
+</tr>
+<tr>
+    <td><code>^</code></td>
+    <td><code>op1 ^ op2</code></td>
+    <td>Returns <code>true</code> if <code>op1</code> and <code>op2</code> are different &#151; that is, if one or the other of the operands, but not both, is <code>true</code></td>
+</tr>
+</table>
+</p>
+
+</blockquote>
+
+<a name="shift">
+<h3>Summary of Shift and Logical Operators</h3>
+</a>
+<blockquote>
+Each shift operator shifts the bits of the left-hand operand over by the number of positions indicated by the right-hand operand. The shift occurs in the direction indicated by the operator itself.
+<p>
+<table cellpadding="5">
+<caption><strong>Shift Operators</strong></caption>
+<tr>
+<th align="left">Operator</th>
+<th align="left">Use</th>
+<th align="left">Description</th>
+</tr>
+
+<tr>
+    <td><code>&lt;&lt;</code></td>
+    <td><code>op1 &lt;&lt; op2</code></td>
+    <td>Shift bits of <code>op1</code> left by distance <code>op2</code>; fills with zero bits on the right-hand side</td>
+</tr>
+<tr>
+    <td><code>&gt;&gt;</code></td>
+    <td><code>op1 &gt;&gt; op2</code></td>
+    <td>Shift bits of <code>op1</code> right by distance <code>op2</code>; fills with highest (sign) bit on the left-hand side</td>
+</tr>
+<tr>
+    <td><code>&gt;&gt;&gt;</code></td>
+    <td><code>op1 &gt;&gt;&gt; op2</code></td>
+    <td>Shift bits of <code>op1</code> right by distance <code>op2</code>;fills with zero bits on the left-hand side</td>
+</tr>
+</table>
+</p>
+
+These operators perform logical functions on their operands.
+<p>
+<table cellpadding="5">
+<caption><strong>Logical Operators</strong></caption>
+<tr>
+<th align="left">Operator</th>
+<th align="left">Use</th>
+<th align="left">Operation</th>
+</tr>
+
+<tr>
+    <td><code>&amp;</code></td>
+    <td><code>op1 &amp; op2</code></td>
+    <td>Bitwise <code>AND</code> if both operands are numbers;<br/> conditional <code>AND</code> if both operands are boolean</td>
+</tr>
+
+<tr>
+    <td><code>|</code></td>
+    <td><code>op1 | op2</code></td>
+    <td>Bitwise <code>OR</code> if both operands are numbers; <br/> conditional <code>OR</code> if both operands are boolean </td>
+</tr>
+<tr>
+    <td><code>^</code></td>
+    <td><code>op1 ^ op2</code></td>
+    <td>Bitwise exclusive <code>OR</code> (<code>XOR</code>)</td>
+</tr>
+<tr>
+    <td><code>~</code></td>
+    <td><code>~op2</code></td>
+    <td>Bitwise complement</td>
+</tr>
+</table>
+</p>
+
+</blockquote>
+
+<a name="assignment">
+<h3>Summary of Assignment Operators</h3>
+</a>
+<blockquote>
+The basic assignment operator looks as follows and assigns the value of <code>op2</code> to <code>op1</code>.
+<blockquote><pre>
+op1 = op2;
+</pre></blockquote>
+<br/><br/>
+In addition to the basic assignment operation, the Java programming language defines these short cut assigment operators that perform an operation and an assignment using one operator.
+<p>
+<table cellpadding="5">
+<caption><strong>Shortcut Assignment Operators</strong></caption>
+<tr>
+<th align="left">Operator</th>
+<th align="left">Use</th>
+<th align="left">Equivalent to</th>
+</tr>
+
+<tr>
+    <td><code>+=</code></td>
+    <td><code>op1 += op2</code></td>
+    <td><code>op1 = op1 + op2</code></td>
+</tr>
+
+<tr>
+    <td><code>-=</code></td>
+    <td><code>op1 -= op2</code></td>
+    <td><code>op1 = op1 - op2</code></td>
+</tr>
+
+<tr>
+    <td><code>*=</code></td>
+    <td><code>op1 *= op2</code></td>
+    <td><code>op1 = op1 * op2</code></td>
+</tr>
+
+<tr>
+    <td><code>/=</code></td>
+    <td><code>op1 /= op2</code></td>
+    <td><code>op1 = op1 / op2</code></td>
+</tr>
+
+<tr>
+    <td><code>%=</code></td>
+    <td><code>op1 %= op2</code></td>
+    <td><code>op1 = op1 % op2</code></td>
+</tr>
+
+<tr>
+    <td><code>&amp;=</code></td>
+    <td><code>op1 &amp;= op2 </code></td>
+    <td><code>op1 = op1 &amp; op2</code></td>
+</tr>
+
+<tr>
+    <td><code>|=</code></td>
+    <td><code>op1 |= op2</code></td>
+    <td><code>op1 = op1 | op2</code></td>
+</tr>
+
+<tr>
+    <td><code>^=</code></td>
+    <td><code>op1 ^= op2</code></td>
+    <td><code>op1 = op1 ^ op2</code></td>
+</tr>
+
+<tr>
+    <td><code>&lt;&lt;=</code></td>
+    <td><code>op1 &lt;&lt;= op2</code></td>
+    <td><code>op1 = op1 &lt;&lt; op2</code></td>
+</tr>
+
+<tr>
+    <td><code>&gt;&gt;=</code></td>
+    <td><code>op1 &gt;&gt;= op2</code></td>
+    <td><code>op1 = op1 &gt;&gt; op2</code></td>
+</tr>
+
+<tr>
+    <td><code>&gt;&gt;&gt;=</code></td>
+    <td><code>op1 &gt;&gt;&gt;= op2</code></td>
+    <td><code>op1 = op1 &gt;&gt;&gt; op2</code></td>
+</tr>
+</table>
+</p>
+</blockquote>
+
+<a name="other">
+<h3>Summary of Other Operators</h3>
+</a>
+<blockquote>
+The Java programming language also supports these operators.
+<p>
+<table cellpadding="5">
+<caption><strong>Other Operators</strong></caption>
+<tr>
+<th align="left">Operator</th>
+<th align="left">Use</th>
+<th align="left"> Description</th>
+</tr>
+
+<tr>
+<td> <code>?:</code> </td>
+<td> <code>op1 ? op2 : op3</code> </td>
+<td> If <code>op1</code> is true, returns <code>op2</code>. Otherwise, returns <code>op3</code>. </td>
+</tr>
+
+<tr>
+<td> <code>[]</code></td>
+<td> <code><em>type</em> []</code></td>
+<td> Declares an array of unknown length, which contains <em>type</em> elements.</td>
+</tr>
+
+<tr>
+<td> <code>[]</code></td>
+<td> <code><em>type</em>[ op1 ]</code></td>
+<td> Creates and array with <code>op1</code> elements. Must be used with the <code>new</code> operator.</td>
+</tr>
+
+<tr>
+<td> <code>[]</code></td>
+<td> <code>op1[ op2 ]</code></td>
+<td> Accesses the element at <code>op2</code> index within the array <code>op1</code>. Indices begin at 0 and extend through the length of the array minus one.</td>
+</tr>
+
+<tr>
+<td> <code>.</code></td>
+<td> <code>op1.op2</code></td>
+<td> Is a reference to the <code>op2</code> member of <code>op1</code>.</td>
+</tr>
+
+<tr>
+<td> <code>()</code></td>
+<td> <code>op1(<em>params</em>)</code></td>
+<td> Declares or calls the method named <code>op1</code> with the specified parameters. The list of parameters can be an empty list. The list is comma-separated.</td>
+</tr>
+
+<tr>
+<td> <code>(type)</code></td>
+<td> <code>(type) op1</code></td>
+<td> Casts (converts) op1 to <code>type</code>. An exception will be thrown if the type of <code>op1</code> is incompatible with <code>type</code>.</td>
+</tr>
+
+<tr>
+<td> <code>new</code></td>
+<td> <code>new op1</code></td>
+<td> Creates a new object or array. <code>op1</code> is either a call to a constructor, or an array specification.</td>
+</tr>
+
+<tr>
+<td> <code>instanceof</code></td>
+<td> <code>op1 instanceof op2</code></td>
+<td> Returns true if <code>op1</code> is an instance of <code>op2</code></td>
+</tr>
+</table>
+</p>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

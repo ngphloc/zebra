@@ -1,0 +1,54 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>Advanced Topics for System Designers and Server Managers</h2>
+
+<p>
+Authoring for WOW! can be done by editing concept relationships
+through the <a href="graphauthor" class="conditional">graph author</a>.
+When the graph author seems too restricted you can choose to
+edit the <a href="concepts" class="conditional">concept structure</a>
+and <a href="rules" class="conditional">event-condition-action rules</a>
+through the
+<a href="concepteditor" class="conditional">concept editor</a>
+or to edit the concepts and rules directly in the corresponding XML file.
+However, the functionality of the graph author can be stretched
+by <a href="templates" class="conditional">creating new templates</a>
+for concept relationship types and/or changing existing ones.
+</p>
+
+<p>
+Another potential advanced aspect is the performance.
+When the performance of an WOW! server is too low there are several
+ways to try to improve it by changing the
+<a href="wowconfig" class="conditional">WOW! configuration</a>:
+</p>
+<ul>
+<li>
+When using XML files instead of the mySQL database performance
+can be increased by moving the directory tree with the files to
+a separate disk (through the XMLROOT parameter). Note that moving
+the files to a different file system on the same disk does not help.
+</li>
+<li>
+When using database server one can move the database to a different machine
+than the one running the WOW! server,
+and change the "dbhost" parameter to refer to that machine.
+</li>
+</ul>
+
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

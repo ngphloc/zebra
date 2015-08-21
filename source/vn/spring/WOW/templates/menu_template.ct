@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE template SYSTEM 'template.dtd'>
+<template>
+<name>menu concept</name>
+<attributes>
+	<attribute>
+		<name>access</name>
+		<description>not used but necessary for WOW! to work</description>
+		<default>false</default>
+ 		<type>bool</type>
+ 		<isPersistent>false</isPersistent>
+ 		<isSystem>true</isSystem>
+ 		<isChangeable>false</isChangeable>
+	</attribute>
+	<attribute>
+		<name>menu</name>
+		<description>number of the menu to show, this is a concept and attribute type used in the WOW! tutorial</description>
+		<default>0</default>
+		<type>int</type>
+		<isPersistent>true</isPersistent>
+		<isSystem>false</isSystem>
+		<isChangeable>true</isChangeable>
+	</attribute>
+</attributes>
+<hasresource>false</hasresource>
+<concepttype>menu</concepttype>
+<conceptrelations>
+</conceptrelations>
+</template>

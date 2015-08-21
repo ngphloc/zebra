@@ -1,0 +1,60 @@
+CAUTION
+This file is part of WOW! based on AHA! (Adaptive Hypermedia for All) which is free software (GNU General Public License) developed by Paul De Bra - Eindhoven University of Technology and University. 
+Copyright (c) 2006 by Eindhoven University of Technology.
+It may be used according to the GNU license of Eindhoven University of Technology
+
+		WOW Autoreload
+
+
+This document is intended for developpers who want
+to imporve the autoreload.js function whithin WOW!
+
+
+What does autoreload do? (or should do)
+
+The objective of the autoreload is that when a user
+presses the BACK of NEXT button the page he/she
+watches is not from the cache because that would deminish
+the adaptive features of that page.
+
+It is known that Internet Explorer and some versions
+of Mozilla do not reload a page when BACK of NEXT
+is pressed.
+
+Therefore it should be checked if the current page
+is the last one requested from the server.
+
+
+
+How is this problem solved?
+
+The javascript stores a cookie with the last reloaded page.
+The <body> should contain " onload='checkreload()' " and
+the page has autoreload.js included (<script src="autoreload.js"></script>)
+When checkreload() is called it looksup 'lastWOWpage' in the cookiejar
+and matches it with window.document.URL, if this fails it stores the
+URL in the lastWOWpage-cookie and calls for a page reload.
+
+Normaly this system would cause a newly access page to be
+loaded twice (first by the click on the anchor, the second
+time by checkreload). This can be prevented if the cookie
+was already set.
+This should be done by the servlet (or CGI if that's the case).
+Send a cookie of the form "lastWOWpage: [this request]"
+
+The problem is that also images are being dealt with by
+Get, this means the the lastWOWpage cookie is set to
+http://something../bgimage.gif and not to the requested
+(main) URL. If there is a better way to manage the
+requested resources this problem will be easy to solve.
+For now it's quite difficult.
+
+
+What if the brower does not support cookies?
+
+Then the check fails and nothing is done.
+Besides the session function of the servlet also
+fails, you've got a problem then.
+
+What if the browser does not support javascript?
+Then nothing happens at all

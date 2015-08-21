@@ -1,0 +1,79 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>What Is an Interface?</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object-Oriented Programming Concepts
+</font>
+
+<h2>
+What Is an Interface?
+</h2>
+<blockquote>
+In general, an interface is a device or a system that unrelated 
+entities use to interact. According to this definition, a remote 
+control is an interface between you and a television set, the 
+English language is an interface between two people, and the 
+protocol of behavior enforced in the military is the interface 
+between people of different ranks.
+
+<p>
+Within the Java programming language, an <em>interface</em> is a type, just as a class is a type.
+Like a class, an interface defines methods.
+Unlike a class, an interface never implements methods;
+instead, classes that implement the interface
+implement the methods defined by the interface.
+A class can implement multiple interfaces.
+</p>
+The bicycle class and its class hierarchy define what 
+a bicycle can and cannot do in terms of its "bicycleness." 
+But bicycles interact with the world on other terms. For 
+example, a bicycle in a store could be managed by an 
+inventory program. An inventory program doesn’t care 
+what class of items it manages, as long as each item 
+provides certain information, such as price and tracking 
+number. Instead of forcing class relationships on 
+otherwise unrelated items, the inventory program sets up 
+a protocol of communication. This protocol comes in the 
+form of a set of method definitions contained 
+within an interface. The inventory interface would define, 
+but not implement, methods that set and get the retail 
+price, assign a tracking number, and so on.
+<p>
+To work in the inventory program, the bicycle class must 
+agree to this protocol by implementing the interface. 
+When a class implements an interface, the class agrees 
+to implement all the methods defined in the interface. 
+Thus, the bicycle class would provide the implementations 
+for the methods that set and get retail price, assign a 
+tracking number, and so on.
+</p>
+You use an interface to define a protocol of behavior 
+that can be implemented by any class anywhere in the 
+class hierarchy. Interfaces are useful for the following:
+<ul>
+<li>
+Capturing similarities among unrelated classes without 
+artificially forcing a class relationship</li>
+<li>
+Declaring methods that one or more classes are expected to implement</li>
+<li>
+Revealing an object's programming interface without revealing its class</li>
+<li>
+Modelling multiple inheritance,
+a feature that some object-oriented languages support
+that allows a class to have more than one superclass</li>
+</ul>
+
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

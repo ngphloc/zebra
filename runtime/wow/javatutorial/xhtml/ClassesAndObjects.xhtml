@@ -1,0 +1,105 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Using Classes and Objects</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Getting Started
+<br/>
+<b>Lesson</b>: Hello World Application
+</font>
+
+<h2>Using Classes and Objects</h2>
+<blockquote>
+This section explains how the "Hello World" application uses classes and objects.  If you aren't familiar with object-oriented concepts, then you might find this section confusing.  If so, feel free to skip ahead to the lesson
+<a href="ObjectOrientedProgrammingConcepts" class="conditional">Object-Oriented Programming Concepts</a>
+<a href="ObjectOrientedProgrammingConcepts" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Getting Started trail)"/></a>
+<p>
+The "Hello World" application is about the simplest Java program
+you can write that actually does something.
+Because it is such a simple program,
+it doesn't need to define any classes except for <code>HelloWorldApp</code>.
+However, most programs that you write
+will be more complex and require you to write
+other classes and supporting Java code.
+</p>
+
+The "Hello World" application does <em>use</em> another class--the <code>System</code> class--that is part of the <i>API</i> (application programming interface) provided with the Java environment. The <code>System</code> class provides system-independent access to system-dependent functionality. For information about the <code>System</code> class, see
+<a href="AccessingSystemResources" class="conditional">Accessing System Resources</a>
+<a href="AccessingSystemResources" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Getting Started trail)"/></a>.
+
+<br/>
+
+The bold code in the following listing illustrates the use of a <em>class variable</em> of the <code>System</code> class, and of an <em>instance method</em>.
+
+<blockquote><pre>
+/** 
+ * The HelloWorldApp class implements an application that
+ * simply displays "Hello World!" to the standard output.
+ */
+class HelloWorldApp {
+    public static void main(String[] args) {
+        <b>System.out.println("Hello World!");</b> //Display the string.
+    }
+}
+</pre></blockquote>
+</blockquote>
+
+<h3>Using a Class Method or Variable</h3>
+<blockquote>
+Let's take a look at the first segment of the statement:
+
+<blockquote><pre>
+<b>System.out</b>.println("Hello World!");
+</pre></blockquote>
+
+The construct <code>System.out</code> is the full name of the <code>out</code> variable in the <code>System</code> class. Notice that the application never instantiates the <code>System</code> class and that <code>out</code> is referred to directly from the class name. This is because <code>out</code> is a class variable--a variable associated with the class rather than with an instance of the class. You can also associate methods with a  class--<em>class methods</em>.
+
+<br/>
+
+To refer to class variables and methods, you join the class name and the name of the class method or class variable together with a period (".").
+</blockquote>
+
+<h3>Using an Instance Method or Variable</h3>
+<blockquote>
+
+Methods and variables that are not class methods or class variables are known as <em>instance methods</em> and <em>instance variables</em>. To refer to instance methods and variables, you must reference the methods and variables from an object.
+
+<p>
+While <code>System</code>'s <code>out</code> variable <em>is</em> a class variable, it <em>refers</em> to an instance of the <code>PrintStream</code> class (a class provided with the Java development environment) that implements the standard output stream.
+</p>
+
+When the <code>System</code> class is loaded into the application, it instantiates <code>PrintStream</code> and assigns the new <code>PrintStream</code> object to the <code>out</code> class variable. Now that you have an instance of a class, you can call one of its instance methods:
+
+<blockquote><pre>
+System.<b>out.println</b>("Hello World!");
+</pre></blockquote>
+
+As you can see, you refer to instance methods and variables similarly to the way you refer to class methods and variables. You join an object reference (<code>out</code>) and the name of the instance method or variable (<code>println</code>) together with a period (".").
+
+<br/>
+
+The Java compiler allows you to cascade references to class and instance methods and variables together, resulting in constructs like the one that appears in the sample program:
+
+<blockquote><pre>
+<b>System.out.println</b>("Hello World!");
+</pre></blockquote>
+
+This line of code displays "Hello World!" to the application's standard output stream.
+</blockquote>
+
+<h3>Summary</h3>
+<blockquote>
+A class method or class variable is associated with a particular class. The runtime system allocates a class variable once per class, no matter how many instances exist of that class. You access class variables and methods through the class.
+
+<br/>
+
+An instance method or instance variable is associated with a particular object (an instance of a class). Every time you create an object, the new object gets a copy of every instance variable defined in its class. You access instance variables and methods through objects.
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

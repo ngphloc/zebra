@@ -1,0 +1,189 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Passing Information into a Method or a Constructor</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Classes and Inheritance
+</font>
+
+<h2>
+Passing Information into a Method or a Constructor
+</h2>
+<blockquote>
+The declaration for a method or a constructor 
+declares the number and the type of the arguments 
+for that method or constructor. For example, the 
+following is a method that computes the monthly 
+payments for a home loan, based on the amount of 
+the loan, the interest rate, the length of the 
+loan (the number of periods), and the future value of the loan: 
+<blockquote><pre>
+public double computePayment(double loanAmt, double rate,
+                             double futureValue,
+                             int numPeriods) {
+    double I, partial1, denominator, answer;
+    I = <b>rate</b> / 100.0;
+    partial1 = Math.pow((1 + I), (0.0 - <b>numPeriods</b>));
+    denominator = (1 - partial1) / I;
+    answer = ((-1 * <b>loanAmt</b>) / denominator)
+               - ((<b>futureValue</b> * partial1) / denominator);
+    return answer;
+}
+</pre></blockquote>
+
+This method takes four arguments: the loan amount, the interest rate,
+the future value and the number of periods. The first three are double-precision
+floating point numbers, and the fourth is an integer.
+<br/><br/>
+As with this method, the set of arguments to any method or 
+constructor is a comma-separated list of variable 
+declarations, where each variable declaration is a 
+type/name pair. As you can see from the body of the 
+<code>computePayment</code> method, you simply use the argument 
+name to refer to the argument's value. 
+</blockquote>
+
+<h3>Argument Types</h3>
+<blockquote>
+You can pass an argument of any data type into a method 
+or a constructor. This includes primitive data types, such 
+as doubles, floats, and integers, as you saw in the 
+<code>computePayment</code> method, and reference data types, 
+such as classes and arrays. Here's an example of a factory 
+method that accepts an array as an argument. In this example, 
+the method creates a new <code>Polygon</code> object and 
+initializes it from a list of <code>Point</code>s (assume 
+that <code>Point</code> is a class that represents an x, 
+y coordinate): 
+
+<blockquote><pre>
+public static Polygon polygonFrom(Point[] listOfPoints) {
+    ...
+}
+</pre></blockquote>
+The Java programming language doesn't let you pass methods 
+into methods. But you can pass an object into a method and 
+then invoke the object's methods. 
+</blockquote>
+
+<h3>Argument Names</h3>
+<blockquote>
+When you declare an argument to a method or a constructor, you 
+provide a name for that argument. This name is used within the 
+method body to refer to the data. 
+
+<p>
+The name of an argument must be unique in its scope. It cannot 
+be the same as the name of another argument for the same method 
+or constructor, the name of a local variable within the method 
+or constructor, or the name of any parameter to a 
+<code>catch</code> clause within the same method or constructor. 
+</p>
+
+An argument can have the same name as one of the class's member 
+variables. If this is the case, the argument is said to <i>hide</i> 
+the member variable. Hiding member variables can make your code 
+difficult to read and is conventionally used only within 
+constructors and methods that set a particular member 
+variable. For example, consider the following <code>Circle</code> 
+class and its <code>setOrigin</code> method: 
+<blockquote><pre>
+public class Circle {
+    private int x, y, radius;
+    public void setOrigin(int x, int y) {
+        ...
+    }
+}
+</pre></blockquote>
+
+The <code>Circle</code> class has three member variables: 
+<code>x</code>, <code>y</code>, and <code>radius</code>. The 
+<code>setOrigin</code> method accepts two arguments, each of 
+which has the same name as one of the member variables. Each 
+method argument hides the member variable that shares its name. 
+So using the simple names <code>x</code> or <code>y</code> 
+within the body of the method refers to the argument, <i>not</i> 
+to the member variable. To access the member variable, you must use 
+a qualified name. See the section 
+<a href="UsingThisKeyword" class="conditional">Using the this Keyword</a><a href="UsingThisKeyword" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>
+ for details.
+</blockquote>
+
+<h3>Pass by Value</h3>
+<blockquote>
+Arguments are <i>passed by value</i>. When invoked, a method or 
+a constructor receives the value of the variable passed in. When 
+the argument is of primitive type, "pass by value" means that the 
+method cannot change its value. When the argument is of reference 
+type, "pass by value" means that the method cannot change the 
+object reference but can invoke the object's methods and modify 
+the accessible variables within the object. 
+
+<br/><br/>To get a better idea of what this means, let's look at a method 
+called <code>getRGBColor</code> within a class called <code>Pen</code>. 
+This method is attempting to return three values by setting the values 
+of its arguments: 
+
+<blockquote><pre>
+public class Pen {
+    private int redValue, greenValue, blueValue;
+    ...
+    //This method does not work as intended.
+    public void getRGBColor(int red, int green, int blue) {
+        red = redValue;
+        green = greenValue;
+        blue = blueValue;
+    }
+}
+</pre></blockquote>
+
+This simply does not work. The <code>red</code>, <code>green</code>, 
+and <code>blue</code> variables exist only within the scope of the 
+<code>getRGBColor</code> method. When that method returns, those 
+variables are gone and any changes to them lost.
+<br/><br/>
+Let's rewrite the <code>getRGBColor</code> method so that it 
+does what was intended. First, we need a new type of object, 
+<code>RGBColor</code>, that can hold the red, green, and blue 
+values of a color in RGB space: 
+
+<blockquote><pre>
+public class <code>RGBColor</code> {
+    public int red, green, blue;
+}
+</pre></blockquote>
+
+Now we can rewrite <code>getRGBColor</code> so that it accepts 
+an <code>RGBColor</code> object as an argument. The 
+<code>getRGBColor</code> method returns the current color of the 
+pen by setting the <code>red</code>, <code>green</code>, and 
+<code>blue</code> member variables of its <code>RGBColor</code> argument: 
+
+<blockquote><pre>
+public class Pen {
+    private int redValue, greenValue, blueValue;
+    ...
+    public void getRGBColor(<code>RGBColor</code> aColor) {
+        aColor.red = redValue;
+        aColor.green = greenValue;
+        aColor.blue = blueValue;
+    }
+}
+</pre></blockquote>
+
+The changes made to the <code>RGBColor</code> object within the 
+<code>getRGBColor</code> method persist after the method returns, 
+because <code>aColor</code> is a reference to an object that exists 
+outside the scope of the method.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

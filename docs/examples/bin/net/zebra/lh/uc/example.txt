@@ -1,0 +1,67 @@
+**********Time 1**********
+-----Input clusters-----
+Clusters
+    Cluster 0: vectors=(2.0, 4.0), (1.0, 1.0), (2.0, 1.0), (3.0, 2.0), medoid=(1.0, 5.0)
+    Cluster 1: vectors=, medoid=(1.0, 4.0)
+-----Step 2: Assign user models into clusters-----
+Vector (2.0, 4.0) : max similarity=0.9761870601839528 : nearest cluster=1
+Vector (1.0, 1.0) : max similarity=0.8574929257125441 : nearest cluster=1
+Vector (2.0, 1.0) : max similarity=0.6507913734559685 : nearest cluster=1
+Vector (3.0, 2.0) : max similarity=0.7399400733959438 : nearest cluster=1
+-----Step 3: Re-calculating medoids-----
+Cluster 0 : medoid=(1.0, 5.0)
+Cluster 1 : medoid=(1.0, 1.0), max average similarity=0.9338600493761229
+-----Output clusters-----
+Clusters
+    Cluster 0: vectors=, medoid=(1.0, 5.0)
+    Cluster 1: vectors=(2.0, 4.0), (2.0, 1.0), (3.0, 2.0), (1.0, 4.0), medoid=(1.0, 1.0)
+**********Time 2**********
+-----Input clusters-----
+Clusters
+    Cluster 0: vectors=, medoid=(1.0, 5.0)
+    Cluster 1: vectors=(2.0, 4.0), (2.0, 1.0), (3.0, 2.0), (1.0, 4.0), medoid=(1.0, 1.0)
+-----Step 2: Assign user models into clusters-----
+Vector (2.0, 4.0) : max similarity=0.9647638212377322 : nearest cluster=0
+Vector (2.0, 1.0) : max similarity=0.9486832980505138 : nearest cluster=1
+Vector (3.0, 2.0) : max similarity=0.98058067569092 : nearest cluster=1
+Vector (1.0, 4.0) : max similarity=0.9988681377244377 : nearest cluster=0
+-----Step 3: Re-calculating medoids-----
+Cluster 0 : medoid=(1.0, 4.0), max average similarity=0.9875275989541953
+Cluster 1 : medoid=(3.0, 2.0), max average similarity=0.9864292762022939
+-----Output clusters-----
+Clusters
+    Cluster 0: vectors=(2.0, 4.0), (1.0, 5.0), medoid=(1.0, 4.0)
+    Cluster 1: vectors=(2.0, 1.0), (1.0, 1.0), medoid=(3.0, 2.0)
+**********Time 3**********
+-----Input clusters-----
+Clusters
+    Cluster 0: vectors=(2.0, 4.0), (1.0, 5.0), medoid=(1.0, 4.0)
+    Cluster 1: vectors=(2.0, 1.0), (1.0, 1.0), medoid=(3.0, 2.0)
+-----Step 2: Assign user models into clusters-----
+Vector (2.0, 4.0) : max similarity=0.9761870601839528 : nearest cluster=0
+Vector (1.0, 5.0) : max similarity=0.9988681377244377 : nearest cluster=0
+Vector (2.0, 1.0) : max similarity=0.9922778767136677 : nearest cluster=1
+Vector (1.0, 1.0) : max similarity=0.98058067569092 : nearest cluster=1
+-----Step 3: Re-calculating medoids-----
+Cluster 0 : medoid=(1.0, 4.0)
+Cluster 1 : medoid=(3.0, 2.0)
+-----Output clusters-----
+Clusters
+    Cluster 0: vectors=(2.0, 4.0), (1.0, 5.0), medoid=(1.0, 4.0)
+    Cluster 1: vectors=(2.0, 1.0), (1.0, 1.0), medoid=(3.0, 2.0)
+-----Input clusters-----
+Clusters
+    Cluster 0: vectors=(2.0, 4.0), (1.0, 5.0), medoid=(1.0, 4.0)
+    Cluster 1: vectors=(2.0, 1.0), (1.0, 1.0), medoid=(3.0, 2.0)
+-----Step 2: Assign user models into clusters-----
+Vector (2.0, 4.0) : max similarity=0.9761870601839528 : nearest cluster=0
+Vector (1.0, 5.0) : max similarity=0.9988681377244377 : nearest cluster=0
+Vector (2.0, 1.0) : max similarity=0.9922778767136677 : nearest cluster=1
+Vector (1.0, 1.0) : max similarity=0.98058067569092 : nearest cluster=1
+-----Step 3: Re-calculating medoids-----
+Cluster 0 : medoid=(1.0, 4.0)
+Cluster 1 : medoid=(3.0, 2.0)
+-----Output clusters-----
+Clusters
+    Cluster 0: vectors=(2.0, 4.0), (1.0, 5.0), medoid=(1.0, 4.0)
+    Cluster 1: vectors=(2.0, 1.0), (1.0, 1.0), medoid=(3.0, 2.0)

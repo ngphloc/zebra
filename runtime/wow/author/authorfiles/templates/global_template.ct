@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE template SYSTEM 'template.dtd'>
+<template>
+<name>global concept</name>
+<attributes>
+	<attribute>
+		<name>access</name>
+		<description>triggered by page access</description>
+		<default>false</default>		
+ 		<type>bool</type>
+ 		<isPersistent>false</isPersistent>
+ 		<isSystem>true</isSystem>
+ 		<isChangeable>false</isChangeable>
+	</attribute>
+	<attribute>
+		<name>visited</name>
+		<description>has this fragment been visited?</description>
+		<default>0</default>		
+		<type>int</type>
+		<isPersistent>true</isPersistent>
+		<isSystem>false</isSystem>
+		<isChangeable>true</isChangeable>
+	</attribute>
+	<attribute>
+		<name>knowledge</name>
+		<description>knowledge about this concept</description>
+		<default>0</default>		
+		<type>int</type>
+		<isPersistent>true</isPersistent>
+		<isSystem>false</isSystem>
+		<isChangeable>true</isChangeable>
+	</attribute>
+	<attribute>
+		<name>suitability</name>
+		<description>suitability of this concept</description>
+		<default>true</default>		
+		<type>bool</type>
+		<isPersistent>false</isPersistent>
+		<isSystem>false</isSystem>
+		<isChangeable>false</isChangeable>
+	</attribute>
+	<attribute>
+		<name>visibility</name>
+		<description>visibility of this concept</description>
+		<default>0</default>		
+		<type>int</type>
+		<isPersistent>true</isPersistent>
+		<isSystem>false</isSystem>
+		<isChangeable>true</isChangeable>
+	</attribute>	
+	<attribute>
+		<name>interest</name>
+		<description>is the user interested in this concept</description>
+		<default>0</default>
+		<type>int</type>
+		<isPersistent>true</isPersistent>
+		<isSystem>false</isSystem>
+		<isChangeable>true</isChangeable>
+	</attribute>	
+	<attribute>
+		<name>hierarchy</name>
+		<description>Should the concept be displayed in hierarchical structures (TOC)</description>
+		<default>false</default>
+		<type>bool</type>
+		<isPersistent>false</isPersistent>
+		<isSystem>false</isSystem>
+		<isChangeable>false</isChangeable>
+	</attribute>	
+</attributes>
+<hasresource>false</hasresource>
+<concepttype>global</concepttype>
+<conceptrelations>
+	<conceptrelation>
+		<name>self_outcome</name>
+		<label> </label>
+	</conceptrelation>
+</conceptrelations>
+</template>

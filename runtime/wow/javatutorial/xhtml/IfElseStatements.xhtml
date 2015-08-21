@@ -1,0 +1,109 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>The if/else Statements</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Language Basics
+</font>
+
+<h2>The if/else Statements</h2>
+<blockquote>
+
+The <em>if</em> statement enables your program to selectively execute other statements, based on some criteria. For example, suppose that your program prints debugging information, based on the value of a boolean variable named <code>DEBUG</code>. If <code>DEBUG</code> is <code>true</code>, your program prints debugging information, such as the value of a variable, such as <code>x</code>. Otherwise, your program proceeds normally. A segment of code to implement this might look like this:
+<blockquote><pre>
+if (DEBUG) {
+    System.out.println("DEBUG: x = " + x);
+}
+</pre></blockquote>
+
+This is the simplest version of the <code>if</code> statement: The block governed by the <code>if</code> is executed if a condition is true. Generally, the simple form of <code>if</code> can be written like this:
+<blockquote><pre>
+if (<em>expression</em>) {
+    <em>statement(s)</em>
+}
+</pre></blockquote>
+
+What if you want to perform a different set of statements if the expression is false? You use the <em>else</em> statement for that. Consider another example. Suppose that your program needs to perform different actions depending on whether the user clicks the OK button or another button in an alert window. Your program could do this by using an <code>if</code> statement along with an <code>else</code> statement:
+<blockquote><pre>
+    . . .
+    //<em>response is either OK or CANCEL depending</em>
+    //<em>on the button that the user pressed</em>
+    . . .
+if (response == OK) {
+    //<em>code to perform OK action</em>
+} else {
+    //<em>code to perform Cancel action</em>
+}
+</pre></blockquote>
+
+The <code>else</code> block is executed if the <code>if</code> part is <code>false</code>. Another form of the <code>else</code> statement, <code>else if</code>, executes a statement based on another expression. An <code>if</code> statement can have any number of companion <code>else if</code> statements but only one <code>else</code>. Following is a program, 
+<a target="_blank" href="resources/IfElseDemo.java"><font color="#bb000f"><code>IfElseDemo</code></font></a><a target="_blank" href="resources/IfElseDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>, that assigns a grade based on the value of a test score: an A for a score of 90% or above, a B for a score of 80% or above, and so on:
+<blockquote><pre>
+public class IfElseDemo {
+    public static void main(String[] args) {
+
+        int testscore = 76;
+        char grade;
+
+        if (testscore &gt;= 90) {
+            grade = 'A';
+        } else if (testscore &gt;= 80) {
+            grade = 'B';
+        } else if (testscore &gt;= 70) {
+            grade = 'C';
+        } else if (testscore &gt;= 60) {
+            grade = 'D';
+        } else {
+            grade = 'F';
+        }
+        System.out.println(&quot;Grade = &quot; + grade);
+    }
+}
+</pre></blockquote>
+The output from this program is:
+<blockquote><pre>
+Grade = C
+</pre></blockquote>
+
+You may have noticed that the value of <code>testscore</code> can satisfy more than one 
+of the expressions in the compound <code>if</code> statement: 
+<code>76 &gt;= 70</code> and <code>76 &gt;= 60</code>. However, as the 
+runtime system processes a compound <code>if</code> statement such as this one, 
+once a condition is satisfied, the appropriate statements are executed 
+(<code>grade = 'C';</code>), and control passes out of the <code>if</code> 
+statement without evaluating the remaining conditions.
+
+<p>
+The Java programming language supports an operator, <code>?:</code>, that is a compact version of an <code>if</code> statement. Recall this statement from the
+<a target="_blank" href="resources/MaxVariablesDemo.java"><font color="#bb000f"><code>MaxVariablesDemo</code></font></a><a target="_blank" href="resources/MaxVariablesDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a> program:
+<blockquote><pre>
+if (Character.isUpperCase(aChar)) {
+    System.out.println("The character " + aChar
+                       + " is upper case.");
+} else {
+    System.out.println("The character " + aChar
+                       + " is lower case.");
+}
+</pre></blockquote>
+
+Here's how you could rewrite that statement, using the <code>?:</code> operator (shown in boldface):
+<blockquote><pre>
+System.out.println("The character " + aChar + " is " +
+                   <b>(Character.isUpperCase(aChar) ? "upper" : 
+                        "lower")</b> + "case.");
+</pre></blockquote>
+</p>
+
+The <code>?:</code> operator returns the string <code>"upper"</code> if the <code>isUpperCase</code> method returns <code>true</code>. Otherwise, it returns the string <code>"lower"</code>. The result is concatenated with other parts of a message to be displayed. Using <code>?:</code> makes sense here because the <code>if</code> statement is secondary to the call to the <code>println</code> method. Once you get used to this construct, it also makes the code easier to read.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

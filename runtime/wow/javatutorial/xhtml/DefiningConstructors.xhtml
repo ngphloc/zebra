@@ -1,0 +1,105 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Providing Constructors for Your Classes</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Classes and Inheritance
+</font>
+
+<h2>
+Providing Constructors for Your Classes
+</h2>
+<blockquote>
+All classes have at least one constructor. A constructor is used 
+to initialize a new object of that type and has the same name 
+as the class. For example, the name of the <code>Stack</code> 
+class's single constructor is <code>Stack</code>: 
+<blockquote><pre>
+public Stack(int size) {
+    items = new Object[size];
+}
+</pre></blockquote>
+This particular constructor sets the initial size of the 
+stack according to its integer argument. A constructor is 
+not a method, so it has no return type. A constructor is 
+called by the <code>new</code> operator, which automatically 
+returns the newly created object. You cannot use the 
+<code>return</code> statement in a constructor. Another <code>Stack</code> 
+constructor creates a fixed size stack:
+<blockquote><pre>
+public Stack() {
+    items = new Object[10];
+}
+</pre></blockquote>
+Both constructors share the same name, <code>Stack</code>, but 
+they have different argument lists. As with methods, the Java 
+platform differentiates constructors on the basis of the number 
+of arguments in the list and their types. You cannot write two 
+constructors that have the same number and type of arguments for 
+the same class, because the platform would not be able to tell 
+them apart. Doing so causes a compile-time error.
+<br/><br/>
+When writing a class, you should provide it with whatever 
+constructors make sense for that class. Recall the 
+<code>Rectangle</code> class discussed in the section 
+<a href="LifeCycleOfObject" class="conditional">The Life Cycle of an Object</a><a href="LifeCycleOfObject" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>. That class contains four constructors that allow the user to
+initialize a new rectangle object in a variety of ways. You don't
+have to provide any constructors for your class if that's what makes
+sense. The runtime system automatically provides a no-argument,
+default constructor for any class that contains no constructors.
+The default provided by the runtime system doesn't do anything. 
+<p>
+You can use one of the following access specifiers in a 
+constructor's declaration to control what 
+other classes can call the constructor: 
+</p>
+<dl>
+<dt>
+<code>private</code>
+<dd>
+Only this class can use this constructor. If all constructors 
+within a class are private, the class might contain public 
+class methods (called <i>factory methods</i>) that create 
+and initialize an instance of this class. Other classes 
+can use the factory methods 
+to create an instance of this class.
+</dd>
+</dt>
+<dt>
+<code>protected</code>
+<dd>
+Subclasses of this class and classes in 
+the same package can use this constructor.
+</dd>
+</dt>
+<dt>
+<code>public</code>
+<dd>
+Any class can use this constructor.
+</dd>
+</dt>
+<dt>
+no specifier
+<dd>
+Gives package access. Only classes within the 
+same package as this class can use this constructor.
+</dd>
+</dt>
+</dl>
+Constructors provide a way to initialize a new object. The section 
+<a href="InitializingInstanceAndClassMembers" class="conditional">Initializing Instance and Class Members</a><a href="InitializingInstanceAndClassMembers" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> describes other ways you can
+provide for the initialization of your class and a new object created
+from the class. That section also discusses when and why you would use
+each technique.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

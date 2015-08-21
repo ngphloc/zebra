@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!ELEMENT fileList (course*)>
+<!ELEMENT course (questionsFile, testFile)>
+<!ATTLIST course
+	courseName CDATA #REQUIRED
+>
+<!ELEMENT questionsFile (questionsFileName*)>
+<!ELEMENT testFile (classic, adaptive)>
+<!ELEMENT questionsFileName (#PCDATA)>
+<!ATTLIST questionsFileName
+	concept CDATA #REQUIRED
+	numberOfQuestions CDATA #REQUIRED
+	numberOfAnswersForFile CDATA #REQUIRED
+>
+<!ELEMENT classic (classicTestFileName*)>
+<!ELEMENT adaptive (adaptiveTestFileName*)>
+<!ELEMENT classicTestFileName (#PCDATA)>
+<!ELEMENT adaptiveTestFileName (#PCDATA)>

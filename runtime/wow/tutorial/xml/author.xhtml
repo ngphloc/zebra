@@ -1,0 +1,150 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>Authoring WOW! Applications</h2>
+
+<p>
+Authors in WOW! are special users, created by the manager
+(who installs WOW!).
+As an author you can access the different authoring tools and your account
+information through the
+<a href="/wow/AuthorWorkplace" target="_blank">"Author Workplace"</a>.
+The <a href="amt" class="conditional">Application
+Management Tool</a> gives easy access to the authoring tools as well,
+and provides a file transfer tool that lets you copy files back and forth
+between your (authoring) workstation and the WOW! server.
+</p>
+<p>
+Creating WOW! applications involves four main steps:
+writing <a href="pages" class="conditional">pages</a>,
+creating a <a href="domainmodel" class="conditional">conceptual
+structure</a> of the aplication,
+defining the
+<a href="rules" class="conditional">adaptation rules</a><if expr="tutorial.rules.knowledge&gt;50">
+<block>
+<a href="rules" class="conditional"> (event-condition-action rules)</a>
+</block></if>,
+and defining the
+<a href="layout" class="conditional">look and feel, or layout</a>
+of the application.
+</p>
+<ul>
+<li>
+For each application you must create a directory tree of which the root
+(like "tutorial" for this tutorial) we will refer to as the "course"
+(for historical reasons).
+In the root directory you must create an "index.html" file
+with a login form and a link to another file to register as a new user.
+In this tutorial this file is "Registration.html".
+The forms must adhere to the
+<a href="login" class="conditional">login form syntax</a>
+which is fairly obvious from looking at the tutorial version.
+From the forms the servlets "Login", "Register" or "Anonymous"
+are called. Some form elements define variables that can
+be retrieved and used in a
+<a href="headerfooter" class="conditional">header or footer</a>.
+Additional elements can be added. They will define attributes
+for the <tt>personal</tt> pseudo-concept in the
+<a href="usermodel" class="conditional">user model</a>.
+</li>
+<li>
+WOW! requires <a href="pages" class="conditional">pages</a> to be written in
+<a href="http://www.w3.org/MarkUp/" target="_blank">XHTML</a>, the standard
+markup language defined by the
+<a href="http://www.w3.org/" target="_blank">World Wide Web Consortium</a>.
+We have a brief explanation of the differences between the "old"
+plain html and <a href="xhtml" class="conditional">xhtml</a>.
+WOW! can work with standard xhtml and with a slightly extended version
+that has "if" tags for the conditional inclusion of fragments. This is
+explained on the <a href="pages" class="conditional">page authoring</a> page.
+</li>
+<li>
+Each application deals with
+<a href="concepts" class="conditional">concepts</a>.
+In the simplest case each page is a concept and vice versa.
+But often you wish to consider "higher level" concepts.
+WOW! comes with a "high level"
+<a href="graphauthor" class="conditional">graph author tool</a>
+to define the structure of concepts and pages.
+You can define <em>relationships</em> of different types between
+concepts. The tool generates the
+<object name="tutorial.adaptationrule" type="text/wow" />
+<a href="rules" class="conditional">rules</a>
+from this graph.
+</li>
+<li>
+The adaptation in WOW! is a two-stage process.
+As an author you define
+<a href="rules" class="conditional">rules</a>
+that translate user interactions (page accesses) into
+<a href="usermodel" class="conditional">user model</a> updates.
+The user model instance is then used to determine how the presentation
+is adapted. There are three ways to author the adaptation rules:
+you can <a href="graphauthor" class="conditional">generate rules</a>
+from concept relationships using the 
+<a href="graphauthor" class="conditional">graph author</a>,
+you can <a href="concepteditor" class="conditional">manually create rules</a>
+using the <a href="concepteditor" class="conditional">concept editor</a>,
+or you can manually edit an XML file containing the
+<a href="rules" class="conditional">concepts and adaptation rules</a>.
+</li>
+<li>
+Most adaptive applications do not only show pages with links,
+but have some additional structures, like the "menu" you see
+on the left in this tutorial.
+Each WOW! application defines its own
+<a href="layout" class="conditional">look and feel</a>.
+This consists of a definition of <em>layout</em>, consisting of html frames
+and which information goes into which frame,
+and a specification of <em>concept presentation</em>.
+The use of the green, white and red balls you see in this tutorial's
+menu and the choice of link colors are specified in this part.
+</li>
+<li>
+An additional part of WOW! consists of <em>forms</em> for letting end-users
+change their <a href="usermodel" class="conditional">user model</a>. There is a
+<a href="formeditor" class="conditional">Form Editor</a>
+through which you can define such forms and thus control which parts
+of the user model an end-user can update and which part remains under
+strict control of the WOW! system. For updates to <em>color preferences</em>
+and <em>knowledge about concepts</em> there are standard forms that
+can be accessed through the
+<a href="headerfooter" class="conditional">header or footer</a> that can
+appear on a page.
+</li>
+<li>
+For educational applications WOW! also offers the possibility
+to present and evaluate
+<a href="multiplechoice" class="conditional">multiple-choice tests</a>.
+The tests can be randomized to avoid circulation of lists of answers
+among students.
+</li>
+</ul>
+
+<p>
+The authoring tools (<a href="graphauthor" class="conditional">graph author</a>
+and <a href="concepteditor" class="conditional">concept editor</a>)
+interact with XML files stored in a special directory for "author files".
+The tools for creating <a href="formeditor" class="conditional">forms</a>
+and <a href="multiplechoice" class="conditional">multiple-choice tests</a>
+create files that become part of the running application. The
+<a href="/wow/author/AMt/AMt.html" class="unconditional">Application Management Tool</a>
+lets you move the form and test files to the correct location on
+the server, along with the application's pages.
+</p>
+
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>Creating the WOW! Context</h2>
+
+<p>
+We assume that you have <a href="compile" class="conditional">built</a>
+the WOW! binaries, and that the TomCat server
+<if expr="tutorial.firstconfig.knowledge==0">
+<block>
+(for instance Sun's version JWDSP from
+<a href="http://java.sun.com/webservices/downloads/webservicespack.html"
+target="_blank">http://java.sun.com/webservices/downloads/webservicespack.html</a>)
+</block>
+</if>
+is installed and running.
+You need to create a "context" for WOW! so that TomCat knows where
+the documents and servlets of WOW! are located.
+</p>
+
+<p>
+If you are using a "plain" Tomcat without
+<a href="http://java.sun.com/webservices/downloads/webservicespack.html"
+target="_blank">Sun's JWSDP</a>
+then the easiest thing to do is to unzip the WOW! distribution
+in Tomcat's <em>webapps</em> directory.
+You then do not have to configure anything else for Tomcat and can skip
+the remainder of this page. (You still have to do the
+<a href="firstconfig" class="conditional">WOW! configuration step</a> though.)
+Unfortunately, with a "plain" Tomcat placing WOW! anywhere else
+is difficult (and not explained here).
+</p>
+
+<p>
+In the sequel we will assume that you <em>are</em> using
+<a href="http://java.sun.com/webservices/downloads/webservicespack.html"
+target="_blank">Sun's JWSDP</a>
+and that the directory in which you unpacked the
+WOW! zip archive is "d:\wow3". On a Windows system "c:\wow" might also
+be a good choice and on Linux "/usr/local/wow" or "$HOME/wow" might be
+good choices. WOW! is completely independent of the directory in which
+it is installed, but once installed it cannot easily be moved.
+There is also no need to install WOW! in a location that is related
+to where Tomcat is installed.
+</p>
+
+<p>
+Creating the WOW! context involves the following steps:
+</p>
+<ol>
+<li>
+First you have to log in as administrator on the TomCat server.
+When you installed TomCat you have chosen a name and password for this.
+Please make sure you do not use the same name and password for any
+other accounts, as the password is not stored very securely by TomCat.
+Go to <a href="/admin" class="unconditional" target="_blank">/admin</a> to get to the
+<a href="/wow/tutorial/images/tomcatlogin.gif" target="_blank"
+class="unconditional">login form</a>.
+</li>
+<li>
+After logging in TomCat will show you the Administration Tool. You have to open the
+"Service (Java Web Services Developer Pack)" node by clicking on the
+node, not the word, as shown in <a href="/wow/tutorial/images/admintool.gif"
+target="_blank" class="unconditional">the administration tool screendump</a>.
+After this the "Service" node opens up, as shown in this
+<a href="/wow/tutorial/images/admintool2.gif"
+target="_blank" class="unconditional">second screendump</a>
+and you have to then click on the term "Host (localhost)".
+</li>
+<li>
+In the "main" browser frame you should open the "Available Actions"
+drop down list, as shown in
+<a href="/wow/tutorial/images/availableactions.gif"
+target="_blank" class="unconditional">this screendump</a> and select
+"Create New Context".
+</li>
+<li>
+A list of fields appears, some of which need to be filled out.
+The <a href="/wow/tutorial/images/wowproperties.gif"
+target="_blank" class="unconditional">properties screendumps</a>
+show the values to enter.
+They values that you may have or wish to change are:
+<ul>
+<li>
+<em>Document Base</em>: shown as "d:\wow3" (this should be the
+full pathname of the directory where you unpacked the WOW! zipfile).
+</li>
+<li>
+<em>Path</em>: "/wow". In theory this can be any string you want.
+We recommend "/wow" because this makes all WOW! paths start with
+the word "/wow" and this is also the assumption we made in this
+tutorial, which is accessible through
+<a href="/wow/tutorial/" class="unconditional">/wow/tutorial/</a>
+only if "/wow" is chosen as the path value.
+<br />
+Note that an empty path "/" is allowed in TomCat. It means that
+all pathnames not explicitly configured to refer to another context
+will be handled by WOW!. However, such context already exists and
+WOW! can thus only be configured to use "/" by modifying that
+existing context instead of creating a new one.
+<br />
+Also note that the "path" is part of a URL, and must thus be
+written with a forward slash (/), not a backslash (\) like
+for directories in Windows.
+</li>
+<li>
+<em>Reloadable</em> (Context Properties):
+True or False. When you set this value to True
+the TomCat server will notice changes to WOW!'s (web.xml) configuration file.
+This makes the installation procedure a bit smoother but causes
+overhead. For a long-term WOW! installation it is best to set this
+value to False.
+</li>
+<li>
+<em>Use Naming</em>: This must be set to True. It enables a naming
+feature that WOW! uses to read its own configuration.
+</li>
+<li>
+<em>Reloadable</em> (Loader Properties): True or False.
+When you set this value to True the TomCat server will notice
+changes to WOW!'s class files. This enables you to experiment with
+changes in the WOW! software without the need to restart the server
+after each compile phase. But it generates overhead so for a
+long-term WOW! installation it is best to set this value to False.
+</li>
+<li>
+<em>Session ID Initializer</em>: This must be a unique string,
+but can otherwise be anything. We have used "WOWDISTR30" as an example.
+</li>
+</ul>
+</li>
+<li>
+You need to press <img align="middle" src="/wow/tutorial/images/save.gif" alt="save" />
+and then <img align="middle" src="/wow/tutorial/images/commit.gif" alt="commit changes" />
+in order for the WOW! context to be created.
+</li>
+<li>
+Before you can start
+<a href="firstconfig" class="conditional">the initial configuration</a>
+of WOW! you need to restart the TomCat server.
+<if expr="tutorial.firstconfig.knowledge==0">
+<block>
+(Execute shutdown.sh and
+startup.sh on Linux or shutdown.bat and startup.bat on Windows.)
+</block>
+</if>
+</li>
+</ol>
+
+<h3>One extra tip: session timeout</h3>
+
+<p>
+When your <a href="enduser" class="conditional">end-users</a> are logged in
+and are inactive
+<if expr="tutorial.wowcontext.visited&lt;2">
+<block>(not sending any request by clicking on a link for instance)</block>
+</if>
+their session may time out. Tomcat comes with a file "web.xml" in its
+"conf" directory. In this "conf/web.xml" file you can change the
+value of the &lt;session-timeout&gt; tag to a larger value.
+Unless you have a very busy server with limited memory and a lot of users
+it does not hurt to increase this value.
+</p>
+
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

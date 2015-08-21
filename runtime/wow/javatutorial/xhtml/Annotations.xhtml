@@ -1,0 +1,146 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Annotations</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Classes and Inheritance
+</font>
+
+<h2>
+Annotations
+</h2>
+<blockquote>
+Introduced in J2SE 5.0, annotations provide a way for programmers
+to instruct the compiler on how to handle certain situations.
+For example, an annotation can indicate that a particular method
+or class should be overridden in a subclass or that certain compiler
+error messages shouldn't be printed.  Defining your own annotation is
+an advanced technique that won't be described here,
+but there are three useful annotations built-in to release 5.0
+that will be discussed.
+<br/><br/>
+Annotations use the form <code><em>@annotation</em></code> and
+can be applied to methods or classes.  For example:
+<blockquote><pre>
+@Override class Cat extends Pet {
+}
+</pre></blockquote>
+or
+<blockquote><pre>
+@Override void feedTheDog() { }
+</pre></blockquote>
+The following example illustrates all three built-in annotation
+types, using methods:
+<blockquote><pre>
+import java.util.List;
+
+class Food {}
+class Hay extends Food {}
+class Animal {
+    Food getPreferredFood() {
+        return null;
+    }
+    <b>@Deprecated</b>
+    static void deprecatedMethod() {
+    }
+}
+class Horse extends Animal {
+    Horse() {
+        return;
+    }
+    <b>@Override</b> //compiler error if getPreferredFood
+              //overloaded, not overridden
+    //Notice the return type is different
+    //(covariant return type).
+    Hay getPreferredFood() {
+        return new Hay();
+    }
+    <b>@SuppressWarnings({"deprecation", "unchecked"})</b>
+    void useDeprecatedMethod(List raw) {
+        //deprecation warning - suppressed
+        Animal.deprecateMethod();
+        //unchecked warning - suppressed
+        raw.add(new Horse());
+    }
+}
+</pre></blockquote>
+<ul>
+<li>
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Override.html"><font color="#8800bb"><code>java.lang.Override</code></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Override.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a><br/>
+The <code>@Override</code> annotation indicates that a
+method defined in the current class <i>must</i> override
+a method is one of its superclasses. In the preceding
+example, the override annotation is used to indicate
+that the <code>getPreferredFood</code> method in the
+<code>Horse</code> class is overriding the 
+<code>getPreferredFood</code> method in the <code>Animal</code>
+class.  Note that this method is returning a different
+type (<code>Hay</code>) than the superclass (<code>Food</code>) &#151;
+this practice is called covariant return types.
+For more information, see
+<a href="OverridingHidingMethods" class="conditional">Overriding and Hiding Methods</a><a href="OverridingHidingMethods" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.
+<p>
+If a method marked with <code>@Override</code> does not
+override the same method in one of its superclasses, the compiler
+will generate an error message.
+</p>
+</li>
+<li>
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Deprecated.html"><font color="#8800bb"><code>java.lang.Deprecated</code></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Deprecated.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a><br/>
+The <code>@Deprecated</code> annotation indicates that the
+marked method should no longer be used.
+<blockquote><hr/><strong>Note: </strong>The <code>@deprecated</code> tag used by the
+Javadoc<sup><font size="-2">TM</font></sup> tool
+achieves the same result as <code>@Deprecation</code>.
+As of J2SE 5.0, the compiler-based <code>@Deprecation</code>
+annotation replaces the Javadoc <code>@deprecation</code> tag.
+<hr/></blockquote>
+In the preceding example, the <code>deprecatedMethod</code>
+in the <code>Animal</code> class is marked with the
+deprecated annotation.  Invoking or overriding the
+<code>deprecatedMethod</code> method will generate a compile-time
+warning, unless that warning is suppressed in the subclass.
+<br/>
+</li>
+<li>
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/SuppressWarnings.html"><font color="#8800bb"><code>java.lang.SuppressWarnings</code></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/SuppressWarnings.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a><br/>
+The <code>@SuppressWarnings</code> annotation indicates that the
+named compiler warnings should be suppressed.
+<blockquote><hr/><strong>Note: </strong>This annotation can be used as of release 5.0 and some Java
+compiler implementations may suppress compiler warnings, but
+this feature won't be fully implemented in <code>javac</code>
+until release 6.0.
+<hr/></blockquote>
+In the preceding example,
+the <code>useDeprecatedMethod</code> method in the <code>Horse</code>
+class uses the suppress warnings annotation to suppress both the
+unchecked and deprecation warnings that would otherwise occur.
+</li>
+</ul>
+
+<p>
+For more information on annotations, see
+<a target="_blank" href="http://jcp.org/en/jsr/detail?id=175"><font color="#009bbb">JSR 175: A Metadata Facility for the Java Programming Language</font></a><a target="_blank" href="http://jcp.org/en/jsr/detail?id=175"><img src="images/otherIcon.gif" width="11" height="11" border="0" align="middle" alt=" (outside of the tutorial)"/></a>.  It is strongly recommended that you suppressed warnings only
+where necessary.  For example, using the SuppressWarnings annotation
+on the entire <code>Horse</code> class is not recommended because
+genuine errors in the code might be hidden.
+</p>
+For more information on annotations, see the
+<a target="_blank" href="http://java.sun.com/j2se/1.5.0/docs/guide/language/annotations.html"><font color="#009bbb">5.0 Release Notes</font></a><a target="_blank" href="http://java.sun.com/j2se/1.5.0/docs/guide/language/annotations.html"><img src="images/otherIcon.gif" width="11" height="11" border="0" align="middle" alt=" (outside of the tutorial)"/></a>.
+<font color="green">
+<br/><br/>
+[PENDING: Is there any other place I can send them to for information
+on annotations?]
+</font>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

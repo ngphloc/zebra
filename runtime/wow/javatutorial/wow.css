@@ -1,0 +1,30 @@
+span.c0 {}
+span.c10 {}
+span.c20 {font-size: smaller}
+span.c30 {color: rgb(128, 128, 128); background-color: rgb(238, 238, 238)}
+span.c40 {font-style: normal}
+span.c50 {font-size: larger}
+span.c60 {font-style: italic}
+span.c70 {text-decoration: underline}
+span.c80 {text-transform: uppercase}
+span.c90 {font-weight: bold}
+span.c100 {color: rgb(255, 255, 255); background-color: rgb(95, 158, 160)}
+a:link {color: rgb(255, 0, 0)}
+a:visited {color: rgb(127, 0, 0)}
+a:active {color: rgb(128, 128, 128)}
+a.Good:link {text-decoration: none; color: rgb(0, 0, 255)}
+a.Good:visited {text-decoration: none; color: rgb(0, 0, 255)}
+a.Good:hover {text-decoration: none; color: rgb(0, 0, 255)}
+a.Good:active {text-decoration: none; color: rgb(0, 0, 255)}
+a.Bad:link {text-decoration: none; color: rgb(32, 32, 32)}
+a.Bad:visited {text-decoration: none; color: rgb(32, 32, 32)}
+a.Bad:hover {text-decoration: none; color: rgb(32, 32, 32)}
+a.Bad:active {text-decoration: none; color: rgb(32, 32, 32)}
+a.Neutral:link {text-decoration: none; color: rgb(124, 0, 124)}
+a.Neutral:visited {text-decoration: none; color: rgb(124, 0, 124)}
+a.Neutral:hover {text-decoration: none; color: rgb(124, 0, 124)}
+a.Neutral:active {text-decoration: none; color: rgb(124, 0, 124)}
+a.unconditional:link {text-decoration: none; color: rgb(0, 0, 255)}
+a.unconditional:visited {text-decoration: none; color: rgb(124, 0, 124)}
+a.unconditional:hover {text-decoration: none; color: rgb(0, 0, 255)}
+a.unconditional:active {text-decoration: none; color: rgb(0, 0, 255)}

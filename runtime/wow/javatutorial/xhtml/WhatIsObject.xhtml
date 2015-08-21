@@ -1,0 +1,65 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>What Is an Object?</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object-Oriented Programming Concepts
+</font>
+
+<h2>What Is an Object?</h2>
+<blockquote>
+
+Objects are key to understanding<em>object-oriented</em> technology. You can look around you now and see many examples of real-world objects: your dog, your desk, your television set, your bicycle.
+
+<p>
+These real-world objects share two characteristics: They all 
+have <em>state</em> and <em>behavior</em>. For example, dogs 
+have state (name, color, breed, hungry) and behavior 
+(barking, fetching, and wagging tail). Bicycles have state 
+(current gear, current pedal cadence, two wheels, number of 
+gears) and behavior (braking, accelerating, slowing down, 
+changing gears).
+</p>
+
+Software objects are modeled after real-world objects in that they too have state and behavior. A software object maintains its state in one or more <em>variables</em>. A variable is an item of data named by an identifier. A software object implements its behavior with <em>methods</em>. A method is a function (subroutine) associated with an object.
+
+<blockquote><hr/><strong>Definition: </strong>An object is a software bundle of variables and related methods.<hr/></blockquote>
+
+You can represent real-world objects by using software objects. You might want to represent real-world dogs as software objects in an animation program or a real-world bicycle as a software object in the program that controls an electronic exercise bike. You can also use software objects to model abstract concepts. For example, an <em>event</em> is a common object used in GUI window systems to represent the action of a user pressing a mouse button or a key on the keyboard. The following illustration is a common visual representation of a software object:
+
+<p><center><img src="images/concepts-object.gif" width="319" height="179 " align="BOTTOM" alt="A software object."/></center></p>
+Everything that the software object knows (state) and can do (behavior) is expressed by the variables and the methods within that object. A software object that modeled your real-world bicycle would have variables that indicated the bicycle's current state: Its speed is 18 mph, its pedal cadence is 90 rpm, and its current gear is the 5th gear. These variables are formally known as <em>instance variables</em> because they contain the state for a particular bicycle object, and in object-oriented terminology, a particular object is called an <em>instance</em>. The following figure illustrates a bicycle modeled as a software object.
+
+<p><center><img src="images/concepts-bicycleObject.gif" width="226" height="166" align="BOTTOM" alt="A bicycle modeled as a software object."/></center></p>
+In addition to its variables, the software bicycle would also have methods to brake, change the pedal cadence, and change gears. (The bike would not have a method for changing the speed of the bicycle, as the bike's speed is just a side effect of what gear it's in and how fast the rider is pedaling.) These methods are formally known as <em>instance methods</em> because they inspect or change the state of a particular bicycle instance.
+
+<p>
+The object diagrams show that the object's variables make up the center, or nucleus, of the object. Methods surround and hide the object's nucleus from other objects in the program. Packaging an object's variables within the protective custody of its methods is called <em>encapsulation</em>. This conceptual picture of an object &#151; a nucleus of variables packaged within a protective membrane of methods &#151; is an ideal representation of an object and is the ideal that designers of object-oriented systems strive for. However, it's not the whole story. Often, for practical reasons, an object may wish to expose some of its variables or hide some of its methods. In the Java programming language, an object can specify one of four access levels for each of its variables and methods. The access level determines which other objects and classes can access that variable or method. Refer to the section 
+<!--Controlling Access to Members of a Class-->
+<a href="ControllingAccessToClass" class="conditional">Controlling Access to Members of a Class</a>
+<a href="ControllingAccessToClass" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> for details.
+</p>
+
+<p>
+Encapsulating related variables and methods into a neat software bundle is a simple yet powerful idea that provides two primary benefits to software developers:
+<ul>
+<li>
+<b>Modularity:</b> The source code for an object can be written and maintained independently of the source code for other objects. Also, an object can be easily passed around in the system. You can give your bicycle to someone else, and it will still work.
+</li>
+<li>
+<b>Information hiding:</b> An object has a public interface that other objects can use to communicate with it. The object can maintain private information and methods that can be changed at any time without affecting the other objects that depend on it. You don't need to understand the gear mechanism on your bike to use it.
+</li>
+</ul>
+</p>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

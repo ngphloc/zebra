@@ -1,0 +1,73 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>Graph Author Templates</h2>
+
+<p>
+In the <a href="graphauthor" class="conditional">graph author</a>
+tool you can create concepts and concept relationships of different types.
+The list of available types is based on templates.
+All files for authoring tools can be found in "/author/authorfiles"
+(set by the "graphauthorfiles" parameter in the
+<a href="wowconfig" class="conditional">WOW! configuration file</a>).
+The file "templatelist.txt" lists the concept templates that
+exist in the "templates" directory and
+the file "crtlist.txt" lists the concept relationship
+templates that exist in the "crt" directory.
+The graph author checks these lists and downloads the templates.
+A <a href="concepttemplate" class="conditional">concept template</a>
+defines a structure of attributes, a concept type and unary
+concept relationships.
+A template consists of two parts (files):
+</p>
+<ul>
+<li>
+The <a href="authorfile" class="conditional">file with suffix ".author"</a>
+contains definitions used by the graph author to determine
+how to display the concept relationships of the given type.
+The graph author only needs the information from this file
+(and the structure created by the author) to produce its
+graph output file.
+</li>
+<li>
+The <a href="wowfile" class="conditional">file with suffix ".wow"</a>
+contains definitions for the translation of the concept relationships
+of the given type to WOW!
+<a href="rules" class="conditional">event-condition-action rules</a>.
+The graph author only needs the information from this file
+(and the structure created by the author) to produce the
+file with concepts and rules that you can also create
+using the <a href="concepteditor" class="conditional">concept editor</a>.
+</li>
+</ul>
+<p>
+Because of the strict separation of concerns in these two files,
+and the output the graph author creates from them,
+the ".author" files can also be used without the ".wow" files to
+create concept relationship graphs without translation to WOW!,
+and the ".wow" files can be used by different authoring tools
+to translate concept relationship graphs to WOW! rules without
+the graph author.
+</p>
+<p>
+When creating new concepts in the <a href="concepteditor"
+class="conditional">Concept Editor</a> a "defaultConcept.xml" file
+is used to create an initial set of attributes and rules.
+The attributes and rules can of course be changed in the concept editor.
+</p>
+
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

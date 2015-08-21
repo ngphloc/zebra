@@ -1,0 +1,193 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Creating and Using Arrays</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>
+Creating and Using Arrays
+</h2>
+<blockquote>
+Here's a simple program,
+called
+<a target="_blank" href="resources/ArrayDemo.java"><font color="#bb000f"><code>ArrayDemo</code></font></a><a target="_blank" href="resources/ArrayDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>, that
+creates the array,
+puts some values in it,
+and displays the values.
+<blockquote><pre>
+public class ArrayDemo {
+    public static void main(String[] args) {
+        int[] anArray;	        // declare an array of integers
+
+        anArray = new int[10];	// create an array of integers
+
+        // assign a value to each array element and print 
+        for (int i = 0; i &lt; anArray.length; i++) {
+            anArray[i] = i;
+            System.out.print(anArray[i] + &quot; &quot;);
+        }
+        System.out.println();
+    }
+}
+</pre></blockquote>
+
+The output from this program is:
+
+<blockquote><pre>
+0 1 2 3 4 5 6 7 8 9
+</pre></blockquote>
+
+<p>
+This section covers these topics:
+<ul>
+<li> <a href="#declaring">Declaring a Variable to Refer to an Array</a></li>
+<li> <a href="#creating">Creating an Array</a></li>
+<li> <a href="#initializing">Array Initializers</a></li>
+<li> <a href="#accessing">Accessing an Array Element</a></li>
+<li> <a href="#size">Getting the Size of an Array</a></li>
+</ul>
+</p>
+</blockquote>
+
+<a name="declaring">
+<h3>Declaring a Variable to Refer to an Array</h3>
+</a>
+<blockquote>
+This line of code from the sample program declares an array variable:
+<blockquote><pre>
+int[] anArray;          // declare an array of integers
+</pre></blockquote>
+Like declarations for variables of other types,
+an array declaration has two components:
+the array's type and the array's name.
+An array's type is written <code><em>type</em>[]</code>,
+where <code><em>type</em></code> is the data type
+of the elements contained within the array,
+and <code>[]</code> indicates that this is an array.
+Remember that all of the elements within an array
+are of the same type.
+The sample program uses <code>int[]</code>,
+so the array called <code>anArray</code> will be used to hold integer data.
+Here are declarations for arrays that hold other types of data:
+
+<blockquote><pre>
+float[] anArrayOfFloats;
+boolean[] anArrayOfBooleans;
+Object[] anArrayOfObjects;
+String[] anArrayOfStrings;
+</pre></blockquote>
+
+You can write an array declaration like this:
+
+<blockquote><pre>
+float anArrayOfFloats[]; //this form is discouraged
+</pre></blockquote>
+
+However, convention discourages this form because the brackets identify the
+array type, and so they should appear with the type designation, not with the
+array name.
+
+<br/><br/>
+
+As with declarations for variables of other types, the declaration for an array
+variable does not create an array and does not allocate any memory to contain
+array elements. The code must create the array explicitly and assign it to
+<code>anArray</code>.
+</blockquote>
+
+<a name="creating">
+<h3>Creating an Array</h3>
+</a>
+<blockquote>
+You create an array explicitly using Java's <code>new</code> operator.
+The next statement in the sample program allocates
+an array with enough memory for ten integer elements
+and assigns the array to the variable <code>anArray</code>
+declared earlier.
+<blockquote><pre>
+anArray = new int[10];  // create an array of integers
+</pre></blockquote>
+In general, when creating an array,
+you use the <code>new</code> operator,
+plus the data type of the array elements,
+plus the number of elements desired enclosed within brackets&#8212;[ and ].
+<blockquote><pre>
+new <em>elementType</em>[<em>arraySize</em>]
+</pre></blockquote>
+If the <code>new</code> statement were omitted from the sample program,
+the compiler would print an error like the following one and compilation would fail.
+<blockquote><pre>
+ArrayDemo.java:4: Variable anArray may not have been initialized.
+</pre></blockquote>
+</blockquote>
+
+<a name="initializer">
+<h3>Array Initializers</h3>
+</a>
+<blockquote>
+
+You can use a shortcut syntax for creating and initializing an array. Here’s an
+example:
+
+<blockquote><pre>
+boolean[] answers = { true, false, true, true, false };
+</pre></blockquote>
+
+The length of the array is determined by the number of values provided
+between <em>{</em> and <em>}</em>.
+</blockquote>
+
+<a name="accessing">
+<h3>Accessing an Array Element</h3>
+</a>
+<blockquote>
+Now that some memory has been allocated for the array,
+the program assign values to the array elements:
+<blockquote><pre>
+for (int i = 0; i &lt; anArray.length; i++) {
+    anArray[i] = i;
+    System.out.print(anArray[i] + " ");
+
+}
+</pre></blockquote>
+This part of the code shows that to refer to an array element, either to assign
+a value to it or to get its value, you append brackets to the array name. The
+value between the brackets indicates (with a variable or other expression) the
+index of the element to access.
+
+</blockquote>
+
+<a name="size">
+<h3>Getting the Size of an Array</h3>
+</a>
+<blockquote>
+To get the size of an array,
+you write
+<blockquote><pre>
+<em>arrayname</em>.length
+</pre></blockquote>
+
+<blockquote><hr/><strong><font color="red">Be careful</font>: </strong>Programmers new to the Java programming language
+are tempted to follow <code>length</code> with an empty
+set of parenthesis. This doesn't work because
+<code>length</code> is not a method. 
+<code>length</code> is a property provided by the Java platform for all arrays.
+<hr/></blockquote>
+
+<br/><br/>
+The <code>for</code> loop in our sample program iterates over each element of <code>anArray</code>, assigning values to its elements. The for loop uses anArray.length to determine when to terminate the loop.
+
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

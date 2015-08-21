@@ -1,0 +1,73 @@
+<!DOCTYPE layoutconfig SYSTEM '../WOWstandard/LayoutConfig.dtd'>
+
+<layoutconfig>
+
+<stylesheet>wow.css</stylesheet>
+
+<viewlist>
+	<view name="v3" type="MainView" >
+	</view>
+	<view name="v1" type="TOCView" title="TOC1 view" background="icons/hcmunsbg.gif" params="leftspace=70">
+	</view>
+	<view name="v2" type="ConceptbarView" title="Concept bar view" background="icons/hcmunsbg.gif" params="leftspace=0">
+	</view>
+	<view name="v4" type="GlossaryView" title="Glossary view" background="icons/hcmunsbg.gif" params="cType=page,bgCONCEPTS=icons/hcmunsbg.gif,bgCHAR=icons/hcmunsbg.gif,bgGLOSSARY=icons/hcmunsbg.gif">
+	</view>
+	<view name="v5" type="ToolboxView" title="Toolbox" background="icons/hcmunsbg.gif">
+		<secwnds>
+			<secwnd link="TOC" viewgroup="TOC" img="icons/ContentBtn.bmp"/>
+			<secwnd link="Glossary" viewgroup="Glossary" img="icons/GlossaryBtn.bmp"/>
+		</secwnds>
+	</view>
+	<view name="v6" type="EmptyView" title="Empty" background="icons/hcmunsbg.gif">
+	</view>
+	
+	<view name="v7" type="StaticTreeView" title="TREE view" background="icons/hcmunsbg.gif" params="leftspace=10">
+	</view>
+
+</viewlist>
+
+
+<layoutlist>
+	<layout name="page_c_layout" trigger="WOW! Tutorial">
+		<viewgroup name="WOW! Tutorial" wndOpt="status=1,menubar=1,resizable=1,toolbar=1,width=800,height=600">
+			<compound framestruct="cols=20%,*" border="1">
+				<viewref name="v7" />
+				<viewref name="v3" />
+			</compound>
+		</viewgroup>
+		
+		<viewgroup name="TOC" secondary="true" wndOpt="status=1,menubar=1,resizable=1,toolbar=1,width=300,height=400">
+			<viewref name="v1"/>	
+		</viewgroup>
+		
+		<viewgroup name="Glossary" secondary="true" wndOpt="status=1,menubar=1,resizable=1,toolbar=1,width=300,height=400">
+			<viewref name="v4"/>	
+		</viewgroup>
+	</layout>
+	
+	<layout name="leaf_c_layout" trigger="WOW! Tutorial">
+			<viewgroup name="WOW! Tutorial" wndOpt="status=1,menubar=1,resizable=1,toolbar=1,width=800,height=600">
+				<compound framestruct="rows=20%,*" border="0">
+					<compound framestruct="cols=*,145" border="0">
+						<viewref name="v7" />
+						<viewref name="v5" />
+					</compound>
+					<compound framestruct="cols=70,*,145" >
+						<viewref name="v6" />
+						<viewref name="v3" />
+						<viewref name="v2" />
+					</compound>
+					
+				</compound>
+			</viewgroup>
+			
+			<viewgroup name="TOC" secondary="true" wndOpt="status=1,menubar=1,resizable=1,toolbar=1,width=500,height=400">
+				<viewref name="v1"/>	
+			</viewgroup>
+			
+	</layout>
+	
+</layoutlist>
+
+</layoutconfig>

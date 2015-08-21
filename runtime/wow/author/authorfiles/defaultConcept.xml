@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE concept SYSTEM "generatelist4.dtd"> 
+  <concept>
+    <name>defaultname</name>
+    <description></description>
+    <resource>file:/defaultname.xhtml</resource>
+    <concepttype>page</concepttype>
+    <title>defaultname</title>
+    <attribute name="access" type="bool" isPersistent="false" isSystem="true" isChangeable="false">
+      <description></description>
+      <default></default>
+      <generateListItem isPropagating="true">
+	<requirement>true</requirement>
+	<trueActions>
+	  <action>
+	    <conceptName>defaultname</conceptName>
+	    <attributeName>knowledge</attributeName>
+	    <expression>100</expression>
+	  </action>
+	  <action>
+	    <conceptName>defaultname</conceptName>
+	    <attributeName>visited</attributeName>
+	    <expression>100</expression>
+	  </action>
+	</trueActions>
+	<falseActions>
+	  <action>
+	    <conceptName>defaultname</conceptName>
+	    <attributeName>knowledge</attributeName>
+	    <expression>35</expression>
+	  </action>
+	</falseActions>
+      </generateListItem>
+    </attribute>
+    <attribute name="knowledge" type="int" isPersistent="true" isSystem="false" isChangeable="false">
+      <description></description>
+      <default></default>
+    </attribute>
+    <attribute name="visited" type="int" isPersistent="true" isSystem="false" isChangeable="false">
+      <description></description>
+      <default></default>
+    </attribute>
+    <attribute name="suitability" type="int" isPersistent="false" isSystem="false" isChangeable="false">
+      <description></description>
+      <default>100</default>
+    </attribute>
+  </concept>

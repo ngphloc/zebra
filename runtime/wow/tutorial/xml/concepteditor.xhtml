@@ -1,0 +1,151 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>The Concept Editor</h2>
+
+<p>
+The Concept Editor (sometimes called "generatelisteditor" for historical
+reasons) is an authoring tool for defining concepts and
+<object name="tutorial.adaptationrule" type="text/wow" />
+<a href="rules" class="conditional">rules</a>.
+We briefly describe the use of the Concept Editor here,
+using a series of screen dumps to guide you through the process.
+We assume that you are already familiar with the
+<a href="graphauthor" class="conditional">Graph Author</a>
+which is easier to use and intended for less technical authors.
+</p>
+<ul>
+<li>
+When you start the Concept Editor it asks for a login and password.
+<if expr="tutorial.graphauthor.knowledge &gt; 0">
+<block>
+As with the graph author
+you are not required to provide authorization when the concept editor
+is started from the <a href="amt" class="conditional">application
+management tool</a> (AMT).
+</block>
+</if>
+</li>
+<li>
+After logging in the
+<a href="/wow/tutorial/images/concepteditor.gif" target="_blank"
+class="unconditional">main Concept Editor window</a>
+appears. Through the "File" menu you can create a new application,
+open an existing one and save it.
+</li>
+<li>
+Unlike with the Graph Author the Concept Editor shows concepts
+with their full name which includes the application name.
+The Graph Author hides the application name, but does generate it
+when you save the application.
+</li>
+<li>
+The Concept Editor shows a complete list of concepts.
+Each concept can be "opened up" to reveal its general properties,
+its hierarchy information (that can be edited) and its attributes. The
+<a href="/wow/tutorial/images/conceptlist.gif" target="_blank"
+class="unconditional">list of concepts with attributes</a> resembles
+a windows explorer view.
+A <a href="templates" class="conditional">template</a> determines
+which attributes are created automatically for every new concept.
+</li>
+<li>
+When selecting a concept the Concept Editor shows information about
+the concept, including the <em>name</em>, <em>resource</em>,
+<em>description</em>, <em>concept type</em> and <em>title</em>.
+For the <a href="/wow/tutorial/images/welcomeconcept.gif" target="_blank"
+class="unconditional">welcome concept</a> from this tutorial we
+have a screendump of what would be shown.
+Whereas the <a href="graphauthor" class="conditional">Graph Author</a>
+shows the concept list as a hierarchy the Concept Editor shows
+the explicit information about the <em>hierarchy</em> of concepts,
+and allows the author to change this information.
+</li>
+<li>
+One can select an attribute (or create one) and then edit the
+<object name="tutorial.adaptationrule" type="text/wow" />
+<a href="rules" class="conditional">rules</a>
+associated with that attribute.
+The <a href="/wow/tutorial/images/accessattribute.gif" target="_blank"
+class="unconditional">access attribute screendump</a>
+shows the following information (and more):
+<ul>
+<li>
+<b>Name</b>: The name of the attribute. This is used as the identifier
+of the attribute and used as such by the system.
+</li>
+<li>
+<b>Description</b>: A description of what the attribute is used for.
+This is not used by WOW! in any way.
+</li>
+<li>
+<b>Default</b>: A default or initial value for the attribute
+(in the <a href="usermodel" class="conditional">user model</a>).
+</li>
+<li>
+<b>Type</b>: Each attribute is of type "int", "string" or "bool".
+</li>
+<li>
+<b>Changeable</b>: This flag indicates whether the end-user is allowed
+to change the value of the attribute (through a form) or not.
+</li>
+<li>
+<b>Persistent</b>: This flag indicates whether the attribute value
+is used during the rule execution for one event (page access) only,
+or whether the value is retained, like for "knowledge" for instance.
+When an attribute is not persistent, the value is reset to the default
+value each time the rule engine starts.
+</li>
+<li>
+<b>System</b>: This flag indicates whether the attribute has a special
+meaning to the WOW! system. The <em>access</em> attribute for instance
+has the special meaning that it temporarily becomes true when the
+page is accessed. (For system attributes the name, description
+and default cannot be changed.)
+</li>
+<li>
+<b>Generate list item</b>: Each line in this list contains the condition
+of an
+<object name="tutorial.adaptationrule" type="text/wow" />
+<a href="rules" class="conditional">rule</a>.
+You can select a condition and then edit the rule.
+</li>
+</ul>
+</li>
+<li>
+The <a href="/wow/tutorial/images/rulescreendump.gif" target="_blank"
+class="unconditional">adaptation rule form</a> shows that for
+a rule the condition can be edited, the action to be performed
+if the condition is true and the optional action if the condition
+is false. Through the "Propagating" flag you can indicate that
+changes made to the user model by this rule may trigger other rules.
+</li>
+</ul>
+<p>
+Note that most authors will never need to use the Concept Editor.
+The entire concept and rule structure for this tutorial was created
+using only the Graph Author.
+</p>
+
+<p><b>Warning:</b>:
+If you make changes to the concepts using the Concept Editor and later
+use the Graph Author (again) to work on the same application,
+the Graph Author will not read the output from the Concept Editor and
+saving changes in the Graph Author will overwrite any changes you made
+using the Concept Editor.
+</p>
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

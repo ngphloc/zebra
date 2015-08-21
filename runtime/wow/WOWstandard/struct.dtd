@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Adaptive Hypermedia Source Page DTD
+	Author: G.H. Granneman
+	Version: 1.0 (August 1999)
+-->
+
+
+<!ELEMENT xmldoc (header,block*,footer)>
+
+<!ELEMENT header EMPTY>
+<!ATTLIST header 
+	print	(yes|no)	'yes'
+	file	CDATA		#IMPLIED>
+
+<!ELEMENT footer EMPTY>
+<!ATTLIST footer 
+	print	(yes|no)	'yes'
+	file	CDATA		#IMPLIED>
+<!ELEMENT block (#PCDATA|a|if)*>
+
+<!ELEMENT htmlcode ANY>
+
+<!ELEMENT A (#PCDATA)>
+<!ATTLIST A
+	id		ID		#IMPLIED
+        name		CDATA		#IMPLIED  
+        href		CDATA		#IMPLIED  
+	class		CDATA		#IMPLIED
+        rel		CDATA		#IMPLIED  
+        rev		CDATA		#IMPLIED  
+        title		CDATA		#IMPLIED  
+        accesskey	CDATA		#IMPLIED  
+        notab		(notab)		#IMPLIED    
+	target		CDATA		#IMPLIED
+        >
+
+<!ENTITY % style   
+        "id     ID      #IMPLIED
+         class  CDATA   #IMPLIED
+         style  CDATA   #IMPLIED"
+         >
+
+<!ENTITY % i18n
+        "lang   CDATA   #IMPLIED
+         dir  (ltr|rtl) #IMPLIED"
+         >
+
+<!ENTITY % attrs "%style; %i18n;">
+<!ENTITY % SHAPE "(rect|circle|poly|default)">
+<!ENTITY % COORDS "CDATA">
+<!ENTITY % script "CDATA">
+<!ENTITY % URL "CDATA">
+<!ENTITY % FrameTarget "CDATA">
+
+<!ELEMENT a (#PCDATA)>
+<!ATTLIST a
+        %attrs;     
+	target      %FrameTarget;  #IMPLIED
+        name      CDATA   #IMPLIED
+        href      %URL;    #IMPLIED
+        rel       CDATA   #IMPLIED
+        rev       CDATA   #IMPLIED
+        title     CDATA   #IMPLIED
+        accesskey CDATA   #IMPLIED
+        shape     %SHAPE;  "rect"
+        coords    %COORDS; #IMPLIED
+        tabindex  CDATA  #IMPLIED
+        notab     (notab) #IMPLIED
+        onClick  %script;  #IMPLIED
+        onMouseOver %script; #IMPLIED
+        onMouseOut  %script; #IMPLIED
+
+
+        >
+
+
+<!ELEMENT if (block,block?)>
+<!ATTLIST if expr CDATA #REQUIRED>
+

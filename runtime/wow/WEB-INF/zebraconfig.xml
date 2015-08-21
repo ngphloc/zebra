@@ -1,0 +1,60 @@
+<!-- the Zebra Configuration -->
+<!-- Loc Nguyen composed -->
+<ZebraConfig>
+	<Settings>
+		<Variable id="TRACE_SERVICE_DIR">WEB-INF/logs/</Variable>
+
+		<!-- Three types of user knowledge evaluation: overlay, bayes (default), dynbayes -->
+		<!-- overlay: using the attribute "knowledge" in concept-->
+		<!-- bayes: using overlay bayesian network together the parameter algorithm learning algorithm EM -->
+		<!-- dynbayes: using dynamic overlay bayesian network (so powerful)-->
+		<Variable id="USER_KNOWLEDGE_EVAL_TYPE">bayes</Variable>
+
+		<!-- The time interval (in minute) for updating learning history -> necessary for data mining, default value is 10 -->
+		<Variable id="UPDATE_LEARNING_HISTORY_INTERVAL">10</Variable>
+
+		<!-- Guess factor in Dynamic Bayesian network, default value is 0.3 -->
+		<Variable id="DYN_DEFAULT_GUESS">0.3</Variable>
+		<!-- Forget factor in Dynamic Bayesian network, default value is 0.2 -->
+		<Variable id="DYN_DEFAULT_FORGET">0.2</Variable>
+
+		<!-- Minimum support for recommendation mining-->
+		<Variable id="RECOMMEND_MIN_SUP">0.3</Variable>
+
+		<!-- Minimum support for sequential pattern mining-->
+		<Variable id="SEQUENCE_MIN_SUP">0.5</Variable>
+
+		<!-- The maximum number of community -->
+		<Variable id="MAX_COMMUNITY">4</Variable>
+
+		<!-- The classification threshold. The smaller it is, the more classification rules we have -->
+		<Variable id="CLASSIFIER_THRESHOLD">0.03</Variable>
+
+		<!-- Whether apply EM algorithm into learning paramneter. This variable will be ignored if USER_KNOWLEDGE_EVAL_TYPE is "dynbases" -->
+		<Variable id="USE_EM_ALGORITHM">true</Variable>
+
+		<!-- default courses, separated by commas -->
+		<Variable id="DEFAULT_COURSES">javatutorial, tutorial</Variable>
+
+		<!-- default search lucene index dir -->
+		<Variable id="SEARCH_INDEX_DIR">/search/lucene/index/</Variable>
+		<!-- search log dir -->
+		<Variable id="SEARCH_LOG_DIR">/search/log/</Variable>
+
+		<!-- feedback dir -->
+		<Variable id="FEEDBACK_DIR">/feedback/</Variable>
+
+		<!-- sending mail smtp host -->
+		<Variable id="MAIL_SMTP_HOST">localhost</Variable>
+		<!-- mail directory -->
+		<Variable id="MAIL_DIR">/mail/</Variable>
+		<!-- mail admin address -->
+		<Variable id="MAIL_ADMIN_ADDRESS">admin@localhost</Variable>
+		<!-- mailing list period (in day), default value is 1 day -->
+		<Variable id="MAIL_MAILING_LIST_INTERVAL">1</Variable>
+	</Settings>
+
+	<Access>
+		<User login="admin" password="MD5:098f6bcd4621d373cade4e832627b4f6">Admin</User>
+	</Access>
+</ZebraConfig>

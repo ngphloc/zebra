@@ -1,0 +1,117 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>Creating Multiple-Choice Tests</h2>
+
+<p>
+Although WOW! is not primarily intended to be an educational tool,
+it has found educational applications (first), and some type of
+assessment is necessary in a learning application, hence the
+facility for creating multiple-choice tests.
+</p>
+<p>
+WOW! 1.0 come with a (new) authoring tool for different types of
+multiple-choice tests: the (<a href="/wow/tutorial/images/testeditor.gif"
+target="_blank" class="unconditional">Test Editor</a>).
+Test Editor is an authoring tool for building adaptive (and randomized)
+and classic (non-randomized) multiple-choice tests.
+The <a href="/wow/tutorial/images/testlifecycle.gif" target="_blank" class="unconditional">specific life cycle</a> of tests we have used is:
+</p>
+<ul>
+<li>
+Before designing a multiple-choice test the course concept structure
+must have been created (using the
+<a href="graphauthor" class="conditional">Graph Author</a> or the
+<a href="concepteditor" class="conditional">Concept Editor</a>).
+A multiple-choice test will evaluate the user's knowledge of one or more
+of the previously defined concepts.
+</li>
+<li>
+The second step is to build an <em>items file</em> for the test.
+Each item is one question about one concept
+(and some parameters of that question).
+Therefore the item creation starts with
+<a href="/wow/tutorial/images/selectconceptincreatefileitem.gif"
+target="_blank" class="unconditional">selecting the concept</a>.
+
+of the course is associated with this items file and the default number of answers for each question. 
+Then, he adds questions to the file, one by one, setting some <a href="/wow/tutorial/images/obligatoryparametersitem.gif" target="_blank"
+class="unconditional">obligatory parameters</a> (the enunciate flag, answers and a flag to indicate whether the answers are correct) 
+and other optional parameters (image, explanation and <a href="/wow/tutorial/images/optionalparametersitem.gif" target="_blank"
+class="unconditional">Item Response Theory  (IRT) parameters</a>: item difficulty and discrimination). 
+Items are stored in XML files and more items can be added, and the existed ones can be modified or deleted.
+</li>
+
+<li>The third step is to build tests out of items. Tests consist of a number of items and configuration parameters (the type of test, number of questions, etc.).
+First he has to select the course and decide what <a href="/wow/tutorial/images/selecttestype.gif" target="_blank" class="unconditional">test type</a> 
+(classic test or adaptive test) he wants and whether to use one or several items files. 
+If the test evaluates only one concept (page concept type), we can also consider it to be an "activity". 
+If the test evaluates several concepts (abstract concept type), it will be an "exam" about one chapter or a whole course. 
+Next, the examiner <a href="/wow/tutorial/images/selectionfileitem.gif" target="_blank" class="unconditional">selects the specific items files</a> and maximum number of items of each file.
+Then he can use <a href="/wow/tutorial/images/selectionmethod.gif" target="_blank" class="unconditional">different methods</a> to select what specific items from these items files will be used in the test 
+(the selection can be done manually, randomly or randomly with some restrictions). 
+Then he sets <a href="/wow/tutorial/images/parametershown.gif" target="_blank" class="unconditional">parameters about how questions are shown</a> to examinees 
+(the order in questions and answers are shown, to show or hide explanations of the answers through the "verbose" flag, the maximum time to respond, whether show the correct answer or just a score, etc.),
+ <a href="/wow/tutorial/images/parametersevaluation.gif" target="_blank" class="unconditional">parameters about test evaluation</a> (to penalize incorrect answers, to penalize questions without an answer and what percentage of knowledge the final score represents in the associated concept/concepts) 
+and <a href="/wow/tutorial/images/parameterswebpage.gif" target="_blank" class="unconditional">parameters about the web page</a> that will show the test to the user.
+If the test is adaptive, he has to set also the <a href="/wow/tutorial/images/adaptivetestparameters.gif" target="_blank" class="unconditional">adaptive algorithm parameters</a> (questions selection procedure, IRT model of 1, 2 or 3 parameters, and termination criterion). 
+Finally, each test is stored in an XML file that is prepared to be used in an WOW! course or application.
+</li>
+
+<li>
+In order to use (to do a link to) a previously created test in an WOW! application, the author has to add an concrete href label in the xhtml page where you want to call the test.
+The general format to do it is:
+<pre>
+&lt;a href="nameofthefiletest.xml|DoAppletTest"&gt;Displayed text to go to test&lt;/a&gt;
+</pre>
+
+Where:
+<br>
+	nameofthefiletest.xml: is the name of the test previously created with Test Editor tool.
+<br>
+	DoAppletTest: is the name of the test engine Applet that execute the test.
+
+And example is: 
+<a href="testtutorial_tutorial_C_activity.xml|DoAppletTest"> example test </a>
+
+When a student starts a test (clicking in the test link), then if test has <a href="/wow/tutorial/images/testinformation.gif" target="_blank" class="unconditional">starting information</a> it shows it.
+ 
+And when he presses the "Begin Test" button, it starts to <a href="/wow/tutorial/images/showquestion.gif" target="_blank" class="unconditional"> show questions </a>, and he has to select what is the correct answer by pressing the "Correct The Question" button. 
+ 
+If the author had set to show results in the test parameters, then the student could see if her answer was <a href="/wow/tutorial/images/correctanswer.gif" target="_blank" class="unconditional"> correct </a> or <a href="/wow/tutorial/images/incorrectanswer.gif" target="_blank" class="unconditional"> incorrect </a>.
+  
+The student has several button to can go to next question, to exit from test and to continue later in this question, to end the test and finish the test and to show current score. At last, when he finish the test he can see the <a href="/wow/tutorial/images/finalscore.gif" target="_blank" class="unconditional"> final score </a>, if the test it is set to show it.
+ 
+If the student tries to repeat the same test, he will see that he can not do it. The author have to let students to can repeat the same test from Test Editor tool.
+
+We have included an <a href="testtutorial_tutorial_C_activity.xml|DoAppletTest"> example test</a> in this
+tutorial just to illustrate the possibilities.
+</li>
+
+<li>
+After examinees executed tests, examiners can do maintenance by carrying out modification in items and tests files.
+In order to facilitate this task, the Test Editor shows <a href="/wow/tutorial/images/teststatistic.gif" target="_blank" class="unconditional">statistical information</a> about examinees' usage (questions success percentage, mean times to answer the questions, questions usage percentage, etc.) to help examiners in making decisions. 
+The examiner usually decides to modify or delete bad items, and to add new items. 
+But he can also <a href="/wow/tutorial/images/edittest.gif" target="_blank" class="unconditional">edit the test configuration</a> and he can even allow certain examinees to repeat certain tests, or to allow or deny access to certain tests.
+He can also do the <a href="/wow/tutorial/images/calibrateitemfile.gif" target="_blank" class="unconditional">calibration the items files</a> of a classic test to transform it into adaptive one, or an adaptive test to optimize the items IRT parameters.
+</li>
+
+</ul>
+
+
+
+<object data="../footer.xml" type="text/xml">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edited with XML Spy v4.2 U (http://www.xmlspy.com) by Santi (Particular) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="student">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="test" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="evaluatedTest" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="questionsFile" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="question" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="answer" minOccurs="0" maxOccurs="unbounded">
+																	<xs:complexType>
+																		<xs:attribute name="codeAnswer" type="xs:int" use="required"/>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+															<xs:attribute name="codeQuestion" type="xs:int" use="required"/>
+															<xs:attribute name="answerValue" use="optional" default="withoutAnswer">
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:enumeration value="correct"/>
+																		<xs:enumeration value="incorrect"/>
+																		<xs:enumeration value="withoutAnswer"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:attribute>
+															<xs:attribute name="time" type="xs:int" use="optional" default="0"/>
+															<xs:attribute name="done" use="optional" default="false">
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:enumeration value="true"/>
+																		<xs:enumeration value="false"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:attribute>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="numberOfQuestions" type="xs:int" use="required"/>
+												<xs:attribute name="path" type="xs:string" use="required"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="score" type="xs:double" use="required"/>
+									<xs:attribute name="timeTotal" type="xs:int" use="required"/>
+									<xs:attribute name="date" type="xs:date" use="required"/>
+									<xs:attribute name="totalQuestion" type="xs:int" use="required"/>
+									<xs:attribute name="correct" type="xs:int" use="required"/>
+									<xs:attribute name="incorrect" type="xs:int" use="required"/>
+									<xs:attribute name="withoutAnswer" type="xs:int" use="required"/>
+									<xs:attribute name="questionsDone" type="xs:int" use="optional" default="0"/>
+									<xs:attribute name="theta" type="xs:double" use="optional" default="0.5"/>
+									<xs:attribute name="thetaPrevious" type="xs:double" use="optional" default="0.5"/>
+									<xs:attribute name="standardError" type="xs:double" use="optional" default="0.33"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="name" type="xs:string" use="required"/>
+						<xs:attribute name="fileName" type="xs:string" use="required"/>
+						<xs:attribute name="path" type="xs:string" use="required"/>
+						<xs:attribute name="make" type="xs:int" use="required"/>
+						<xs:attribute name="finish" use="optional" default="false">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="true"/>
+									<xs:enumeration value="false"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="lastScore" type="xs:int" use="optional" default="0"/>
+						<xs:attribute name="executionType" use="optional" default="classic">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="classic"/>
+									<xs:enumeration value="adaptive"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="lastTheta" type="xs:double" use="optional" default="0.5"/>
+						<xs:attribute name="lastStandardError" type="xs:double" use="optional" default="0.33"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="login" type="xs:string" use="required"/>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="fileName" type="xs:string" use="required"/>
+			<xs:attribute name="path" type="xs:string" use="required"/>
+			<xs:attribute name="course" type="xs:string" use="required"/>
+			<xs:attribute name="totalClassicTest" type="xs:int" use="optional" default="0"/>
+			<xs:attribute name="totalAdaptiveTest" type="xs:int" use="optional" default="0"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

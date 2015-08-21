@@ -1,0 +1,64 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Defining a Class</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Getting Started
+<br/>
+<b>Lesson</b>: Hello World Application
+</font>
+
+<h2>Defining a Class</h2>
+<blockquote>
+The first bold line in the following listing begins a <em>class definition block</em>.
+
+<blockquote><pre>
+/** 
+ * The HelloWorldApp class implements an application that
+ * simply displays "Hello World!" to the standard output.
+ */
+<b>class HelloWorldApp {</b>
+    public static void main(String[] args) {
+        System.out.println("Hello World!"); //Display the string.
+    }
+<b>}</b>
+</pre></blockquote>
+
+<p>
+A <em>class</em>--the basic building block of an object-oriented language such as Java--is a template that describes the data and behavior associated with <em>instances</em> of that class. When you <em>instantiate</em> a class you create an <em>object</em> that looks and feels like other instances of the same class. The data associated with a class or object is stored in <em>variables</em>; the behavior associated with a class or object is implemented with <em>methods</em>. Methods are similar to the functions or procedures in procedural languages such as C.
+</p>
+
+Julia Child's recipe for rack of lamb is a real-world example of a class. Her rendition of the rack of lamb is one instance of the recipe, and mine is quite another. (While both racks of lamb may "look and feel" the same, I imagine that they "smell and taste" different.)
+
+<p>
+A more traditional example from the world of programming is a class that represents a rectangle. The class would contain variables for the origin of the rectangle, its width, and its height. The class might also contain a method that calculates the area of the rectangle. An instance of the rectangle class
+would contain the information for a specific rectangle, such as the dimensions of the floor of your office, or the dimensions of this page.
+</p>
+
+In the Java language, the simplest form of a class definition is
+<blockquote><pre>
+class <em>name</em> {
+    . . .
+}
+</pre></blockquote>
+
+<p>
+The keyword <code>class</code> begins the class definition for a class named <code>name</code>. The variables and methods of the class are embraced by the curly brackets that begin and end the class definition block. The "Hello World" application has no variables and has a single method named <code>main</code>.
+</p>
+
+For more information about object-oriented concepts, see 
+<a href="ObjectOrientedProgrammingConcepts" class="conditional">Object-Oriented Programming Concepts</a>
+<a href="ObjectOrientedProgrammingConcepts" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Getting Started trail)"/></a>.
+To learn how object-oriented concepts are implemented in the Java language, see
+<a href="ClassesAndInheritance" class="conditional">Classes and Inheritance</a>
+<a href="ClassesAndInheritance"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Getting Started trail)"/></a>.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE wow_relation_type SYSTEM 'wow_relation_type.dtd'>
+<wow_relation_type>
+	<name>hide</name>
+	<listitems>
+		<generateListItem isPropagating="false" location="___source.access" >
+			<requirement> true </requirement>
+			<trueActions>
+				<action>
+					<conceptName> ___destination </conceptName>
+					<attributeName> hierarchy </attributeName>
+					<expression> false </expression>
+				</action>
+			</trueActions>
+		</generateListItem>
+	</listitems>
+</wow_relation_type>

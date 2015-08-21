@@ -1,0 +1,103 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>The Form Editor</h2>
+
+<p>
+The Form Editor enables you to create custom forms
+to let end-users change values of attributes of concepts in
+their user model.
+To this end the Form Editor offers the following features:
+<ul>
+<li>
+You can choose an application name and load the concept structure
+of that application. You can only create forms that let end-users
+modify attribute values of concepts of a single application.
+The concepts and attributes are shown in a way that
+resembles the Windows explorer.
+</li>
+<li>
+For each attribute that is marked as <em>changeable</em> in the
+concept structure a field can be created in the form.
+You first have to select the attribute of the concept,
+and then you can create the form field.
+A form can contain the following types of fields:
+<ul>
+<li>
+<a href="/wow/tutorial/images/form-input.gif" target="_blank"
+class="unconditional">Input</a>:
+This is used to create a textfield, intended to enter numbers or strings.
+A text field has a visible "Size", a "maxLength" to indicate how
+many characters can be typed (can be more than the "Size"),
+and 
+</li>
+<li>
+<a href="/wow/tutorial/images/form-select.gif" target="_blank"
+class="unconditional">Select</a>:
+This is used to create a list of possible values of which
+one can be selected. The width of the list is determined by "Size".
+The "EnumList" field is used to enter the possible values
+as a semicolon-separated list.
+</li>
+<li>
+<a href="/wow/tutorial/images/form-option.gif" target="_blank"
+class="unconditional">Option</a>:
+This is used to create <em>radio buttons</em> (only one
+choice allowed) or <em>check boxes</em> (more than one choice allowed).<br />
+The "Allowed" field should have a value of 1 to create radio buttons.<br />
+The "EnumList" is the list of choices, which must be a semicolon-separated list.
+</li>
+<li>
+<a href="/wow/tutorial/images/form-button.gif" target="_blank"
+class="unconditional">Button</a>:
+This is used to create the "submit" or "reset" buttons.
+</li>
+</ul>
+</li>
+<li>
+The FormEditor shows an
+<a href="/wow/tutorial/images/formeditor-xml.gif" target="_blank"
+class="unconditional">editable view of the XML file</a> it will
+create for the form.
+You can add text, xhtml code or move pieces around.
+There is also a <a href="/wow/tutorial/images/formeditor-preview.gif" target="_blank"
+class="unconditional">"Preview"</a> that shows more or less what the form
+will look like. This Preview is created using a "standard" Java
+Swing class. Its understanding of html and xhtml is somewhat limited.
+The FormEditor assumes that a "header.xhtml" and "footer.xhtml" file
+can be included, but you can edit that part out.
+</li>
+<li>
+When saving the form you can select where to save it on the server.
+This will typically be somewhere in the directory tree of the application
+the form will be used in. The form editor saves <em>on the server</em>,
+not on your local PC. You can copy the form to your PC using the
+<a href="amt" class="conditional">application management tool</a> (AMT).
+</li>
+</ul>
+</p>
+
+<p>
+We have a small
+<a href="tutorial-form.frm" class="unconditional">example form</a>
+in which you can see different form elements in action.
+Changing knowledge values has an effect on the prerequisite
+relationships and may therefore change colors of links.
+Changing the "interest" value has no visible effect.
+</p>
+
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

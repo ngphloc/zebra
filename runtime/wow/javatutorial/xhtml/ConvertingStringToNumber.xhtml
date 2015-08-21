@@ -1,0 +1,70 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Converting Strings to Numbers</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>Converting Strings to Numbers</h2>
+<blockquote>
+Sometimes, a program ends up with numeric data in a string object&#8212;a value entered by the user, for example. The numeric type-wrapper classes (
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Byte.html"><font color="#8800bb"><code>Byte</code></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Byte.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>, 
+
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Integer.html"><font color="#8800bb"><code>Integer</code></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Integer.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>, 
+
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Double.html"><font color="#8800bb"><code>Double</code></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Double.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>, 
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Float.html"><font color="#8800bb"><code>Float</code></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Float.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>, 
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Long.html"><font color="#8800bb"><code>Long</code></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Long.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>, and
+
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Short.html"><font color="#8800bb"><code>Short</code></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Short.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>) 
+each provide a class method named <code>valueOf</code> that converts a string to an object of that type. Here's a small example, 
+
+<a target="_blank" href="resources/ValueOfDemo.java"><font color="#bb000f"><code>ValueOfDemo</code></font></a><a target="_blank" href="resources/ValueOfDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>
+, that gets two strings from the command line, converts them to numbers, and performs arithmetic operations on the values:
+
+<blockquote><pre>
+public class ValueOfDemo {
+    public static void main(String[] args) {
+
+	//this program requires two arguments on the command line
+        if (args.length == 2) {
+
+            //convert strings to numbers
+            float a = Float.valueOf(args[0]).floatValue();
+            float b = Float.valueOf(args[1]).floatValue();
+
+            //do some arithmetic
+            System.out.println(&quot;a + b = &quot; + (a + b) );
+            System.out.println(&quot;a - b = &quot; + (a - b) );
+            System.out.println(&quot;a * b = &quot; + (a * b) );
+            System.out.println(&quot;a / b = &quot; + (a / b) );
+            System.out.println(&quot;a % b = &quot; + (a % b) );
+        } else {
+            System.out.println(&quot;This program requires two command-line arguments.&quot;);
+        }
+    }
+}
+</pre></blockquote>
+
+The following is the output from the program when you use <code>4.5</code> and <code>87.2</code> for the command line arguments:
+
+<blockquote><pre>
+a + b = 91.7
+a - b = -82.7
+a * b = 392.4
+a / b = 0.0516055
+a % b = 4.5
+</pre></blockquote>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

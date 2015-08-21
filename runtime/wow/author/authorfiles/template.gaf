@@ -1,0 +1,102 @@
+<?xml version="1.0"?> 
+<!DOCTYPE wow_authortool> 
+<wow_authortool>
+	<concept_relations>
+	</concept_relations>
+	<concept_information>
+		<concept_info>
+			<concept_name>template</concept_name>
+			<concept_description></concept_description>
+			<concept_resource></concept_resource>
+			<concept_template>abstract concept</concept_template>
+			<concept_type>abstract</concept_type>
+			<concept_title></concept_title>
+			<concept_nocommit>false</concept_nocommit>
+			<concept_stable></concept_stable>
+			<concept_stable_expr></concept_stable_expr>
+			<attribute_information>
+				<attribute_info>
+					<attribute_name>access</attribute_name>
+					<attribute_description>triggered by page access</attribute_description>
+					<attribute_type>bool</attribute_type>
+					<attribute_default>false</attribute_default>
+					<attribute_isSystem>true</attribute_isSystem>
+					<attribute_isPersistent>false</attribute_isPersistent>
+					<attribute_isChangeable>false</attribute_isChangeable>
+					<attribute_Stable></attribute_Stable>
+					<attribute_Stable_Expr></attribute_Stable_Expr>
+				</attribute_info>
+				<attribute_info>
+					<attribute_name>knowledge</attribute_name>
+					<attribute_description>knowledge about this concept</attribute_description>
+					<attribute_type>int</attribute_type>
+					<attribute_default>0</attribute_default>
+					<attribute_isSystem>false</attribute_isSystem>
+					<attribute_isPersistent>true</attribute_isPersistent>
+					<attribute_isChangeable>true</attribute_isChangeable>
+					<attribute_Stable></attribute_Stable>
+					<attribute_Stable_Expr></attribute_Stable_Expr>
+				</attribute_info>
+				<attribute_info>
+					<attribute_name>visited</attribute_name>
+					<attribute_description>has this page been visited?</attribute_description>
+					<attribute_type>int</attribute_type>
+					<attribute_default>0</attribute_default>
+					<attribute_isSystem>true</attribute_isSystem>
+					<attribute_isPersistent>true</attribute_isPersistent>
+					<attribute_isChangeable>false</attribute_isChangeable>
+					<attribute_Stable></attribute_Stable>
+					<attribute_Stable_Expr></attribute_Stable_Expr>
+				</attribute_info>
+				<attribute_info>
+					<attribute_name>suitability</attribute_name>
+					<attribute_description>the suitability of this concept</attribute_description>
+					<attribute_type>int</attribute_type>
+					<attribute_default>100</attribute_default>
+					<attribute_isSystem>false</attribute_isSystem>
+					<attribute_isPersistent>false</attribute_isPersistent>
+					<attribute_isChangeable>false</attribute_isChangeable>
+					<attribute_Stable></attribute_Stable>
+					<attribute_Stable_Expr></attribute_Stable_Expr>
+				</attribute_info>
+				<attribute_info>
+					<attribute_name>hierarchy</attribute_name>
+					<attribute_description>the visibility of this concept in the hierarchy</attribute_description>
+					<attribute_type>bool</attribute_type>
+					<attribute_default>false</attribute_default>
+					<attribute_isSystem>true</attribute_isSystem>
+					<attribute_isPersistent>false</attribute_isPersistent>
+					<attribute_isChangeable>false</attribute_isChangeable>
+					<attribute_Stable></attribute_Stable>
+					<attribute_Stable_Expr></attribute_Stable_Expr>
+				</attribute_info>
+				<attribute_info>
+					<attribute_name>level</attribute_name>
+					<attribute_description>level of this concept in the hierarchy</attribute_description>
+					<attribute_type>int</attribute_type>
+					<attribute_default>0</attribute_default>
+					<attribute_isSystem>true</attribute_isSystem>
+					<attribute_isPersistent>true</attribute_isPersistent>
+					<attribute_isChangeable>false</attribute_isChangeable>
+					<attribute_Stable></attribute_Stable>
+					<attribute_Stable_Expr></attribute_Stable_Expr>
+				</attribute_info>
+			</attribute_information>
+		</concept_info>
+	</concept_information>
+	<views>
+		<view>
+			<name>all</name>
+			<concept_coordinates>
+			</concept_coordinates>
+		</view>
+		<view>
+			<name>tree</name>
+			<tree_structure>
+				<node_name>template</node_name>
+				<children>
+				</children>
+			</tree_structure>
+		</view>
+	</views>
+</wow_authortool>

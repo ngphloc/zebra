@@ -1,0 +1,169 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Formatting Numbers with Custom Formats</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>Formatting Numbers with Custom Formats</h2>
+<blockquote>
+You can use the <code>DecimalFormat</code> class to format decimal numbers into strings. This class allows you to control the display of leading and trailing zeros, prefixes and suffixes, grouping (thousands) separators, and the decimal separator. If you want to change formatting symbols, such as the decimal separator, you can use the <code>DecimalFormatSymbols </code> in conjunction with the <code>DecimalFormat</code> class. These classes offer a great deal of flexibility in the formatting of numbers, but they can make your code more complex.
+<br/><br/>
+The text that follows uses examples that demonstrate the <code>DecimalFormat </code> and <code>DecimalFormatSymbols</code> classes. The code examples in this material are from a sample program called
+
+<a target="_blank" href="resources/DecimalFormatDemo.java"><font color="#bb000f"><code>DecimalFormatDemo</code></font></a><a target="_blank" href="resources/DecimalFormatDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>.
+
+</blockquote>
+
+<h3>Constructing Patterns</h3>
+<blockquote>
+You specify the formatting properties of <code>DecimalFormat</code> with a pattern <code>String</code>. The pattern determines what the formatted number looks like. The example that follows creates a formatter by passing a pattern <code>String</code> to the <code>DecimalFormat</code> constructor. The <code>format</code> method accepts a <code>double</code> value as an argument and returns the formatted number in a <code>String</code>:
+
+<blockquote><pre>
+DecimalFormat myFormatter = new DecimalFormat(pattern);
+String output = myFormatter.format(value);
+System.out.println(value + &quot; &quot; + pattern + &quot; &quot; + output);
+</pre></blockquote>
+
+The output for the preceding lines of code is described in the following table. The <code>value</code> is the number, a <code>double</code> , that is to be formatted. The <code>pattern</code> is the <code>String</code> that specifies the formatting properties. The <code>output</code>, which is a <code>String</code>, represents the formatted number.
+
+<p>
+<table border="1" cellpadding="4" cellspacing="3">
+<caption>
+Output from <code>DecimalFormatDemo</code> Program
+</caption>
+<tr>
+<th>
+<code>value</code>
+</th>
+<th>
+<code>pattern</code>
+</th>
+<th>
+<code>output</code>
+</th>
+<th>
+Explanation
+</th>
+</tr>
+
+<tr>
+<td>
+123456.789
+</td>
+<td>
+###,###.###
+</td>
+<td>
+123,456.789
+</td>
+<td>
+The pound sign (#) denotes a digit, the comma is a placeholder for the grouping separator, and the period is a placeholder for the decimal separator.
+</td>
+</tr>
+
+<tr>
+<td>
+123456.789
+</td>
+<td>
+###.##
+</td>
+<td>
+123456.79
+</td>
+<td>
+The <code>value</code> has three digits to the right of the decimal point, but the <code>pattern</code> has only two. The <code>format</code> method handles this by rounding up.
+</td>
+</tr>
+
+<tr>
+<td>
+123.78
+</td>
+<td>
+000000.000
+</td>
+<td>
+000123.780
+</td>
+<td>
+The <code>pattern</code> specifies leading and trailing zeros, because the 0 character is used instead of the pound sign (#).
+</td>
+</tr>
+
+<tr>
+<td>
+12345.67
+</td>
+<td>
+$###,###.###
+</td>
+<td>
+&#36;12,345.67
+</td>
+<td>
+The first character in the <code>pattern</code> is the dollar sign ($). Note that it immediately precedes the leftmost digit in the formatted <code>output</code>.
+</td>
+</tr>
+
+<tr>
+<td>
+12345.67
+</td>
+<td>
+\u00A5###,###.###
+</td>
+<td>
+&#165;12,345.67
+</td>
+<td>
+The <code>pattern</code> specifies the currency sign for Japanese yen
+(&#165;) with the Unicode value 00A5.
+</td>
+</tr>
+</table>
+</p>
+</blockquote>
+
+
+<h3>Altering the Formatting Symbols</h3>
+<blockquote>
+You can use the <code>
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/text/DecimalFormatSymbols.html"><font color="#8800bb">DecimalFormatSymbols</font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/text/DecimalFormatSymbols.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a></code> class to change the symbols that appear in the formatted numbers produced by the <code>format</code> method. These symbols include the decimal separator, the grouping separator, the minus sign, and the percent sign, among others.
+
+<p>
+The next example demonstrates the <code>DecimalFormatSymbols</code> class by applying a strange format to a number. The unusual format is the result of the calls to the <code>setDecimalSeparator</code>, <code>setGroupingSeparator</code>, and <code>setGroupingSize</code> methods.
+<blockquote><pre>
+DecimalFormatSymbols unusualSymbols =
+    new DecimalFormatSymbols(currentLocale);
+unusualSymbols.setDecimalSeparator('|');
+unusualSymbols.setGroupingSeparator('^');
+
+String strange = &quot;#,##0.###&quot;;
+DecimalFormat weirdFormatter = 
+               new DecimalFormat(strange, unusualSymbols);
+weirdFormatter.setGroupingSize(4);
+
+String bizarre = weirdFormatter.format(12345.678);
+System.out.println(bizarre);
+</pre></blockquote>
+</p>
+
+When run, this example prints the number in a bizarre format: 
+<blockquote><pre>
+1^2345|678
+</pre></blockquote>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

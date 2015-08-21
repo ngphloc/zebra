@@ -1,0 +1,60 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Scope</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Language Basics
+</font>
+
+<h2>Scope</h2>
+<blockquote>
+
+A variable's scope is the region of a program within which the variable can be referred to by its simple name. Secondarily, scope also determines when the system creates and destroys memory for the variable. Scope is distinct from visibility, which applies only to member variables and determines whether the variable can be used from outside of the class within which it is declared. Visibility is set with an access modifier. See the section 
+<a href="ControllingAccessToClass" class="conditional">Controlling Access to Members of a Class</a>
+<a href="ControllingAccessToClass" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> for more information.
+<br/><br/>
+The location of the variable declaration within your program establishes its scope. There are four categories of scope, as shown in the following figure.
+
+<p><center><img src="images/basics-scope.gif" width="447" height="305" align="bottom" alt="The four categories of scope: member variable, method parameter, local variable, and exception-handler parameter."/></center></p>
+A member variable is a member of a class or an object. It is declared within a class but outside of any method or constructor. A member variable's scope is the entire declaration of the class. However, the declaration of a member needs to appear before it is used when the use is in a member initialization expression. For information about declaring member variables, refer to the section 
+<a href="DeclaringMemberVariables" class="conditional">Declaring Member Variables</a><a href="DeclaringMemberVariables" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.
+
+<p>
+You declare local variables within a block of code. In general, the scope of a local variable extends from its declaration to the end of the code block in which it was declared. In
+<a target="_blank" href="resources/MaxVariablesDemo.java"><font color="#bb000f"><code>MaxVariablesDemo</code></font></a><a target="_blank" href="resources/MaxVariablesDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>, all the variables declared within the <code>main</code> method are local variables. The scope of each variable in that program extends from the declaration of the variable to the end of the <code>main</code> method &#151; indicated by the second to last right curly bracket <code>}</code> in the program code.
+</p>
+
+<p>
+Parameters are formal arguments to methods or constructors and are used to pass values into methods and constructors. The scope of a parameter is the entire method or constructor for which it is a parameter. The chapter 
+<a href="ClassesAndInheritance" class="conditional">Classes and Inheritance</a><a href="ClassesAndInheritance" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> discusses writing methods in the section 
+<a href="DefiningMethods" class="conditional">Defining Methods</a><a href="DefiningMethods" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>, which talks about passing values into methods through parameters. 
+</p>
+
+<p>
+Exception-handler parameters are similar to parameters but are arguments to an exception handler rather than to a method or a constructor. The scope of an exception-handler parameter is the code block between <code>{</code> and <code>}</code> that follow a catch statement. The chapter 
+<a href="HandlingExceptions" class="conditional">Handling Errors with Exceptions</a><a href="HandlingExceptions" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> talks about using exceptions to handle errors and shows you how to write an exception handler that has a parameter.
+</p> 
+
+Consider the following code sample:
+
+<blockquote><pre>
+if (...) {
+    int i = 17;
+    ...
+}
+System.out.println("The value of i = " + i);    //error
+</pre></blockquote>
+
+The final line won't compile because the local variable <code>i</code> is out of scope. The scope of <code>i</code> is the block of code between the <code>{</code> and <code>}</code>. The <code>i</code> variable does not exist anymore after the closing <code>}</code>. Either the variable declaration needs to be moved outside of the <code>if</code> statement block, or the <code>println</code> method call needs to be moved into the <code>if</code> statement block.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

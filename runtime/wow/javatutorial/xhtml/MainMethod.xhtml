@@ -1,0 +1,100 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>The main Method</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Getting Started
+<br/>
+<b>Lesson</b>: Hello World Application
+</font>
+
+<h2>The main Method</h2>
+<blockquote>
+The first bold line in the following listing begins the definition of a <code>main</code> method.
+
+<p>
+<blockquote><pre>
+/** 
+ * The HelloWorldApp class implements an application that
+ * simply displays "Hello World!" to the standard output.
+ */
+class HelloWorldApp {
+    <b>public static void main(String[] args) {</b>
+        System.out.println("Hello World!"); //Display the string.
+    <b>}</b>
+}
+</pre></blockquote>
+</p>
+
+Every Java application must contain a <code>main</code> method whose signature looks like this:
+<blockquote><pre>
+public static void main(String[] args)
+</pre></blockquote>
+The method signature for the <code>main</code> method contains three
+modifiers:
+
+<ul>
+<li>
+<code>public</code> indicates that the <code>main</code> method can be called by any object.
+<a href="ControllingAccessToClass" class="conditional">Controlling Access to Members of a Class</a>
+<a href="ControllingAccessToClass" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Getting Started trail)"/></a> covers the ins and outs of the access modifiers supported by the Java language.
+</li>
+
+<li>
+<code>static</code> indicates that the <code>main</code> method is a class method.
+<a href="UnderstandingInstanceAndClassMembers" class="conditional">Understanding Instance and Class Members</a>
+<a href="UnderstandingInstanceAndClassMembers" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Getting Started trail)"/></a> talks about class methods and variables.
+</li>
+
+<li>
+<code>void</code> indicates that the <code>main</code> method doesn't return any value.
+</li>
+</ul>
+</blockquote>
+
+<h3>How the <code>main</code> Method Gets Called</h3>
+<blockquote>
+The <code>main</code> method in the Java language is similar to the <code>main</code> function in C and C++. When the Java interpreter executes an application (by being invoked upon the application's controlling class), it starts by calling the class's <code>main</code> method. The <code>main</code> method then calls all the other methods required to run your application.
+<br/>
+If you try to invoke the Java interpreter on a class that does not have a <code>main</code> method, the interpreter refuses to run your program and displays an error message similar to this:
+<blockquote><pre>
+In class NoMain: void main(String argv[]) is not defined
+</pre></blockquote>
+</blockquote>
+
+<h3>Arguments to the <code>main</code> Method</h3>
+<blockquote>
+As you can see from the following code snippet, the <code>main</code> method accepts a single argument: an array of elements of type <code>String</code>.
+
+<blockquote><pre>
+public static void main(<b>String[] args</b>)
+</pre></blockquote>
+
+This array is the mechanism through which the runtime system passes information to your application. Each String in the array is called a <em>command-line argument</em>. Command-line arguments let users affect the operation of the application without recompiling it. For example, a sorting program might allow the user to specify that the data be sorted in descending order with this command-line argument:
+<blockquote><pre>
+-descending
+</pre></blockquote>
+
+<br/>
+The "Hello World" application ignores its command-line arguments, so there isn't much more to discuss here. However, you can get more information about command-line arguments, including the framework for a command-line parser that you can modify for your specific needs, in the
+<a href="SettingProgramAttributes" class="conditional">Setting Program Attributes</a>
+<a href="SettingProgramAttributes" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Getting Started trail)"/></a> lesson.
+
+<br/>
+
+<blockquote><hr/><strong>Note to C and C++ Programmers: </strong> The number and type of arguments passed to the <code>main</code> method in the Java runtime environment differ from the number and type of arguments passed to C and C++'s <code>main</code> function. For further information refer to 
+<a href="CommandLineArguments" class="conditional">Command-Line Arguments</a>
+<a href="CommandLineArguments" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Getting Started trail)"/></a> in the
+<a href="SettingProgramAttributes" class="conditional">Setting Program Attributes</a>
+<a href="SettingProgramAttributes" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Getting Started trail)"/></a> lesson.
+<hr/></blockquote>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

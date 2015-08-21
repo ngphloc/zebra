@@ -1,0 +1,181 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Using Generics with Legacy Code </title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Classes and Inheritance
+</font>
+
+<h2>
+Using Generics with Legacy Code 
+</h2>
+<blockquote>
+The <code>Cat</code> class discussed earlier in this chapter has 
+a legacy method <code>getLitter</code>, that returns a collection 
+of Cat objects: 
+<blockquote><pre>
+public Collection getLitter(int size) {
+    ArrayList litter = new ArrayList(size);
+    for (int i = 0; i &lt; size; i++) {
+        litter.add(i, new Cat());
+        return litter;
+    }
+}
+</pre></blockquote>
+
+Note that the <code>Collection</code> object is a raw type; 
+the type of object contained in the collection is not specified. 
+This situation exists for all methods that return collections 
+before generics became available.
+<br/><br/>
+Suppose you write a new program, <code>Cats</code>, that assigns 
+this returned litter to a collection whose type is specified to 
+be a <code>Cat</code>:
+
+<blockquote><pre>
+public static void main(String[] args) {
+<B>Collection&lt;Cat&gt;</B> litter = myCat.getLitter(3);
+for (Cat c : litter) { 
+    System.out.println(c.getColor());
+}
+</pre></blockquote>
+
+When you compile <code>Cats.java</code> you will get 
+the following warning:
+
+<blockquote><pre>
+Note: Cats.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+</pre></blockquote>
+
+Using the <code>Xlint:checked</code> flag provides this information:
+<blockquote><pre>
+% javac -Xlint:unchecked Cats.java
+Cats.java:5: warning: [unchecked] unchecked conversion
+found   : java.util.Collection
+required: java.util.Collection&lt;Cat&gt;
+                Collection&lt;Cat&gt; litter = myCat.getLitter(3);
+                                                    ^
+</pre></blockquote>
+
+In addition, if <code>Cat</code> is recompiled with a compiler 
+that supports generics, the following warning will result:
+
+<blockquote><pre>
+% javac -Xlint:unchecked Cat.java
+Cat.java:19: warning: [unchecked] unchecked call to
+add(int,E) as a member of the raw type java.util.ArrayList
+                                 litter.add(i, new Cat());
+                                           ^
+</pre></blockquote>
+
+Though the code is correct, these warnings indicate that the 
+compiler can't guarantee the correctness of the operations, 
+the way it can when using collections whose types are specified 
+throughout. Whenever you get an unchecked warning, you should 
+verify that the operation that gives rise to the warning is 
+really correct.
+<br/><br/>
+Finally, let's look at a complete listing of the 
+<code>Stack2</code> class:
+
+<blockquote><pre>
+public class Stack2&lt;T&gt; implements Cloneable {
+    private ArrayList&lt;T&gt; items;
+    private int top=0;
+
+    public Stack2() {
+        items = new ArrayList&lt;T&gt;();
+    }
+    public void push(T item) {
+        items.add(item);
+        top++;
+    }
+
+    public T pop() {
+        if (items.size() == 0)
+        throw new EmptyStackException();
+        T obj = items.get(--top);
+        return obj;
+    }
+
+    public boolean isEmpty() {
+        if (items.size() == 0)
+            return true;
+        else
+            return false;
+    }
+
+    protected Stack2&lt;T&gt; clone() {
+        try {
+            Stack2&lt;T&gt; s = (Stack2&lt;T&gt;)super.clone(); 
+            // Clone the stack
+            s.items =  (ArrayList&lt;T&gt;)items.clone(); 
+            // Clone the list
+            return s; // Return the clone
+        } catch (CloneNotSupportedException e) {
+            //This shouldn't happen because Stack is Cloneable
+            throw new InternalError();
+        }
+    }
+}
+</pre></blockquote>
+
+Notice that the <code>clone</code> method invokes the 
+<code>clone</code> methods of its superclass and contained list. 
+The <code>clone</code> methods are legacy methods because they 
+were defined before generics became available.
+<br/><br/>
+When you compile <code>Stack2.java</code> you will get 
+the following warning:
+
+<blockquote><pre>
+% javac -Xlint:unchecked Stack2.java
+Stack2.java:32: warning: [unchecked] unchecked cast
+found   : java.lang.Object
+required: Stack2&lt;T&gt;
+         Stack2&lt;T&gt; s = (Stack2&lt;T&gt;)super.clone(); //clone the stack
+                                             ^
+Stack2.java:33: warning: [unchecked] unchecked cast
+found   : java.lang.Object
+required: java.util.ArrayList&lt;T&gt;
+         s.items =  (ArrayList&lt;T&gt;)items.clone(); //clone the list
+                                             ^
+2 warnings
+</pre></blockquote>
+
+These warnings indicate that the compiler can't guarantee 
+the correctness of the cast. In other words, because the 
+<code>clone</code> method is defined to return an object 
+of type <code>Object</code>, the compiler can't verify 
+that the collection being returned is a 
+<code>Stack2&lt;T&gt;</code>. However, because of the 
+contract of the <code>clone</code> method, the assignment 
+is legal, though it generates an unchecked warning. 
+<br/><br/>
+There are many subtleties to using generics and interoperating 
+with legacy code. For further information on generics see:
+
+
+
+<ul>
+<li>Gilad Bracha's comprehensive tutorial, 
+<a href="GenericsComprehensive" class="conditional">Generics in the Java Programming Language</a><a href="GenericsComprehensive" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>
+</li>
+<li>
+<a target="_blank" href="http://www.langer.camelot.de/GenericsFAQ/JavaGenericsFAQ.html"><font color="#009bbb">Java Generics FAQ</font></a><a target="_blank" href="http://www.langer.camelot.de/GenericsFAQ/JavaGenericsFAQ.html"><img src="images/otherIcon.gif" width="11" height="11" border="0" align="middle" alt=" (outside of the tutorial)"/></a>
+</li>
+</ul>
+
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

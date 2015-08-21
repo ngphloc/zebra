@@ -1,0 +1,79 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>Conditional Inclusion of Fragments</h2>
+
+<p>
+WOW! lets you conditionally include or hide parts of a page.
+In order to use <em>conditional fragments</em> the page needs
+to be in the XHTML+WOW format, not in standard XHTML.
+The condition is an expression using attributes of (user model) concepts
+and constants. The condition is included in an <tt>&lt;if&gt;</tt> tag.
+One or two <tt>&lt;block&gt;</tt> tags are used for the conditional fragments.
+They correspond to a "then" and "else" construct in programming languages.
+An example:
+<pre>
+&lt;if expr="tutorial.usermodel.suitability==true"&gt;
+&lt;block&gt;
+This part is included when in application "tutorial"
+the attribute "suitability" of concept "usermodel" has the value true.
+&lt;/block&gt;
+&lt;block&gt;
+This optional second part is included when the first part
+is not included.
+&lt;/block&gt;
+&lt;/if&gt;
+</pre>
+</p>
+
+<p>
+Conditions can contain Boolean combinations of expressions,
+like:
+<pre>
+"tutorial.pages.knowledge&amp;gt;50 and tutorial.fragments.knowledge&amp;lt;30"
+</pre>
+It would have been nice to be able to write &lt; and &gt; instead of
+&amp;lt; and &amp;gt; but unfortunately this would confuse the XML parser.
+<br />
+Instead of <tt>tutorial.usermodel.suitability==true</tt> one may also
+simply write <tt>tutorial.usermodel.suitability</tt> because that is
+already a Boolean expression. In the expressions you can use
+the words "not", "and" and "or". Standard priority rules apply but
+when in doubt you can use parentheses.
+<br />
+If strings are used in expressions they must be put in single quotes ('),
+so as to not confuse the quotes with the double quotes (") aroung the
+whole expression.
+</p>
+
+<p>
+WOW! 1.0 has an alternative way to conditionally include information:
+<a href="objects" class="conditional">conditional objects</a>.
+They allow for not only conditional but also <em>reusable</em> content
+and can be used with standard XHTML as well as with the XHTML+WOW format.
+</p>
+
+<p>
+Note: Currently there is a limitation in WOW! that causes
+the conditional inclusion of fragments not to work within
+a link anchor. (So the link anchor text cannot contain a
+conditionally included fragment, although a conditionally
+included fragment can contain link anchors.)
+This will be fixed in the future.
+</p>
+
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

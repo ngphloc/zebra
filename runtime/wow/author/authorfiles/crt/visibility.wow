@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE wow_relation_type SYSTEM 'wow_relation_type.dtd'>
+<wow_relation_type>
+	<name> visibility </name>
+	<listitems>
+		<generateListItem location="___source.access"  isPropagating="false">
+			<requirement> true </requirement>
+			<trueActions>
+				<action>
+					<conceptName> ___destination </conceptName>
+					<attributeName> visibility </attributeName>
+					<expression> var:100 </expression>
+				</action>
+			</trueActions>
+		</generateListItem>
+	</listitems>
+</wow_relation_type>

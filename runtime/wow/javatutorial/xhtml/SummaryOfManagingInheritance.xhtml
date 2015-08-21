@@ -1,0 +1,51 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Summary of Managing Inheritance</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Classes and Inheritance
+</font>
+
+<h2>
+Summary of Managing Inheritance
+</h2>
+<blockquote>
+Except for the <code>Object</code> class, a class has 
+exactly one direct superclass. A class inherits member 
+variables and methods from all its superclasses, whether 
+direct or indirect. A subclass can override methods that 
+it inherits, or it can hide variables or methods that it inherits. 
+
+<p>
+The table in section 
+<a href="OverridingHidingMethods" class="conditional">Overriding and Hiding Methods</a><a href="OverridingHidingMethods" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> shows the effect of declaring a method with the same signature 
+as a method in the superclass.
+</p>
+The <code>Object</code> class is the top of the class hierarchy. 
+All classes are descendants from this class and inherit methods 
+from it. Useful methods inherited from <code>Object</code> 
+include <code>toString</code>, <code>equals</code>, 
+<code>clone</code>, <code>getClass</code>, <code>wait</code>, 
+<code>notify</code>, and <code>notifyAll</code>.
+<p>
+You can prevent a class from being subclassed by using the 
+<code>final</code> keyword in the class's declaration. Similarly, 
+you can prevent a method from being overridden by subclasses by 
+declaring it as a final method.
+</p>
+An abstract class can only be subclassed; it cannot be 
+instantiated. An abstract class can contain abstract 
+methods &#151; methods that are declared but not implemented. 
+Subclasses provide the implementations for abstract methods.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

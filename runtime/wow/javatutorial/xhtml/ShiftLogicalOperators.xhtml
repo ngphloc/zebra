@@ -1,0 +1,257 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Shift and Logical Operators</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Language Basics
+</font>
+
+<h2>Shift and Logical Operators</h2>
+<blockquote>
+
+A shift operator performs bit manipulation on data by shifting the bits of its first operand right or left. The next table summarizes the shift operators available in the Java programming language.
+<p>
+<table cellpadding="5">
+<caption><strong>Shift Operators</strong></caption>
+<tr>
+<th align="left">Operator</th>
+<th align="left">Use</th>
+<th align="left">Description</th>
+</tr>
+
+<tr>
+    <td><code>&lt;&lt;</code></td>
+    <td><code>op1 &lt;&lt; op2</code></td>
+    <td>Shift bits of <code>op1</code> left by distance <code>op2</code>; fills with zero bits on the right-hand side</td>
+</tr>
+<tr>
+    <td><code>&gt;&gt;</code></td>
+    <td><code>op1 &gt;&gt; op2</code></td>
+    <td>Shift bits of <code>op1</code> right by distance <code>op2</code>; fills with highest (sign) bit on the left-hand side</td>
+</tr>
+<tr>
+    <td><code>&gt;&gt;&gt;</code></td>
+    <td><code>op1 &gt;&gt;&gt; op2</code></td>
+    <td>Shift bits of <code>op1</code> right by distance <code>op2</code>; fills with zero bits on the left-hand side</td>
+</tr>
+</table>
+</p>
+
+<p>
+Each operator shifts the bits of the first operand over by the number of positions indicated by the second operand. The shift occurs in the direction indicated by the operator itself. For example, the following statement shifts the bits of the integer 13 to the right by one position:
+<blockquote><pre>
+13 &gt;&gt; 1;
+</pre></blockquote>
+
+The binary representation of the number 13 is 1101. The result of the shift operation is 1101 shifted to the right by one position &#151; 110, or 6 in decimal. The left-hand bits are filled with 0s as needed.
+</p>
+
+The following table shows the four operators the Java programming language provides to perform bitwise functions on their operands:
+
+<p>
+<table cellpadding="5">
+<caption><strong>Logical Operators</strong></caption>
+<tr>
+<th align="left">Operator</th>
+<th align="left">Use</th>
+<th align="left">Operation</th>
+</tr>
+
+<tr>
+    <td><code>&amp;</code></td>
+    <td><code>op1 &amp; op2</code></td>
+    <td>Bitwise <code>AND</code> if both operands are numbers; <br/> conditional <code>AND</code> if both operands are boolean</td>
+</tr>
+
+<tr>
+    <td><code>|</code></td>
+    <td><code>op1 | op2</code></td>
+    <td>Bitwise <code>OR</code> if both operands are numbers;<br/> conditional <code>OR</code> if both operands are boolean</td>
+</tr><tr>
+    <td><code>^</code></td>
+    <td><code>op1 ^ op2</code></td>
+    <td>Bitwise exclusive <code>OR</code> (<code>XOR</code>)</td>
+</tr>
+<tr>
+    <td><code>~</code></td>
+    <td><code>~op2</code></td>
+    <td>Bitwise complement</td>
+</tr>
+</table>
+</p>
+
+When its operands are numbers, the <code>&amp;</code> operation performs the bitwise <code>AND</code> function on each parallel pair of bits in each operand. The <code>AND</code> function sets the resulting bit to 1 if the corresponding bit in both operands is 1, as shown in the following table.
+
+<p>
+<!-- TABLE -->
+<table cellpadding="5">
+<caption><strong>The Bitwise AND Function</strong></caption>
+<tr>
+<th>Bit in <code>op1</code></th>
+<th>Corresponding Bit in <code>op2</code></th>
+<th>Result</th>
+</tr>
+
+<tr>
+    <td>0</td><td>0</td><td>0</td>
+</tr>
+
+<tr>
+    <td>0</td><td>1</td><td>0</td>
+</tr>
+
+<tr>
+    <td>1</td><td>0</td><td>0</td>
+</tr>
+
+<tr>
+    <td>1</td><td>1</td><td>1</td>
+</tr>
+</table>
+</p>
+
+Suppose that you were to <code>AND</code> the values 13 and 12, like this: <code>13 &amp; 12</code>. The result of this operation is 12 because the binary representation of 12 is 1100, and the binary representation of 13 is 1101.
+<blockquote><pre>
+   1101     //13
+ &amp; 1100     //12
+   ------
+   1100     //12
+</pre></blockquote>
+
+If both operand bits are 1, the <code>AND</code> function sets the resulting bit to 1; otherwise, the resulting bit is 0. So, when you line up the two operands and perform the <code>AND</code> function, you can see that the two high-order bits (the two bits farthest to the left of each number) of each operand are 1. Thus, the resulting bit in the result is also 1. The low-order bits evaluate to 0 because either one or both bits in the operands are 0.
+<p>
+When both of its operands are numbers, the <code>|</code> operator performs the <i>inclusive or</i> operation, and <code>^</code> performs the <i>exclusive or</i> (<code>XOR</code>) operation. <i>Inclusive or</i> means that if either of the two bits is 1, the result is 1.  The following table shows the results of an <i>inclusive or</i> operation.
+</p>
+
+<!-- TABLE -->
+<table cellpadding="5">
+<caption><strong>The Bitwise Inclusive OR Function</strong></caption>
+<tr>
+<th>Bit in <code>op1</code></th>
+<th>Corresponding Bit in <code>op2</code></th>
+<th>Result</th>
+</tr>
+
+<tr>
+    <td>0</td><td>0</td><td>0</td>
+</tr>
+
+<tr>
+    <td>0</td><td>1</td><td>1</td>
+</tr>
+
+<tr>
+    <td>1</td><td>0</td><td>1</td>
+</tr>
+
+<tr>
+    <td>1</td><td>1</td><td>1</td>
+</tr>
+
+</table>
+
+<p>
+<i>Exclusive or</i> means that if the two operand bits are different the result is 1; otherwise the result is 0.  The following table shows the results of an <i>exclusive or</i> operation.
+</p>
+
+<!-- TABLE -->
+<table cellpadding="5">
+<caption><strong>The Bitwise Exclusive OR (XOR) Function</strong></caption>
+<tr>
+<th>Bit in <code>op1</code></th>
+<th>Corresponding Bit in <code>op2</code></th>
+<th>Result</th>
+</tr>
+
+<tr>
+    <td>0</td><td>0</td><td>0</td>
+</tr>
+
+<tr>
+    <td>0</td><td>1</td><td>1</td>
+</tr>
+
+<tr>
+    <td>1</td><td>0</td><td>1</td>
+</tr>
+
+<tr>
+    <td>1</td><td>1</td><td>0</td>
+</tr>
+</table>
+
+<p>
+And finally, the complement operator (<code>~</code>) inverts the value of each bit of the operand: If the operand bit is 1, the result is 0; if the operand bit is 0, the result is 1. For example, <code>~1011</code> (11) is <code>0100</code> (4).
+</p>
+Among other things, bitwise manipulations are useful for managing sets of boolean flags. Suppose, for example, that your program had several boolean flags that indicated the state of various components in your program: is it visible, is it draggable, and so on. Rather than define a separate boolean variable to hold each flag, you could define a single variable, <code>flags</code>, for all of them. Each bit within <code>flags</code> would represent the current state of one of the flags. You would then use bit manipulations to set and to get each flag. 
+<br/><br/>
+First, set up constants that indicate the various flags for your program. These flags should each be a different power of 2 to ensure that each bit is used by only one flag. Define a variable, <code>flags</code>, whose bits would be set according to the current state of each flag. The following code sample initializes <code>flags</code> to 0, which means that all flags are <code>false</code> (none of the bits are set):
+
+<blockquote><pre>
+static final int VISIBLE = 1;
+static final int DRAGGABLE = 2;
+static final int SELECTABLE = 4;
+static final int EDITABLE = 8;
+
+int flags = 0;
+</pre></blockquote>
+To set the visible flag when something became visible, 
+you would use this statement:
+<blockquote><pre>
+flags = flags | VISIBLE;
+</pre></blockquote>
+To test for visibility, you could then write:
+<blockquote><pre>
+if ((flags &amp; VISIBLE) == VISIBLE) {
+    ...
+}
+</pre></blockquote>
+Here's the complete program,
+<a target="_blank" href="resources/BitwiseDemo.java"><font color="#bb000f"><code>BitwiseDemo</code></font></a><a target="_blank" href="resources/BitwiseDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>, that includes this code.
+<blockquote><pre>
+public class BitwiseDemo {
+
+    static final int VISIBLE = 1;
+    static final int DRAGGABLE = 2;
+    static final int SELECTABLE = 4;
+    static final int EDITABLE = 8;
+
+    public static void main(String[] args) {
+        int flags = 0;
+
+        flags = flags | VISIBLE;
+        flags = flags | DRAGGABLE;
+
+        if ((flags &amp; VISIBLE) == VISIBLE) {
+            if ((flags &amp; DRAGGABLE) == DRAGGABLE) {
+                 System.out.println(&quot;Flags are Visible &quot;
+                                    + &quot;and Draggable.&quot;);
+            }
+        }
+
+        flags = flags | EDITABLE;
+
+        if ((flags &amp; EDITABLE) == EDITABLE) {
+           System.out.println(&quot;Flags are now also Editable.&quot;);
+        }
+    }
+}
+</pre></blockquote>
+Here's the output from this program:
+<blockquote><pre>
+Flags are Visible and Draggable.
+Flags are now also Editable.
+</pre></blockquote>
+
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

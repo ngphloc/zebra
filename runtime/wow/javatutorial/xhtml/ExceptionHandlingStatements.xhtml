@@ -1,0 +1,51 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Exception Handling Statements</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Language Basics
+</font>
+
+<h2>Exception Handling Statements</h2>
+<blockquote>
+
+The Java programming language provides a mechanism known as <em>exceptions</em> to help programs report and handle errors. When an error occurs, the program throws an exception. What does this mean? It means that the normal flow of the program is interrupted and that the runtime environment attempts to find an <em>exception handler</em>&#8212;a block of code that can handle a particular type of error. The exception handler can attempt to recover from the error or, if it determines that the error is unrecoverable, provide a gentle exit from the program. 
+<p>
+Three statements play a part in handling exceptions:
+<ul>
+<li>
+The <em>try</em> statement identifies a block of statements within which an exception might be thrown.
+</li>
+<li>
+The <em>catch</em> statement must be associated with a <code>try</code> statement and identifies a block of statements that can handle a particular type of exception. The statements are executed if an exception of a particular type occurs within the <code>try</code> block.
+</li>
+<li>
+The <em>finally</em> statement must be associated with a <code>try</code> statement and identifies a block of statements that are executed regardless of whether or not an error occurs within the <code>try</code> block.
+</li>
+</ul>
+</p>
+
+Here's the general form of these statements:
+<blockquote><pre>
+try {
+    <em>statement(s)</em>
+} catch (<em>exceptiontype</em> <em>name</em>) {
+    <em>statement(s)</em>
+} finally {
+    <em>statement(s)</em>
+}
+</pre></blockquote>
+This has been a brief overview of the statements provided by the Java programming language used in reporting and handling errors. However, other factors and considerations, such as the difference between runtime and checked exceptions and the hierarchy of exceptions classes, which represent various types of exceptions, play a role in using the exception mechanism. The chapter 
+<a href="HandlingExceptions" class="conditional">Handling Errors with Exceptions</a><a href="HandlingExceptions" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> provides a complete discussion on this subject.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

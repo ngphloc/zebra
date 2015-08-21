@@ -1,0 +1,244 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>The Graph Author Tool</h2>
+
+<p>
+The Graph Author is the main authoring tool for the concept structure.
+It lets you create a concept hierarchy and concept relationships of
+different types. We briefly describe the use of the Graph Author here,
+using a series of screen dumps to guide you through the process.
+</p>
+<ul>
+<li>
+When you start the Graph Author it first asks for a login and password.
+(If you start it from the
+<a href="amt" class="conditional">application management tool</a>
+you do not have to authenticate yourself in the graph author as you
+already did that in AMT.)
+As of WOW! 2.0 authors are identified and have separate work spaces.
+The manager can add new authors, either as part of the
+<a href="installation" class="conditional">initial installation</a>
+or at a later time using the
+<a href="firstconfig" class="conditional">configuration menu</a>.
+</li>
+<li>
+After logging in the
+<a href="/wow/tutorial/images/graphauthor.gif" target="_blank"
+class="unconditional">main Graph Author window</a>
+appears. It consists of four main parts:
+<ul>
+<li>
+Top left: menus and buttons. The functions of WOW are all available
+through the ten buttons <img src="/wow/tutorial/images/graphauthorbuttons.gif" />
+<br clear="all" />
+<img src="/wow/tutorial/images/graphnewbutton.gif" align="left" />
+Create a new WOW! application. You are asked for a confirmation if
+this action would wipe out edits in the application you are editing.
+<br clear="all" />
+<img src="/wow/tutorial/images/graphopenbutton.gif" align="left" />
+Open an WOW! application. Through a pop-up dialog you can select
+one of the applications for which you are an author.
+<br clear="all" />
+<img src="/wow/tutorial/images/graphsavebutton.gif" align="left" />
+Save the current WOW! application. This saves the application in
+the Graph Author format. It then also generates the concepts and 
+<a href="rules" class="conditional"><object name="tutorial.adaptationrule" type="text/wow" /> rules</a>.
+that define the adaptation behavior associated with the application.
+<br clear="all" />
+<img src="/wow/tutorial/images/graphcommitbutton.gif" align="left" />
+Commit the saved application to the running WOW! system.
+Only when edits are "committed" do they affect end-users that log in to
+the application. You can safely edit an application and save results
+a number of times. You only "commit" the application when you are confident
+that the structure is right and that end-users should start using it.
+<br clear="all" />
+<img src="/wow/tutorial/images/graphnewconceptbutton.gif" align="left"/>
+Add a new concept to the concept hierarchy, as a child of the currently
+highlighted concept in the hierarchy. (More about this below.)
+<br clear="all" />
+<img src="/wow/tutorial/images/graphfilterbutton.gif" align="left" />
+Filter concept relations lets you select which types of relationships are
+drawn in the "graph window". It only affects the drawing, not the resulting
+graph structure. All relationships that are defined are always saved,
+but filtering some types out of the view keeps the display more
+understandable.
+<br clear="all" />
+<img src="/wow/tutorial/images/graphcyclesbutton.gif" align="left" />
+The graph of concept relationships produced by the Graph Author may
+contain cycles. In some cases this may lead to an infinite loop
+in the execution of the
+<object name="tutorial.adaptationrule" type="text/wow" />
+<a href="rules" class="conditional">rules</a>:
+by the WOW! engine. The cycle-detection button checks whether there
+is a possible danger for such loops. The test is <em>conservative</em>,
+meaning that it may sometimes give a false warning, but it will not
+miss any rule execution cycles that could be present.
+<br clear="all" />
+<img src="/wow/tutorial/images/graphnozoombutton.gif" align="left" />
+Zoom 1:1 resets the zoom level in the "graph window" to normal.
+<br clear="all" />
+<img src="/wow/tutorial/images/graphzoominbutton.gif" align="left" />
+Zoom in: enlarges the "graph window" zoom factor, showing a smaller
+part of the graph with larger icons.
+<br clear="all" />
+<img src="/wow/tutorial/images/graphzoomoutbutton.gif" align="left" />
+Zoom out: shows more of the concept relationship graph by reducing
+the size of the icons. This is most useful for getting the overall
+picture of very large concept structure.
+</li>
+<li>
+Top right: through a pull-down menu you can select the
+type for newly created concept relationships.
+The <a href="/wow/tutorial/images/crtlist.gif" target="_blank" class="unconditional">list
+that comes with this WOW! release and tutorial</a> contains a number
+of concept relationship types for illustration purposes,
+as well as some commonly used ones like "knowledge_propagation",
+"knowledge update" and "prerequisite".
+The list is extracted from a list of templates.
+You can <a href="templates" class="conditional">create your
+own templates</a>, but that requires a thorough knowledge of the
+WOW! adaptation rule language.
+</li>
+<li>
+Bottom left: the "concept hierarchy" window.
+It shows the concept structure in a way that vaguely resembles the
+windows explorer. We have an
+<a href="/wow/tutorial/images/concepthierarchy.gif" target="_blank" class="unconditional">example
+concept hierarchy</a> for this tutorial.
+The concept hierarchy defines <em>knowledge propagation</em> relationships,
+so it is important to place concepts correctly in the hierarchy when
+creating them. The hierarchy is also used to automatically generate
+certain views like a table of contents.
+</li>
+<li>
+Bottom right: this is the "graph window", showing the graph of
+concept relationships (possibly filtered). It does not show the
+knowledge propagation through the concept hierarchy, not even
+when this type of relationship is explicitly not filtered out.
+</li>
+</ul>
+</li>
+<li>
+When creating a new concept the
+<a href="/wow/tutorial/images/graphaddconcept.gif"
+target="_blank" class="unconditional">add concept dialog box</a> pops up.
+For each concept four fields need to be filled out:
+<ul>
+<li>
+<b>Name</b>: This is the name of the concept. It is shown in the
+concept hierarchy and used in the concept relationships and
+<object name="tutorial.adaptationrule" type="text/wow" />
+<a href="rules" class="conditional">rules</a>.
+</li>
+<li>
+<b>Description</b>: An explanation intended for your self or other
+authors to know what the concept is about. This description is not used
+by WOW! in any way.
+</li>
+<li>
+<b>Resource</b>: If the concept is directly associated with a page
+the URL of that page is given. For a local file the resource starts
+with "file:/" and has a path relative to the root of the WOW! root.
+The page you are reading now is "file:/tutorial/xml/graphauthor.xhtml".
+</li>
+<li>
+<b>Template</b>: There are five "standard" templates for a concept:
+a <em>page concept</em> has an associated resource and has a
+<em>knowledge update</em> relationship with itself to indicate
+that there is a knowledge increase associated with the page access;
+a <em>container page concept</em> is the same, but used for the top
+level page of a chapter (or section) for which the knowledge comes
+mostly from reading the "sub" page concepts and not from the top-level
+page itself;
+an <em>abstract concept</em> does not have a resource or knowledge
+update relationship but is used to group concepts in the concept
+hierarchy, hence it is like a container page but without having a page;
+a <em>fragment concept</em> is used to perform the
+selection of files to include for a conditionally included object,
+and a <em>test concept</em> is used to represent a multiple-choice
+test (and its results).
+</li>
+</ul>
+</li>
+<li>
+In advanced mode the
+<a href="/wow/tutorial/images/graphaddconceptadvanced.gif" target="_blank"
+class="unconditional">form for adding and editing a concept</a>
+contains a number of additional fields:
+<ul>
+<li>The <b>title</b> indicates how the concept name is presented
+(in the navigation menu in the left frame in this tutorial for instance).
+</li>
+<li>The <b>no commit</b> flag is intended for future use and can
+be ignored for now.
+</li>
+<li>The <b>stability</b> property lets you control whether intended
+<a href="usermodel" class="conditional">user model</a> updates are
+a) allowed to go through (stability not enabled) b) allowed only once,
+after which the attribute values are always frozen, or c) allowed only
+once per session, or d) allowed only when the given
+Boolan expression becomes false.
+</li>
+</ul>
+</li>
+<li>
+By right-clicking on a concept in the concept hierarchy a pop-up
+menu appears that lets you cut and paste the concept (to move it
+to a different position), delete or edit it, to create a new
+concept as a child of the current node in the hierarchy,
+or to assign resources to a concept used for the conditional
+inclusion of objects.
+</li>
+<li>
+Concepts can be dragged to the "graph window" in order to include
+them in a concept relationship. Concepts in the "graph window" can
+be dragged to any location to make the graph more pleasing.
+To drag a concept inside the "graph window" you should not click
+exactly on the center of the rectangle representing the concept.
+</li>
+<li>
+To draw concept relationships you
+must start by clicking in the center of the rectangle and then
+dragging an arrow to the destination of the relationship.
+A relationship is created of the current type, so the type should
+be selected first, before you draw the relationship.<br />
+Double-clicking on the arrow opens a box in which a number can be typed.
+This can have a meaning like a percentage of knowledge to transfer,
+or a required percentage of knowledge for a <em>prerequisite</em>
+to be fulfilled.<br />
+By clicking on an arrow and then pressing the "delete" key
+a relationship is deleted.
+</li>
+<li>
+By right-clicking on a concept in the "graph window" you can
+create a unary relationship (from the concept to itself).
+A <a href="/wow/tutorial/images/unarypopup.gif" target="_blank"
+class="unconditional">unary relation dialog box</a>
+lets you select which unary relation to create.
+An example is a <em>knowledge update</em> that associates a knowledge
+update with the access to a page.
+</li>
+</ul>
+<p>
+An easy way to explore the Graph Author is to have the manager
+make you an author of this tutorial. You can then explore
+the tutorial concept structure using the Graph Author, edit
+the concepts and concept relationships, etc.
+</p>
+
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

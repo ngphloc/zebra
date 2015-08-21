@@ -1,0 +1,87 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Visibility or Presentation of Text Fragments</title>
+<link rel="stylesheet" type="text/css" href="/wow/tutorial/tutorial.css" />
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>Visibility/Presentation of Fragments</h2>
+
+<p>
+Sometimes you may wish to conditionally emphasize, deemphasize
+or even hide a fragment of text. Instead of conditionally including
+different objects in order to obtain this effect, you can control
+the presentation of a <tt>&lt;span&gt;</tt> item through the
+<tt>visibility</tt> attribute of a concept:
+</p>
+<ul>
+<li>
+A fragment is conditionally presented in different ways by putting
+a <tt>&lt;span&gt;</tt> tag around it as follows:<br />
+<tt>&lt;span id="tutorial.fragmentconcept" class="conditional"&gt;</tt>The presentation style of this sentence may vary.<tt>&lt;/span&gt;</tt><br />
+</li>
+<li>
+The integer attribute <tt>visibility</tt> of the concept <tt>tutorial.fragmentconcept</tt> determines how the text is presented. Currently the values that have a meaning are multiples of 10, between 0 and 100.
+</li>
+<li>
+When the <tt>visibility</tt> is 0 the fragment is not shown at all.
+It is included in the page as a comment, so it can be seen when viewing
+the html source of the page.
+</li>
+<li>
+When the <tt>visibility</tt> is 10 a <em>tooltip</em> is presented.
+The icon for this must be supplied by the application, so you can use
+your own favorite icon.
+Also, a piece of Javascript code must be placed in a file that is
+included in the page:
+<br />
+<pre>
+ function showTip(img, tip)
+ { tiptext = document.getElementById(tip);
+   tiptext.style.visibility = 'visible';
+   tipimg = document.getElementById(img);
+   tiptext.style.left = tipimg.offsetLeft + 25;
+   teptext.style.top = tipimg.offsetTop;
+ }
+ function hideTip(tip)
+ { tiptext = document.getElementById(tip);
+   tiptext.style.visibility = 'hidden';
+ }
+ </pre>
+ </li>
+ <li>
+ The presentation of other values can be defined in an external
+ style sheet. The "conditional" class of the <tt>&lt;span&gt;</tt>
+ tag is replaced by a class "cN" where N is the <tt>visibility</tt> value.
+(The "c" is added because class values must be strings, not numbers.)
+ An example of a possible style sheet is:<br />
+<pre>
+.c20	{font-size:smaller;}
+.c30	{color: #808080; background-color: #EEEEEE;}
+.c40	{font-style: normal;}
+.c50	{font-size:larger;}
+.c60	{font-style: italic;}
+.c70	{text-decoration: underline;}
+.c80	{text-transform: uppercase;}
+.c90	{font-weight: bold;}
+.c100	{color: #FFFFFF; background-color: #5F9EA0;}
+</pre>
+</li>
+</ul>
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</body>
+</html>

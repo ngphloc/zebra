@@ -1,0 +1,70 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Control Flow Statements</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Language Basics
+</font>
+
+<h2>Control Flow Statements</h2>
+<blockquote>
+
+When you write a program, you type statements into a file. Without control flow statements, the interpreter executes these statements in the order they appear in the file from left to right, top to bottom. You can use <i>control flow statements</i> in your programs to conditionally execute statements, to repeatedly execute a block of statements, and to otherwise change the normal, sequential flow of control. For example, in the following code snippet, the <code>if</code> statement conditionally executes the <code>System.out.println</code> statement within the braces, based on the return value of <code>Character.isUpperCase(aChar)</code>:
+
+<blockquote><pre>
+char aChar;
+...
+if (Character.isUpperCase(aChar)) {
+    System.out.println("The character " + aChar
+                       + " is upper case.");
+}
+</pre></blockquote>
+
+The Java programming language provides several control flow statements, which are listed in the following table.
+<p>
+<table cellpadding="5">
+<caption><strong>Control-Flow Statements</strong></caption>
+<tr>
+<th align="left">Statement Type</th>
+<th align="left">Keyword</th>
+</tr>
+
+<tr>
+    <td>looping</td>
+    <td><code>while</code>, <code>do-while</code>, <code>for</code></td>
+</tr>
+<tr>
+    <td>decision making</td>
+    <td><code>if-else</code>, <code>switch-case</code></td>
+</tr>
+<tr>
+    <td>exception handling</td>
+    <td><code>try-catch-finally</code>, <code>throw</code></td>
+</tr>
+<tr>
+    <td>branching</td>
+    <td><code>break</code>, <code>continue</code>, <code>label:</code>, <code>return </code></td>
+</tr>
+</table>
+</p>
+
+In the sections that follow, you will see the following notation to describe the general form of a control flow statement:
+<blockquote><pre>
+control flow statement details {
+    statement(s)
+}
+</pre></blockquote>
+
+Technically, the braces, <code>{</code> and <code>}</code>, are not required if the block contains only one statement. However, we recommend that you always use <code>{</code> and <code>}</code>, because the code is easier to read and it helps to prevent errors when modifying code.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

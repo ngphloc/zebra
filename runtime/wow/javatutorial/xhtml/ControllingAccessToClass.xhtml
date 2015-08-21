@@ -1,0 +1,352 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Controlling Access to Members of a Class</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Classes and Inheritance
+</font>
+
+<h2>
+Controlling Access to Members of a Class
+</h2>
+<blockquote>
+An access level determines whether other classes can use a particular
+member variable or call a particular method.  The Java programming
+language supports four access specifiers for member variables and
+methods: <code>private</code>, <code>protected</code>, 
+<code>public</code>, and, if left unspecified, package private.
+The following table shows the access permitted by each specifier.
+
+<blockquote>
+<table border="1">
+<caption>Access Levels</caption>
+<tr>
+<th>Specifier</th>
+<th>Class</th>
+<th>Package</th>
+<th>Subclass</th>
+<th>World</th>
+</tr>
+<tr>
+<td><code>private</code></td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<td>no specifier</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<td><code>protected</code></td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td><code>public</code></td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</table>
+</blockquote>
+
+The first column indicates whether the class itself has access to
+the memeber defined by the access level.  As you can see, a class
+always has access to its own members.  The second column indicates
+whether classes in the same package as the class (regardless of
+their parentage) have access to the member.  A package groups
+related classes and interfaces and provides access protection
+and namespace management.  You'll learn more about packages in
+the section
+<a href="UsingPackages" class="conditional">Creating and Using Packages</a><a href="UsingPackages" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.  The third column indicates whether subclasses of the class &#151;
+regardless of which package they are in &#151; have access to the member.
+The fourth column indicates whether all classes have access to the member.
+<br/><br/>
+Access levels affect you in two ways.  First, when you use
+classes that come from another source, such as the classes in the
+Java platform, access levels determine which members of those classes
+your classes can use.  Second, when you write a class, you need to
+decide what access level every member variable and every method in
+your class should have.  One way of thinking about access levels is in
+terms of the API: access levels directly affect the public API of
+a class and determine which members of the class can be used by
+other classes.  You need to put as much effort into deciding the
+access level for a member as you put into making other decisions about
+your class's API, such as naming methods.
+<br/><br/>
+Let's look at a collection of classes and see access levels in action.
+The following figure shows the four classes that comprise this
+example and how they are related.
+<p><center><img src="images/classes-access.gif" align="bottom" alt="Classes and Packages of the Example Used to Illustrate Access Levels"/></center></p>
+</blockquote>
+
+<h3>Class Access Level</h3>
+<blockquote>
+Here's a listing of a class, <code>Alpha</code>, whose members
+other classes will be trying to access.  <code>Alpha</code> contains
+one member variable and one method per access level.  <code>Alpha</code>
+is in a package called <code>One</code>:
+
+<blockquote><pre>
+package One;
+public class Alpha {
+    //member variables
+    private   int iamprivate = 1;
+              int iampackage = 2;  //package access
+    protected int iamprotected = 3;
+    public    int iampublic = 4;
+
+    //methods
+    private void privateMethod() {
+        System.out.println("iamprivate Method");
+    }
+    void packageMethod() { //package access
+        System.out.println("iampackage Method");
+    }
+    protected void protectedMethod() {
+        System.out.println("iamprotected Method");
+    }
+    public void publicMethod() {
+        System.out.println("iampublic Method");
+    }
+
+    public static void main(String[] args) {
+        Alpha a = new Alpha();
+        a.privateMethod();   //legal
+        a.packageMethod();   //legal
+        a.protectedMethod(); //legal
+        a.publicMethod();    //legal
+
+        System.out.println("iamprivate: "
+            + a.iamprivate);    //legal
+        System.out.println("iampackage: "
+            + a.iampackage);    //legal
+        System.out.println("iamprotected: "
+            + a.iamprotected"); //legal
+        System.out.println("iampublic: "
+            + a.iampublic);     //legal
+    }
+}
+</pre></blockquote>
+
+As you can see, <code>Alpha</code> can refer to all its member variables
+and all its methods, as shown by the Class column in the preceding
+table.  The output from this program is:
+
+<blockquote><pre>
+iamprivate Method
+iampackage Method
+iamprotected Method
+iampublic Method
+iamprivate: 1
+iampackage: 2
+iamprotected: 3
+iampublic: 4
+</pre></blockquote>
+
+A member's access level determines which <em>classes</em> have
+access to that member, not which <em>instances</em> have access.
+So, for example, instances of the same class have access to one
+another's private members.  Thus, we can add to the <code>Alpha</code>
+class an instance method that compares the current <code>Alpha</code>
+object (<code>this</code>) to another object, based on their
+<code>iamprivate</code> variables:
+
+<blockquote><pre>
+package One;
+public class Alpha {
+    ...
+    public boolean isEqualTo(Alpha anotherAlpha) {
+        if (this.iamprivate == anotherAlpha.iamprivate) {
+        //legal
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+</pre></blockquote>
+
+</blockquote>
+<h3>Package Access Level</h3>
+<blockquote>
+Now consider the following class, <code>DeltaOne</code>, which
+is in the same package as <code>Alpha</code>.  The methods and
+the variables this class can use are predicted by the
+Package column in the preceding table.
+
+<blockquote><pre>
+package One;
+public class DeltaOne {
+    public static void main(String[] args) }
+        Alpha a = new Alpha();
+        //a.privateMethod();  //illegal
+        a.packageMethod();    //legal
+        a.protectedMethod();  //legal
+        a.publicMethod();     //legal
+        //System.out.println("iamprivate: "
+        //  + a.iamprivate);   //illegal
+        System.out.println("iampackage: "
+            + a.iampackage);   //legal
+        System.out.println("iamprotected: "
+            + a.iamprotected); //legal
+        System.out.println("iampublic: "
+            + a.iampublic);    //legal
+    }
+}
+</pre></blockquote>
+
+<code>DeltaOne</code> cannot refer to the <code>iamprivate</code>
+variable or invoke <code>privateMethod</code> but can access the
+other members of <code>Alpha</code>.  If you remove the comment
+from the lines of code that are commented out and try to compile
+the class, the compiler will generate errors.  Here's the output
+from the program when you run it as shown:
+
+<blockquote><pre>
+iampackage Method
+iamprotected Method
+iampublic Method
+iampackage: 2
+iamprotected: 3
+iampublic: 4
+</pre></blockquote>
+
+</blockquote>
+<h3>Subclass Access Level</h3>
+<blockquote>
+The next class, <code>AlphaTwo</code>, is a subclass of <code>Alpha</code>
+but is in a different package.  You can predict what member variables
+and methods it can use by looking at the Subclass column in the previous
+table:
+
+<blockquote><pre>
+package two;
+import One.*;
+public class AlphaTwo extends Alpha {
+    public static void main(String[] args) {
+        Alpha a = new Alpha();
+        //a.privateMethod();   //illegal
+        //a.packageMethod();   //illegal
+        //a.protectedMethod(); //illegal
+        a.publicMethod()       //legal
+
+        //System.out.println("iamprivate: "
+        //   + a.iamprivate);    //illegal
+        //System.out.println("iampackage: "
+        //   + a.iampackage);    //illegal
+        //System.out.println("iamprotected: "
+        //   + a.iamprotected);  //illegal
+        System.out.println("iampublic "
+            + a.iampublic);      //legal
+
+        AlphaTwo a2 = new AlphaTwo();
+        a2.protectedMethod();   //legal
+        System.out.println("iamprotected: "
+            + a2.iamprotected); //legal
+    }
+}
+</pre></blockquote>
+ 
+
+Note that <code>AlphaTwo</code> <em>cannot</em> call
+<code>protectedMethod</code> or access <code>iamprotected</code>
+on the <code>Alpha</code> instance (it's superclass) but <em>can</em>
+call <code>protectedMethod</code> and access <code>iamprotected</code>
+on an instance of <code>AlphaTwo</code> or an instance of a subclass
+of <code>AlphaTwo</code>.  In other words, the protected access
+level allows a subclass to refer to a protected member only through
+an object reference that is the same type as the class or one of its
+subclasses.  The output displayed when running <code>AlphaTwo</code> is:
+ 
+<blockquote><pre>
+iampublic Method
+iampublic: 4
+iamprotected Method
+iamprotected: 3
+</pre></blockquote>
+
+</blockquote>
+<h3>World Access Level</h3>
+<blockquote>
+Finally, <code>DeltaTwo</code> is not related through the class
+hierarchy to <code>Alpha</code> and is in a different package than
+<code>Alpha</code>. As the World column in the preceding table shows,
+<code>DeltaTwo</code> can access only the public members of
+<code>Alpha</code>:
+
+<blockquote><pre>
+package Two;
+import One.*;
+public class DeltaTwo {
+    public static void main(String[] args) {
+        Alpha alpha = new Alpha();
+        //alpha.privateMethod();   //illegal
+        //alpha.packageMethod();   //illegal
+        //alpha.protectedMethod(); //illegal
+        alpha.publicMethod();      //legal
+        //System.out.println("iamprivate: "
+        //   + a.iamprivate);      //illegal
+        //System.out.println("iampackage: "
+        //   + a.iampackage);      //illegal
+        //System.out.println("iamprotected: "
+        //   + a.iamprotected);    //illegal
+        System.out.println("iampublic: "
+            + a.iampublic);        //legal
+    }
+}
+</pre></blockquote>
+Here's the output from <code>DeltaTwo</code>:
+
+<blockquote><pre>
+iampublic Method
+iampublic: 4
+</pre></blockquote>
+
+<blockquote><hr/><strong>: </strong>If other programmers use your class, you want to ensure that errors
+from misuse cannot happen.  Access levels can help you do this.
+The following tips can help you decide what access level is
+appropriate for a particular member.
+<ul>
+<li>Use the most restrictive access level that makes sense for a
+particular member.  Use <code>private</code> unless you have a good
+reason not to.
+</li>
+<li>Avoid public member variables except for constants. 
+<font color="green">
+[PENDING: Insert footnote: Many of the examples in the tutorial
+use public member variables.  Examples and non-production code
+don't have to live up to the rigid design standards that an API does.]
+</font>
+Public member variables tend to link you to a particular implementation
+and can lead to bugs and misuse. Furthermore, if a member variables
+can be changed only by calling a method, you can notify other classes
+or objects of the change.  Notification is impossible if you allow
+public access to a member variable.  You might decide to grant
+public access if doing so gives you significant performance gains.
+</li>
+<li>Limit the number of protected and package member variables.</li>
+<li>If a member variable is a JavaBeans<sup><font size="-2">TM</font></sup></li>
+property, it must be privat3e.
+</ul>
+<hr/></blockquote>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

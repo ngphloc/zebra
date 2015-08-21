@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!ELEMENT testFile (concepts, questions, parameters, students?)>
+<!ATTLIST testFile
+	totalQuestion CDATA #IMPLIED
+	lastUse CDATA #REQUIRED
+	fileName CDATA #REQUIRED
+	name CDATA #REQUIRED
+	course CDATA #REQUIRED
+	type (activity | exam) #REQUIRED
+	execution (classic | adaptive) #REQUIRED
+	path CDATA #REQUIRED
+	enable (true | false) #REQUIRED
+>
+<!ELEMENT concepts (concept+)>
+<!ATTLIST concepts
+	abstractConcept CDATA #IMPLIED
+>
+<!ELEMENT questions (questionsFile+)>
+<!ATTLIST questions
+	numberOfFiles CDATA #REQUIRED
+>
+<!ELEMENT parameters (runningParameters, irtParameters?)>
+<!ELEMENT students (student*)>
+<!ELEMENT concept EMPTY>
+<!ATTLIST concept
+	value CDATA #REQUIRED
+>
+<!ELEMENT questionsFile (question+)>
+<!ATTLIST questionsFile
+	numberOfQuestions CDATA #REQUIRED
+	path CDATA #REQUIRED
+	concept CDATA #REQUIRED
+>
+<!ELEMENT runningParameters (presentationParameters, htmlParameters, evaluationParameters)>
+<!ELEMENT irtParameters (start, continuation, stop)>
+<!ELEMENT student EMPTY>
+<!ATTLIST student
+	login CDATA #REQUIRED
+	make CDATA #REQUIRED
+	canRepeat (true | false) #REQUIRED
+	score CDATA #REQUIRED
+	finish (true | false) #REQUIRED
+	theta CDATA #IMPLIED
+	standardError CDATA #IMPLIED
+>
+<!ELEMENT question EMPTY>
+<!ATTLIST question
+	codeQuestion CDATA #REQUIRED
+>
+<!ELEMENT presentationParameters (showInitialInfo, questionsOrder, answersOrder, showQuestionCorrection, verbose, showCorrectAnswers, timeOfAnswer, repeatWithoutAnswer, showFinalInfo)>
+<!ELEMENT htmlParameters (bgColor, background, titleColor)>
+<!ELEMENT evaluationParameters (incorrectAnswer, withoutAnswer, knowledgePercentage)>
+<!ELEMENT start EMPTY>
+<!ATTLIST start
+	initialProficiency CDATA #REQUIRED
+>
+<!ELEMENT continuation EMPTY>
+<!ATTLIST continuation
+	irtModel (1 | 2 | 3) #REQUIRED
+>
+<!ELEMENT stop EMPTY>
+<!ATTLIST stop
+	value (standardError | numberItemsAdministred) #REQUIRED
+	standardError CDATA #IMPLIED
+	numberItemsAdministred CDATA #IMPLIED
+>
+<!ELEMENT showInitialInfo EMPTY>
+<!ATTLIST showInitialInfo
+	value (true | false) #REQUIRED
+>
+<!ELEMENT questionsOrder EMPTY>
+<!ATTLIST questionsOrder
+	value (RANDOM | SEQUENTIAL) #REQUIRED
+>
+<!ELEMENT answersOrder EMPTY>
+<!ATTLIST answersOrder
+	value (RANDOM | SEQUENTIAL) #REQUIRED
+>
+<!ELEMENT showQuestionCorrection EMPTY>
+<!ATTLIST showQuestionCorrection
+	value (true | false) #REQUIRED
+>
+<!ELEMENT verbose EMPTY>
+<!ATTLIST verbose
+	value (true | false) #REQUIRED
+>
+<!ELEMENT showCorrectAnswers EMPTY>
+<!ATTLIST showCorrectAnswers
+	value (true | false) #REQUIRED
+>
+<!ELEMENT timeOfAnswer EMPTY>
+<!ATTLIST timeOfAnswer
+	value CDATA #REQUIRED
+>
+<!ELEMENT repeatWithoutAnswer EMPTY>
+<!ATTLIST repeatWithoutAnswer
+	value (true | false) #REQUIRED
+>
+<!ELEMENT showFinalInfo EMPTY>
+<!ATTLIST showFinalInfo
+	value (true | false) #REQUIRED
+>
+<!ELEMENT bgColor EMPTY>
+<!ATTLIST bgColor
+	value CDATA #REQUIRED
+>
+<!ELEMENT background EMPTY>
+<!ATTLIST background
+	value CDATA #REQUIRED
+>
+<!ELEMENT titleColor EMPTY>
+<!ATTLIST titleColor
+	value CDATA #REQUIRED
+>
+<!ELEMENT incorrectAnswer EMPTY>
+<!ATTLIST incorrectAnswer
+	value CDATA #REQUIRED
+	penalize (true | false) #REQUIRED
+>
+<!ELEMENT withoutAnswer EMPTY>
+<!ATTLIST withoutAnswer
+	value CDATA #REQUIRED
+	penalize (true | false) #REQUIRED
+>
+<!ELEMENT knowledgePercentage EMPTY>
+<!ATTLIST knowledgePercentage
+	value CDATA #REQUIRED
+>

@@ -1,0 +1,105 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Creating and Using Interfaces</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Interfaces and Packages
+</font>
+
+<h2>
+Creating and Using Interfaces
+</h2>
+<blockquote>
+<!--Creating and Using an Interface-->
+
+The section 
+<!--What Is an Interface?-->
+<a href="WhatIsInterface" class="conditional">What Is an Interface?</a><a href="WhatIsInterface" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>
+provided an introduction to interfaces. 
+This section goes further, showing you how to 
+create and to use interfaces and talking about 
+why you would use an interface instead of a class.
+<p>
+An <i>interface</i> defines a protocol of behavior that can be 
+implemented by any class anywhere in the class hierarchy. An interface 
+defines a set of methods but does not implement them. A class 
+that implements the interface agrees to implement all the methods 
+defined in the interface, thereby agreeing to certain behavior.
+</p>
+
+<blockquote><hr/><strong>Definition: </strong>An <i>interface</i> 
+  is a named collection of method definitions (without implementations). 
+<hr/></blockquote>
+
+<p>
+Because an interface is simply a list of unimplemented, and 
+therefore abstract, methods, you might wonder how an interface 
+differs from an abstract class. The differences are significant. 
+</p>
+
+<ul>
+  <li>An interface cannot implement any methods, whereas an abstract 
+  class can.</li>
+  <li>A class can implement many interfaces but can have only one 
+  superclass.</li>
+  <li>An interface is not part of the class hierarchy. Unrelated 
+  classes can implement the same interface.</li>
+</ul>
+
+<p>
+Let's set up the example we'll be using in this section. Suppose 
+that you have written a class that can watch stock prices coming 
+over a data feed. This class allows other classes to register 
+to be notified when the value of a particular stock changes. First, 
+your class, which we'll call <code>StockApplet</code>, would implement 
+a method that lets other objects register for notification:
+</p>
+
+<blockquote>
+<pre>
+public class StockMonitor {
+     public void watchStock(StockWatcher watcher,
+                            TickerSymbol tickerSymbol,
+                            BigDecimal delta) {
+     ...
+     }
+}
+</pre>
+</blockquote>
+
+<p>
+The first argument to this method is a <code>StockWatcher</code> 
+object. <code>StockWatcher</code> is the name of an interface whose 
+code you will see in the next section. That interface declares 
+one method: <code>valueChanged</code>. An object that wants to 
+be notified of stock changes must be an instance of a class that 
+implements this interface and thus implements the 
+<code>valueChanged</code> method. The other two arguments provide 
+the symbol of the stock to watch and the amount of change that the 
+watcher considers interesting enough to be notified of. When the 
+<code>StockMonitor</code> class detects an interesting change, 
+it calls the <code>valueChanged</code> method of the watcher.
+</p>
+The <code>watchStock</code> method ensures, through the data type 
+of its first argument, that all registered objects implement the 
+<code>valueChanged</code> method. It makes sense to use an interface 
+data type here because it matters only that registrants implement 
+a particular method. If <code>StockMonitor</code> had used a class 
+name as the data type, that would artificially force a class relationship 
+on its users. Because a class can have only one superclass, it 
+would also limit what type of objects can use this service. By 
+using an interface, the registered objects class could be anything &#151;
+<code>Applet</code> or <code>Thread</code> &#151; for instance,
+thus allowing any class anywhere in the class hierarchy to use this service.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

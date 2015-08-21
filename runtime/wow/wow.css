@@ -1,0 +1,21 @@
+body {
+	/* background-color: #E2D6D0; */
+	background-color: #5D8D9A;
+	/* color: #3A9DCE; */
+	color: #101010;
+}
+h2 {
+	color: #E32472;
+}
+
+div.lightback {
+	background-color: #E2D6D0;
+}
+
+h3 {
+	color: #101010;
+}
+
+a {
+	color: #505050;
+}

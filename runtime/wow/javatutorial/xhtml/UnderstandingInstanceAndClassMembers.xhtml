@@ -1,0 +1,117 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Understanding Instance and Class Members</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Classes and Inheritance
+</font>
+
+<h2>
+Understanding Instance and Class Members
+</h2>
+<blockquote>
+You learned briefly about instance and class members in 
+<a href="LanguageBasics" class="conditional">Language Basics</a><a href="LanguageBasics" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>. This section shows you how to declare and use class and 
+instance members. The following class, <code>AClass</code>, 
+declares an instance member variable, an instance method, a 
+class variable, a class method, and <code>main</code>, which 
+is a class method:
+
+<blockquote><pre>
+public class AClass {
+
+    public int instanceInteger = 0;
+    public int instanceMethod() {
+        return instanceInteger;
+    }
+    public static int classInteger = 0;
+    public static int classMethod() {
+        return classInteger;
+    }
+
+    public static void main(String[] args) {
+        AClass anInstance = new AClass();
+        AClass anotherInstance = new AClass();
+
+        //Refer to instance members through an instance.
+        anInstance.instanceInteger = 1;
+        anotherInstance.instanceInteger = 2;
+        System.out.println(anInstance.instanceMethod());
+        System.out.println(
+        anotherInstance.instanceMethod());
+
+        //Illegal to refer directly to instance members
+        //from a class method
+        //System.out.println(instanceMethod());    //illegal
+        //System.out.println(instanceInteger);     //illegal
+
+        //Refer to class members through the class...
+        AClass.classInteger = 7;
+        System.out.println(classMethod());
+
+        //...or through an instance.
+        System.out.println(anInstance.classMethod());
+
+        //Instances share class variables
+        anInstance.classInteger = 9;
+        System.out.println(anInstance.classMethod());
+        System.out.println(anotherInstance.classMethod());
+    }
+}
+</pre></blockquote>
+
+Here's the output from the program:
+<blockquote><pre>
+1
+2
+7
+7
+9
+9
+</pre></blockquote>
+
+The following figure shows the objects and member variables 
+in the program and how they are related.
+<p><center><img src="images/classes-aclass.gif" width="498" height="420" align="bottom" alt="Objects in the AClass Example"/></center></p>
+Unless otherwise specified, a member declared within a class 
+is an instance member. So <code>instanceInteger</code> and 
+<code>instanceMethod</code> are both instance members. The 
+runtime system creates one copy of each instance variable 
+for each instance of a class created by a program. Thus, the 
+objects referred to by <code>anInstance</code> and 
+<code>anotherInstance</code> each have their own copy 
+of <code>instanceInteger</code>. You can access an instance 
+member and call an instance method only through a reference 
+to an instance. If you remove the two slashes from the 
+beginning of the lines marked <code>illegal</code> and 
+try to compile the program, the compiler will display an error message.
+
+<br/><br/>
+A <i>class member</i> is declared by using the 
+<code>static</code> modifier. Besides the <code>main</code> 
+method, <code>AClass</code> declares one class variable and 
+one class method, called <code>classInteger</code> and 
+<code>classMethod</code>, respectively. The runtime system 
+allocates a class variable once per class, regardless of 
+the number of instances created of that class. The system 
+allocates memory for a class variable the first time it 
+encounters the class. All instances of that class share 
+the same copy of the class’s class variables. You can 
+access class variables either through an instance or 
+through the class itself. Similarly, class methods can 
+be invoked on the class or through an instance reference. 
+Note that when the program changes the value of <code>classVariable</code>, 
+its value changes for all instances.
+
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

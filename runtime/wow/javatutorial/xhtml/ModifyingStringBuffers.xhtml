@@ -1,0 +1,155 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Modifying String Buffers</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>Modifying String Buffers</h2>
+<blockquote>
+As you know, string buffers and string builders can change their content after they've been created. Both classes provide various methods for modifying their data. The following table summarizes the methods used to modify a string buffer. The same methods exist in the <code>StringBuilder</code> class, but return string builders instead of string buffers.
+
+<p>
+<table border="1" cellpadding="4" cellspacing="3">
+<caption><font size="-1"><sup>*</sup></font>Methods for Modifying a String Buffer</caption>
+<tr>
+<th width="40%">Method</th><th>Description</th>
+</tr>
+
+<tr>
+<td>
+<code>
+StringBuffer append(boolean)
+<br/>
+StringBuffer append(char)
+<br/>
+StringBuffer append(char[])
+<br/>
+StringBuffer append(char[], int, int)
+<br/>
+StringBuffer append(double)
+<br/>
+StringBuffer append(float)
+<br/>
+StringBuffer append(int)
+<br/>
+StringBuffer append(long)
+<br/>
+StringBuffer append(Object)
+<br/>
+StringBuffer append(String)
+</code>
+</td>
+<td>
+Appends the argument to this string buffer. The data is converted to a string before the append operation takes place.
+</td>
+</tr>
+<tr>
+<td>
+<code>
+StringBuffer delete(int, int)**
+<br/>
+StringBuffer deleteCharAt(int)**
+</code>
+</td>
+<td>
+Deletes the specified character(s) in this string buffer.
+</td>
+</tr>
+<tr>
+<td>
+<code>
+StringBuffer insert(int, boolean)
+<br/>
+StringBuffer insert(int, char)
+<br/>
+StringBuffer insert(int, char[])
+<br/>
+StringBuffer insert(int, char[], int, int)**
+<br/>
+StringBuffer insert(int, double)
+<br/>
+StringBuffer insert(int, float)
+<br/>
+StringBuffer insert(int, int)
+<br/>
+StringBuffer insert(int, long)
+<br/>
+StringBuffer insert(int, Object)
+<br/>
+StringBuffer insert(int, String)
+</code>
+</td>
+<td>
+Inserts the second argument into the string buffer. The first integer argument indicates the index before which the data is to be inserted. The data is converted to a string before the insert operation takes place.
+</td>
+</tr>
+<tr>
+<td>
+<code>
+StringBuffer replace(int, int, String)**
+<br/>
+void setCharAt(int, char)
+</code>
+</td>
+
+<td>
+Replaces the specified character(s)
+in this string buffer.
+</td>
+</tr>
+<tr>
+<td>
+<code>
+StringBuffer reverse()
+</code>
+</td>
+<td>
+Reverses the sequence of characters in this string buffer.
+</td>
+</tr>
+</table>
+</p>
+
+<font size="-1">
+* Methods marked with ** were added to the StringBuffer class for Java 2 SDK 1.2.
+</font>
+
+<p>
+You saw the <code>append</code> method in action in the <code>StringsDemo</code> program at the beginning of this section. Here's a program, <code>InsertDemo</code>, that uses the <code>insert</code> method to insert a string into a string buffer:
+
+<blockquote><pre>
+public class InsertDemo {
+    public static void main(String[] args) {
+        StringBuffer palindrome = new StringBuffer(
+                        &quot;A man, a plan, a canal; Panama.&quot;);
+        palindrome.insert(15, &quot;a cat, &quot;);
+        System.out.println(palindrome);
+    }
+}
+</pre></blockquote>
+
+The output from this program is still a palindrome:
+
+<blockquote><pre>
+A man, a plan, a cat, a canal; Panama.
+</pre></blockquote>
+
+With <code>insert</code>, you specify the index <em>before</em> which you want the data inserted. In the example, 15 specifies that "<code>a cat</code>, " is to be inserted before the first <code>a</code> in <code>a canal</code>. To insert data at the beginning of a string buffer, use an index of
+0. To add data at the end of a string buffer, use an index equal to the current length of the string buffer or use <code>append</code>.
+</p>
+
+If the operation that modifies a string buffer causes the size of the string buffer to grow beyond its current capacity, the string buffer allocates more memory. As mentioned previously, memory allocation is a relatively expensive operation, and you can make your code more efficient by initializing a string buffer's capacity to a reasonable first guess.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>The WOW! Page Format</h2>
+
+<p>
+Pages in WOW! applications are written in
+<a href="http://www.w3.org/MarkUp/" target="_blank">XHTML</a>,
+with or without an extension for special WOW! tags (explained below).
+Every WOW! page that uses the special tags must start with the following line:
+<pre>
+&lt;!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd"&gt;
+</pre>
+(where the <tt>/wow</tt> prefix is the <em>path</em>
+parameter in the
+<a href="wowcontext" class="conditional">WOW! configuration</a>).
+The content of the page uses a default namespace of xhtml:
+<pre>
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+...
+&lt;/html&gt;
+</pre>
+</p>
+
+<p>
+The content of a page should follow the XHTML or the XHTML+WOW
+format. (WOW! does not validate the syntax, but it does use an XML
+parser and will therefore not accept pages that are not valid XML.)
+We have a short description of the
+<a href="xhtml" class="conditional">differences between HTML and XHTML</a>
+and also a description on <a href="standardxhtml" class="conditional">how
+to use WOW! with standard XHTML</a>.
+WOW! pages (in the XHTML+WOW format) start with the <tt>&lt;html&gt;</tt>
+tag but do not have a <tt>&lt;head&gt;</tt>
+or <tt>&lt;body&gt;</tt> tag, because these are automatically generated.
+The header contains an automatically generated (link to a)
+style sheet that defines
+the link colors, and the body tag defines the background for the page.
+WOW! pages may contain four types of special elements:
+tags to generate certain information, typically used in
+<a href="headerfooter" class="conditional">headers and footers</a>,
+tags to <a href="fragments" class="conditional">conditionaly include fragments</a>,
+<a href="objects" class="conditional">conditional objects</a>
+and <em>conditional links</em>.
+</p>
+
+<ul>
+<li>
+<a href="headerfooter" class="conditional">Headers and footers</a>
+are examples of the <em>unconditional</em> inclusion of objects,
+through the <tt>object</tt> tag, with a <tt>data</tt> attribute
+that is a URL pointing to the file to be included,
+for example:
+<pre>
+&lt;object data="../header.xhtml" type="text/wow" /&gt;
+</pre>
+There are special tags that are typically used in headers and footers
+but that can in fact be used anywhere in WOW! pages.
+Headers and footers are optional.
+</li>
+<li>
+<a href="fragments" class="conditional">Fragments</a>
+are conditionally included using the
+<tt>&lt;if&gt;</tt> tag.
+The content of a fragment must be a syntactically correct piece of XHTML+WOW
+code (possibly including other fragments), in which all the tags
+are properly nested. 
+</li>
+<li>
+Content can also be conditionally included using
+<a href="objects" class="conditional">conditional objects</a>.
+These are defined through the standard XHTML <tt>&lt;object&gt;</tt> tag,
+with the special type of <tt>text/wow</tt> and a <tt>name</tt> attribute
+that is a URL that refers to a concept. The advantages over conditional
+fragments are that no extension of XHTML is needed and that the same
+piece of content can be included in different pages without having to
+copy it.
+</li>
+<li>
+WOW! distinguishes three types of links: conditional, unconditional and external.
+<ul>
+<li>
+Conditional links are of the class "conditional". The destination
+can be a concept or a page. (The application's
+<a href="concepts" class="conditional">concept structure</a>
+connects concepts to pages. In most cases it makes no difference whether you
+create a link to a concept or to the corresponding page.)
+<pre>&lt;a href="tutorial.conceptname" class="conditional"&gt;...&lt;/a&gt;</pre>
+or
+<pre>&lt;a href="conceptname" class="conditional"&gt;...&lt;/a&gt;</pre>
+(in which the current application is assumed), or
+<pre>&lt;a href="pagename.xhtml" class="conditional"&gt;...&lt;/a&gt;</pre>
+or
+<pre>&lt;a href="http://site/pagename.xhtml" class="conditional"&gt;...&lt;/a&gt;</pre>
+are conditionally shown to or hidden from the end-user.
+The condition is part of the application's
+<a href="concepts" class="conditional">concept structure</a>.
+In the typical (but not required) color or link presentation scheme
+the link color of "desired" links depends on the "visited" status
+of the link destination. The default color scheme is blue (desirable,
+unvisited), purple (desirable, visited) and black (undesirable).
+WOW! allows different and much more complex color schemes as well.
+The end-user can choose different colors. Whatever the color scheme is,
+the "ColorConfig" form gives the end-user access to all the colors
+(but not to the conditions for choosing them).
+<br />
+It is possible to associate more than one page with a concept.
+This is done in exactly the same way as with
+<a href="objects" class="conditional">conditional objects</a>.
+Depending on conditions a different page can be shown for a single concept.
+We call this <em>adaptive link destinations</em>.
+When a new user registers for this tutorial the first ("welcome") concept
+has an adaptive link destination. The initial "readme" page you see as
+a new user is shown only once. As of the second visit a "welcome" page
+is shown instead.
+</li>
+<li>
+Links can be declared as "unconditional", in which case their
+presentation only depends on the "visited" status.
+These links can point to a concept or a page, just like conditional links.
+</li>
+<li>
+Links that are not conditional or unconditional are considered to be
+"external" links. They can be recognized by a different color
+(and possible underlining). By default the colors are bright red
+(unvisited) and dark red (visited).
+</li>
+</ul>
+</li>
+</ul>
+
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

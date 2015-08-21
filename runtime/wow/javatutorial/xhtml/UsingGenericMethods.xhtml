@@ -1,0 +1,64 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Defining and Using Generic Methods</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Classes and Inheritance
+</font>
+
+<h2>
+Defining and Using Generic Methods
+</h2>
+<blockquote>
+Not only types can be parameterized; methods can be 
+parameterized too. Static and non-static methods as 
+well as constructors can have type parameters. 
+<br/><br/>
+The syntax for declaring method type parameters is the
+ same as the syntax for generics. The type parameter 
+section is delimited by angle brackets and appears 
+before the method's return type. For example the 
+following <code>Collections</code> class method fills 
+a <code>List</code> of type <code>&lt;? super T&gt;</code> 
+with objects of type <code>T</code>:
+<blockquote><pre>
+static &lt;T&gt; void fill(List&lt;? super T&gt; list, T obj) 
+</pre></blockquote>
+
+Generic methods allow you to use type parameters to express 
+dependencies among the types of one or more arguments to a 
+method or its return type (or both). The type parameters 
+of generic methods generally are independent of any class 
+or interface-level type parameters. The algorithms defined 
+by the <code>Collections</code> class (described in the 
+section 
+<a href="Algorithms" class="conditional">Algorithms</a><a href="Algorithms" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>) make abundant use of generic methods.
+<br/><br/>
+One difference between generic types and generic methods is 
+that generic methods are invoked like regular methods. The 
+type parameters are inferred from the invocation context, 
+as in this invocation of the fill method:
+
+<blockquote><pre>
+public static void main(String[] args) {
+    List&lt;String&gt; list = new ArrayList&lt;String&gt;(10);
+    for (int i = 0; i &lt; 10; i++) {
+        list.add("");
+    }
+    String filler = args[0];
+    Collections.fill(list, filler);
+    ...
+}
+</pre></blockquote>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

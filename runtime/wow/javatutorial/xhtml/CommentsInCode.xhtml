@@ -1,0 +1,64 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Comments in Java Code</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Getting Started
+<br/>
+<b>Lesson</b>: Hello World Application
+</font>
+
+
+<h2>Comments in Java Code</h2>
+<blockquote>
+The bold characters in the following listing are comments.
+
+<blockquote>
+<pre>
+<b>
+/** 
+ * The HelloWorldApp class implements an application that
+ * simply displays "Hello World!" to the standard output.
+ */
+</b>
+class HelloWorldApp {
+    public static void main(String[] args) {
+        System.out.println("Hello World!"); <b>//Display the string.</b>
+    }
+}
+</pre>
+</blockquote>
+
+The Java language supports three kinds of comments:
+
+<dl>
+
+<dt>
+<code>/* <em>text</em> */</code>
+<dd> The compiler ignores everything from <code>/*</code> to <code>*/</code>.</dd>
+</dt>
+
+<dt>
+<code>/** <em>documentation</em> */</code>
+<dd>
+This indicates a documentation comment (<em>doc comment</em>, for short). The compiler ignores this kind of comment, just like it ignores comments that use <code>/*</code> and <code>*/</code>. The JDK <code>javadoc</code> tool uses doc comments when preparing automatically generated documentation.      For more information on <code>javadoc</code>, see the
+<a target="_blank" href="http://java.sun.com/products/JDK/tools/index.html"><font color="#009bbb">Java tool documentation</font></a>
+<a target="_blank" href="http://java.sun.com/products/JDK/tools/index.html"><img src="images/otherIcon.gif" width="11" height="11" border="0" align="middle" alt=" (outside of the tutorial)"/></a> .
+</dd>
+</dt>
+
+<dt> <code>// <em>text</em></code>
+<dd> The compiler ignores everything from <code>//</code> to the end of the line.</dd>
+</dt>
+
+</dl>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

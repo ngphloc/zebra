@@ -1,0 +1,47 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Implementing Applet Methods</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Getting Started
+<br/>
+<b>Lesson</b>: Hello World Applet
+</font>
+
+<h2>Implementing Applet Methods</h2>
+<blockquote>
+The bold lines of the following listing implement the <code>paint</code> method.
+
+<blockquote><pre>
+import java.applet.Applet;
+import java.awt.Graphics;
+
+public class HelloWorld extends Applet {
+    <b>public void paint(Graphics g) {
+        g.drawString("Hello world!", 50, 25);
+    }</b>
+}
+</pre></blockquote>
+
+<p>
+Every applet must implement one or more of the <code>init</code>, <code>start</code>, and <code>paint</code> methods. You'll learn about these methods in the
+<a href="OverviewOfApplets" class="conditional">Overview of Applets</a>
+<a href="OverviewOfApplets" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Getting Started trail)"/></a> lesson.
+</p>
+
+Besides the <code>init</code>, <code>start</code>, and <code>paint</code> methods, applets can implement two more methods that the browser calls when a major event occurs (such as leaving the applet's page): <code>stop</code> and <code>destroy</code>. Applets can implement any number of other methods, as well.
+
+<p>
+Returning to the above code snippet, the <code>Graphics</code> object passed into the <code>paint</code> method represents the applet's onscreen drawing context. The first argument to the <code>Graphics</code> <code>drawString</code> method is the string to draw onscreen. The second and third arguments are the (x,y) position of the lower left corner of the text onscreen. This applet draws the string "Hello world!" starting at location (50,25). The applet's coordinate system starts at (0,0), which is at the upper left corner of the applet's display area. You'll learn all about drawing to the screen in the 
+<a href="GUIwithSwing" class="conditional">Creating a GUI with JFC/Swing</a>
+<a href="GUIwithSwing" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Getting Started trail)"/></a> trail.
+</p>
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

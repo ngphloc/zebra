@@ -1,0 +1,146 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Data Types</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Language Basics
+</font>
+
+<h2>Data Types</h2>
+<blockquote>
+
+Every variable must have a data type. A variable's data type determines the values that the variable can contain and the operations that can be performed on it. For example, in the
+<a target="_blank" href="resources/MaxVariablesDemo.java"><font color="#bb000f"><code>MaxVariablesDemo</code></font></a>
+<a target="_blank" href="resources/MaxVariablesDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a> program, the declaration <code>int largestInteger</code> declares that <code>largestInteger</code> has an integer data type (<code>int</code>). Integers can contain only integral values (both positive and negative). You can perform arithmetic operations, such as addition, on integer variables.
+<br/><br/>
+The Java programming language has two categories of data types:
+<em>primitive</em> and <em>reference</em>. A variable of primitive type contains a single value of the appropriate size and format for its type: a number, a character, or a boolean value. For example, an integer value is 32 bits of data in a format known as two's complement, the value of a <code>char</code> is 16 bits of data formatted as a Unicode character, and so on.
+
+<p><center><img src="images/basics-primitiveVar.gif" width="159" height="26" align="bottom" alt="A variable of primitive type contains a value of a particular size and format."/></center></p>
+<br/><br/>
+The following table lists, by keyword, all of the primitive data types supported by the Java platform, their sizes and formats, and a brief description of each. The <code>MaxVariablesDemo</code> program declares one variable of each primitive type.
+
+<p>
+<table cellpadding="5">
+<caption><strong><strong>Primitive Data Types</strong></strong></caption>
+<tr>
+<th align="left">Keyword</th>
+<th align="left">Description</th>
+<th align="left">Size/Format</th>
+</tr>
+<tr><td colspan="3" align="center"><em>(integers)</em></td></tr>
+<tr><td><code>byte</code></td>
+    <td> Byte-length integer</td>
+    <td>8-bit two's complement</td>
+</tr>
+<tr><td><code>short</code></td>
+    <td>Short integer</td>
+    <td>16-bit two's complement</td>
+</tr>
+<tr><td><code>int</code></td>
+    <td>Integer</td>
+    <td>32-bit two's complement</td>
+</tr>
+<tr><td><code>long</code></td>
+    <td>Long integer</td>
+    <td>64-bit two's complement</td>
+</tr>
+<tr><td colspan="3" align="center"><em>(real numbers)</em></td></tr>
+<tr><td><code>float</code></td>
+    <td>Single-precision floating point</td>
+    <td>32-bit IEEE 754</td>
+</tr>
+<tr><td><code>double</code></td>
+    <td>Double-precision floating point</td>
+    <td>64-bit IEEE 754</td>
+</tr>
+<tr><td colspan="3" align="center"><em>(other types)</em></td></tr>
+<tr><td><code>char</code></td>
+    <td>A single character</td>
+    <td>16-bit Unicode character</td>
+</tr>
+<tr><td><code>boolean</code></td>
+    <td>A boolean value (<code>true</code> or <code>false</code>)</td>
+    <td>true or false</td>
+</tr>
+</table>
+</p>
+
+<blockquote><hr/><strong>Purity Tip: </strong>In other programming languages, the format and the size of primitive data types can depend on the system on which the program is running. In contrast, the Java programming language specifies the size and the format of its primitive data types. Hence, you don’t have to worry about system dependencies.
+<hr/></blockquote>
+
+<br/><br/>
+You can put a literal primitive value directly in your code. For example, if you need to assign the value 4 to an integer variable you can write this:
+
+<blockquote><pre>
+int anInt = 4;
+</pre></blockquote>
+
+The digit 4 is a literal integer value. The following table gives 
+some examples of literal values of various primitive types.
+<p>
+<table width="400" border="1" cellspacing="3" cellpadding="4">
+<caption><strong>Examples of Literal Values and Their Data Types</strong></caption>
+  <tr>
+    <td><b>Literal</b></td> 
+    <td><b>Data Type</b></td> 
+  </tr>
+  <tr>
+    <td>178</td> 
+    <td><code>int</code></td> 
+  </tr>
+  <tr>
+    <td>8864L</td> 
+    <td><code>long</code></td> 
+  </tr>
+  <tr>
+    <td><code>37.266</code></td> 
+    <td><code>double</code></td> 
+  </tr>
+  <tr>
+    <td>37.266D</td> 
+    <td><code>double</code></td> 
+  </tr>
+  <tr>
+    <td><code>87.363F</code></td> 
+    <td><code>float</code></td> 
+  </tr>
+  <tr>
+    <td>26.77e3</td> 
+    <td><code>double</code></td> 
+  </tr>
+  <tr>
+    <td><EM>'</EM>
+    <code>c</code> <EM>'</EM></td> 
+    <td><code>char</code></td> 
+  </tr>
+  <tr>
+    <td><code> true</code></td> 
+    <td>
+    <code>boolean</code></td> 
+  </tr>
+  <tr>
+    <td><code>false</code></td> 
+    <td><code>boolean</code></td> 
+  </tr>
+</table>
+</p>
+
+<p>
+Generally speaking, a series of digits with no decimal point is typed as an integer. You can specify a long integer by putting an <code>'L'</code> or <code>'l'</code> after the number. <code>'L'</code> is preferred as it cannot be confused with the digit <code>'1'</code>. A series of digits with a decimal point is of type double. You can specify a float by putting an <code>'f'</code> or <code>'F'</code> after the number. A literal character value is any single Unicode character between single quote marks. The two boolean literals are simply <code>true</code> and <code>false</code>.
+</p>
+
+Arrays, classes, and interfaces are <em>reference</em> types. The value of a reference type variable, in contrast to that of a primitive type, is a reference to (an address of) the value or set of values represented by the variable (see the following figure). A reference is called a pointer, or a memory address in other languages. The Java programming language does not support the explicit use of addresses like other languages do. You use the variable's name instead.
+
+<p><center><img src="images/basics-referenceVar.gif" width="317" height="50" align="bottom" alt="A variable of reference type contains a reference to (an address of) an object or an array. "/></center></p>
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

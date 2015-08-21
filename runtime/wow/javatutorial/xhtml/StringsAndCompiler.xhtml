@@ -1,0 +1,77 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Strings and the Compiler</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>Strings and the Compiler</h2>
+<blockquote>
+
+The compiler uses the <code>String</code> and the <code>StringBuffer</code> classes behind the scenes to handle literal strings and concatenation. As you know, you specify literal strings between double quotes:
+
+<blockquote><pre>
+"Hello World!"
+</pre></blockquote>
+
+You can use literal strings anywhere you would use a <code>String</code> object. For example, <code>System.out.println</code> accepts a string argument, so you could use a literal string there:
+
+<blockquote><pre>
+System.out.println("Might I add that you look lovely today.");
+</pre></blockquote>
+
+You can also use String methods directly from a literal string:
+
+<blockquote><pre>
+int len = "Goodbye Cruel World".length();
+</pre></blockquote>
+
+Because the compiler automatically creates a new string object for every literal
+string it encounters, you can use a literal string to initialize a string:
+
+<blockquote><pre>
+String s = "Hola Mundo";
+</pre></blockquote>
+
+The preceding construct is equivalent to, but more efficient than, this one,
+which ends up creating two identical strings:
+
+<blockquote><pre>
+String s = new String("Hola Mundo"); //don't do this
+</pre></blockquote>
+
+You can use + to concatenate strings:
+
+<blockquote><pre>
+String cat = "cat";
+System.out.println("con" + cat + "enation");
+</pre></blockquote>
+
+Behind the scenes, the compiler uses string buffers to implement concatenation. The preceding example compiles to:
+
+<blockquote><pre>
+String cat = "cat";
+System.out.println(new StringBuffer().append("con").
+append(cat).append("enation").toString());
+</pre></blockquote>
+
+You can also use the + operator to append to a string values that are not themselves strings:
+
+<blockquote><pre>
+System.out.println("You're number " + 1);
+</pre></blockquote>
+
+The compiler implicitly converts the nonstring value (the integer 1 in the example) to a string object before performing the concatenation operation.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

@@ -1,0 +1,52 @@
+userid=abraham,     name=Abraham Lincolh,      password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+
+userid=socrates,    name=Socrates,             password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=platon,      name=Platon,               password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=aristote,    name=Aristote,             password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=montesquieu, name=Montesquieu,          password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+
+userid=newton,      name=Issac Newton,         password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=einstein,    name=Albert Einstein,      password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=adamsmith,   name=Adam Smith,           password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=leonardo,    name=Leonardo de Vinci,    password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=hayek,       name=Friedrich Hayek,      password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=keynes,      name=Maynard Keynes,       password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=fermat,      name=Fermat theorem,       password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=pythagoras,  name=Pythagorean theorem,  password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+
+userid=dumas,       name=Alexandre Dumas,      password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=jacklondon,  name=Jack London,          password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=mozard,      name=Wolfgang Mozart,      password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=chopin,      name=Frederic Chopin,      password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=vangogh,     name=Vincent van Gogh,     password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=picasso,     name=Pablo Picasso,        password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=tomhank,     name=Tom Hank,             password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=taylor,      name=Elizabeth Taylor,     password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=tomcruise,   name=Tom Cruise,           password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=anelka,      name=Nicolas Anelka,       password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+
+userid=nguyendu,    name=Nguyen Du,            password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=xuandieu,    name=Xuan Dieu,            password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=hxhuong,     name=Ho Xuan Huong,        password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=nguyenbinh,  name=Nguyen Binh,          password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=hanmactu,    name=Han Mac Tu,           password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=chelanvien,  name=Che Lan Vien,         password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=hodzenh,     name=Ho Dzenh,             password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=huycan,      name=Huy Can,              password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=buigiang,    name=Bui Giang,            password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=ddbon,       name=Dong Duc Bon,         password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=tcson,       name=Trinh Cong Son,       password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+
+userid=kinhdich,    name=Kinh Dich,            password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=kinhthi,     name=Kinh Thi,             password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=tonvu,       name=Ton Vu,               password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=tlquan,      name=Tin Lang Quan,        password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=chuhoi,      name=Chu Hoi,              password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+
+userid=hophi,       name=Ho Phi,               password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=lhxung,      name=Lenh Ho Xung,         password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=ltphung,     name=Luc Tieu Phung,       password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+userid=luuhuong,    name=Luu Huong soai,       password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+
+userid=guest,       name=Guest student,        password=test, email=xyz@hcmus.edu.vn, course=javatutorial, directory=javatutorial
+

@@ -1,0 +1,97 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>WOW! Supporting Software Environment</h2>
+
+<p>
+WOW! consists of Java Servlets. While it may be possible to
+make WOW! work with any environment that supports Java Servlets,
+we recommend the environment described here.
+We only describe the server-side requirements.
+There are no client-side requirements other than a fully functional
+operating system and WWW browser.
+</p>
+
+<h3>Operating System</h3>
+
+<p>
+In theory any operating system can be used if it supports a Java 2
+environment. The WOW! team has (successfully) tested WOW! on different
+versions of Microsoft Windows (up to Windows XP)
+as well as on Linux (Redhat versions 7 and 8 and Fedora core 4, 5 and 6).
+</p>
+
+<h3>Java Environment</h3>
+
+<p>
+WOW! requires the use of Sun's Java 2 environment (J2SE).
+It works with the Java SDK versions 1.4 and newer.
+(Older versions do not work, and alternatives like Kaffe do not work either.)
+Successive releases of the Java SDK have
+different new features (new classes and/or methods), and deprecate
+and abandon previously existing features.
+This may cause problems with newer Java SDK versions.
+We will include support for newer Java SDK versions in newer WOW! versions.
+The Java SDK can be downloaded from
+<a href="http://java.sun.com/j2se/downloads.html"
+target="_blank">http://java.sun.com/j2se/downloads.html</a>.
+Note that you must install the SDK not just the JRE (which is the runtime
+environment only). <a href="compile" class="conditional">Compiling WOW!</a>
+is part of the installation procedure
+and thus requires the SDK.
+</p>
+
+<h3>Web Server</h3>
+
+<p>
+WOW! needs a Webserver that can call Java Servlets.
+While several such Webservers exist they are all configured in
+different ways. We recommend the use of the
+<a href="http://tomcat.apache.org/" target="_blank">Tomcat</a>
+webserver.
+Although officially obsolete using Sun's JWSDP still makes
+perfect sense because it offers an easy way to configure
+Tomcat. We have successfully tested WOW! with versions 1.5 and 2.0 of JWSDP.
+When installing JWSDP you need to download and install an
+adapted TomCat server separately.
+JWSDP can be downloaded from
+<a href="http://java.sun.com/webservices/downloads/webservicespack.html"
+target="_blank">http://java.sun.com/webservices/downloads/webservicespack.html</a>.
+The adapted TomCat server can be downloaded from
+<a href="http://java.sun.com/webservices/containers/tomcat_for_JWSDP_1_5.html"
+target="_blank">http://java.sun.com/webservices/containers/tomcat_for_JWSDP_1_5.html</a>.
+(WOW! itself does not use any JWSDP features. It runs on a "plain" Tomcat,
+but the version that comes with JWSDP makes the configuration easier.)
+</p>
+
+<h3>Database System</h3>
+
+<p>
+The use of a database with WOW! is <em>optional</em>.
+It does not seem to help the performance, but it does allow you
+to query the database with user profile information.
+Database server support works with Microsoft Windows as well as Linux.
+(We do not test it frequently though.)
+Note that in order for WOW! to work with Database server you need to
+create the appropriate Database server user, (which you can choose
+through the
+<a href="firstconfig" class="conditional">WOW! configuration tool</a>
+but which is not created on the Database server through the
+WOW! configuration tool).
+</p>
+
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

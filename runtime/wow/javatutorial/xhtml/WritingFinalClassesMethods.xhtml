@@ -1,0 +1,100 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Writing Final Classes and Methods</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Classes and Inheritance
+</font>
+
+<h2>
+Writing Final Classes and Methods
+</h2>
+<blockquote>
+</blockquote>
+<h3>Final Classes</h3>
+<blockquote>
+You can declare that your class is final, that is, that your class 
+cannot be subclassed. You might want to do this for two reasons: 
+(1) to increase system security by preventing system subversion, 
+and (2) for reasons of good object-oriented design. 
+<ul>
+<li>
+<b>Security</b>: One mechanism that hackers use to subvert 
+systems is to create a subclass of a class and to then substitute 
+the subclass for the original. The subclass looks and feels like 
+the original class but does vastly different things, possibly
+ causing damage or getting into private information. To prevent 
+this kind of subversion, you can declare your class to be final 
+and thereby prevent any subclasses from being created. The 
+<code>String</code> class is a final class for just this reason. 
+This class is so vital to the operation of the Java platform 
+that it must guarantee that whenever a method or an object 
+uses a <code>String</code>, it gets exactly a <code>java.lang.String</code> 
+and not another kind of string. This ensures that all strings 
+have no strange, inconsistent, undesirable, or unpredictable 
+properties. 
+<br/><br/>
+If you try to compile a subclass of a final class, the compiler 
+prints an error message and refuses to compile your program. In 
+addition, the Java runtime system ensures that the subversion is 
+not taking place at the bytecode level. It does this by checking 
+to make sure that a class is not a subclass of a final class. 
+</li>
+<li>
+<b>Design</b>: You may also wish to declare a class as final 
+for object-oriented design reasons. You may think that your class 
+is "perfect" or that, conceptually, your class should have no 
+subclasses. 
+</li>
+</ul>
+To specify that your class is final, use the keyword <code>final</code> 
+before the <code>class</code> keyword in your class declaration. For 
+example, if you wanted to declare your (perfect) <code>ChessAlgorithm</code> 
+class as final, its declaration should look like this: 
+
+<blockquote><pre>
+final class ChessAlgorithm {
+    ...
+}
+</pre></blockquote>
+
+Any subsequent attempts to subclass <code>ChessAlgorithm</code> 
+will result in a compiler error.
+</blockquote>
+
+<h3>Final Methods</h3>
+<blockquote>
+If declaring an entire class <code>final</code> is too heavy-handed 
+for your needs, you can declare some or all of the class's methods 
+final instead. Use the <code>final</code> keyword in a method 
+declaration to indicate that the method cannot be overridden 
+by subclasses. The <code>Object</code> class does this; some 
+of its methods are final, and some are not. 
+<br/><br/>
+You might wish to make a method final if it has an implementation 
+that should not be changed and it is critical to the consistent 
+state of the object. For example, instead of making your 
+<code>ChessAlgorithm</code> class final, you might want the 
+<code>nextMove</code> method to be final instead: 
+
+<blockquote><pre>
+class ChessAlgorithm {
+    ...
+    final void nextMove(ChessPiece pieceMoved,
+                        BoardLocation newLocation) {
+        ...
+    }
+    ...
+}
+</pre></blockquote>
+
+</blockquote>
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>How Do These Concepts Translate into Code?</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object-Oriented Programming Concepts</font>
+
+<h2>How Do These Concepts Translate into Code?
+</h2>
+
+<blockquote>
+Now that you have a conceptual understanding of object-oriented programming let's look at how these concepts get translated into code. The following figure is a snapshot of the graphical user interface (GUI) presented by an example named <code>ClickMeApp</code>, which features a custom GUI component named <code>ClickMe</code>. A spot appears when you click the mouse inside the <code>ClickMe</code> component's area.
+
+<p><center><img src="images/concepts-ClickMeApp.gif" width="220" height="152" align="bottom" alt="The GUI of the ClickMeApp application."/></center></p>
+
+<p>
+The <code>ClickMeApp</code> example is not large, but if you don't have much experience with programming, you might find the code daunting. We don't expect you to understand everything in this example right away, and this section won't explain every detail. The intent is to expose you to some source code and to associate it with the concepts and terminology you just learned. You will learn more details in later chapters.
+</p>
+</blockquote>
+
+<h3>Compiling and Running the Example</h3>
+<blockquote>
+
+The <code>ClickMeApp</code> example has three source files: 
+
+<a target="_blank" href="resources/ClickMeApp.java"><font color="#bb000f"><code>ClickMeApp.java</code></font></a><a target="_blank" href="resources/ClickMeApp.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>,
+<a target="_blank" href="resources/ClickMe.java"><font color="#bb000f"><code>ClickMe.java</code></font></a><a target="_blank" href="resources/ClickMe.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>, and
+<a target="_blank" href="resources/Spot.java"><font color="#bb000f"><code>Spot.java</code></font></a><a target="_blank" href="resources/Spot.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>.
+These source files contain the code for three classes named <code>ClickMeApp</code>, <code>ClickMe</code>, and <code>Spot</code>. In addition to these classes, the example uses some classes provided by the Java platform.
+
+<p>
+You can compile the <code>ClickMeApp.java</code>, <code>ClickMe.java</code>, and <code>Spot.java</code> files by invoking the Java compiler (<code>javac</code>) on <code>ClickMeApp.java</code>. If you're having problems compiling this example, see [PENDING: link to compiler troubleshooting will go here.]
+</p>
+
+<p>
+You can run the <code>ClickMeApp</code> example as an application, using either Java Web Start or the <code>java</code> command. To run a pre-compiled version with Java Web Start, direct your browser to this URL:
+<blockquote><pre>
+<a target="_blank" href="http://java.sun.com/docs/books/tutorialJWS/java/concepts/ex5/ClickMeApp.jnlp"><font color="#009bbb">http://java.sun.com/docs/books/tutorialJWS/java/concepts/ex5/ClickMeApp.jnlp</font></a><a target="_blank" href="http://java.sun.com/docs/books/tutorialJWS/java/concepts/ex5/ClickMeApp.jnlp"><img src="images/otherIcon.gif" width="11" height="11" border="0" align="middle" alt=" (outside of the tutorial)"/></a></pre></blockquote>
+</p>
+
+<p>
+If you prefer to run your own copy, you can use the command <code>java ClickMeApp</code>. If you're having problems running this example, see [PENDING: link to execution troubleshooting will go here.]
+<blockquote><hr/><strong>Note: </strong><code>ClickMeApp</code> depends on API introduced in J2SE 5.0. It will not run or compile under earlier versions of the JDK and runtime.
+<hr/></blockquote>
+</p>
+
+</blockquote>
+
+<h3>Objects in the Example</h3>
+
+<blockquote>
+Many objects play a part in the <code>ClickMeApp</code> example. The most obvious ones are the ones with an onscreen representation: the window containing the GUI, the label describing what the user should do, the custom component that paints the initially empty rectangle, and the spot that's eventually painted by that custom component.
+<p>
+These objects are created when the user launches the application. The application's <code>main</code> method creates an object to represent the entire application, and that object creates others to represent the window, label, and custom component.
+</p>
+<p>
+The object representing the custom component in turn creates an object to represent the spot on the screen. Every time you click the mouse in the custom component, the component moves the spot by changing the spot object's <i>x</i>,<i>y</i> location and repainting itself. The spot object does not display itself; the custom component paints a circle based on information contained within the spot object. 
+</p>
+<p>
+Other, nonvisible objects also play a part in the application. 
+Three objects represent the three colors used in the custom 
+component (black, white, and olive green), an event object 
+represents the user action of clicking the mouse, and so on.
+</p>
+</blockquote>
+
+<h3>Classes in the Example</h3>
+<blockquote>
+As you may have guessed, the object that represents the application is an instance of the <code>ClickMeApp</code> class, the object that represents the custom component is an instance of <code>ClickMe</code>, and the spot is represented by an instance of <code>Spot</code>.
+<br/><br/>
+Because the object that represents the spot on the screen is very simple, let's look at its code. The <code>Spot</code> class declares three instance variables: <code>size</code> contains the spot's radius, <code>x</code> contains the spot's current horizontal location, and <code>y</code> contains the spot's current vertical location. It also declares two methods and a <I>constructor</I> &#151; a subroutine used to initialize new objects created from the class.
+
+<blockquote><pre>
+public class Spot {
+    //instance variables
+    public int x, y;
+    private int size;
+    
+    //constructor
+    public Spot() {
+        x = -1;
+        y = -1;
+        size = 1;
+    }
+
+    //methods for access to the size instance variable    
+    public void setSize(int newSize) {
+        if (newSize >= 0) {
+            size = newSize;
+        }
+    } 
+    public int getSize() {
+        return size;
+    }
+}
+</pre></blockquote>
+
+You can recognize a constructor because it has the same name as the class. The <code>Spot</code> constructor initializes all three of the object's variables. The <code>x</code> and <code>y</code> variables are set to <code>-1</code>, indicating that the spot is not onscreen when the application starts up. The <code>size</code> variable is set to a reasonable value, in this case 1.
+<p>
+The <code>setSize</code> and <code>getSize</code> methods provide a way for other objects to read and change the value of the size instance variable, without giving other objects access to the actual variable.
+</p>
+<br/>
+The application's <code>ClickMe</code> object uses a <code>Spot</code> object to track whether to paint a spot, and where. Here's the code from the <code>ClickMe</code> class that declares and creates the <code>Spot</code> object: 
+
+<blockquote><pre>
+private Spot spot = null;
+...
+spot = new Spot();
+</pre></blockquote>
+The first line shown declares a variable named spot with a data type of <code>Spot</code>; it initializes the variable's value to <code>null</code>. The keyword <code>null</code> is used to specify an undefined value for variables that refer to objects. The next line shown creates the object. The <code>new</code> keyword allocates memory space for the object. <code>Spot()</code> calls the constructor you saw previously. In the next figure, the <code>Spot</code> class is on the left, and a newly initialized instance of <code>Spot</code> is on the right.
+
+<p><center><img src="images/concepts-spots.gif" width="508" height="179" align="bottom" alt="The figure on the left is a representation of the Spot class. The figure on the right is a Spot object just after its creation. "/></center></p>
+
+</blockquote>
+
+
+<h3>Messages in the Example</h3>
+<blockquote>
+As you know, object A can use a message to request that object B do something, and a message has three components:
+<ul>
+<li> The object to which the message is addressed</li>
+<li> The name of the method to perform</li>
+<li> Any parameters the method needs</li>
+</ul>
+
+Here are two lines of code from the <code>ClickMe</code> class:
+<blockquote><pre>
+g2d.setColor(Color.WHITE);
+g2d.fillRect(0, 0, getWidth() - 1, getHeight() - 1);
+</pre></blockquote>
+
+Both are messages from the <code>ClickMe</code> object to an object named <code>g2d</code> &#151; a <code>Graphics2D</code> object that is essential for painting onscreen. This object is provided to the component when the painting system instructs the component to paint itself. The first line sets the color to white; the second fills a rectangle the size of the component, thus painting the extent of the component's area white.
+<br/><br/>
+The following figure highlights each part of the first message to <code>g2d</code>.
+<p><center><img src="images/concepts-messageParts.gif" width="420" height="64" align="BOTTOM" alt="The parts of a message in the ClickMe class."/></center></p>
+
+</blockquote>
+
+<h3>Inheritance in the Example</h3>
+<blockquote>
+To paint itself onscreen, an object must be a component. This means that the object must be an instance of a class that derives from the <code>Component</code> class provided by the Java platform. 
+<p>
+The <code>ClickMe</code> object is an instance of the <code>ClickMe</code> class, which is declared like this:
+<blockquote><pre>
+public class ClickMe<font color="#6b7402"><B> extends JComponent</B></font> implements MouseListener {
+   ...
+}
+</pre></blockquote>
+</p>
+
+The <code>extends JComponent</code> clause makes <code>ClickMe</code> a subclass of <code>JComponent</code>, a class that derives from the <code>Component</code> class. <code>ClickMe</code> inherits a lot of functionality from <code>Component</code> and <code>JComponent</code>, including the ability to paint itself, to have a standard border around its edges, and to register listeners to be notified of mouse events. Along with these benefits, the <code>ClickMe</code> class has certain obligations: Its painting code must be in a standard place such as the <code>paintComponent</code> method, it must specify its preferred and minimum sizes, and so on:
+<blockquote><pre>
+public ClickMe() {
+    ...
+    setPreferredSize(<I>aDimensionObject</I>);
+    setMinimumSize(<I>anotherDimensionObject</I>);
+    ...
+}
+
+public void paintComponent(Graphics g) {
+    ... // <I>ClickMe's painting code here</I>
+}
+</pre></blockquote>
+</blockquote>
+
+<h3>Interfaces in the Example</h3>
+<blockquote>
+The <code>ClickMe</code> component responds to mouse clicks by displaying a spot at the click location. Any object can detect mouse clicks on a component. It just needs to implement the <code>MouseListener</code> interface and register with the component as a mouse listener.
+<p>
+The <code>MouseListener</code> interface declares five methods, each of which is called for a different kind of mouse event: when the mouse is clicked, when the mouse moves outside of the component, and so on. Even though the <code>ClickMe</code> component responds only to mouse clicks, its mouse listener implementation must have all five methods. The methods for the events that the object isn't interested in are empty.
+</p>
+The complete code for the <code>ClickMe</code> component follows. The code that participates in mouse event handling is in <font color="#6b7402"> <b>colored boldface</b></font>.
+
+<blockquote><pre>
+import javax.swing.BorderFactory;
+import javax.swing.JComponent;
+import java.awt.*;
+import java.awt.event.*;
+
+public class ClickMe extends JComponent
+                    <font color="#6b7402"><B> implements MouseListener</B></font> {
+    private Spot spot = null;
+    private static final int RADIUS = 7;
+    private Color spotColor = new Color(107, 116, 2); //olive
+
+    /** Creates and initializes the ClickMe component. */
+    public ClickMe() {
+       <font color="#6b7402"><B> addMouseListener(this);</B></font>
+        
+        //Hint at good sizes for this component.
+        setPreferredSize(new Dimension(RADIUS*30,
+                                       RADIUS*15));
+        setMinimumSize(new Dimension(RADIUS*4, RADIUS*4));
+        
+        //Request a black line around this component.
+        setBorder(
+            BorderFactory.createLineBorder(Color.BLACK));
+    }
+    
+    /**
+     * Paints the ClickMe component.  This method is
+     * invoked by the Swing component-painting system.
+     */
+    public void paintComponent(Graphics g) {
+        /**
+         * Copy the graphics context so we can change it.
+         * Cast it to Graphics2D so we can use antialiasing.
+         */
+        Graphics2D g2d = (Graphics2D)g.create();
+        
+        //Turn on antialiasing, so painting is smooth.
+        g2d.setRenderingHint(
+                RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        //Paint the background.
+        g2d.setColor(Color.WHITE);
+        g2d.fillRect(0, 0, getWidth() - 1, getHeight() - 1);
+
+        //Paint the spot.
+        if (spot != null) {
+            int radius = spot.getSize();
+            g2d.setColor(spotColor);
+            g2d.fillOval(spot.x - radius, spot.y - radius,
+                         radius * 2, radius * 2);
+        }
+    }
+
+    <font color="#6b7402"><B>//Methods required by the MouseListener interface.
+    public void mousePressed(MouseEvent event) {
+        if (spot == null) {
+            spot = new Spot();
+            spot.setSize(RADIUS);
+        }
+        spot.x = event.getX();
+        spot.y = event.getY();
+        repaint();
+    }
+    public void mouseClicked(MouseEvent event) {}
+    public void mouseReleased(MouseEvent event) {}
+    public void mouseEntered(MouseEvent event) {}
+    public void mouseExited(MouseEvent event) {}</B></font>
+}
+</pre></blockquote>
+</blockquote>
+
+<h3>API Documentation</h3>
+<blockquote>
+
+To learn more about how <code>ClickMe</code> works, you need to learn about its superclasses, <code>JComponent</code> and <code>Component</code>. How do you find that information? You can find detailed descriptions of every class in the API documentation, which constitutes the specification for the classes that make up the Java platform. 
+<p>
+The API documentation for the Java 2 Platform is online at <code>java.sun.com</code>. It's helpful to have the API documentation for all releases you use bookmarked in your browser. You can find the 5.0 API documentation here:
+
+<blockquote>
+<code>
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/"><font color="#8800bb">http://java.sun.com/j2se/5.0/docs/api/</font></a>
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>
+</code>
+</blockquote>
+</p>
+
+<p>
+To learn more about all the classes and interfaces from the Java platform used by the <code>ClickMe</code> class, you can look at the API documentation for these classes: 
+<ul>
+<li>
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/javax/swing/JComponent.html"><font color="#8800bb"><code>javax.swing.JComponent</code></font></a>
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/javax/swing/JComponent.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>
+</li>
+<li>
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/awt/Graphics.html"><font color="#8800bb"><code>java.awt.Graphics</code></font></a>
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/awt/Graphics.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>
+</li>
+<li>
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/awt/Graphics2D.html"><font color="#8800bb"><code>java.awt.Graphics2D</code></font></a>
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/awt/Graphics2D.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>
+</li>
+<li>
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/awt/Dimension.html"><font color="#8800bb"><code>java.awt.Dimension</code></font></a>
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/awt/Dimension.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>
+</li>
+<li>
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/awt/Color.html"><font color="#8800bb"><code>java.awt.Color</code></font></a>
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/awt/Color.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>
+</li>
+<li>
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/javax/swing/BorderFactory.html"><font color="#8800bb"><code>javax.swing.BorderFactory</code></font></a>
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/javax/swing/BorderFactory.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>
+</li>
+<li>
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/awt/event/MouseListener.html"><font color="#8800bb"><code>java.awt.event.MouseListener</code></font></a>
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/awt/event/MouseListener.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>
+</li>
+<li>
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/awt/event/MouseEvent.html"><font color="#8800bb"><code>java.awt.event.MouseEvent</code></font></a>
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/awt/event/MouseEvent.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>
+</li>
+</ul>
+</p>
+
+A complete discussion of using them to create GUIs is in
+<a href="GUIwithSwing" class="conditional">Creating a GUI with JFC/Swing</a>
+<a href="GUIwithSwing" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.
+
+</blockquote>
+
+<h3>Summary</h3>
+<blockquote>
+This discussion glossed over many details and left some things unexplained, but you should have some understanding now of what object-oriented concepts look like in code. You should now have a general understanding of the following:
+<ul>
+<li>That a class is a blueprint for objects</li>
+<li>That objects are created from classes</li>
+<li>How to create an object from a class</li>
+<li>What constructors are</li>
+<li>How to initialize objects</li>
+<li>What the code for a class looks like</li>
+<li>What class variables and methods are</li>
+<li>What instance variables and methods are</li>
+<li>How to find out what a class's superclass is</li>
+<li>That an interface is a protocol of behavior</li>
+<li>What it means to implement an interface</li>
+</ul>
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

@@ -1,0 +1,289 @@
+       A USER MODELING SYSTEM FOR  ADAPTIVE LEARNING
+                           ***
+
+Author:         Loc Nguyen
+Supervisor:     Prof. Dr. Dong Thi Bich Thuy
+Affiliation:    Department of Information System, Faulty of IT, University of Science, HCMC, Vietnam
+Final version:  3.3 build 2009.11.21
+
+----------------------------
+PRIMARY TASKS
+
+Version 1.0 build 2009.04.25
+- Designing task 1: designing the architecture of user model so-called Triangular Learner Model (TLM) that constituted of three sub-models: Knowledge (K), Learning Style (LS) and Learning History (LH).
+- Designing task 2: designing the architecture of Zebra – A user modeling system for adaptive learning. Zebra has two engines: mining engine (ME) and belief network engine (BNE). Zebra also provides communication interfaces (CI) that allows users and adaptive systems to see or modify restrictedly TLM
+- Writing tasks: collecting all relative papers and considering them as resource to compose report
+- Writing bug fixing:  checking spelling & grammar
+
+Version 1.1 build 2009.04.26
+- Writing tasks: structuring report, aggregating particular parts
+- Writing bug fixing:  checking spelling & grammar, repainting figures, normalizing formulas, aligning tables
+
+Version 1.1 build 2009.05.07
+- Writing tasks: composing section III.3.2: discovering user interests
+
+Version 1.2 build 2009.06.11
+- Designing task: the architectures of both Triangular Learner Model (TLM) and Zebra are completed.
+- Writing tasks: did finish section discussing about user interest
+- Programming tasks:  did build up Zebra server, Zebra client. So the architectures of both Triangular Learner Model (TLM) and Zebra are implemented. The program was finished basically.
+- Writing bug fixing: not yet
+
+Version 1.3 build 2009.07.18
+- Writing tasks: composing Bayesian approach and overview of ubiquitous user modeling (in chapter: Conclusion & Future Trend) but not finish yet
+
+Version 1.3 build 2009.07.22
+- Writing tasks: composing Bayesian approach and overview of ubiquitous user modeling (in chapter: Conclusion & Future Trend) but not finish yet
+
+Version 1.3 build 2009.07.25
+- Writing tasks: composing Bayesian approach and overview of ubiquitous user modeling (in chapter: Conclusion & Future Trend) but not finish yet
+
+Version 1.3 build 2009.07.27
+- Writing tasks: concluding Bayesian approach (in chapter: Conclusion & Future Trend) but not finish yet
+
+Version 1.3 build 2009.07.29
+- Writing tasks: finish the evaluation of Bayesian network but not finish the assessment of such network yet.
+
+Version 1.3 build 2009.08.01
+- Writing tasks: composing CAT in the assessment of Bayesian network.
+
+Version 1.4 build 2009.08.02
+- Writing tasks: doing finish the draft of thesis but still missing many tables and figures in the last chapter.
+
+Version 1.4 build 2009.08.05
+- Writing tasks: All tables and figures in the last chapter are included. Doing finish sections Acknowledgement, Abstract, Reference & Appendix. The thesis was finished basically.
+
+Version 1.4 build 2009.08.11
+- Writing tasks: composing state of the art of Bayesian network user model (section I.3)
+
+Version 1.5 build 2009.08.14
+- Writing tasks: do finishing the state of the art of Bayesian network user model (section I.3)
+
+Version 1.5 build 2009.08.16
+- Writing tasks: adding a little content, repairing some thing
+
+Version 1.5 build 2009.08.25
+- Writing tasks: doing finish important report slides
+
+Version 1.5 build 2009.08.27
+- Writing tasks: drafting the likelihood estimation technique used to specify prior probabilities (new section III.1.5)
+
+Version 1.5 build 2009.08.30
+- Writing tasks: doing finish the likelihood estimation technique (III.1.5)
+
+Version 1.6 build 2009.08.31
+- Writing tasks: re-arranging all chapters, items and decorating the form of thesis. The thesis was finished totally.
+- Programming tasks: re-arranging source
+
+Version 1.6 build 2009.09.04
+- Writing tasks: fixing the example in Maximum Likelihood Estimation method
+- Programming tasks: do finishing the Maximum Likelihood Estimation algorithm and optimizing the Expectation Maximization algorithm
+
+Version 1.7 build 2009.09.09
+- Writing tasks: checking spelling and grammar
+- Programming tasks: re-arranging and optimizing source code
+
+Version 1.8 build 2009.09.14
+- Writing tasks: checking spelling and grammar
+- Programming tasks: re-arranging and optimizing source code. The program was finished totally.
+
+Version 1.9 build 2009.09.16
+- Writing tasks: checking grammar and decorating representation
+- Programming tasks: programming some utility services
+
+Version 2.0 build 2009.09.18
+- Writing tasks: checking grammar, composing new representation slides
+- Programming tasks: fixing bug because there are some fatal errors in the control panel GUI
+
+Version 2.0 build 2009.09.22
+- Writing tasks: improving the section IV.1.2.2: "Towards Adaptive Computerized Testing"
+- Programming tasks: fixing bug and optimizing source code
+
+Version 2.0 build 2009.09.24
+- Learning material composing  task: designing the concepts & media for the course "Java tutorial" based on Sun Java Tutorial so as to test the demo
+- Programming tasks: fixing bug and optimizing source code
+- Researching  tasks: researching the computer-based testing technique and integrating such technique into Zebra
+
+Version 2.0 build 2009.09.27
+- Learning material composing task: designing the concepts & media for the course “Java tutorial” based on Sun Java Tutorial so as to test the demo
+- Researching task 1: splitting overlay Bayesian network according to supervisor’s advice (so difficult but more effective)
+- Researching  task 2: researching the computer-based testing technique and integrating such technique into Zebra
+
+Version 2.1 build 2009.09.29
+- Learning material composing task: doing finish designing the concepts & media for the course “Java tutorial” 70%
+- Researching task 1: doing finish splitting overlay Bayesian network
+- Researching  task 2: doing finish integrating the computer-based testing technique into Zebra
+
+Version 2.4 build 2009.10.07
+- Writting task: composing some representation slides about adaptive techniques 
+- Programming task: test evidences now has more values (E.g: [1..10]) instead of binary variables.
+
+Version 2.6 build 2009.10.09
+- Designing task: improving the physical architecture of the adaptive learning system WOW!
+- Programming task: doing finish integrating the computer-based testing technique into Zebra
+
+Version 2.9 build 2009.10.11
+- Designing task: The physical architecture of the adaptive learning system WOW! is improved 
+- Programming task: doing finish improving the physical architecture of the adaptive learning system WOW!
+
+Version 3.0 build 2009.10.12
+- Programming task: fixing and improving Zebra
+- Designing task: Improving physical architecture of Zebra
+
+Version 3.0 build 2009.10.14
+- Programming task 1: fixing new fatal errors in Zebra server control panel when the physical architecture was changed
+- Programming task 2: enhancing EM algorithm when evaluating (assessing) user knowledge
+- Programming task 3: fixing Dynamic Bayesian network
+
+Version 3.0 build 2009.10.16
+- Learning material composing task: doing finish basically designing the concepts & media for the course “Java tutorial”
+- Programming task: enhancing Dynamic Bayesian network
+- Testing task: testing Bayesian network, EM for determining prior probabilities, dynamic Bayesian network when evaluating user knowledge
+
+Version 3.0 build 2009.10.17
+- Programming task: fixing some bugs in Zebra server control panel
+- Testing task: testing Bayesian network, EM for determining prior probabilities, dynamic Bayesian network when evaluating user knowledge
+
+Version 3.1 build 2009.10.21
+- Programming task 1: improving pattern mining algorithm
+- Programming task 2: improving speed of Zebra. E.g: The first student doesn’t need to wait for booting process of Zebra server
+- Bug fixing: fixing some bugs in Zebra control panel
+
+Version 3.1 build 2009.10.22
+- Writing tasks: checking spelling and grammar, adding a little content
+
+Version 3.2 build 2009.10.26
+- Programming task: add the new module "Searching Engine" into WOW! so as to allow students to search their considerable learning materials
+
+Version 3.2 build 2009.10.27 
+- Bug fixing: fixing some bugs in module "Searching Engine"
+
+Version 3.2 build 2009.10.29
+- Bug fixing: fixing some bugs in module "Searching Engine"
+
+Version 3.2 build 2009.10.31
+- Programming task: enhancing the ajax GUI of module "Searching Engine"
+
+Version 3.2 build 2009.11.05
+- Bug fixing: fixing some bugs in the interface of module "Collaborative Learning". Namely, when logging in WOW by more than one accounts (for example: userid1, userid2) at the same computer with the same browser; The userid2 can’t using collaborative function (so as to chat, discuss, etc).
+- Programming tasks: optimizing source code
+
+Version 3.2 build 2009.11.11
+- Writing  tasks: doing finish the presentation slide "Zebra: A Modeling System for Triangular Learner Model" that summarizes thesis
+
+Version 3.2 build 2009.11.14
+- Writing  tasks: composing section III.3.3 "constructing user group or user community" (user model clustering)
+- Programming tasks: fixing bugs and optimizing source code
+- Testing task: testing Zebra and WOW!
+
+Version 3.3 build 2009.11.18
+- Writing  tasks: doing finish section III.3.3 "constructing user group or user community"
+- Programming tasks: fixing bugs and optimizing source code
+- Testing task: testing Zebra and WOW!
+
+Final version 3.3 build 2009.11.21 
+- Writing  tasks: doing finish checking spelling and grammar in thesis
+- Programming tasks: doing finish fixing bugs and optimizing source code in program
+- Testing task: doing finish testing Zebra and WOW!
+
+
+----------------------------
+EXTENSION 1
+
+Version 3.4 build 2009.11.26
+- Learning material composing task: doing repair tests in Java tutorial course
+- Programming tasks: adding function that allows students to see their knowledge evaluation in form of hierarchical domain
+
+Version 3.4 build 2009.12.21
+- Programming tasks: Enhancing Zebra server control panel
+
+Version 3.3 build 2009.12.25
+- Programming tasks: Finished feedback module which is responsible for collecting students' feedbacks about system and performing statistical tasks so as to evaluate system
+
+Version 3.3 build 2009.12.26
+- Bug fixing and testing  tasks: Fixing bugs and testing  feedback module
+
+Version 3.5 build 2009.12.31	
+- Programming task 1: Enhancing the whole source code of WOW! and Zebra
+- Programming task 2: Adding more utilities to Zebra server control panel and enhancing Zebra client.
+
+Version 3.5 build 2010.01.01
+- Programming tasks: improving Zebra server control panel totally
+
+Version 3.5 build 2010.01.03
+- Programming tasks 1: discovering user interest based on document classification. This function is described in section III.3.2 in this thesis. Therefore, the series of user access in his/her history are modeled as documents; so user is referred indirectly to as document and user interests are classes that such documents are belong to.
+- Programming tasks 2: implementing the function that logs users’ searching history so that each user is modeled as a user document vector. Solving some problems relating to the term frequency of user vector and the difference between user’s query and keywords necessary for classification. 
+
+Version 3.5 build 2010.01.04
+- Bug fixing: fixing some errors occurring in classification algorithm (Decision Tree) and bugs in word segmentation. Zebra use inside word segmentation module for English language. Because Zebra doesn’t use another open source tool, it has some limitation.
+
+Version 3.6 build 2010.01.15
+- Programming tasks: Supporting SOA and Web services. It means that the Communication Interface (CI) in Zebra architecture which allows users or adaptive systems to access or query TLM limitedly now supports networking protocol such as RMI, SOAP (web service), HTTP, and SOCKET. Note that CI is also called so-called TriUMQuery or Query Delegator.
+- Bug fixing tasks: fixing some errors in Zebra control panel.
+
+Version 3.6 build 2010.01.22
+- Bug fixing tasks: fixing some errors occurring in CI Web services.
+- Programming task: enhancing Zebra client that takes full advantage of communication interface (CI)
+
+Version 3.6 build 2010.01.26
+- Programming tasks: enhancing Zebra control panel.
+
+Version 3.7 build 2010.01.28
+- Programming task 1: supporting report on user's learning process.
+- Programming task 2: improving Zebra client
+
+Version 3.7 build 2010.01.30
+- Programming task: did finish the report function. There are two kinds of report: user report and course port. User report shows information and statistical data about user. Course report shows mining result, belief network inference, and statistical data in specific course.
+- Bug fixing tasks: fixing some errors occurring in report function
+
+
+----------------------------
+EXTENSION 2
+
+Version 3.8 build 2010.02.01
+- Programming task: enhancing Zebra control panel. Especially, the GUI that shows Triangular Learner Model (TLM) is now improved in order to run fast and is repaired so as to be friendly.
+
+Version 3.8 build 2010.02.02
+- Review task: reviewing source code and changing some method name, class name, etc and adding some utility methods.
+
+Version 3.8 build 2010.02.03
+- Programming task: adding finding user function into Zebra control panel.
+
+Version 3.8 build 2010.02.05
+- Programming task: adding more utility methods and changing some method names, class names.
+
+Version 3.9 build 2010.02.11
+- Programming task: : reviewing and improving source code
+- Programming task 2: Programming sending e-mail function so as to support mailing list in future. 
+- Bug fixing task: the engines (ME and BNE) of Zebra are composed physically by many threads so-called daemons or timer tasks. In case that the period of each daemon is so short (less than 1 minute), such daemon will run so fast and it consumes much more memory. There is a question: "Why does each daemon take much more memory when it runs fast?" When daemon runs fast, it makes many mining tasks. Because each mining task requires a lot of memory and creates many objects, it is so many waste objects that the Java garbage collection can destroy timely. In consequences, there isn’t enough heap memory. Additionally, that many users access Zebra concurrently can make the daemon boom; so Java will raise the out of memory error. I have partially fixed this error; however you should keep the period of each daemon larger than 10 minutes by setting the variable "UPDATE_LEARNING_HISTORY_INTERVAL" in "zebraconfig.xml". Even you can set this period be daily, weekly, or monthly.
+
+Version 3.9 build 2010.02.16
+- Bug fixing task: Zebra server now run steadily and stably. The out of memory error is fixed totally.
+
+Version 3.9 build 2010.02.18
+- Programming task: sending e-mail function was finished. The sending mail SMTP host is declared in "zebraconfig.xml" as variable "MAIL_SMTP_HOST"
+
+Version 3.10 build 2010.02.20
+- Programming task 1: mailing list module was finished totally. It allows system to send report or send any information to users periodically. According to default setting, this period is daily but you can change it by modifying the variable "MAIL_MAILING_LIST_INTERVAL" in file "zebraconfig.xml". Users can submit to or withdraw from mailing list through Communication Interface (CI) so-called TriUMQuery or Query Delegator.
+- Programming task 2: enhancing source code.
+
+Version 3.11 build 2013.06.12
+- Writing tasks: Re-structuring thesis, writing additional chapter "Evaluation of Triangular Learner Model".
+
+Version 3.11 build 2013.08.03
+- Writing tasks: Checking thesis thoroughly for claims, content and grammar. It is perfect.
+
+
+----------------------------
+EXTENSION 3
+
+Version 4 build 2014.11.24
+- Writing task 1: Re-organize the whole research.
+- Writing task 2: Completing references over the whole research.
+- Writing task 3: Writing additional contents in sub-section III.1.5.2 (Beta likelihood estimation).
+- Writing task 4: Writing additional contents in sub-section III.3.2.2 (Methods of document classification), especially, support vector machine.
+- Writing task 5: Writing additional contents in sub-section IV.1.2.2 (Towards the Computerized Adaptive Testing).
+- Writing task 6: Restoring contents in sub-section III.3.1.1 (Approaches of sequential pattern mining) and section V.2 (Towards ubiquitous user modeling).
+- Writing task 7: All tables, figures, and formulas are indexed.
+- Writing task 8: Fixing writing errors, creating figures, adding more examples, and enhancing representation over the whole research.
+- Creative work 1: Inventing new formula for beta likelihood estimation in sub-section III.1.5.2 (Beta likelihood estimation).
+- Creative work 2: Inventing new formula for estimating examinee’s ability in sub-section IV.1.2.2.2 (Maximum likelihood estimation for CAT)

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT wow_authortool (author,concept_relations, views)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT concept_relations (concept_relation*)>
+<!ELEMENT concept_relation (source_concept_name, destination_concept_name,relation_type, relation_label, relation_weight*)>
+<!ELEMENT source_concept_name (#PCDATA)>
+<!ELEMENT destination_concept_name (#PCDATA)>
+<!ELEMENT relation_type (#PCDATA)>
+<!ELEMENT relation_label (#PCDATA)>
+<!ELEMENT relation_weight (#PCDATA)>
+<!ELEMENT views (view)*>
+<!ELEMENT view (name,concept_coordinate, cx, cy, cw, ch)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT concept_coordinate (cx, cy, cw, ch)>
+<!ELEMENT cx (#PCDATA)>
+<!ELEMENT cy (#PCDATA)>
+<!ELEMENT cw (#PCDATA)>
+<!ELEMENT ch (#PCDATA)>

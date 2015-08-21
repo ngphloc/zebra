@@ -1,0 +1,131 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>The Graph Author Concept Template Files</h2>
+
+<p>
+The concept template files are used by the graph author for
+creating different concept structures (with different attributes)
+for different types of concepts.
+We explain the templates using the example of the <em>page template</em>.
+</p>
+<p>
+The file "page_template.ct" is as follows:
+<pre>
+&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE template SYSTEM 'template.dtd'&gt;
+&lt;template&gt;
+&lt;name&gt;page concept&lt;/name&gt;
+&lt;attributes&gt;
+    &lt;attribute&gt;
+        &lt;name&gt;access&lt;/name&gt;
+        &lt;description&gt;triggered by page access&lt;/description&gt;
+        &lt;default&gt;false&lt;/default&gt;
+         &lt;type&gt;bool&lt;/type&gt;
+         &lt;isPersistent&gt;false&lt;/isPersistent&gt;
+         &lt;isSystem&gt;true&lt;/isSystem&gt;
+         &lt;isChangeable&gt;false&lt;/isChangeable&gt;
+    &lt;/attribute&gt;
+    &lt;attribute&gt;
+        &lt;name&gt;knowledge&lt;/name&gt;
+        &lt;description&gt;knowledge about this concept&lt;/description&gt;
+        &lt;default&gt;0&lt;/default&gt;        
+        &lt;type&gt;int&lt;/type&gt;
+        &lt;isPersistent&gt;true&lt;/isPersistent&gt;
+        &lt;isSystem&gt;false&lt;/isSystem&gt;
+        &lt;isChangeable&gt;true&lt;/isChangeable&gt;
+    &lt;/attribute&gt;    
+    &lt;attribute&gt;
+        &lt;name&gt;visited&lt;/name&gt;
+        &lt;description&gt;has this page been visited?&lt;/description&gt;
+        &lt;default&gt;0&lt;/default&gt;        
+        &lt;type&gt;int&lt;/type&gt;
+        &lt;isPersistent&gt;true&lt;/isPersistent&gt;
+        &lt;isSystem&gt;true&lt;/isSystem&gt;
+        &lt;isChangeable&gt;false&lt;/isChangeable&gt;
+    &lt;/attribute&gt;    
+    &lt;attribute&gt;
+        &lt;name&gt;suitability&lt;/name&gt;
+        &lt;description&gt;the suitability of this page&lt;/description&gt;
+        &lt;default&gt;true&lt;/default&gt;
+        &lt;type&gt;bool&lt;/type&gt;
+        &lt;isPersistent&gt;false&lt;/isPersistent&gt;
+        &lt;isSystem&gt;false&lt;/isSystem&gt;
+        &lt;isChangeable&gt;false&lt;/isChangeable&gt;
+    &lt;/attribute&gt;    
+    &lt;attribute&gt;
+        &lt;name&gt;interest&lt;/name&gt;
+        &lt;description&gt;is the user interested in this concept&lt;/description&gt;
+        &lt;default&gt;0&lt;/default&gt;
+        &lt;type&gt;int&lt;/type&gt;
+        &lt;isPersistent&gt;true&lt;/isPersistent&gt;
+        &lt;isSystem&gt;false&lt;/isSystem&gt;
+        &lt;isChangeable&gt;true&lt;/isChangeable&gt;
+    &lt;/attribute&gt;        
+&lt;/attributes&gt;
+&lt;hasresource&gt;true&lt;/hasresource&gt;
+&lt;concepttype&gt;page&lt;/concepttype&gt;
+&lt;conceptrelations&gt;
+    &lt;conceptrelation&gt;
+        &lt;name&gt;knowledge_update&lt;/name&gt;
+        &lt;label&gt;35&lt;/label&gt;
+    &lt;/conceptrelation&gt;
+&lt;/conceptrelations&gt;
+&lt;/template&gt;
+</pre>
+The meaning of the different tags is as follows:
+</p>
+<ul>
+<li>
+The concept template starts by defining a <b>name</b> for
+the template. This is used to create the names in the list
+of available templates, in the
+<a href="/wow/tutorial/images/graphaddconcept.gif" target="_blank"
+class="unconditional">dialog box for creating a new concept</a>
+or for editing an existing one.
+</li>
+<li>
+For each <b>attribute</b> there is a <b>name</b>, <b>description</b>,
+<b>default</b> value, data <b>type</b> (bool, int or string),
+and three flags to indicate whether the attribute is <b>persistent</b>,
+whether it is a <b>system</b>-defined attribute and whether it is
+<b>changeable</b>, meaning that it can be used in forms.
+</li>
+<li>
+Concept of some types <em>must</em> be associated with a <b>resource</b>,
+whereas other types cannot be associated with a resource.
+</li>
+<li>
+Concepts also have a <b>concepttype</b> which is used in the
+definition of the
+<a href="layout" class="conditional">layout or look and feel</a>
+of the application. Concepts created using different templates
+may share the same layout.
+</li>
+<li>
+Concepts may have a concept relationship with themselves.
+The page concept has a <tt>knowledge_update</tt> relationship
+with itself, with a label or parameter of 35. What this particular
+relationship means is that the knowledge of the page will be
+increased up to 35 (that's the parameter)
+if the page is visited when it's not "suitable",
+and will be increased to 100 if it is visited and "suitable".
+</li>
+</ul>
+
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>
+

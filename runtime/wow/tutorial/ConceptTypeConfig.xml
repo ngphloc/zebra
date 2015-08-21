@@ -1,0 +1,106 @@
+<!DOCTYPE concepttypes SYSTEM '../WOWstandard/ConceptTypeConfig.dtd'>
+<concepttypes>
+	<concepttype>
+		<type>page</type>
+		<representation>page_c_layout</representation>
+		<annotation>
+			<linkanno>
+				<linkclass expr="!suitability">Bad</linkclass>
+				<linkclass expr="suitability &amp;&amp; visited &gt; 0">Neutral</linkclass>
+				<linkclass expr="suitability &amp;&amp; visited == 0">Good</linkclass>
+				<linkclass expr="false">unconditional</linkclass>
+			</linkanno>
+			<iconanno>
+				<icon expr="!suitability" place="front" view="TreeView,PathView,StaticTreeView,ChildrenView">icons/RedBall.gif</icon>
+				<icon expr="suitability &amp;&amp; visited &gt; 0" place="front" view="TreeView,PathView,StaticTreeView,ChildrenView">icons/WhiteBall.gif</icon>
+				<icon expr="suitability &amp;&amp; visited == 0" place="front" view="TreeView,PathView,StaticTreeView,ChildrenView">icons/GreenBall.gif</icon>
+				<icon expr="(!suitability) &amp;&amp; ($haschildren$)" place="front" view="TOCView">icons/minusR.gif</icon>
+				<icon expr="(suitability &amp;&amp; visited &gt; 0) &amp;&amp; ($haschildren$)" place="front" view="TOCView">icons/minus.gif</icon>
+				<icon expr="(suitability &amp;&amp; visited == 0) &amp;&amp; ($haschildren$)" place="front" view="TOCView">icons/minusG.gif</icon>
+				<icon expr="(!suitability) &amp;&amp; (!$haschildren$)" place="front" view="TOCView">icons/leafR.gif</icon>
+				<icon expr="(suitability &amp;&amp; visited &gt; 0) &amp;&amp; (!$haschildren$)" place="front" view="TOCView">icons/leaf.gif</icon>
+				<icon expr="(suitability &amp;&amp; visited == 0) &amp;&amp; (!$haschildren$)" place="front" view="TOCView">icons/leafG.gif</icon>
+			</iconanno>
+		</annotation>
+	</concepttype>
+	<concepttype>
+		<type>abstract</type>
+		<representation>page_c_layout</representation>
+		<annotation>
+			<linkanno>
+				<linkclass expr="!suitability">Bad</linkclass>
+				<linkclass expr="suitability &amp;&amp; visited &gt; 0">Neutral</linkclass>
+				<linkclass expr="suitability &amp;&amp; visited == 0">Good</linkclass>
+				<linkclass expr="false">unconditional</linkclass>
+			</linkanno>
+			<iconanno>
+				<icon expr="!suitability" place="front" view="TreeView,PathView,StaticTreeView,ChildrenView">icons/RedBall.gif</icon>
+				<icon expr="suitability &amp;&amp; visited &gt; 0" place="front" view="TreeView,PathView,StaticTreeView,ChildrenView">icons/WhiteBall.gif</icon>
+				<icon expr="suitability &amp;&amp; visited == 0" place="front" view="TreeView,PathView,StaticTreeView,ChildrenView">icons/GreenBall.gif</icon>
+				<icon expr="(!suitability) &amp;&amp; ($haschildren$)" place="front" view="TOCView">icons/minusR.gif</icon>
+				<icon expr="(suitability &amp;&amp; visited &gt; 0) &amp;&amp; ($haschildren$)" place="front" view="TOCView">icons/minus.gif</icon>
+				<icon expr="(suitability &amp;&amp; visited == 0) &amp;&amp; ($haschildren$)" place="front" view="TOCView">icons/minusG.gif</icon>
+				<icon expr="(!suitability) &amp;&amp; (!$haschildren$)" place="front" view="TOCView">icons/leafR.gif</icon>
+				<icon expr="(suitability &amp;&amp; visited &gt; 0) &amp;&amp; (!$haschildren$)" place="front" view="TOCView">icons/leaf.gif</icon>
+				<icon expr="(suitability &amp;&amp; visited == 0) &amp;&amp; (!$haschildren$)" place="front" view="TOCView">icons/leafG.gif</icon>
+			</iconanno>
+		</annotation>
+	</concepttype>
+	<concepttype>
+		<type>glossary</type>
+		<representation>glossary_layout</representation>
+		<annotation>
+			<linkanno></linkanno>
+			<iconanno>
+				<icon expr="!suitability" place="front">icons/RedBall.gif</icon>
+				<icon expr="suitability &amp;&amp; visited &gt; 0" place="front">icons/WhiteBall.gif</icon>
+				<icon expr="suitability &amp;&amp; visited == 0" place="front">icons/GreenBall.gif</icon>
+				<icon expr="0 &lt;= knowledge &amp;&amp; knowledge &lt; 33">icons/NoCheckM.gif</icon>
+				<icon expr="33 &lt;= knowledge &amp;&amp; knowledge &lt; 55">icons/SmallCheckM.gif</icon>
+				<icon expr="55 &lt;= knowledge &amp;&amp; knowledge &lt; 76">icons/MedCheckM.gif</icon>
+				<icon expr="76 &lt;= knowledge &amp;&amp; knowledge &lt; 1000">icons/BigCheckM.gif</icon>
+				<icon expr="(!suitability) &amp;&amp; ($haschildren$)" place="front" view="TOCView">icons/minusR.gif</icon>
+				<icon expr="(suitability &amp;&amp; visited &gt; 0) &amp;&amp; ($haschildren$)" place="front" view="TOCView">icons/minus.gif</icon>
+				<icon expr="(suitability &amp;&amp; visited == 0) &amp;&amp; ($haschildren$)" place="front" view="TOCView">icons/minusG.gif</icon>
+				<icon expr="(!suitability) &amp;&amp; (!$haschildren$)" place="front" view="TOCView">icons/leafR.gif</icon>
+				<icon expr="(suitability &amp;&amp; visited &gt; 0) &amp;&amp; (!$haschildren$)" place="front" view="TOCView">icons/leaf.gif</icon>
+				<icon expr="(suitability &amp;&amp; visited == 0) &amp;&amp; (!$haschildren$)" place="front" view="TOCView">icons/leafG.gif</icon>
+			</iconanno>
+		</annotation>
+	</concepttype>	
+	<concepttype>
+		<type>evidencetemp</type>
+		<representation>page_c_layout</representation>
+		<annotation>
+			<linkanno>
+				<linkclass expr="!suitability">Bad</linkclass>
+				<linkclass expr="suitability &amp;&amp; visited &gt; 0">Neutral</linkclass>
+				<linkclass expr="suitability &amp;&amp; visited == 0">Good</linkclass>
+				<linkclass expr="false">unconditional</linkclass>
+			</linkanno>
+			<iconanno>
+				<icon expr="!suitability" place="front" view="TreeView,PathView,StaticTreeView,ChildrenView">icons/RedBall.gif</icon>
+				<icon expr="suitability &amp;&amp; visited &gt; 0" place="front" view="TreeView,PathView,StaticTreeView,ChildrenView">icons/WhiteBall.gif</icon>
+				<icon expr="suitability &amp;&amp; visited == 0" place="front" view="TreeView,PathView,StaticTreeView,ChildrenView">icons/GreenBall.gif</icon>
+				<icon expr="(!suitability) &amp;&amp; ($haschildren$)" place="front" view="TOCView">icons/minusR.gif</icon>
+				<icon expr="(suitability &amp;&amp; visited &gt; 0) &amp;&amp; ($haschildren$)" place="front" view="TOCView">icons/minus.gif</icon>
+				<icon expr="(suitability &amp;&amp; visited == 0) &amp;&amp; ($haschildren$)" place="front" view="TOCView">icons/minusG.gif</icon>
+				<icon expr="(!suitability) &amp;&amp; (!$haschildren$)" place="front" view="TOCView">icons/leafR.gif</icon>
+				<icon expr="(suitability &amp;&amp; visited &gt; 0) &amp;&amp; (!$haschildren$)" place="front" view="TOCView">icons/leaf.gif</icon>
+				<icon expr="(suitability &amp;&amp; visited == 0) &amp;&amp; (!$haschildren$)" place="front" view="TOCView">icons/leafG.gif</icon>
+			</iconanno>
+		</annotation>
+	</concepttype>
+	<concepttype>
+		<type>test</type>
+		<representation>page_c_layout</representation>
+		<annotation>
+			<linkanno></linkanno>
+			<iconanno>
+				<icon expr="!suitability" place="front">icons/RedBall.gif</icon>
+				<icon expr="suitability &amp;&amp; visited &gt; 0" place="front">icons/WhiteBall.gif</icon>
+				<icon expr="suitability &amp;&amp; visited == 0" place="front">icons/GreenBall.gif</icon>
+			</iconanno>
+		</annotation>
+	</concepttype>
+</concepttypes>

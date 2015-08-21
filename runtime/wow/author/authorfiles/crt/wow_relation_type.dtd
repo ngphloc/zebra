@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT wow_relation_type  (name,listitems+)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT listitems (setdefault*, generateListItem*)>
+<!ELEMENT setdefault (#PCDATA)>
+<!ATTLIST setdefault
+	location CDATA #REQUIRED
+	combination (AND|OR|DIV_S|DIV_D|NONE) "NONE"
+>
+<!ELEMENT generateListItem (requirement, trueActions, falseActions?)>
+<!ATTLIST generateListItem
+	location CDATA #REQUIRED
+	isPropagating (true|false) "false"
+>
+<!ELEMENT requirement (#PCDATA)>
+<!ELEMENT trueActions (action*)>
+<!ELEMENT falseActions (action*)>
+<!ELEMENT action (conceptName,attributeName,expression)>
+<!ATTLIST action
+	combination (AND|OR|DIV_S|DIV_D|NONE) "NONE"
+>
+<!ELEMENT conceptName (#PCDATA)>
+<!ELEMENT attributeName (#PCDATA)>
+<!ELEMENT expression (#PCDATA)>

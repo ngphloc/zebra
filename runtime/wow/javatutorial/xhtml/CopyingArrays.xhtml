@@ -1,0 +1,79 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Copying Arrays</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>
+Copying Arrays
+</h2>
+<blockquote>
+Use <code>System</code>'s <code>arraycopy</code> method to efficiently copy
+data from one array into another.
+The <code>arraycopy</code> method requires five arguments:
+<blockquote><pre>
+public static
+    void arraycopy(Object <em>source</em>,
+                   int <em>srcIndex</em>,
+                   Object <em>dest</em>,
+                   int <em>destIndex</em>,
+                   int <em>length</em>,
+
+</pre></blockquote>
+
+The two <code>Object</code> arguments indicate the array to copy from and the
+array to copy to. The three integer arguments indicate the starting
+location in each the source and the destination array, and the number
+of elements to copy. The following figure illustrates how the copy takes place:
+
+<p><center><img src="images/java/objects-copyingArray.gif" width="464" height="203" align="bottom" alt="Copying the contents of one array to another."/></center></p>
+
+<a name="arraycopy">
+The following program,
+<a target="_blank" href="resources/ArrayCopyDemo.java"><font color="#bb000f"><code>ArrayCopyDemo</code></font></a><a target="_blank" href="resources/ArrayCopyDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>, uses <code>arraycopy</code> to copy some elements
+from the <code>copyFrom</code> array to the <code>copyTo</code> array.
+</a>
+<blockquote><pre>
+public class ArrayCopyDemo {
+    public static void main(String[] args) {
+        char[] copyFrom = { 'd', 'e', 'c', 'a', 'f', 'f', 'e',
+			    'i', 'n', 'a', 't', 'e', 'd' };
+        char[] copyTo = new char[7];
+
+        System.arraycopy(copyFrom, 2, copyTo, 0, 7);
+        System.out.println(new String(copyTo));
+    }
+}
+</pre></blockquote>
+
+The output from this program is:
+<blockquote><pre>
+caffein
+</pre></blockquote>
+
+The <code>arraycopy</code> method call in this example program begins
+the copy at element number 2 in the source array.  Recall that array
+indices start at 0, so that the copy begins at the array element 'c'.
+The <code>arraycopy</code> method call puts the copied elements into
+the destination array beginning at the first element (element 0) in the
+destination array <code>copyTo</code>. The copy copies 7 elements:
+'c', 'a', 'f', 'f', 'e', 'i', and 'n'. Effectively, the <code>arraycopy</code> method takes the "caffein" out of "decaffeinated", like this:
+
+<p><center><img src="images/objects-copyingCaffein.gif" width="465" height="166" align="bottom" alt="Copying &lt;code&gt;caffein&lt;/code&gt; from &lt;code&gt;decaffeinated&lt;/code&gt; into another array."/></center></p>
+Note that the destination array must be allocated before you call
+<code>arraycopy</code> and must be large enough to contain the data
+being copied.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

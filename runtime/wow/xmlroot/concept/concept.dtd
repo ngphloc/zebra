@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT concept (name, description, attributes, resource?, nocommit?, stable?, stable_expr?,concepttype,title,hierarchy?)>
+<!ELEMENT attributes (attribute)*>
+<!ELEMENT attribute (name, description, default, type, actions, readonly, system, persistent, stable?, stable_expr?,casegroup?)>
+<!ELEMENT actions (action)*>
+<!ELEMENT action (expr, trigger, truestat, falsestat)>
+<!ELEMENT truestat (assignment)*>
+<!ELEMENT falsestat (assignment)*>
+<!ELEMENT assignment (variable, expr)>
+
+<!ELEMENT casegroup (defaultfragment, casevalue*)>
+<!ELEMENT casevalue (value,returnfragment)>
+<!ELEMENT defaultfragment (#PCDATA)>
+<!ELEMENT value (#PCDATA)>
+<!ELEMENT returnfragment (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT expr (#PCDATA)>
+<!ELEMENT default (#PCDATA)>
+<!ELEMENT resource (#PCDATA)>
+<!ELEMENT nocommit (#PCDATA)>
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT readonly (#PCDATA)>
+<!ELEMENT system (#PCDATA)>
+<!ELEMENT persistent (#PCDATA)>
+<!ELEMENT stable (#PCDATA)>
+<!ELEMENT stable_expr (#PCDATA)>
+<!ELEMENT trigger (#PCDATA)>
+<!ELEMENT variable (#PCDATA)>
+<!ELEMENT hierarchy (firstchild, nextsib, parent)>
+
+<!ELEMENT firstchild (#PCDATA)>
+<!ELEMENT nextsib (#PCDATA)>
+<!ELEMENT parent (#PCDATA)>
+<!ELEMENT concepttype (#PCDATA)>
+<!ELEMENT title (#PCDATA)>

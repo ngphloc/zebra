@@ -1,0 +1,55 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>What Is a Message?</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object-Oriented Programming Concepts
+</font>
+
+<h2>What Is a Message?</h2>
+<blockquote>
+
+<p>
+A single object alone is generally not very useful. Instead, an object usually appears as a component of a larger program or application that contains many other objects. Through the interaction of these objects, programmers achieve higher-order functionality and more complex behavior. Your bicycle hanging from a hook in the garage is just a bunch of metal and rubber; by itself, the bicycle is incapable of any activity. The bicycle is useful only when another object (you) interacts with it (pedal).
+</p>
+
+Software objects interact and communicate with each other by sending <em>messages</em> to each other. When object A wants object B to perform one of B's methods, object A sends a message to object B (see the following figure).
+
+<p><center><img src="images/concepts-message.gif" width="380" height="321" align="bottom" ALT="Objects interact by sending each other messages."/></center></p>
+Sometimes, the receiving object needs more information so that it knows exactly what to do; for example, when you want to change gears on your bicycle, you have to indicate which gear you want. This information is passed along with the message as <em>parameters</em>.
+
+<br/>
+The next figure shows the three parts of a message:
+<ul>
+<li>The object to which the message is addressed (<code>YourBicycle</code>)</li>
+<li>The name of the method to perform (<code>changeGears</code>)</li>
+<li>Any parameters needed by the method (<code>lowerGear</code>)</li>
+</ul>
+
+
+<p><center><img src="images/concepts-bicycleMessage.gif" width="380" height="320" align="bottom" alt="Messages use parameters to pass along extra information that the object needsin this case, which gear the bicycle should be in."/></center></p>
+
+These three components are enough information for the receiving object to perform the desired method. No other information or context is required.
+<br/>
+
+Messages provide two important benefits.
+<ul>
+<li>
+An object's behavior is expressed through its methods, so (aside from direct variable access) message passing supports all possible interactions between objects.
+</li>
+<li>
+Objects don't need to be in the same process or even on the same machine to send and receive messages back and forth to each other.
+</li>
+</ul>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

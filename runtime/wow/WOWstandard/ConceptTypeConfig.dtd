@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT concepttypes (concepttype*)>
+<!ELEMENT concepttype (type,representation,annotation)>
+<!ELEMENT annotation (linkanno,iconanno)>
+<!ELEMENT linkanno (linkclass*)>
+<!ELEMENT linkclass (#PCDATA)>
+<!ELEMENT iconanno (icon*)>
+<!ELEMENT icon (#PCDATA)>
+<!ATTLIST icon 
+    expr CDATA #REQUIRED
+    place CDATA "back"
+    view CDATA #IMPLIED
+>
+<!ATTLIST linkclass
+    expr CDATA #REQUIRED
+    view CDATA #IMPLIED
+>
+<!ELEMENT distribution (boundary*)>
+<!ELEMENT results (result*)>
+<!ELEMENT boundary (#PCDATA)>
+<!ELEMENT result (#PCDATA)>
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT representation (#PCDATA)>
+<!ELEMENT good (#PCDATA)>
+<!ELEMENT bad (#PCDATA)>
+<!ELEMENT neutral (#PCDATA)>
+<!ELEMENT unconditional (#PCDATA)>

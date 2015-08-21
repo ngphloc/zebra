@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE wow_relation_type SYSTEM 'wow_relation_type.dtd'>
+<wow_relation_type>
+	<name> knowledge_update </name>
+	<listitems>
+		<generateListItem isPropagating="true" location="___child.access" >
+			<requirement> ! ___source.suitability &amp;&amp; ___source.knowledge &lt; var:35 </requirement>
+			<trueActions>
+				<action>
+					<conceptName>___source</conceptName>
+					<attributeName> knowledge </attributeName>
+					<expression> 35 </expression>
+				</action>
+			</trueActions>
+		</generateListItem>
+		<generateListItem isPropagating="true" location="___child.access">
+			<requirement> ___source.suitability </requirement>
+			<trueActions>
+				<action>
+					<conceptName>___source</conceptName>
+					<attributeName> knowledge </attributeName>
+					<expression> 100 </expression>
+				</action>
+				<action>
+					<conceptName>___source</conceptName>
+					<attributeName> visited </attributeName>
+					<expression> ___source.visited + 1 </expression>
+				</action>
+			</trueActions>
+		</generateListItem>					
+	</listitems>
+</wow_relation_type>

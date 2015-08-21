@@ -1,0 +1,89 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>The while and do-while Statements</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Language Basics
+</font>
+
+<h2>The while and do-while Statements</h2>
+<blockquote>
+You use a <em>while</em> statement to continually execute a block of statements while a condition remains true. The general syntax of the <code>while</code> statement is:
+<blockquote><pre>
+while (<em>expression</em>) {
+    <em>statement</em>
+}
+</pre></blockquote>
+First,
+the <code>while</code> statement evaluates <em>expression</em>, which must return a boolean value. If the expression returns <code>true</code>, the <code>while</code> statement executes the statement(s) in the <code>while</code> block. The <code>while</code> statement continues testing the expression and executing its block until the expression returns <code>false</code>.
+
+<p>
+The following example program, called
+<a target="_blank" href="resources/WhileDemo.java"><font color="#bb000f"><code>WhileDemo</code></font></a><a target="_blank" href="resources/WhileDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>, uses a <code>while</code> statement (shown in boldface) to step through the characters of a string, appending each character from the string to the end of a string buffer until it encounters the letter <code>g</code>. You will learn more about the <code>String</code> and <code>StringBuffer</code> classes in the next chapter, 
+<a href="SimpleDataObjects" class="conditional">Object Basics and Simple Data Objects</a><a href="SimpleDataObjects" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.
+</p>
+
+<blockquote><pre>
+public class WhileDemo {
+    public static void main(String[] args) {
+
+        String copyFromMe = "Copy this string until you " + 
+                            "encounter the letter 'g'.";
+        StringBuffer copyToMe = new StringBuffer();
+
+        int i = 0;
+        char c = copyFromMe.charAt(i);
+
+        <B>while (c != 'g') {
+            copyToMe.append(c);
+            c = copyFromMe.charAt(++i);
+        }</B>
+        System.out.println(copyToMe);
+    }
+}
+</pre></blockquote>
+The value printed by the last line is: <code>Copy this strin</code>.
+<p>
+The Java programming language provides another statement that is similar to the <code>while</code> statement&#8212;the <em>do-while</em> statement. The general syntax of the <code>do</code>-<code>while</code> is:
+<blockquote><pre>
+do {
+    <em>statement(s)</em>
+} while (<em>expression</em>);
+</pre></blockquote>
+Instead of evaluating the expression at the top of the loop, <code>do</code>-<code>while</code> evaluates the expression at the bottom. Thus, the statements within the block associated with a <code>do</code>-<code>while</code> are executed at least once.
+</p>
+
+Here's the previous program rewritten to use <code>do</code>-<code>while</code> (shown in boldface) and renamed to
+<a target="_blank" href="resources/DoWhileDemo.java"><font color="#bb000f"><code>DoWhileDemo</code></font></a><a target="_blank" href="resources/DoWhileDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>:
+<blockquote><pre>
+public class DoWhileDemo {
+    public static void main(String[] args) {
+
+        String copyFromMe = "Copy this string until you " +
+                            "encounter the letter 'g'.";
+        StringBuffer copyToMe = new StringBuffer();
+
+        int i = 0;
+        char c = copyFromMe.charAt(i);
+
+        <B>do {
+            copyToMe.append(c);
+            c = copyFromMe.charAt(++i);
+        } while (c != 'g');</B>
+        System.out.println(copyToMe);
+    }
+}
+</pre></blockquote>
+The value printed by the last line is: <code>Copy this strin</code>.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

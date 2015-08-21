@@ -1,0 +1,101 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Defining and Using Generic Types</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Classes and Inheritance
+</font>
+
+<h2>
+Defining and Using Generic Types
+</h2>
+<blockquote>
+To define a generic, you include type parameters following the 
+type name. The type parameters are a comma separated list of 
+identifiers delimited by angle brackets. By convention, type 
+parameters are uppercase letters. The type parameters then 
+appear in the type's methods, either as the type of arguments 
+in the method's parameter list or as the type of its return 
+value. In practice most developers won't need to define new 
+generics, but you should recognize the syntax and learn how 
+to use generics.
+<p>
+Let's revisit the <code>Stack</code> class introduced in section 
+<a href="CreatingClasses" class="conditional">Creating Classes</a><a href="CreatingClasses" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>. The generic version, <code>Stack2&lt;T&gt;</code>, uses a 
+generic collection, <code>ArrayList&lt;T&gt;</code>, to contain 
+the items in the stack:
+<blockquote><pre>
+public class Stack2&lt;T&gt; {
+    private ArrayList&lt;T&gt; items;
+    ...
+    public void push(T item) {}
+    public T pop() {}
+    public boolean isEmpty() {}
+}
+</pre></blockquote>
+
+Notice how the type parameter <code>T</code> is introduced after 
+the class name and then appears as the argument type of the 
+<code>push</code> method and the return type of the <code>pop</code> 
+method.
+</p>
+
+
+<a href="Collections" class="conditional">Collections</a><a href="Collections" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>
+ are often used to demonstrate how to use generic types because 
+they feature heavily in the collection interfaces and classes. 
+In fact, collections were a major motivation behind the 
+introduction of generics to the Java language because they 
+enable compile-time checking of the type safety of operations 
+on the collection. When you specify the type of object stored 
+in a collection:
+<ul>
+<li>The compiler can verify any operation that adds an object 
+to the collection.</li>
+<li>The type of an object retrieved from a collection is known, 
+so there's no need to cast it to a type. Also, there's no chance 
+that you can cast it to the wrong type and experience a runtime 
+class cast exception.</li>
+</ul>
+As stated earlier, when you use a generic, you substitute an 
+actual type argument for the parameter, much the same way you 
+substitute actual values for method parameters. The actual type 
+argument must be a reference type; it cannot be a primitive. 
+For example, here is how would you instantiate <code>Stack2</code> 
+with the type argument <code>String</code>, and then push and pop 
+the <code>String</code> "hi":
+
+<blockquote><pre>
+Stack2&lt;String&gt; s = new Stack2&lt;String&gt;();
+s.push("hi");
+String greeting = s.pop(); //no cast required here
+</pre></blockquote>
+
+With a non-generic stack this code would be:
+
+<blockquote><pre>
+Stack2 s = new Stack2();
+s.push("hi");
+String greeting = (String)s.pop(); //cast required here
+</pre></blockquote>
+
+Note when a generic is instantiated, the compiler translates 
+generics by a technique called <i>type erasure</i>. Basically, 
+the compiler removes all information related to type parameters 
+and type arguments. For instance, <code>Stack2&lt;String&gt;</code> 
+is translated to type <code>Stack2</code>, which is called the 
+<i>raw type</i>. The implication of type erasure is that the type 
+argument is not available at runtime for use in casts or as the 
+argument to the <code>instanceof</code> method.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

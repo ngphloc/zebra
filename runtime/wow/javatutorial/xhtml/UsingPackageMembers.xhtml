@@ -1,0 +1,166 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Using Package Members</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Interfaces and Packages
+</font>
+
+<h2>
+Using Package Members
+</h2>
+<blockquote>
+<!--Using Package Members-->
+Only public package members are accessible outside the package 
+    in which they are defined. To use a public package member from 
+    outside its package, you must do one or more of the following: 
+
+    <ul>
+      <li>Refer to the member by its long (qualified) name</li>
+      <li>Import the package member</li>
+      <li>Import the member's entire package</li>
+    </ul>
+Each is appropriate for different situations, as explained 
+    in the following sections. 
+</blockquote>
+
+<h3>Referring to a Package Member by Name</h3>
+<blockquote>
+So far, the examples in this
+tutorial
+ have referred to types 
+    by their simple names, such as <code>Rectangle</code> 
+    and <code>StockWatcher</code>. You can use a package member's 
+    simple name if the code you are writing is in the same package
+    as that member or if that member has been imported. 
+    <br/><br/>
+    However, if you are trying to use a member from a different package 
+    and that package has not been imported, you must use the member's 
+    qualified name, which includes the package name. This is the 
+    qualified name for the <code>Rectangle</code> class declared 
+    in the <code>graphics</code> package in the previous example: 
+<blockquote><pre>
+graphics.Rectangle
+</pre></blockquote>
+You could use this long name to create an instance of
+<code>graphics.Rectangle</code>:
+<blockquote><pre>
+graphics.Rectangle myRect = new graphics.Rectangle();
+</pre></blockquote>
+You'll find that using long names is okay for one-shot uses. But you'd
+likely get annoyed if you had to write <code>graphics.Rectangle</code>
+again and again. Also, your code would get messy and difficult to read.
+In such cases, you can just import the member instead.
+</blockquote>
+
+<h3>Importing a Package Member</h3>
+<blockquote>
+To import a specific member into the current file, put an 
+    <code>import</code> statement at the beginning of your file before 
+    any class or interface definitions but after the <code>package</code> 
+    statement, if there is one. Here's how you would import the <code>Circle</code> 
+    class from the <code>graphics</code> package created in the previous 
+    section: 
+<blockquote><pre>
+import graphics.Circle;
+</pre></blockquote>
+Now you can refer to the <code>Circle</code> class by its simple name:
+<blockquote><pre>
+Circle myCircle = new Circle();
+</pre></blockquote>
+This approach works well if you use just a few members from 
+    the <code>graphics</code> package. But if you use many types
+    from a package, you can import the entire package. 
+</blockquote>
+
+<h3>Importing an Entire Package</h3>
+<blockquote>
+To import all the types contained in a particular 
+    package, use the <code>import</code> statement with the asterisk 
+    <code>(*)</code> wildcard character: 
+<blockquote><pre>
+import graphics.*;
+</pre></blockquote>
+
+Now you can refer to any class or interface
+in the <code>graphics</code> package by its short name:
+<blockquote><pre>
+Circle myCircle = new Circle();
+Rectangle myRectangle = new Rectangle();
+</pre></blockquote>
+The asterisk in the <code>import</code> statement can be used 
+    only to specify all the classes within a package, as shown here. 
+    It cannot be used to match a subset of the classes in a package. 
+    For example, the following does not match all the classes in 
+    the <code>graphics</code> package that begin with <code>A</code>: 
+<blockquote><pre>
+import graphics.A*;     // <em>does not work</em>
+</pre></blockquote>
+Instead, it generates a compiler error. With the <code>import</code> 
+    statement, you generally import only a single package member or an 
+    entire package. 
+<blockquote><hr/><strong>Note: </strong>Another, less common form of import allows you to import only a
+class and its public inner classes.  For example, if the
+<code>graphics.Rectangle</code> class contained useful inner classes, like
+<code>Rectangle.DoubleWide</code> and <code>Rectangle.Square</code>,
+you could import <code>Rectangle</code> and its inner classes this way:
+<blockquote><pre>
+import graphics.Rectangle.*;
+</pre></blockquote>
+For more information, see the section on
+<a href="InnerClasses" class="conditional">Inner Classes</a><a href="InnerClasses" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a><hr/></blockquote>
+    <p>
+    For your convenience, the Java compiler automatically imports 
+    three entire packages:
+    </p>
+    <ul> 
+      <li>The default package (the package with no name)</li>
+      <li>The <code>java.lang</code> package</li>
+      <li>The current package by default</li>
+    </ul>
+
+<blockquote><hr/><strong>Note: </strong>Packages aren't hierarchical.  For example, importing
+<code>java.util.*</code> doesn't let you refer to the 
+<code>Pattern</code> class as <code>regex.Pattern</code>.
+You must always refer to it as either <code>java.util.regex.Pattern</code>
+or (if you import <code>java.util.regex.*</code>) simply
+<code>Pattern</code>.
+<hr/></blockquote>
+
+</blockquote>
+
+<h3>Disambiguating a Name</h3>
+<blockquote>
+If by some chance a member in one package shares the same 
+    name with a member in another package and both packages are imported, 
+    you must refer to each member by its qualified name. For example, 
+    the previous example defined a class named <code>Rectangle</code> 
+    in the <code>graphics</code> package. The <code>java.awt</code> 
+    package also contains a <code>Rectangle</code> class. If both 
+    <code>graphics</code> and <code>java.awt</code> have been imported, 
+    the following is ambiguous: 
+
+<blockquote><pre>
+Rectangle rect;
+</pre></blockquote>
+
+In such a situation, you have to be more specific and use 
+the member's qualified name to indicate exactly which <code>Rectangle</code> 
+class you want:  
+
+<blockquote><pre>
+graphics.Rectangle rect;
+</pre></blockquote>
+
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

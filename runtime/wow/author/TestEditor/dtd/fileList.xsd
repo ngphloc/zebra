@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edited with XML Spy v4.2 U (http://www.xmlspy.com) by Santi (Particular) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="fileList">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="course" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="questionsFile">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="questionsFileName" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute name="concept" type="xs:string" use="required"/>
+														<xs:attribute name="numberOfQuestions" type="xs:int" use="required"/>
+														<xs:attribute name="numberOfAnswersForFile" type="xs:int" use="required"/>
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="testFile">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="classic">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="classicTestFileName" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="adaptive">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="adaptiveTestFileName" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="studentFile">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="studentFileName" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="courseName" type="xs:string" use="required"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

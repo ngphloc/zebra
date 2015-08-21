@@ -1,0 +1,92 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>XHTML versus HTML</h2>
+
+<p>
+WOW! 1.0 uses pages written in
+<a href="http://www.w3.org/MarkUp/">XHTML</a>.
+Pages are parsed using an XML parser.
+In many cases when an end-user (hopefully you as an author trying
+out your application) tries to load a page with an XML syntax error
+the browser will display an error message (from the XML parser)
+indicating what is wrong with the page. Unfortunately there is
+nothing the end-user can do to rectify the problem.
+The author of the page has to correct the error,
+so as an author you should always check the pages for XML errors.
+</p>
+
+<p>
+For experienced HTML authors there are a few things you should
+know in order to write (mostly) correct XHTML pages that will work
+in XHTML browsers as well as older HTML browsers:
+</p>
+<ul>
+<li>
+All tags have to be properly nested. In HTML there is automatic ending
+of tags, like in the following construct:
+<pre>
+&lt;ul&gt;
+&lt;li&gt; ... &lt;li&gt; ... &lt;li&gt; ... 
+&lt;/ul&gt;
+</pre>
+Where each list item is ended automatically when the next list item
+starts or when the whole list ends.
+in XHTML you have to explicitly end all tags:
+<pre>
+&lt;ul&gt;
+&lt;li&gt; ... &lt;/li&gt; &lt;li&gt; ... &lt;/li&gt; &lt;li&gt; ... &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+</li>
+<li>
+In HTML there are a number of tags that have no end tag,
+like
+<pre>
+&lt;br&gt;
+</pre>
+In XHTML all tags must be ended. There are two ways to do this:
+<pre>
+&lt;br&gt;&lt;/br&gt; or &lt;br /&gt;
+</pre>
+</li>
+<li>
+Older browsers ignore explicit end tags like <tt>&lt;/br&gt;</tt>
+but may get confused by the abbreviated form <tt>&lt;br/&gt;</tt>.
+A solution is to add a space between the tag name and the /,
+as in <tt>&lt;br /&gt;</tt>.
+</li>
+</ul>
+
+<p>
+Unless you are creating an application for a known audience with
+a single known browser it is best to try all pages on several browsers,
+including some new ones
+(like <a href="http://www.mozilla.org/" target="_blank">Mozilla Firefox</a>)
+and some old ones
+(like <a href="http://browser.netscape.com/ns8/download/archive47x.jsp"
+target="_blank">Netscape
+version 4</a>).
+</p>
+
+<p>
+<b>Note: </b> WOW! can actually handle HTML pages, by using
+a converter from HTML to XHTML (called JTidy).
+This conversion may not be perfect, but it works for most HTML pages.
+</p>
+
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

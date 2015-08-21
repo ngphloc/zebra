@@ -1,0 +1,12 @@
+/* AUTOMATICALLY GENERATED ON Mon Jan 05 00:18:50 GMT+01:00 2004*/
+/* DO NOT EDIT */
+
+grant codeBase "http://localhost:8080/wow/-" {
+  permission java.security.AllPermission;
+  /*permission java.util.PropertyPermission "user.home", "read";
+  permission java.util.PropertyPermission "user.dir", "read";
+  permission java.io.FilePermission "*", "read, write";
+  permission java.io.FilePermission "*", "read, write";
+  permission java.lang.RuntimePermission "modifyThread";*/
+};
+

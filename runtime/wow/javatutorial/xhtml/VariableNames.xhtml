@@ -1,0 +1,43 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Variable Names</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Language Basics
+</font>
+
+<h2>Variable Names</h2>
+<blockquote>
+
+A program refers to a variable's value by the variable's name. For example, when it displays the value of the <code>largestByte</code> variable, the <code>MaxVariablesDemo</code> program uses the name <code>largestByte</code>. A name, such as <code>largestByte</code>, that's composed of a single identifier is called a <em>simple name</em>. Simple names are in contrast to <em>qualified</em> names, which a class uses to refer to a member variable that's in another object or class. This topic is covered further in the section 
+<a href="UsingObjects" class="conditional">Using Objects</a><a href="UsingObjects" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>.
+
+<p>
+In the Java programming language, the following must hold true for a simple name:
+<ul>
+<li>
+It must be a legal identifier. Recall from the preceding section that an identifier is an unlimited series of Unicode characters that begins with a letter.
+</li>
+<li>
+It must not be a <code>keyword</code>, a boolean literal (<code>true</code> or <code>false</code>), or the reserved word <code>null</code>.
+</li>
+<li>
+It must be unique within its scope. A variable may have the same name as a variable whose declaration appears in a different scope. In some situations, a variable may share names with another variable, which is declared in a nested scope. Scope is covered in the next section. 
+</li>
+</ul>
+</p>
+
+<blockquote><hr/><strong>By Convention: </strong>Variable names begin with a lowercase letter, and class names begin with an uppercase letter. If a variable name consists of more than one word, the words are joined together, and each word after the first begins with an uppercase letter, like this: <code>isVisible</code>. The underscore character (<code> _ </code>) is acceptable anywhere in a name, but by convention is used only to separate words in constants (because constants are all caps by convention and thus cannot be case-delimited).
+<hr/></blockquote>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

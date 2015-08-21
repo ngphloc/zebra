@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE wow_relation_type SYSTEM 'wow_relation_type.dtd'>
+<wow_relation_type>
+	<name> test </name>
+	<listitems>
+		<generateListItem location="___source.testresult.actions"  isPropagating="false">
+			<requirement> ___source.knowledge &gt; var:90 </requirement>
+			<trueActions>
+				<action>
+					<conceptName> ___destination </conceptName>
+					<attributeName> knowledge </attributeName>
+					<expression> var:200 </expression>
+				</action>
+			</trueActions>
+		</generateListItem>
+	</listitems>
+</wow_relation_type>

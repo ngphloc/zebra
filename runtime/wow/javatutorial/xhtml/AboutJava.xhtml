@@ -1,0 +1,77 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>About the Java Technology</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Getting Started
+<br/>
+<b>Lesson</b>: The Java Technology Introduction
+</font>
+
+<h2>About the Java Technology</h2>
+<blockquote>Java technology is both a programming language and a platform.</blockquote>
+
+<h3>The Java Programming Language</h3>
+<blockquote>
+
+<p>
+The Java programming language is a high-level language that can be characterized by all of the following buzzwords:
+<blockquote>
+<table>
+<tr> <td><li>Simple</li></td><td><li>Architecture neutral</li></td> </tr>
+<tr> <td><li>Object oriented</li></td><td><li>Portable</li></td> </tr>
+<tr> <td><li>Distributed</li></td><td><li>High performance</li></td> </tr>
+<tr> <td><li>Interpreted</li></td><td><li>Multithreaded</li></td> </tr>
+<tr> <td><li>Robust</li></td><td><li>Dynamic</li></td> </tr>
+<tr> <td><li>Secure</li></td><td> </td> </tr>
+</table>
+</blockquote>
+</p>
+
+<p>
+Each of the preceding buzzwords is explained in
+<a target="_blank" href="http://java.sun.com/docs/white/langenv/"><font color="#009bbb"><em>The Java Language Environment</em></font></a>
+<a target="_blank" href="http://java.sun.com/docs/white/langenv/"><img src="images/otherIcon.gif" width="11" height="11" border="0" align="middle" alt=" (outside of the tutorial)"/></a> , a white paper written by James Gosling and Henry McGilton.
+</p>
+ 
+With most programming languages, you either compile or interpret a program so that you can run it on your computer. The Java programming language is unusual in that a program is both compiled and interpreted. With the compiler, first you translate a program into an intermediate language called <em>Java bytecodes</em>—the platform-independent codes interpreted by the interpreter on the Java platform. The interpreter parses and runs each Java bytecode instruction on the computer. Compilation happens just once; interpretation occurs each time the program is executed. The following figure illustrates how this works.
+
+<p><center><img src="images/g1.gif" width="533" height="125 " align="bottom" alt=""/></center></p>
+You can think of Java bytecodes as the machine code instructions for the <em>Java Virtual Machine</em> (Java VM). Every Java interpreter, whether it's a development tool or a Web browser that can run applets, is an implementation of the Java VM.
+
+<p>
+Java bytecodes help make "write once, run anywhere" possible. You can compile your program into bytecodes on any platform that has a Java compiler. The bytecodes can then be run on any implementation of the Java VM. That means that as long as a computer has a Java VM, the same program written in the Java programming language can run on Windows 2000, a Solaris workstation, or on an iMac.
+</p>
+<p><center><img src="images/helloWorld.gif" width="465" height="218" align="bottom" alt=""/></center></p>
+</blockquote>
+
+
+<h3>The Java Platform</h3>
+<blockquote>
+<p>
+A <em>platform</em> is the hardware or software environment in which a program runs. We've already mentioned some of the most popular platforms like Windows 2000, Linux, Solaris, and MacOS. Most platforms can be described as a combination of the operating system and hardware. The Java platform differs from most other platforms in that it's a software-only platform that runs on top of other hardware-based platforms.
+</p>
+The Java platform has two components:
+<ul>
+<li>The <em>Java Virtual Machine</em> (Java VM)</li>
+<li>The <em>Java Application Programming Interface</em> (Java API)</li>
+</ul>
+You've already been introduced to the Java VM. It's the base for the Java platform and is ported onto various hardware-based platforms.
+<p>
+The Java API is a large collection of ready-made software components that provide many useful capabilities, such as graphical user interface (GUI) widgets. The Java API is grouped into libraries of related classes and interfaces; these libraries are known as <em>packages</em>. The next section,
+<a href="WhatCanJavaDo" class="conditional">What Can Java Technology Do?</a>, highlights what functionality some of the packages in the Java API provide.
+</p>
+<p>
+The following figure depicts a program that's running on the Java platform. As the figure shows, the Java API and the virtual machine insulate the program from the hardware.
+</p>
+<p><center><img src="images/g3.gif" width="268" height="108" align="bottom" alt=""/></center></p>
+Native code is code that after you compile it, the compiled code runs on a specific hardware platform. As a platform-independent environment, the Java platform can be a bit slower than native code. However, smart compilers, well-tuned interpreters, and just-in-time bytecode compilers can bring performance close to that of native code without threatening portability.
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

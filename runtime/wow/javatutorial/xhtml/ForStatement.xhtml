@@ -1,0 +1,122 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>The for Statement</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Language Basics
+</font>
+
+<h2>The for Statement</h2>
+<blockquote>
+The <em>for</em> statement provides a compact way to iterate over a range of values. The <code>for</code> statement has a general form and, as of 5.0,
+an enhanced form that you can use when performing simple iterations over arrays and collections. The general form of the <code>for</code> statement can be expressed like this:
+<blockquote><pre>
+for (<em>initialization</em>; <em>termination</em>; <em>increment</em>) {
+    <em>statement(s)</em>
+}
+</pre></blockquote>
+The <code><em>initialization</em></code> is an expression that initializes the loop &#151; it's executed once at the beginning of the loop. The <code><em>termination </em></code> expression determines when to terminate the loop. When the expression evaluates to <code>false</code>, the loop terminates. Finally, <em>increment</em> is an expression that gets invoked after each iteration through the loop. All these components are optional. In fact, to write an infinite loop, you omit all three expressions:
+<blockquote><pre>
+for ( ; ; ) {    //infinite loop
+    ...
+}
+</pre></blockquote>
+
+
+
+<p>
+Often <code>for</code> loops are used to iterate over the elements in an array or the characters in a string. The following sample,
+
+<a target="_blank" href="resources/ForDemo.java"><font color="#bb000f"><code>ForDemo</code></font></a><a target="_blank" href="resources/ForDemo.java"><img src="../images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>, uses a <code>for</code> statement (shown in boldface) to iterate over the elements of an array and to print them:
+<blockquote><pre>
+public class ForDemo {
+    public static void main(String[] args) {
+        int[] arrayOfInts = { 32, 87, 3, 589, 12, 
+                              1076, 2000, 8, 622, 127 };
+
+        <b>for (int i = 0; i &lt; arrayOfInts.length; i++) {
+            System.out.print(arrayOfInts[i] + " ");
+        }</b>
+        System.out.println();
+    }
+}
+</pre></blockquote>
+The output of the program is:
+<code>32 87 3 589 12 1076 2000 8 622 127</code>.
+</p>
+
+<p>
+Notice that you can declare a local variable within the initialization expression of a <code>for</code> loop. The scope of this variable extends from its declaration to the end of the block governed by the <code>for</code> statement so it can be used in the termination and increment expressions as well. If the variable that controls a <code>for</code> loop is not needed outside of the loop, it’s best to declare the variable in the initialization expression. The names <code>i</code>, <code>j</code>, and <code>k</code> are often used to control <code>for</code> loops; declaring them within the <code>for</code> loop initialization expression limits their life span and reduces errors.
+</p>
+
+</blockquote>
+<h3>Iterating over Collections and Arrays with Enhanced For</h3>
+<blockquote>
+In 5.0 a new kind of <code>for</code> statement was created especially for collections and arrays. Here's some code, taken from
+<a target="_blank" href="resources/ForEachDemo.java"><font color="#bb000f"><code>ForEachDemo</code></font></a><a target="_blank" href="resources/ForEachDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>, that does the same thing as the previous code snippet (which was taken from
+<a target="_blank" href="resources/ForDemo.java"><font color="#bb000f"><code>ForDemo</code></font></a><a target="_blank" href="resources/ForDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>).
+
+<blockquote><pre>
+public class ForEachDemo {
+    public static void main(String[] args) {
+        int[] arrayOfInts = { 32, 87, 3, 589, 12,
+                              1076, 2000, 8, 622, 127 };
+
+        <b>for (int element : arrayOfInts) {
+            System.out.print(element + " ");
+        }</b>
+        System.out.println();
+    }
+}
+</pre></blockquote>
+
+You can read the <code>for</code> statement in the preceding snippet like this: <em>For each <code>int element</code> in <code>arrayOfInts</code>...</em>
+
+<p>
+Where the enhanced <code>for</code> statement really shines is when it's used with collections (classes that implement the
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/util/Collection.html"><font color="#8800bb"><code>Collection</code></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/util/Collection.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a> interface).
+Here's an old-fashioned <code>for</code> statement that iterates through a collection:
+
+<blockquote><pre>
+//This is ugly. Avoid it by using enhanced for!
+void cancelAll(Collection&lt;TimerTask&gt; c) {
+    <b>for (Iterator&lt;TimerTask&gt; i = c.iterator(); i.hasNext(); )
+        i.next().</b>cancel();
+}
+</pre></blockquote>
+</p>
+
+Don't worry about the strange <code>&lt;TimerTask&gt;</code> bit of code for now. You'll learn about it and about collections in
+<a href="Generics" class="conditional">Generics</a><a href="Generics" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a> and 
+<a href="Collections" class="conditional">Collections</a><a href="Collections" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Learning the Java Language trail)"/></a>, respectively. The point is you can avoid it in the <code>for</code> loop by using the enhanced <code>for</code> statement, like this:
+
+<blockquote><pre>
+//This is much prettier.
+void cancelAll(Collection&lt;TimerTask&gt; c) {
+    <b>for (TimerTask t : c)
+        t</b>.cancel();
+}
+</pre></blockquote>
+
+When you nest iterators, the enhanced <code>for</code> statement is even nicer because you can avoid more unnecessary code. For example:
+
+<blockquote><pre>
+for (Suit suit : suits) {
+    for (Rank rank : ranks)
+        sortedDeck.add(new Card(suit, rank));
+}
+</pre></blockquote>
+
+The enhanced <code>for</code> statement doesn't work everywhere, unfortunately. If you need access to array indexes, for example, enhanced <code>for</code> won't work for you. However, using enhanced <code>for</code> statements wherever possible can reduce certain kinds of bugs, and it makes your code look cleaner.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

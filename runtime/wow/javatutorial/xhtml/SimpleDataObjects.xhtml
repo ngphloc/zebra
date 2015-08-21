@@ -1,0 +1,72 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Object Basics and Simple Data Objects</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+</font>
+
+<h2>Lesson: Object Basics and Simple Data Objects</h2>
+<blockquote>
+<blockquote>
+
+This chapter begins with a general discussion about the life cycle of objects. The information presented applies to objects of all types and includes how to create an object, how to use an object, and how the system cleans up the object when it's no longer being used.
+<br/><br/>
+Next, this chapter explains how to use the core classes and built-in support for character data, numeric data, and arrays. It covers the following topics:
+
+<ul>
+<li>
+Character data - either a single character or a series of characters - can be stored and manipulated by one of four classes in java.lang: 
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Character.html"><font color="#8800bb"><tt>Character</tt></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Character.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>, 
+
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/String.html"><font color="#8800bb"><tt>String</tt></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/String.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>, 
+
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/StringBuilder.html"><font color="#8800bb"><tt>StringBuilder</tt></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/StringBuilder.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>, and
+
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/StringBuffer.html"><font color="#8800bb"><tt>StringBuffer</tt></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/StringBuffer.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>.
+</li>
+<br/>
+<li>
+Numeric data - object representations of the primitive data types - are provided by the Number class and its subclasses. The
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Number.html"><font color="#8800bb"><tt>Number</tt></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Number.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a> class is the superclass for all number classes in the Java platform, and its
+subclasses in package <code>java.lang</code> include 
+
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Byte.html"><font color="#8800bb"><tt>Byte</tt></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Byte.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>, 
+
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Double.html"><font color="#8800bb"><tt>Double</tt></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Double.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>, 
+
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Float.html"><font color="#8800bb"><tt>Float</tt></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Float.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>, 
+
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Integer.html"><font color="#8800bb"><tt>Integer</tt></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Integer.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>, 
+
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Long.html"><font color="#8800bb"><tt>Long</tt></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Long.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>, and
+
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Short.html"><font color="#8800bb"><tt>Short</tt></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Short.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>.
+Additionally, the 
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/math/BigDecimal.html"><font color="#8800bb"><tt>BigDecimal</tt></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/math/BigDecimal.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>, and
+
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/math/BigInteger.html"><font color="#8800bb"><tt>BigInteger</tt></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/math/BigInteger.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>
+classes in package <code>java.math</code> provide support for immutable, arbitrary-precision integer and decimal numbers. 
+</li>
+<br/>
+<li>
+Arrays - for grouping multiple values of the same type into a single object - are supported directly by the Java programming language; there is no array class. Arrays are implicit extensions of the 
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Object.html"><font color="#8800bb"><tt>Object</tt></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Object.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a> class, so you can assign an array to a variable whose type is declared as <tt>Object</tt>.
+</li>
+</ul>
+
+The Java platform groups its classes into functional packages. Instead of writing your own classes to represent character, string, or numeric data, you should use the classes that are already provided by the Java platform. Most of the classes discussed in this chapter are members of the 
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/package-summary.html"><font color="#8800bb"><tt>java.lang</tt></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/package-summary.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a> package.
+
+All classes in the <tt>java.lang</tt> package are available to your programs automatically; there is no need for you to explicitly make them available them with an <code>import</code> statement.
+</blockquote>
+ 
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

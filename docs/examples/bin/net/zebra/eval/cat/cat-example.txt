@@ -1,0 +1,160 @@
+**********Item pool**********
+Item 1: a=2.0, b=2.0, c=0.0, questions=10
+Item 2: a=4.0, b=3.0, c=0.0, questions=10
+Item 3: a=3.0, b=5.0, c=0.0, questions=10
+Item 4: a=3.0, b=2.0, c=0.0, questions=10
+Item 5: a=5.0, b=4.0, c=0.0, questions=10
+
+**********Examinees**********
+Examinee 1: ability=0.0, discriminatory=3.4
+Examinee 2: ability=0.0, discriminatory=3.4
+Examinee 3: ability=0.0, discriminatory=3.4
+Examinee 4: ability=0.0, discriminatory=3.4
+
+**********Test random performance**********
+-----Time 1-----
+Discriminatory estimate=3.4
+Ability mean=0.0
+Tested Item 4: a=3.0, b=2.0, c=0.0, questions=10
+Examinee 1: ability estimate=0.4077336356234972
+Examinee 2: ability estimate=0.24920525305505983
+Examinee 3: ability estimate=0.11925444356122482
+Examinee 4: ability estimate=0.11925444356122482
+Examinee 1: ability=0.10473713056810985, discriminatory=13.2359398581995
+    Response of (Item 4: a=3.0, b=2.0, c=0.0, questions=10): answers=8
+Examinee 2: ability=0.06401493731949175, discriminatory=13.2359398581995
+    Response of (Item 4: a=3.0, b=2.0, c=0.0, questions=10): answers=7
+Examinee 3: ability=0.0306336469077399, discriminatory=13.2359398581995
+    Response of (Item 4: a=3.0, b=2.0, c=0.0, questions=10): answers=6
+Examinee 4: ability=0.0306336469077399, discriminatory=13.2359398581995
+    Response of (Item 4: a=3.0, b=2.0, c=0.0, questions=10): answers=6
+-----Time 2-----
+Discriminatory estimate=13.2359398581995
+Ability mean=0.05750484042577035
+Tested Item 2: a=4.0, b=3.0, c=0.0, questions=10
+Examinee 1: ability estimate=-0.015161046182741464
+Examinee 2: ability estimate=0.04676956944789504
+Examinee 3: ability estimate=-0.03063364690773992
+Examinee 4: ability estimate=0.08300221219179485
+Examinee 1: ability=-0.00588278813995586, discriminatory=34.11149453083258
+    Response of (Item 4: a=3.0, b=2.0, c=0.0, questions=10): answers=8
+    Response of (Item 2: a=4.0, b=3.0, c=0.0, questions=10): answers=1
+Examinee 2: ability=0.01814752525271763, discriminatory=34.11149453083258
+    Response of (Item 4: a=3.0, b=2.0, c=0.0, questions=10): answers=7
+    Response of (Item 2: a=4.0, b=3.0, c=0.0, questions=10): answers=6
+Examinee 3: ability=-0.011886465652851246, discriminatory=34.11149453083258
+    Response of (Item 4: a=3.0, b=2.0, c=0.0, questions=10): answers=6
+    Response of (Item 2: a=4.0, b=3.0, c=0.0, questions=10): answers=2
+Examinee 4: ability=0.03220651290066168, discriminatory=34.11149453083258
+    Response of (Item 4: a=3.0, b=2.0, c=0.0, questions=10): answers=6
+    Response of (Item 2: a=4.0, b=3.0, c=0.0, questions=10): answers=9
+-----Time 3-----
+Discriminatory estimate=34.11149453083258
+Ability mean=0.00814619609014305
+Tested Item 5: a=5.0, b=4.0, c=0.0, questions=10
+Examinee 1: ability estimate=-0.007864328147575062
+Examinee 2: ability estimate=0.016022273837168335
+Examinee 3: ability estimate=-0.007864328147575062
+Examinee 4: ability estimate=0.04064009449562088
+Examinee 1: ability=-0.003429633226846198, discriminatory=78.21943888774604
+    Response of (Item 4: a=3.0, b=2.0, c=0.0, questions=10): answers=8
+    Response of (Item 2: a=4.0, b=3.0, c=0.0, questions=10): answers=1
+    Response of (Item 5: a=5.0, b=4.0, c=0.0, questions=10): answers=4
+Examinee 2: ability=0.006987313053375685, discriminatory=78.21943888774604
+    Response of (Item 4: a=3.0, b=2.0, c=0.0, questions=10): answers=7
+    Response of (Item 2: a=4.0, b=3.0, c=0.0, questions=10): answers=6
+    Response of (Item 5: a=5.0, b=4.0, c=0.0, questions=10): answers=6
+Examinee 3: ability=-0.003429633226846198, discriminatory=78.21943888774604
+    Response of (Item 4: a=3.0, b=2.0, c=0.0, questions=10): answers=6
+    Response of (Item 2: a=4.0, b=3.0, c=0.0, questions=10): answers=2
+    Response of (Item 5: a=5.0, b=4.0, c=0.0, questions=10): answers=5
+Examinee 4: ability=0.017723143771324976, discriminatory=78.21943888774604
+    Response of (Item 4: a=3.0, b=2.0, c=0.0, questions=10): answers=6
+    Response of (Item 2: a=4.0, b=3.0, c=0.0, questions=10): answers=9
+    Response of (Item 5: a=5.0, b=4.0, c=0.0, questions=10): answers=9
+-----Time 4-----
+Discriminatory estimate=78.21943888774604
+Ability mean=0.004462797592752066
+Tested Item 3: a=3.0, b=5.0, c=0.0, questions=10
+Examinee 1: ability estimate=0.0
+Examinee 2: ability estimate=0.002565483699648335
+Examinee 3: ability estimate=0.0012795215611379432
+Examinee 4: ability estimate=0.019823683657926184
+Examinee 1: ability=0.0, discriminatory=194.40548337449195
+    Response of (Item 4: a=3.0, b=2.0, c=0.0, questions=10): answers=8
+    Response of (Item 2: a=4.0, b=3.0, c=0.0, questions=10): answers=1
+    Response of (Item 5: a=5.0, b=4.0, c=0.0, questions=10): answers=4
+    Response of (Item 3: a=3.0, b=5.0, c=0.0, questions=10): answers=7
+Examinee 2: ability=0.0010322275482095875, discriminatory=194.40548337449195
+    Response of (Item 4: a=3.0, b=2.0, c=0.0, questions=10): answers=7
+    Response of (Item 2: a=4.0, b=3.0, c=0.0, questions=10): answers=6
+    Response of (Item 5: a=5.0, b=4.0, c=0.0, questions=10): answers=6
+    Response of (Item 3: a=3.0, b=5.0, c=0.0, questions=10): answers=3
+Examinee 3: ability=5.148180844476878E-4, discriminatory=194.40548337449195
+    Response of (Item 4: a=3.0, b=2.0, c=0.0, questions=10): answers=6
+    Response of (Item 2: a=4.0, b=3.0, c=0.0, questions=10): answers=2
+    Response of (Item 5: a=5.0, b=4.0, c=0.0, questions=10): answers=5
+    Response of (Item 3: a=3.0, b=5.0, c=0.0, questions=10): answers=8
+Examinee 4: ability=0.007976099158809128, discriminatory=194.40548337449195
+    Response of (Item 4: a=3.0, b=2.0, c=0.0, questions=10): answers=6
+    Response of (Item 2: a=4.0, b=3.0, c=0.0, questions=10): answers=9
+    Response of (Item 5: a=5.0, b=4.0, c=0.0, questions=10): answers=9
+    Response of (Item 3: a=3.0, b=5.0, c=0.0, questions=10): answers=9
+-----Time 5-----
+Discriminatory estimate=194.40548337449195
+Ability mean=0.002380786197866601
+Tested Item 1: a=2.0, b=2.0, c=0.0, questions=10
+Examinee 1: ability estimate=-0.0012405105690991571
+Examinee 2: ability estimate=0.0016603101242842948
+Examinee 3: ability estimate=0.002085667035055277
+Examinee 4: ability estimate=0.005929254102971609
+Examinee 1: ability=-3.915386176478913E-4, discriminatory=615.9342806735951
+    Response of (Item 4: a=3.0, b=2.0, c=0.0, questions=10): answers=8
+    Response of (Item 2: a=4.0, b=3.0, c=0.0, questions=10): answers=1
+    Response of (Item 5: a=5.0, b=4.0, c=0.0, questions=10): answers=4
+    Response of (Item 3: a=3.0, b=5.0, c=0.0, questions=10): answers=7
+    Response of (Item 1: a=2.0, b=2.0, c=0.0, questions=10): answers=2
+Examinee 2: ability=5.240386878776437E-4, discriminatory=615.9342806735951
+    Response of (Item 4: a=3.0, b=2.0, c=0.0, questions=10): answers=7
+    Response of (Item 2: a=4.0, b=3.0, c=0.0, questions=10): answers=6
+    Response of (Item 5: a=5.0, b=4.0, c=0.0, questions=10): answers=6
+    Response of (Item 3: a=3.0, b=5.0, c=0.0, questions=10): answers=3
+    Response of (Item 1: a=2.0, b=2.0, c=0.0, questions=10): answers=7
+Examinee 3: ability=6.582928095262725E-4, discriminatory=615.9342806735951
+    Response of (Item 4: a=3.0, b=2.0, c=0.0, questions=10): answers=6
+    Response of (Item 2: a=4.0, b=3.0, c=0.0, questions=10): answers=2
+    Response of (Item 5: a=5.0, b=4.0, c=0.0, questions=10): answers=5
+    Response of (Item 3: a=3.0, b=5.0, c=0.0, questions=10): answers=8
+    Response of (Item 1: a=2.0, b=2.0, c=0.0, questions=10): answers=9
+Examinee 4: ability=0.001871432628620374, discriminatory=615.9342806735951
+    Response of (Item 4: a=3.0, b=2.0, c=0.0, questions=10): answers=6
+    Response of (Item 2: a=4.0, b=3.0, c=0.0, questions=10): answers=9
+    Response of (Item 5: a=5.0, b=4.0, c=0.0, questions=10): answers=9
+    Response of (Item 3: a=3.0, b=5.0, c=0.0, questions=10): answers=9
+    Response of (Item 1: a=2.0, b=2.0, c=0.0, questions=10): answers=5
+
+**********Results**********
+Examinee 1: ability=-3.915386176478913E-4, discriminatory=615.9342806735951
+    Response of (Item 4: a=3.0, b=2.0, c=0.0, questions=10): answers=8
+    Response of (Item 2: a=4.0, b=3.0, c=0.0, questions=10): answers=1
+    Response of (Item 5: a=5.0, b=4.0, c=0.0, questions=10): answers=4
+    Response of (Item 3: a=3.0, b=5.0, c=0.0, questions=10): answers=7
+    Response of (Item 1: a=2.0, b=2.0, c=0.0, questions=10): answers=2
+Examinee 2: ability=5.240386878776437E-4, discriminatory=615.9342806735951
+    Response of (Item 4: a=3.0, b=2.0, c=0.0, questions=10): answers=7
+    Response of (Item 2: a=4.0, b=3.0, c=0.0, questions=10): answers=6
+    Response of (Item 5: a=5.0, b=4.0, c=0.0, questions=10): answers=6
+    Response of (Item 3: a=3.0, b=5.0, c=0.0, questions=10): answers=3
+    Response of (Item 1: a=2.0, b=2.0, c=0.0, questions=10): answers=7
+Examinee 3: ability=6.582928095262725E-4, discriminatory=615.9342806735951
+    Response of (Item 4: a=3.0, b=2.0, c=0.0, questions=10): answers=6
+    Response of (Item 2: a=4.0, b=3.0, c=0.0, questions=10): answers=2
+    Response of (Item 5: a=5.0, b=4.0, c=0.0, questions=10): answers=5
+    Response of (Item 3: a=3.0, b=5.0, c=0.0, questions=10): answers=8
+    Response of (Item 1: a=2.0, b=2.0, c=0.0, questions=10): answers=9
+Examinee 4: ability=0.001871432628620374, discriminatory=615.9342806735951
+    Response of (Item 4: a=3.0, b=2.0, c=0.0, questions=10): answers=6
+    Response of (Item 2: a=4.0, b=3.0, c=0.0, questions=10): answers=9
+    Response of (Item 5: a=5.0, b=4.0, c=0.0, questions=10): answers=9
+    Response of (Item 3: a=3.0, b=5.0, c=0.0, questions=10): answers=9
+    Response of (Item 1: a=2.0, b=2.0, c=0.0, questions=10): answers=5

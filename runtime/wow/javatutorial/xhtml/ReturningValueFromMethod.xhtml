@@ -1,0 +1,85 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Returning a Value from a Method</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Classes and Inheritance
+</font>
+
+<h2>
+Returning a Value from a Method
+</h2>
+<blockquote>
+You declare a method's return type in its method declaration. 
+Within the body of the method, you use the <code>return</code> 
+statement to return the value. Any method declared <code>void</code>  
+doesn't return a value and cannot contain a <code>return</code> 
+statement. Any method that is not declared <code>void</code> must 
+contain a <code>return</code> statement. 
+<br/><br/>
+Let's look at the <code>isEmpty</code> method in the <code>Stack</code> class: 
+<blockquote><pre>
+public boolean isEmpty() {
+    if (items.size() == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+</pre></blockquote>
+The data type of the return value must match the method's declared return type; 
+you can't return an integer value from a method declared to return a boolean. 
+The declared return type for the <code>isEmpty</code> method is 
+<code>boolean</code>, and the implementation of the method returns 
+the boolean value <code>true</code> or <code>false</code>, depending 
+on the outcome of a test. 
+
+<br/><br/>The <code>isEmpty</code> method returns a primitive type. A method 
+can return a reference type. For example, <code>Stack</code> declares 
+the <code>pop</code> method that returns the <code>Object</code> reference type: 
+<blockquote><pre>
+public Object pop() {
+    if (top == 0) {
+        throw new EmptyStackException();
+    }
+    Object obj = items[--top];
+    items[top]=null;
+    return obj;
+}
+</pre></blockquote>
+When a method uses a class name as its return type, such as 
+<code>pop</code> does, the class of the type of the returned 
+object must be either a subclass of or the exact class of the 
+return type. Suppose that you have a class hierarchy in which 
+<code>ImaginaryNumber</code> is a subclass of 
+<code>java.lang.Number</code>, which is in turn a subclass of
+<code>Object</code>, as illustrated in the following figure.
+
+<p><center><img src="images/classes-hierarchy.gif" width="132" height="108" align="bottom" alt=""/></center></p>
+Now suppose that you have a method declared to return a
+<code>Number</code>: 
+<blockquote><pre>
+public Number returnANumber() {
+    ...
+}
+</pre></blockquote>
+The <code>returnANumber</code> method can return an 
+<code>ImaginaryNumber</code> but not an <code>Object</code>. 
+<code>ImaginaryNumber</code> is a <code>Number</code> because 
+it's a subclass of <code>Number</code>. However, an <code>Object</code> 
+is not necessarily a <code>Number</code> &#151; it could be a 
+<code>String</code> or another type.
+
+<br/><br/>You also can use interface names as return types. In this case, 
+the object returned must implement the specified interface. 
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

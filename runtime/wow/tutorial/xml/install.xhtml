@@ -1,0 +1,125 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>WOW! Installation Instructions</h2>
+
+<p>
+This page is only interesting for people who wish to install the
+<em>server side</em> part of WOW!.
+If you are an end-user or author using an existing WOW! server there
+is nothing you need to install on your (client) side, except for a
+recent WWW browser such as Mozilla Firefox or Internet Explorer
+configured so that it allows WOW! to store cookies on the client
+and allows web-pages to control link colors.
+</p>
+
+<p>
+Installing WOW! involves three steps:
+</p>
+<ol>
+<li>
+You first need to have the right
+<a href="environment" class="conditional">software environment</a>,
+including an appropriate version of Windows or Linux,
+and Sun's Java SDK.
+You need a fully functional Tomcat webserver (running
+in that Java environment),
+and optionally also the mySQL database system.
+Before configuring Tomcat and WOW! <b>you must
+<a href="compile" class="conditional">build</a> (or compile) WOW!</b>.
+</li>
+<li>
+When TomCat (and mySQL) are running you need to create and configure an
+<a href="wowcontext" class="conditional">WOW! context</a>
+so that the TomCat server knows where to find the WOW! servlets and documents.
+</li>
+<li>
+The TomCat server needs to be restarted in order to be able to
+<a href="firstconfig" class="conditional">configure WOW!</a>. 
+(Execute shutdown.sh and
+startup.sh on Linux or shutdown.bat and startup.bat on Windows.)
+When WOW! is running you can try to access
+<a href="/wow/tutorial/" class="unconditional">/wow/tutorial/</a>
+and try reading the tutorial from your own server.
+</li>
+</ol>
+
+<p>
+After installing and using WOW! it is possible to change
+the configuration again by going back to the
+<a href="/wow/Config" target="_blank" class="unconditional">/wow/Config</a>
+page and logging
+in as the WOW! manager. This page lets you perform the following
+four actions:
+</p>
+<ul>
+<li>
+The "Configure Database" link leads to a form that lets you choose
+between XML and mySQL for storing the concept information and the
+user profiles. When changing this setting WOW! will offer the
+possibility to convert the data to the new format.
+When switching to mySQL for the first time you should check the
+box to create the database.
+For experimental and stand-alone WOW! installations it is easiest
+to choose XML, whereas for multi-user servers it is probably better to
+choose mySQL. Our experience shows that this does not make the
+system faster, but it does allow querying of the
+<a href="usermodel" class="conditional">user model</a> database.
+<br />
+<b>Warning:</b> When you change the database setting (switch from
+XML to mySQL or back, or change the database name) you have to
+restart the TomCat server before the settings will work.
+</li>
+<li>
+The "Manager Configuration" link leads to a form that lets you
+add or change WOW! managers. If you are studying the tutorial on
+your own installed WOW! server you should already have changed the default
+manager's password, but if you did not we must remind you that this
+is very important. Every WOW! installation has "wow" as the
+default manager, with an empty password. Everyone who knows about
+WOW! will use this combination as a first guess to try and break
+into an existing WOW! server. Note that creating a new manager
+does not remove the default one, so you should modify the existing
+"wow" manager, give it a password, and optionally change its name.
+</li>
+<li>
+The "Authors" link leads to a form that lets you add or change
+WOW! authors. The concept structure of an application can only
+be modified by its author(s).
+WOW! currently does not include content management for the
+document tree associated with an application.
+</li>
+<li>
+The "Convert concept list from internal format to XML file" link
+performs the translation of the concept information
+from the internal XML or mySQL format
+(whichever is active) to a single XML file or a set of XML files
+in the format used by the authoring tools. (A single WOW! server
+can contain several top-level hyperdocuments and each will be
+represented by a separate authoring XML file so that different
+authors can work simultaneously on their own hyperdocument.)
+
+</li>
+<li>
+The "Convert concept list from XML file to internal format" link
+commits changes made by authoring tools. It converts the XML file(s)
+created by the authoring tools to the internal format which is
+a set of XML files or the mySQL database depending on the chosen setting.
+</li>
+</ul>
+
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

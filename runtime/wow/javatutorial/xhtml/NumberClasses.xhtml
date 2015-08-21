@@ -1,0 +1,208 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>The Numbers Classes</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br/>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>The Numbers Classes</h2>
+<blockquote>
+The following figure shows the class hierarchy for the number classes provided by the Java platform.
+
+<!-- figure -->
+<p><center><img src="images/objects-numberHierarchy.gif" width="555" height="120" align="bottom" alt="The class hierarchy of Number."/></center></p>
+In addition to the number classes, the Java platform includes the
+
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Boolean.html"><font color="#8800bb"><code>Boolean</code></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Boolean.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>, 
+
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Character.html"><font color="#8800bb"><code>Character</code></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Character.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>, and 
+
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Void.html"><font color="#8800bb"><code>Void</code></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/lang/Void.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a>
+, which together with the number classes are known as the <em>type-wrapper</em> classes.
+
+<br/><br/>
+You might wonder why the type-wrapper classes are necessary, as they seem to duplicate the primitive data types. The type-wrapper classes have several uses.
+
+<ul>
+<li>
+You can store a value of primitive type in a type-wrapper object whenever an object is required. For example, the <code>ArrayList</code> class can hold only objects, so if you want to put numbers in an <code>ArrayList</code>, you wrap each value in a type-wrapper object and provide that object to it. As you learned earlier in the discussion about characters, however, this conversion from primitive type to object happens automatically starting with JDK 5.0.
+<br/>
+</li>
+<li>
+The classes define useful variables, such as <code>MIN_VALUE</code> and <code>MAX_VALUE</code>, that provide general information about the data type. The classes also define useful methods for converting values to other types, for converting to strings, and so on.
+<br/>
+</li>
+<li>
+The classes are used in the Java reflection mechanism, which allows programs to gather information about any object or class in the Java VM.
+</li>
+</ul>
+
+Furthermore, 
+
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/math/BigInteger.html"><font color="#8800bb"><code>BigInteger</code></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/math/BigInteger.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a> and 
+ 
+<a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/math/BigDecimal.html"><font color="#8800bb"><code>BigDecimal</code></font></a><a target="_blank" href="http://java.sun.com/j2se/5.0/docs/api/java/math/BigDecimal.html"><img src="images/apiIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the API reference documentation)"/></a> extend the primitive data types in to allow for arbitrary-precision numbers (numbers that might not fit into any of the primitive data types). Note that whereas the other classes are in the <code>java.lang</code> package, <code>BigDecimal</code> and <code>BigInteger</code> are in the <code>java.math</code> package.
+ 
+<p>
+Here's an example, called 
+<a target="_blank" href="resources/NumberDemo.java"><font color="#bb000f"><code>NumberDemo</code></font></a><a target="_blank" href="resources/NumberDemo.java"><img src="images/sourceIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in a .java source file)"/></a>, that creates two <code>Float</code> objects and one <code>Double</code> object and then uses <code>compareTo</code> and <code>equals</code> to compare them:.
+
+<blockquote><pre>
+public class NumberDemo {
+    public static void main(String args[]) {
+        Float floatOne = new Float(14.78f - 13.78f);
+        Float floatTwo = Float.valueOf(&quot;1.0&quot;);
+        Double doubleOne = new Double(1.0);
+
+        int difference = floatOne.compareTo(floatTwo);
+
+	if (difference == 0) {
+         System.out.println(&quot;floatOne is equal to floatTwo.&quot;);
+        } else if (difference &lt; 0) {
+         System.out.println(&quot;floatOne is less than floatTwo.&quot;);
+        } else if (difference &gt; 0) {
+         System.out.println(&quot;floatOne is greater than floatTwo.&quot;);
+        }
+
+        System.out.println(&quot;floatOne is &quot;
+                           + ((floatOne.equals(doubleOne)) ? 
+                           &quot;equal&quot; : &quot;not equal&quot;)
+                           + &quot; to doubleOne.&quot;);
+
+    }
+}
+</pre></blockquote>
+
+The output from this program might surprise you a little:
+
+<blockquote><pre>
+floatOne is equal to oneAgain.
+floatOne is not equal to doubleOne.
+</pre></blockquote>
+
+Even though the values contained in <code>floatOne</code> and <code>doubleOne</code> are both numerically equal to 1, they are considered unequal because the objects are of different types.
+</p>
+
+The following table lists the instance methods that all the subclasses of the <code>Number</code> class contain, including the <code>compareTo</code> and <code>equals</code> methods used in the preceding example.
+<p>
+<table border="1" cellpadding="4" cellspacing="3">
+<caption>Instance Methods Common to the Number Classes</caption>
+<tr>
+<th width="30%">Method</th><th>Description</th>
+</tr>
+
+<tr>
+<td>
+<code>
+byte byteValue()<sup>**</sup>
+<br/>
+short shortValue()<sup>**</sup>
+<br/>
+int intValue() long longValue()
+<br/>
+float floatValue()
+<br/>
+double doubleValue()
+</code>
+</td>
+<td>
+Convert the value of this number object to the primitive data types of <code>byte</code>, <code>short</code>, <code>int</code>, <code>long</code>, <code>float</code>, and <code>double</code>.
+</td>
+</tr>
+<tr>
+<td>
+<code>
+int compareTo(Integer)<sup>***</sup>
+<br/>
+int compareTo(Object)<sup>***</sup>
+</code>
+</td>
+<td>
+Compare this number object to the argument. This method returns a number less than, equal to, or greater than 0, indicating that this number object is, respectively, less than, equal to, or greater than the argument.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>
+boolean equals(Object)
+</code>
+</td>
+<td>
+Determine whether this number object is equal to the argument.
+</td>
+</tr>
+</table>
+<font size="-1">
+** Added to the Number class and its subclasses for JDK 1.1.
+<br/>
+*** Added to the Number subclasses for Java 2 SDK 1.2.
+</font>
+</p>
+
+As a group, the <code>Number</code> subclasses also contain some useful constants. Because the constants are declared as <code>public static</code>, you refer to them by concatenating the class name, with a dot (.), with the constant name, as in: <code>Integer.MIN_VALUE</code>.
+
+<br/><br/>
+
+The following table lists other useful constants in the <code>Float</code> and <code>Double</code> classes:
+<p>
+<table border="1" cellpadding="4" cellspacing="3">
+<caption>Other Useful Constants in the <code>Float</code> and <code>Double</code> Classes</caption>
+<tr>
+<th width="30%">Method</th><th>Description</th>
+</tr>
+
+<tr>
+<td>
+<code>
+Float.NaN
+<br/>
+Double.NaN
+</code>
+</td>
+<td>
+Not a <code>Number</code>. Returned by certain methods in the
+<code>java.lang.Math</code> class when the result is undefined for the
+arguments passed to the method.
+</td>
+</tr>
+<tr>
+<td>
+<code>
+Float.NEGATIVE_INFINITY
+<br/>
+Double.NEGATIVE_INFINITY
+</code>
+</td>
+<td>
+The negative infinity value for a <code>float</code> or a <code>double</code>.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>
+Float.POSITIVE_INFINITY
+<br/>
+Double.POSITIVE_INFINITY
+</code>
+</td>
+<td>
+The positive infinity value for a float or a double.
+</td>
+</tr>
+</table>
+</p>
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

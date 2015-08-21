@@ -1,0 +1,52 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Running an Applet</title>
+</head>
+<body>
+<object data="../header.xhtml" type="text/wow"/>
+
+<font size="-1">
+<b>Trail</b>: Getting Started
+<br/>
+<b>Lesson</b>: Hello World Applet
+</font>
+
+<h2>Running an Applet</h2>
+
+<blockquote>
+The bold lines of the following listing comprise the &lt;applet&gt; tag that includes the "Hello World" applet in an HTML page.
+
+<blockquote><pre>
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt; A Simple Program &lt;/titlegt;
+&lt;/head&gt;
+&lt;body&gt;
+
+Here is the output of my program:
+<b>&lt;applet code="HelloWorld.class" width="150" height="25"&gt;
+&lt;/applet&gt;</b>
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></blockquote>
+
+<p>
+The above <code>&lt;applet&gt;</code> tag specifies that the browser should load the class whose compiled code is in the file named <code>HelloWorld.class</code>. The browser looks for this file in the same directory as the HTML document that contains the tag.
+</p>
+
+When the browser finds the class file, it loads it over the network, if necessary, onto the computer the browser is running on. The browser then creates an instance of the class. If you include an applet twice in one page, the browser loads the class file once and creates two instances of the class.
+
+<p>
+The <code>width</code> and <code>height</code> attributes are like the same attributes in an <code>&lt;img&gt;</code> tag: They specify the size in pixels of the applet's display area. Most browsers do not let the applet resize itself to be larger or smaller than this display area. For example, every bit of drawing that the "Hello World" applet does in its <code>paint</code> method occurs within the 150x25-pixel display area that the above <code> &lt;applet&gt;</code> tag reserves for it.
+</p>
+
+For more information on the <code> &lt;applet&gt;</code> tag, see
+<a href="AppletTag" class="conditional">Using the APPLET Tag</a>
+<a href="AppletTag" class="conditional"><img src="images/tutorialIcon.gif" width="11" height="11" border="0" align="middle" alt=" (in the Getting Started trail)"/></a>.
+
+</blockquote>
+
+<object data="../footer.xhtml" type="text/wow"/>
+</body>
+</html>

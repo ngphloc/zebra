@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT strategy (description, if*)>
+<!ATTLIST strategy name CDATA #REQUIRED>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT if (condition, then)>
+<!ELEMENT condition (#PCDATA)>
+<!ELEMENT then (action*, select?, setDefault*, sort?)>
+<!ELEMENT action (UMvariable, expression)>
+<!ATTLIST action attributeName CDATA #REQUIRED>
+<!ELEMENT UMvariable (#PCDATA)>
+<!ELEMENT expression (#PCDATA)>
+<!ELEMENT select (showContent*, showContentDefault*, showLink*)>
+<!ATTLIST select attributeName CDATA #REQUIRED>
+<!ELEMENT setDefault (expression)>
+<!ATTLIST setDefault attributeName CDATA #REQUIRED>
+<!ELEMENT sort (linkTo*)>
+<!ATTLIST sort attributeName CDATA #REQUIRED>
+<!ELEMENT showContent (#PCDATA)>
+<!ELEMENT showContentDefault (#PCDATA)>
+<!ELEMENT showLink (linkTo, comment)>
+<!ELEMENT linkTo (#PCDATA)>
+<!ELEMENT comment (#PCDATA)>

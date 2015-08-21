@@ -1,0 +1,106 @@
+<!DOCTYPE html SYSTEM "/wow/WOWstandard/xhtml-wowext-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<object data="../header.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+
+<h2>Configuring WOW!</h2>
+
+<p>
+We assume that you have <a href="compile" class="conditional">built</a>
+the WOW! binaries, and that the TomCat server
+<if expr="tutorial.wowcontext.knowledge==0">
+<block>
+(for instance Sun's version JWDSP from
+<a href="http://java.sun.com/webservices/downloads/webservicespack.html"
+target="_blank">http://java.sun.com/webservices/downloads/webservicespack.html</a>)
+</block>
+</if>
+is installed and running, and that you have
+<a href="wowcontext" class="conditional">created a "context"</a>
+for WOW!, with "/wow" as pathname.
+</p>
+
+<p>
+Configuring WOW! consists of the following steps:
+</p>
+<ol>
+<li>
+In the browser you go to the address
+<a href="/wow/Config" target="_blank" class="unconditional">/wow/Config</a>.
+The first time you do this a page appears that says
+"Installing Configuration file".
+This step actually executes a servlet that creates the WOW!
+configuration files containing the information you entered
+when <a href="wowcontext" class="conditional">creating
+the WOW! context</a> for TomCat.
+</li>
+<li>
+Because the first step overwrites the initial configuration file,
+the next step only works if you configured the WOW! context to be
+reloadable. If you click on the
+<a href="/wow/Config" target="_blank" class="unconditional">Configuration</a>
+link you go to "WowConfig" page.
+If the context is not reloadable you have to restart the TomCat server
+first.
+<if expr="tutorial.wowcontext.knowledge==0">
+<block>
+(Execute shutdown.sh and
+startup.sh on Linux or shutdown.bat and startup.bat on Windows.)
+</block>
+</if>
+<br />
+You can always go to the "WowConfig" page later, using the
+link <a href="/wow/Config" target="_blank" class="unconditional">/wow/Config</a>.
+You will never see the "Installing Configuration file" page again.
+</li>
+<li>
+When you try to go to WowConfig page you are prompted for a
+login and password. Initially you should use "wow" as login and no password.
+</li>
+<li>
+The first thing to do when shown the
+<a href="/wow/tutorial/images/wowconfig.gif"
+target="_blank" class="unconditional">WowConfig page</a> is to select
+"Manager Configuration" and then select "Change an existing user"
+from the
+<a href="/wow/tutorial/images/adminmenu.gif"
+target="_blank" class="unconditional">Manager administration menu</a>,
+in order to change the "wow" <em>login</em> to a name you prefer,
+and to add a password.
+This is important for security reasons, because everyone who knows
+WOW! also knows that it comes with "wow" as the default manager
+without a password.
+</li>
+<li>
+Through the <a href="/wow/tutorial/images/authormenu.gif"
+target="_blank" class="unconditional">Author menu</a>
+you can <a href="/wow/tutorial/images/addauthormenu.gif"
+target="_blank" class="unconditional">create authors</a>
+and assign applications to authors.
+</li>
+<li>
+WOW! is now ready to be used. It contains this
+<a href="/wow/tutorial/" target="_blank"
+class="unconditional">tutorial</a> as an example
+adaptive hyperdocument.
+It uses a set of XML files to store the concept information and the
+user profiles. To change the WOW! database configuration, you can click on the "Configure Database" link to create
+the database. Note that your database must have been
+configured to accept the login and password that you
+choose, <em>before</em> attempting to have WOW! create the database.
+</li>
+</ol>
+
+<object data="../footer.xhtml" type="text/wow">
+<p>
+<b>Warning:</b>
+If you see this text it means you are not viewing the page through
+the WOW! system.
+</p>
+</object>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE concept SYSTEM 'concept.dtd'>
+
+<concept>
+  <name>javatutorial.Generics.testresult</name>
+  <description></description>
+  <attributes>
+    <attribute>
+      <name>actions</name>
+      <description></description>
+      <default></default>
+      <type>3</type>
+      <actions>
+	<action>
+	  <expr>javatutorial.Generics.knowledge &gt; 1</expr>
+	  <trigger>false</trigger>
+	  <truestat>
+	    <assignment>
+	      <variable>javatutorial.GenericsTest.knowledge</variable>
+	      <expr>1</expr>
+	    </assignment>
+	  </truestat>
+	  <falsestat />
+	</action>
+      </actions>
+      <readonly>true</readonly>
+      <system>false</system>
+      <persistent>false</persistent>
+    </attribute>
+  </attributes>
+  <concepttype></concepttype>
+  <title></title>
+</concept>
+
